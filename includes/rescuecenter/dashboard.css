@@ -43,7 +43,7 @@ body{
 
 .menu li {
     padding: 12px 10px;
-   margin: 15px 0; 
+   margin: 18px 0; 
     background: #94d8a8;
     color: #0a0a0a;
     border-radius: 6px;
@@ -54,6 +54,7 @@ body{
 
 .menu li:hover {
    background: #a9e5b9;
+    box-shadow: 0 0 15px #94d8a8, 0 0 25px #94d8a8;
 }
 
 .menu li i {
@@ -66,8 +67,8 @@ body{
     padding: 20px;
     height: 100vh;
     background-image: url("/paws&protect/includes/image/centdash.png");
-    background-size: cover;                     /* cover full area */
-    background-position: center;                /* center the image */
+    background-size: cover;                     
+    background-position: center;                
     background-repeat: no-repeat; 
 }
 
@@ -94,8 +95,3 @@ body{
     color:  #1c7c54;
 }
 
-.default-img {
-    width: 350px;              
-    opacity: 0.9;             
-    display: block;            
-    margin: 40px auto;       
