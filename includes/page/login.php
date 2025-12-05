@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     $_SESSION['rescue_center_id'] = $center['rescue_center_id'];
                     $_SESSION['center_name'] = $center['center_name'];
 
-                    header("Location: rescue_dashboard.php");
+                    header("Location: /paws&protect/includes/rescuecenter/dashboard.php");
                     exit();
                 }
 
