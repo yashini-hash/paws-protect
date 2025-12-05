@@ -43,7 +43,7 @@ body{
 
 .menu li {
     padding: 12px 10px;
-   margin: 18px 0; 
+   margin: 20px 0; 
     background: #94d8a8;
     color: #0a0a0a;
     border-radius: 6px;
@@ -61,12 +61,43 @@ body{
     margin-right: 10px;
 }
 
+.submenu {
+    margin-top: 8px;
+    margin-left: 0;
+    padding-left: 20px;
+}
+
+
+.submenu {
+    list-style: none;
+    margin-top: 10px;
+    margin-left: 15px;
+    padding: 0;
+    display: none;   
+}
+
+.submenu li {
+    padding: 8px 10px;
+    margin: 6px 0;
+    background:  #1c7c54;
+    color: #ffffff;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    
+}
+
+.submenu li:hover {
+    background: #ffb703;
+}
+
+
 /* Main */
 .main {
      margin-left: 260px;
     padding: 20px;
     height: 100vh;
-    background-image: url("/paws&protect/includes/image/centdash.png");
+    background-image: url("/paws&protect/includes/image/animal.png");
     background-size: cover;                     
     background-position: center;                
     background-repeat: no-repeat; 

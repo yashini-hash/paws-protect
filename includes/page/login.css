@@ -90,23 +90,6 @@ body {
 }
 
 
-.input-box input:focus + label,
-.input-box input:valid + label,
-.input-box input:not(:placeholder-shown) + label {
-  top: -12px;
-  color: #94d8a8;
-  font-size: 0.8em;
-}
-
-
-.input-box input[type="password"]:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0 30px transparent inset !important;
-   -webkit-text-fill-color: #fff !important;
-    background: transparent !important;
-    transition: background-color 5000s ease-in-out 0s;
-}
-
-
 .forget {
   display: flex;
   align-items: center;
@@ -137,6 +120,17 @@ body {
 
 .forget label p {
   margin-left: 8px;
+}
+
+
+.right-side input:-webkit-autofill,
+.right-side input:-webkit-autofill:hover,
+.right-side input:-webkit-autofill:focus,
+.right-side input:-webkit-autofill:active {
+ -webkit-box-shadow: 0 0 0 30px transparent inset !important;
+  -webkit-text-fill-color: #fff !important;
+  background: transparent !important;
+  transition: background-color 5000s ease-in-out 0s;
 }
 
 
