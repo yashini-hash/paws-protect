@@ -74,15 +74,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Paws & Protect - User Registration</title>
-  <link rel="icon" type="image/x-icon" href="/paws&protect/includes/image/paws.png" />
-  <link rel="stylesheet" href="user_register.css">
+  <link rel="icon" type="image/x-icon" href="/paws&protect/includes/image/paw.png" />
+  <link rel="stylesheet" href="user_registerstyle.css">
 </head>
 <body>
 
   <div class="container">
     <div class="form-box">
       <div class="logo-container">
-        <img src="/paws&protect/includes/image/paws.png" alt="Logo">
+        <img src="/paws&protect/includes/image/paw.png" alt="Logo">
       </div>
 
       <h3>RescueCenter Registration</h3>

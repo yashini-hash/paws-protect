@@ -52,7 +52,7 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 10px 30px;
-    background: #94d8a8;
+    background: #9d6e4c;
     color: black;
     position: sticky;
     top: 0;
@@ -71,7 +71,7 @@ header {
 }
 
     .nav-links a {
-        color: #1c7c54;
+        color: #5C3A21;
         text-decoration: none;
         font-weight: bold;
     }
@@ -91,7 +91,7 @@ header {
 .mobile-nav {
     display: none;
     flex-direction: column;
-    background: #1c7c54;
+    background: #5C3A21;
     padding: 15px;
 }
 
@@ -173,7 +173,7 @@ header {
 }
 
     .btn:hover {
-        background: #2d6a4f;
+        background: #5C3A21;
         transform: translateY(-3px);
     }
 
@@ -188,7 +188,7 @@ header {
 
     .welcome h2 {
         font-family: 'Brush Script MT', cursive;
-        color: #1c7c54; 
+        color: #5C3A21; 
         margin-bottom: 20px;
         font-size: 3rem;
         font-weight: 700;
@@ -200,7 +200,7 @@ header {
     }
 
     .welcome strong {
-        color: #2E8B57;
+        color: #5C3A21;
     }
 
     .welcome em {
@@ -245,7 +245,7 @@ header {
 
 .help-text {
     flex: 1;
-    background-color: #1c7c54; 
+    background-color: #5C3A21; 
     color: white;
     display: flex;
     flex-direction: column;
@@ -282,7 +282,7 @@ header {
         color: white;
     }
         .help-buttons .btn:hover {
-            background-color: #94d8a8;
+            background-color: #8e6243;
             transform: translateY(-3px);
             opacity: 0.9;
         }
@@ -320,7 +320,7 @@ header {
 }
 
     .rescue-centres h2 {
-        color: #1c7c54;
+        color: #5C3A21;
         font-size: 2rem;
         margin-bottom: 10px;
     }
@@ -347,7 +347,7 @@ header {
 
 
 .footer {
-  background: #94d8a8;     /* UPDATED */
+  background: #9d6e4c;     
   color: black;
   padding: 50px 0;
   font-family: 'Arial', sans-serif;
@@ -375,7 +375,7 @@ font-size: 20px;
 }
 
 .footer-section a :hover{
-    color: #1c7c54;
+    color: #5C3A21;
 }
 
 .footer-logo {
@@ -410,7 +410,7 @@ font-size: 20px;
 
 
 .social-icons a:hover {
-  background-color: #1c7c54;   
+  background-color: #5C3A21;   
   transform: scale(1.1);
 }
 

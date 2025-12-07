@@ -12,7 +12,7 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 10px 30px;
-    background: #94d8a8;
+    background: #9d6e4c;
     color: black;
     position: sticky;
     top: 0;
@@ -31,7 +31,7 @@ header {
 }
 
     .nav-links a {
-        color: #1c7c54;
+        color: #5C3A21;
         text-decoration: none;
         font-weight: bold;
     }
@@ -51,7 +51,7 @@ header {
 .mobile-nav {
     display: none;
     flex-direction: column;
-    background: #1c7c54;
+    background: #5C3A21;
     padding: 15px;
 }
 
@@ -111,7 +111,7 @@ header {
     position: absolute;
     bottom: 15%;
     left: 40px;
-    color: #94d8a8;
+    color: #f5e8c8;
     font-size: clamp(18px, 6vw, 48px);
     font-weight: bold;
     text-shadow: 2px 2px 5px rgba(0,0,0,0.6);
@@ -121,7 +121,7 @@ header {
 
 
 footer {
-    background: #94d8a8;
+    background: #9d6e4c;
     text-align: center;
     padding: 20px 10px;
 }
@@ -147,6 +147,6 @@ footer {
     }
 
         footer .right a:hover {
-            background-color: #1c7c54;
+            background-color: #5C3A21;
             transform: scale(1.1);
         }

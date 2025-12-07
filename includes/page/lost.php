@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Paws & Protect </title>
-     <link rel="icon" type="image/x-icon" href="/paws&protect/includes/image/paws.png" />
-    <link rel="stylesheet" href="common.css">
+     <link rel="icon" type="image/x-icon" href="/paws&protect/includes/image/paw.png" />
+    <link rel="stylesheet" href="com.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
@@ -28,7 +28,7 @@
 
 .about h2 {
   font-size: 2.2rem;
-  color: #1c7c54;
+  color: #5C3A21;
   margin-bottom: 20px;
 }
 
@@ -48,7 +48,7 @@
 
 .about-box {
   flex: 1 1 350px;
-  background: #1c7c54;
+  background: #5C3A21;
   border-radius: 12px;
   padding: 25px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
@@ -60,13 +60,13 @@
 }
 
 .about-box h3 {
-  color: #94d8a8;
+  color: #9d6e4c;
   font-size: 1.4rem;
   margin-bottom: 15px;
 }
 
 .about-box i {
-  color: #94d8a8;
+  color: #9d6e4c;
   margin-right: 8px;
 }
 
@@ -79,7 +79,7 @@
    
     <header>
         <div class="logo">
-            <img src="/paws&protect/includes/image/paws.png" alt=" Logo">
+            <img src="/paws&protect/includes/image/paw.png" alt=" Logo">
         </div>
 
       
@@ -153,7 +153,7 @@
 
 
  <footer>
-  <img src="/paws&protect/includes/image/paws.png" alt="paw Logo">
+  <img src="/paws&protect/includes/image/paw.png" alt="paw Logo">
   <div class="right">
     <a href="#"><i class="fab fa-facebook"></i></a>
     <a href="#"><i class="fab fa-linkedin"></i></a>

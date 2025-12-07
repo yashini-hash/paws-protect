@@ -1,10 +1,10 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Paws & Protect </title>
-     <link rel="icon" type="image/x-icon" href="includes/image/paws.png" />
+     <link rel="icon" type="image/x-icon" href="includes/image/paw.png" />
     <link rel="stylesheet" href="home.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -31,7 +31,7 @@
 
     <header>
         <div class="logo">
-            <img src="includes/image/paws.png" alt=" Logo">
+            <img src="includes/image/paw.png" alt=" Logo">
         </div>
 
       
@@ -123,7 +123,7 @@
       <button class="btn rescue">Rescue</button>
     </div>
 
-    <img src="includes/image/foot.png" alt="Footprint" class="footprint">
+    <img src="includes/image/footprint.png" alt="Footprint" class="footprint">
   </div>
 </section>
 
@@ -143,7 +143,7 @@
 
     <!-- Left Section -->
     <div class="footer-section">
-      <img src="includes/image/paws.png" alt="Logo" class="footer-logo">
+      <img src="includes/image/paw.png" alt="Logo" class="footer-logo">
 
       <h3>Contact us:</h3>
 <a href="tel:+94112233445"><i class="fa fa-phone"></i> +94 11 223 3445</a>

@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Paws & Protect - Register</title>
-  <link rel="icon" type="image/x-icon" href="/paws&protect/includes/image/paws.png" />
-  <link rel="stylesheet" href="login.css"> 
+  <link rel="icon" type="image/x-icon" href="/paws&protect/includes/image/paw.png" />
+  <link rel="stylesheet" href="loginstyle.css"> 
 </head>
 <body>
 <style>

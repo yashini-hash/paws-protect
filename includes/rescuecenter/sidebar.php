@@ -1,0 +1,62 @@
+<?php
+// Determine current page to auto-open submenu
+$current_page = basename($_SERVER['PHP_SELF']);
+$open_animal_menu = in_array($current_page, ['viewall.php','addanimal.php','updateanimal.php']) ? 'block' : 'none';
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rescue Center Dashboard</title>
+<link rel="icon" type="image/x-icon" href="/paws&protect/includes/image/paw.png" />
+<link rel="stylesheet" href="dashboardstyle.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+<div class="sidebar" id="sidebar">
+    <div class="logo">
+        <img src="rescue-logo.png" alt="Rescue Logo">
+        <h3>Rescue Center</h3>
+    </div>
+
+    <ul class="menu">
+        <li><a href="dashboard.php"><i class="fa-solid fa-home"></i> Dashboard</a></li>
+        <li class="has-submenu" id="animalBtn">
+            <a href="javascript:void(0);"><i class="fa-solid fa-paw"></i> Animal Management</a>
+            <ul class="submenu" id="animalSubMenu" style="display: <?= $open_animal_menu ?>;">
+                <li><a href="viewall.php">View All</a></li>
+                <li><a href="addanimal.php">Add New Animal</a></li>
+                <li><a href="updateanimal.php">Update & Delete</a></li>
+            </ul>
+        </li>
+        <li><a href="adoption.php"><i class="fa-solid fa-users"></i> Adoption Request</a></li>
+        <li><a href="rescue.php"><i class="fa-solid fa-truck-medical"></i> Rescue Operations</a></li>
+        <li><a href="feedback.php"><i class="fa-solid fa-comment-dots"></i> Feedback</a></li>
+        <li><a href="lost.php"><i class="fa-solid fa-dog"></i> Lost Animal Details</a></li>
+        <li><a href="profile.php"><i class="fa-solid fa-user"></i> Edit Profile</a></li>
+        <li><a href="staff.php"><i class="fa-solid fa-user-tie"></i> Staff</a></li>
+    </ul>
+</div>
+
+<script>
+// Hamburger toggle
+const hamburger = document.getElementById("hamburger");
+if (hamburger) {
+    hamburger.addEventListener("click", function() {
+        const sidebar = document.getElementById("sidebar");
+        sidebar.classList.toggle("show");
+    });
+}
+
+// Submenu toggle
+const animalBtn = document.getElementById("animalBtn");
+if (animalBtn) {
+    animalBtn.addEventListener("click", function() {
+        const subMenu = document.getElementById("animalSubMenu");
+        subMenu.style.display = subMenu.style.display === "block" ? "none" : "block";
+    });
+}
+</script>
+</body>
+</html>

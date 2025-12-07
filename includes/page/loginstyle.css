@@ -8,13 +8,14 @@
 }
 
 body {
-  background: radial-gradient(circle at top left, #0b2e23, #135c3b 40%, #1c7c54 80%);
+  background: radial-gradient(circle at top left, #2B170A, #5C3A21 45%, #A47148 85%);
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+/* ================= CONTAINER ================= */
 
 .container {
   display: flex;
@@ -22,11 +23,12 @@ body {
   height: 500px;
   border-radius: 20px;
   overflow: hidden;
- box-shadow: 0 0 30px 3px rgba(148, 216, 168, 0.6);
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(15px);
+  box-shadow: 0 0 40px rgba(180, 120, 60, 0.45);
 }
 
+/* ================= LEFT SIDE ================= */
 
 .left-side {
   flex: 1;
@@ -39,13 +41,14 @@ body {
   height: 100%;
   object-fit: cover;
   animation: slideInLeft 1s ease forwards;
-  filter: brightness(0.85);
+  filter: brightness(0.88);
 }
 
+/* ================= RIGHT SIDE ================= */
 
 .right-side {
   flex: 1;
-  background: rgba(15, 61, 46, 0.9);
+  background: linear-gradient(135deg, #3A210F, #5C3A21);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -57,12 +60,16 @@ body {
   text-align: center;
 }
 
+/* ================= TITLE ================= */
+
 .form-box h2 {
   margin-bottom: 30px;
-  color: #94d8a8;
+  color: #E6B48A;
   font-weight: 600;
+  letter-spacing: 1px;
 }
 
+/* ================= INPUT FIELDS ================= */
 
 .input-box {
   position: relative;
@@ -71,24 +78,38 @@ body {
 
 .input-box input {
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   background: transparent;
   border: none;
-  border-bottom: 2px solid #94d8a8;
+  border-bottom: 2px solid #E6B48A;
   color: #fff;
   outline: none;
+  font-size: 15px;
   transition: 0.3s;
+}
+
+.input-box input:focus {
+  border-color: #FFD8B4;
 }
 
 .input-box label {
   position: absolute;
   left: 0;
-  top: 10px;
-  color: #d1e8dc;
+  top: 12px;
+  color: #EDE0D4;
   pointer-events: none;
   transition: 0.3s;
+  font-size: 14px;
 }
 
+.input-box input:focus ~ label,
+.input-box input:not(:placeholder-shown) ~ label {
+  top: -10px;
+  font-size: 12px;
+  color: #FFD8B4;
+}
+
+/* ================= REMEMBER & FORGOT ================= */
 
 .forget {
   display: flex;
@@ -96,21 +117,21 @@ body {
   justify-content: space-between;
   margin: 25px 0 35px 0;
   color: #fff;
+  font-size: 14px;
 }
 
 .forget a {
-  color: #94d8a8;        
-  text-decoration: none;  
-  transition: 0.3s;       
+  color: #FFD8B4;
+  text-decoration: none;
+  transition: 0.3s;
 }
 
 .forget a:hover {
-  text-decoration: underline; 
+  text-decoration: underline;
 }
 
-
 #remember {
-  accent-color: #94d8a8;
+  accent-color: #E6B48A;
 }
 
 .forget label {
@@ -122,46 +143,50 @@ body {
   margin-left: 8px;
 }
 
+/* ================= AUTOFILL FIX ================= */
 
 .right-side input:-webkit-autofill,
 .right-side input:-webkit-autofill:hover,
 .right-side input:-webkit-autofill:focus,
 .right-side input:-webkit-autofill:active {
- -webkit-box-shadow: 0 0 0 30px transparent inset !important;
+  -webkit-box-shadow: 0 0 0 50px transparent inset !important;
   -webkit-text-fill-color: #fff !important;
   background: transparent !important;
   transition: background-color 5000s ease-in-out 0s;
 }
 
+/* ================= BUTTON ================= */
 
 .btn {
   width: 100%;
   padding: 12px;
-  background: #94d8a8;
+  background: linear-gradient(135deg, #E6B48A, #C68642);
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
-  color: #0a0a0a;
-  box-shadow: 0 0 15px #94d8a8;
+  color: #2B170A;
+  box-shadow: 0 0 15px rgba(230, 180, 120, 0.6);
   transition: 0.3s;
 }
 
 .btn:hover {
-  background: #a9e5b9;
-  box-shadow: 0 0 25px #94d8a8, 0 0 40px #94d8a8;
+  background: linear-gradient(135deg, #FFD8B4, #E6B48A);
+  box-shadow: 0 0 25px rgba(255, 216, 180, 0.9);
+  transform: translateY(-2px);
 }
 
-
+/* ================= SIGNUP TEXT ================= */
 
 .signup-text {
   margin-top: 20px;
-  color: #d1e8dc;
+  color: #EDE0D4;
+  font-size: 14px;
 }
 
 .signup-text a {
-  color: #94d8a8;
+  color: #FFD8B4;
   text-decoration: none;
 }
 
@@ -169,6 +194,7 @@ body {
   text-decoration: underline;
 }
 
+/* ================= ANIMATION ================= */
 
 @keyframes slideInLeft {
   from {
@@ -181,9 +207,9 @@ body {
   }
 }
 
+/* ================= MOBILE RESPONSIVE ================= */
 
 @media (max-width: 768px) {
- 
   .container {
     flex-direction: column;
     height: auto;
@@ -191,106 +217,40 @@ body {
     margin: 20px auto;
   }
 
-  
   .left-side, .right-side {
     width: 100%;
-    height: 50%;
+    height: auto;
   }
 
+  .left-side img {
+    height: 250px;
+  }
 
   .form-box {
     width: 90%;
     padding: 15px 0;
   }
 
- 
   .form-box h2 {
     font-size: 1.5rem;
-    margin-bottom: 20px;
   }
-
-
-  .input-box {
-    margin-bottom: 20px;
-  }
-
 
   .forget {
     flex-direction: column;
-    align-items: flex-start;
     gap: 8px;
-    margin: 15px 0 25px 0;
-  }
-
-  
-  .forget a {
-    align-self: flex-end;
-  }
-
-  .btn {
-    font-size: 0.95rem;
-    padding: 10px;
-  }
-
-
-  .signup-text {
-    font-size: 0.9rem;
-    text-align: center;
-  }
-
- 
-  .left-side img {
-    height: 250px; 
-    object-fit: cover;
+    align-items: flex-start;
   }
 }
 
+/* ================= TABLET ================= */
+
 @media (min-width: 769px) and (max-width: 1024px) {
   .container {
-    flex-direction: row;       
     width: 90%;
-    height: 450px;             
+    height: 450px;
   }
-
-  .left-side, .right-side {
-    width: 50%;
-    height: 100%;
-  }
-
 
   .form-box {
     width: 85%;
-  }
-
-  
-  .form-box h2 {
-    font-size: 1.8rem;
-    margin-bottom: 25px;
-  }
-
-
-  .input-box input {
-    padding: 8px;
-  }
-
-  
-  .btn {
-    padding: 10px;
-    font-size: 0.95rem;
-  }
-
-  .signup-text {
-    font-size: 0.95rem;
-  }
-
-
-  .forget a {
-    font-size: 0.95rem;
-  }
-
- 
-  .left-side img {
-    height: 100%;
-    object-fit: cover;
   }
 }

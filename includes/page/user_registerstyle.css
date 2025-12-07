@@ -8,46 +8,45 @@
 }
 
 body {
-  background: radial-gradient(circle at top left, #0b2e23, #135c3b 40%, #1c7c54 80%);
+  background: radial-gradient(circle at top left, #2B170A, #5C3A21 45%, #A47148 85%);
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+/* ================= CONTAINER ================= */
 
 .container {
   width: 400px;
-  padding:  20px 30px;
+  padding: 20px 30px;
   border-radius: 20px;
-   box-shadow: 0 0 30px 3px rgba(148, 216, 168, 0.6);
-  background: rgba(15, 61, 46, 0.9);
+  box-shadow: 0 0 35px rgba(230, 180, 120, 0.5);
+  background: rgba(60, 33, 15, 0.92);
   backdrop-filter: blur(15px);
   text-align: center;
   color: #fff;
 }
 
-
-
+/* ================= LOGO ================= */
 
 .logo-container img {
- width: 100px;
+  width: 100px;
   height: 100px;
   object-fit: contain;
-  
 }
 
+/* ================= HEADINGS ================= */
 
-.form-box h2 {
-  margin-bottom: 30px;
-  color: #94d8a8;
-  font-weight: 600;
-}
+.form-box h2,
 .form-box h3 {
   margin-bottom: 30px;
-  color: #94d8a8;
+  color: #E6B48A;
   font-weight: 600;
+  letter-spacing: 0.5px;
 }
+
+/* ================= INPUT BOX ================= */
 
 .input-box {
   position: relative;
@@ -59,67 +58,73 @@ body {
   padding: 12px 0 8px 0;
   background: transparent;
   border: none;
-  border-bottom: 2px solid #94d8a8;
+  border-bottom: 2px solid #E6B48A;
   color: #fff;
   outline: none;
   font-size: 1rem;
+}
+
+.input-box input:focus {
+  border-color: #FFD8B4;
 }
 
 .input-box label {
   position: absolute;
   left: 0;
   top: 12px;
-  color: #d1e8dc;
+  color: #EDE0D4;
   font-size: 1rem;
   pointer-events: none;
   transition: 0.3s;
 }
 
-
 .input-box input:focus + label,
 .input-box input:not(:placeholder-shown) + label {
   top: -12px;
   font-size: 0.8rem;
-  color: #94d8a8;
+  color: #FFD8B4;
 }
 
-
+/* ================= AUTOFILL FIX ================= */
 
 .input-box input:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0 30px transparent inset !important;
+  -webkit-box-shadow: 0 0 0 50px transparent inset !important;
   -webkit-text-fill-color: #fff !important;
   background: transparent !important;
   transition: background-color 5000s ease-in-out 0s;
 }
 
+/* ================= BUTTON ================= */
 
 .btn {
   width: 100%;
   padding: 12px;
-  background: #94d8a8;
+  background: linear-gradient(135deg, #E6B48A, #C68642);
   border: none;
   border-radius: 8px;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
-  color: #0a0a0a;
-  box-shadow: 0 0 15px #94d8a8;
+  color: #2B170A;
+  box-shadow: 0 0 15px rgba(230, 180, 120, 0.7);
   transition: 0.3s;
 }
 
 .btn:hover {
-  background: #a9e5b9;
-  box-shadow: 0 0 25px #94d8a8, 0 0 40px #94d8a8;
+  background: linear-gradient(135deg, #FFD8B4, #E6B48A);
+  box-shadow: 0 0 25px rgba(255, 216, 180, 0.9);
+  transform: translateY(-2px);
 }
 
+/* ================= SIGNUP TEXT ================= */
 
 .signup-text {
   margin-top: 20px;
-  color: #d1e8dc;
+  color: #EDE0D4;
 }
 
 .signup-text a {
-  color: #94d8a8;
+  color: #FFD8B4;
   text-decoration: none;
 }
 
@@ -127,6 +132,7 @@ body {
   text-decoration: underline;
 }
 
+/* ================= MOBILE RESPONSIVE ================= */
 
 @media (max-width: 480px) {
   .container {
