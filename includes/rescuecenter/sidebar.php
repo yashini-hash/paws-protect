@@ -32,10 +32,11 @@ $open_animal_menu = in_array($current_page, ['viewall.php','addanimal.php','upda
         </li>
         <li><a href="adoption.php"><i class="fa-solid fa-users"></i> Adoption Request</a></li>
         <li><a href="rescue.php"><i class="fa-solid fa-truck-medical"></i> Rescue Operations</a></li>
-        <li><a href="feedback.php"><i class="fa-solid fa-comment-dots"></i> Feedback</a></li>
         <li><a href="lost.php"><i class="fa-solid fa-dog"></i> Lost Animal Details</a></li>
+        <li><a href="feedback.php"><i class="fa-solid fa-comment-dots"></i> Feedback</a></li>
         <li><a href="profile.php"><i class="fa-solid fa-user"></i> Edit Profile</a></li>
         <li><a href="staff.php"><i class="fa-solid fa-user-tie"></i> Staff</a></li>
+         <li><a href="/paws&protect/home.php"><i class="fa fa-out"></i> Logout</a></li>
     </ul>
 </div>
 

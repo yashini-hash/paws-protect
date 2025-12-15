@@ -63,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                 $_SESSION['user_id'] = $user['user_id'];
                 $_SESSION['role'] = 'user';
-                header("Location: user_dashboard.php");
+                header("Location: /paws&protect/includes/users/dashboard.php");
                 exit();
             }
 
