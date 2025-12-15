@@ -162,8 +162,8 @@ header {
 }
 
 .btn {
-    background: #ffb703;
-    color: #fff;
+    background: #d2a382ff;
+    color:#5C3A21;
     padding: 12px 30px;
     text-decoration: none;
     border-radius: 25px;
@@ -173,7 +173,7 @@ header {
 }
 
     .btn:hover {
-        background: #5C3A21;
+        background:#FFA500;
         transform: translateY(-3px);
     }
 
@@ -279,10 +279,10 @@ header {
         font-size: 1rem;
         cursor: pointer;
         transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
-        color: white;
+        color: #5C3A21;
     }
         .help-buttons .btn:hover {
-            background-color: #8e6243;
+            background-color: #FFA500;
             transform: translateY(-3px);
             opacity: 0.9;
         }
@@ -363,19 +363,19 @@ header {
   text-align: left;
 }
 
-.footer-section {
+.left-footer-section , .right-footer-section {
   width: 48%;
   min-width: 300px;
   
 }
-.footer-section a{
+.left-footer-section a{
 text-decoration: none;
 color:#333;
 font-size: 20px;
 }
 
 .footer-section a :hover{
-    color: #5C3A21;
+    
 }
 
 .footer-logo {
@@ -384,8 +384,8 @@ font-size: 20px;
 }
 
 /* Titles with handwriting style */
-.footer-section h3,
-.footer-section h2 {
+.left-footer-section h2,
+.right-footer-section h2 {
   font-family: 'Brush Script MT', cursive;
   color: black;
 }
@@ -393,25 +393,25 @@ font-size: 20px;
 
 /* ICON BUTTONS */
 .social-icons a {
-  display: inline-block;
-  width: 40px;
-  height: 40px;
-  line-height: 40px;
-  margin: 0 6px;
-  text-align: center;
-  background-color: #333;  
-  color: #fff;             
-  border-radius: 50%;
-  font-size: 18px;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+ display: inline-block;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        margin: 0 6px;
+        text-align: center;
+        background-color: #333;
+        color: #fff;
+        border-radius: 50%;
+        font-size: 18px;
+        transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 
 
 
 .social-icons a:hover {
-  background-color: #5C3A21;   
-  transform: scale(1.1);
+   background-color: #5C3A21;
+            transform: scale(1.1);
 }
 
 
