@@ -60,8 +60,9 @@ $types = ['Dog','Cat','Bird','Rabbit','Hamsters'];
             <p><b>Health:</b> <?= $a['health'] ?></p>
             <p><b>Status:</b> <?= ucwords(str_replace("_"," ",$a['adoption_status'])) ?></p>
             <div style="margin-top:10px;">
-                <a href="change_animal.php?id=<?= $a['animal_id'] ?>" style="background:#5C3A21;color:white;padding:5px 10px;border:none;border-radius:5px;text-decoration:none;">Update</a>
-                <button class="deleteBtn" style="background:red;color:white;padding:5px 10px;border:none;border-radius:5px;">Delete</button>
+                <a href="change_animal.php?id=<?= $a['animal_id'] ?>" class="action-btn updateBtn">Update</a>
+<button class="action-btn deleteBtn">Delete</button>
+
             </div>
         </div>
     <?php endwhile; ?>
@@ -105,9 +106,84 @@ document.getElementById('filterForm').addEventListener('submit', e => {
 
 
 <style>
-body { background:#FFF8E7; font-family: Arial, sans-serif; margin-left: 260px; padding: 50px; }
-    #filterForm {
-         max-width:600px; margin:auto; margin-bottom:20px; display:flex; gap:10px; } #filterForm select { flex:1; padding:8px; border-radius:5px; border:1px solid #ccc; } #filterForm button { padding:8px 15px; border:none; border-radius:5px; background:#5C3A21; color:white; cursor:pointer; } #filterForm button:hover { background:#9d6e4c; } #animalsContainer { display:flex; flex-wrap:wrap; gap:20px; justify-content:center; }
+body { background:#FFF8E7;
+     font-family: Arial, sans-serif;
+      margin-left: 260px; 
+      padding: 50px; }
 
-.animal-card h3 { text-align: center; margin: 6px 0; color: #3e2c1c; font-size: 25px; } .animal-card p { margin: 4px 0; color: #5c3a21; font-size: 20x; }
+    #filterForm {
+         max-width:600px; 
+         margin:auto; 
+         margin-bottom:20px; 
+         display:flex; gap:10px; } 
+
+         #filterForm select { 
+            flex:1; 
+            padding:8px; 
+            border-radius:5px; 
+            border:1px solid #ccc; }
+            
+            #filterForm button { 
+                padding:8px 15px;
+                 border:none; 
+                 border-radius:5px; 
+                 background:#5C3A21;
+                  color:white; 
+                  cursor:pointer; } 
+
+                  #filterForm button:hover
+                   { background:#9d6e4c; }
+
+                    #animalsContainer { 
+                        display:flex; 
+                        flex-wrap:wrap; 
+                        gap:20px; 
+                        justify-content:center; }
+
+.animal-card h3 { 
+    text-align: center;
+     margin: 6px 0; 
+     color: #3e2c1c;
+      font-size: 25px; }
+
+       .animal-card p {
+         margin: 4px 0;
+          color: #5c3a21; 
+          font-size: 20x; }
+
+          .action-btn {
+    display: inline-block;
+    min-width: 90px;              /* SAME width */
+    text-align: center;
+    gap:15px;
+    padding: 8px 12px;            /* SAME padding */
+    border: none;
+    border-radius: 6px;
+    font-size: 15px;              /* SAME font size */
+    font-family: Arial, sans-serif;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+/* Update button */
+.updateBtn {
+    background:#5C3A21;
+    color:white;
+}
+
+.updateBtn:hover {
+    background:#9d6e4c;
+}
+
+/* Delete button */
+.deleteBtn {
+    background:red;
+    color:white;
+}
+
+.deleteBtn:hover {
+    background:#cc0000;
+}
+
+
 </style>

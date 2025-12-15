@@ -142,23 +142,23 @@
   <div class="footer-container">
 
     <!-- Left Section -->
-    <div class="footer-section">
+    <div class="left-footer-section">
       <img src="includes/image/paw.png" alt="Logo" class="footer-logo">
 
-      <h3>Contact us:</h3>
+      <h2>Contact us:</h2>
 <a href="tel:+94112233445"><i class="fa fa-phone"></i> +94 11 223 3445</a>
 <br><a href="mailto:paws&srilanka@gmail.com"><i class="fa fa-envelope"></i> paws&protect@gmail.com</a>
     </div>
 
     <!-- Right Section -->
-    <div class="footer-section">
+    <div class="right-footer-section">
       <h2>Paws & Protect Sri Lanka:</h2>
 
       <div class="social-icons big">
-        <a href="#"><i class="fas fa-globe"></i></a>
         <a href="#"><i class="fab fa-facebook"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fas fa-times"></i></a>
+    <a href="#"><i class="fab fa-linkedin"></i></a>
+    <a href="#"><i class="fab fa-youtube"></i></a>
+    <a href="#"><i class="fab fa-instagram"></i></a>
       </div>
 
        <br><p>&copy; 2025 Paws & Protect | Together for Animals 🐾</p>

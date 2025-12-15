@@ -66,11 +66,13 @@ form button {
     border-radius:8px;
     font-size:16px;
     cursor:pointer;
-    background:green;
+   background: #5C3A21;
     color:white;
 }
 
-form button:hover { opacity:0.9; }
+form button:hover { 
+    background:#9d6e4c; 
+}
 
 #msg {
     text-align:center;
@@ -88,7 +90,7 @@ form button:hover { opacity:0.9; }
 
 <h2>Update Animal</h2>
 
-<div id="msg"></div>
+
 
 <form id="updateForm" enctype="multipart/form-data">
     <input type="hidden" name="update_id" value="<?= $animal['animal_id'] ?>">
@@ -145,6 +147,7 @@ form button:hover { opacity:0.9; }
     <input type="text" name="location" value="<?= htmlspecialchars($animal['location']) ?>">
 
     <button type="submit">Save Changes</button>
+    <div id="msg"></div>
 </form>
 
 <script>
