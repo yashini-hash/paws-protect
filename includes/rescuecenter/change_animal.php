@@ -84,13 +84,37 @@ form button:hover {
 }
 #msg.success { background:#d4edda; color:#155724; }
 #msg.error { background:#f8d7da; color:#721c24; }
+textarea {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    width: 100%;
+    resize: vertical;
+}
+
+.action-btn{
+ padding: 12px 25px;
+    border-radius: 12px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 0 10px;
+    color: white;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position:sticky;
+}
+.btn-back{
+    background: #6c4f3d;
+}
 </style>
 </head>
 <body>
 
 <h2>Update Animal</h2>
 
-
+<a href="updateanimal.php"><button class="action-btn btn-back">Back</button></a>
 
 <form id="updateForm" enctype="multipart/form-data">
     <input type="hidden" name="update_id" value="<?= $animal['animal_id'] ?>">
@@ -121,7 +145,7 @@ form button:hover {
     </select>
 
     <label>Age</label>
-    <input type="number" name="age" value="<?= $animal['age'] ?>" required>
+    <input type="text" name="age" value="<?= $animal['age'] ?>" required>
 
     <label>Health</label>
     <select name="health">
@@ -146,6 +170,8 @@ form button:hover {
     <label>Location</label>
     <input type="text" name="location" value="<?= htmlspecialchars($animal['location']) ?>">
 
+    <label>Details</label>
+<textarea name="details" rows="4" required><?= htmlspecialchars($animal['details']) ?></textarea>
     <button type="submit">Save Changes</button>
     <div id="msg"></div>
 </form>

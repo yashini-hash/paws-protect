@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $date     = $_POST['rescue_date'];
     $status   = $_POST['adoption_status'];
     $location = $_POST['location'];
-
+     $details  = $_POST['details'];
     // ✅ IMAGE UPLOAD
     $image_name = NULL;
 
@@ -51,16 +51,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
-    if(empty($errorMsg)){
-        // ✅ SECURE INSERT USING PREPARED STATEMENT
+   if(empty($errorMsg)){
         $sql = "INSERT INTO animals_details 
-        (name, type, breed, gender, age, health, vaccination, rescue_date, adoption_status, animal_image, location, rescue_center_id) 
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        
+        (name, type, breed, gender, age, health, vaccination, rescue_date, adoption_status, animal_image, location, details, rescue_center_id) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
         $stmt = $conn->prepare($sql);
         $stmt->bind_param(
-            "ssssi sssssi", 
-            $name, $type, $breed, $gender, $age, $health, $vacc, $date, $status, $image_name, $location, $rescue_center_id
+            "ssssssssssssi",
+            $name, $type, $breed, $gender, $age, $health, $vacc, $date,
+            $status, $image_name, $location, $details, $rescue_center_id
         );
 
         if($stmt->execute()){
@@ -151,6 +151,16 @@ button:hover {
     text-align: center;
     font-weight: bold;
 }
+
+textarea {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+    width: 100%;
+    resize: vertical;
+}
+
 </style>
 
 <div class="container">
@@ -186,7 +196,7 @@ button:hover {
             <option value="female">Female</option>
         </select>
 
-        <input type="number" name="age" placeholder="Age" required>
+        <input type="text" name="age" placeholder="Age" required>
 
         <select name="health">
             <option value="">Health Status</option>
@@ -208,6 +218,8 @@ button:hover {
         <input type="file" name="animal_image" class="full" accept="image/*">
 
         <input type="text" name="location" placeholder="Rescue Location" required class="full">
+        <textarea name="details" class="full" rows="4" placeholder="Enter animal details..." required></textarea>
+
 
         <button type="submit">Add Animal</button>
 

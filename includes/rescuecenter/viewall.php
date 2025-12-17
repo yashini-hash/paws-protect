@@ -175,7 +175,6 @@ body {
             <img src="../uploads/<?php echo !empty($row['animal_image']) ? $row['animal_image'] : 'no-image.png'; ?>">
             <h3><?php echo htmlspecialchars($row['name']); ?></h3>
             <p><b>Type:</b> <?php echo $row['type']; ?></p>
-            <p><b>Breed:</b> <?php echo $row['breed']; ?></p>
             <p><b>Gender:</b> <?php echo $row['gender']; ?></p>
             <p><b>Age:</b> <?php echo $row['age']; ?></p>
             <p><b>Health:</b> <?php echo $row['health']; ?></p>

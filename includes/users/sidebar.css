@@ -1,0 +1,216 @@
+/* ================= GLOBAL ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #F3E7DA;
+}
+
+/* ================= SIDEBAR ================= */
+.sidebar {
+    width: 260px;
+    height: 100vh;
+    background: radial-gradient(circle at top left, #2B170A, #5C3A21 45%, #A47148 85%);
+    color: white;
+    display: block;
+    position: fixed;
+    left: 0;
+    top: 0;
+    padding: 20px 15px;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+/* Sidebar hidden/collapsed for mobile */
+.sidebar.collapsed {
+    width: 0;
+    padding: 20px 0;
+    overflow: hidden;
+}
+
+/* Sidebar visible on mobile */
+.sidebar.show {
+    left: 0;
+}
+
+/* ================= LOGO ================= */
+.logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo img {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.25);
+    padding: 6px;
+    border: 1px solid #FFD8B4;
+}
+
+.logo h3 {
+    margin-top: 10px;
+    color: #FFD8B4;
+}
+
+/* ================= MENU ================= */
+/* ================= MENU ================= */
+.menu {
+    list-style: none;
+    padding: 0;
+}
+
+.menu li {
+    margin: 18px 0; /* space between items */
+}
+
+.menu li a {
+    display: flex;           /* flex for icon + text */
+    align-items: center;
+    padding: 12px 10px;
+    background: linear-gradient(135deg, #E6B48A, #C68642);
+    color: #2B170A;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(230, 180, 120, 0.6);
+    text-decoration: none;   /* remove underline */
+    transition: 0.3s;
+    font-weight: 600;
+}
+
+.menu li a:hover {
+    background: linear-gradient(135deg, #FFD8B4, #E6B48A);
+    box-shadow: 0 0 18px rgba(255, 216, 180, 0.9);
+    transform: translateX(5px);
+}
+
+.menu li i {
+    margin-right: 10px; /* spacing between icon and text */
+}
+
+/* ================= SUBMENU ================= */
+.submenu {
+    list-style: none;
+    margin-top: 10px;
+    margin-left: 15px;
+    padding: 0;
+    display: none;
+}
+
+.submenu li a{
+    padding: 8px 10px;
+    margin: 6px 0;
+    background: #3B1F0F;
+    color: #FFD8B4;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.submenu li a:hover {
+    background: #ae672d;
+    color: #2B170A;
+}
+
+/* ================= MAIN AREA ================= */
+.main {
+    margin-left: 260px;
+    padding: 20px;
+    min-height: 100vh;
+    background: #FFF8E7;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: all 0.3s ease;
+}
+
+/* ================= TOP BAR ================= */
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.85);
+    padding: 15px 20px;
+    border-radius: 12px;
+    color: #5C3A21;
+    box-shadow: 0 0 10px rgba(92, 58, 33, 0.25);
+    transition: all 0.3s ease;
+}
+
+/* ================= ALERT ICON ================= */
+.alert-icon {
+    font-size: 22px;
+    cursor: pointer;
+    color: #5C3A21;
+    transition: 0.3s;
+}
+
+.alert-icon:hover {
+    color: #af8156;
+}
+
+/* ================= CONTENT ================= */
+.content-area {
+    margin-top: 30px;
+    color: #5C3A21;
+    font-weight: 600;
+}
+
+/* ================= HAMBURGER ================= */
+.hamburger {
+    display: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: #5C3A21;
+}
+
+/* ================= RESPONSIVE ================= */
+@media screen and (max-width: 1024px) {
+    .sidebar {
+        width: 200px;
+    }
+    .main {
+        margin-left: 200px;
+    }
+    .logo img {
+        width: 70px;
+        height: 70px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    /* Sidebar hidden by default */
+    .sidebar {
+        position: absolute;
+        left: -260px;
+        top: 0;
+        height: 100%;
+        z-index: 999;
+    }
+
+    /* Sidebar visible */
+    .sidebar.show {
+        left: 0;
+    }
+
+    .main {
+        margin-left: 0;
+        padding: 15px;
+    }
+
+    .topbar {
+        flex-wrap: wrap;
+    }
+
+    .hamburger {
+        display: block;
+    }
+}

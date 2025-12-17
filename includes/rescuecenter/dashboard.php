@@ -6,7 +6,7 @@ if (!isset($_SESSION['rescue_center_id'])) {
     exit();
 }
 
-// Placeholder values (since tables don't exist yet)
+
 $total_animals = 0;
 $total_rescue = 0;
 ?>
