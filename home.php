@@ -81,8 +81,8 @@
   <div class="hero-content">
     <h1>Adopt Love. Protect Life.</h1>
     <p>Join us in rescuing and giving homes to animals in need.</p>
-    <a href="includes/uploads/aboutcourse.php" class="btn">View Animals</a>
-    <a href="includes/uploads/aboutcourse.php" class="btn"> Rescue</a>
+    <a href="includes/page/adopt.php" class="btn">View Animals</a>
+    <a href="includes/page/rescue.php" class="btn"> Rescue</a>
   </div>
 </section>
 
@@ -118,9 +118,10 @@
     </p>
 
     <div class="help-buttons">
-      <button class="btn donate">Donate</button>
-      <button class="btn adopt">Adopt</button>
-      <button class="btn rescue">Rescue</button>
+     
+     <a href="includes/page/donate.php" class="btn  donate"> Donate</a>
+     <a href="includes/page/adopt.php" class="btn  adopt"> Adopt</a>
+      <a href="includes/page/rescue.php" class="btn  rescue"> Rescue</a>
     </div>
 
     <img src="includes/image/footprint.png" alt="Footprint" class="footprint">
