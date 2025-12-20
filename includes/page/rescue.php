@@ -1,4 +1,5 @@
 <?php
+session_start();
 include("dbconnect.php"); // Database connection
 
 // Fetch all rescue centers for map markers
@@ -57,6 +58,43 @@ if ($result) {
             cursor: pointer;
         }
         .rescue-form button:hover {  background:#9d6e4c; }
+
+
+        .message-box {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #d4edda; /* green background for success */
+    color: #155724;
+    padding: 25px 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    text-align: center;
+    z-index: 9999;
+    max-width: 400px;
+    display: none;
+}
+
+.message-box.error {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.message-box button {
+    margin-top: 15px;
+    padding: 8px 20px;
+    border: none;
+    background: #5C3A21;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.message-box button:hover {
+    background: #9d6e4c;
+}
     </style>
 </head>
 <body>
@@ -126,6 +164,39 @@ document.getElementById("menu-toggle").onclick = function() {
 
         <button type="submit">Submit Rescue Request</button>
     </form>
+    <?php if (isset($_SESSION['success_msg'])): ?>
+<div class="message-box" id="successBox">
+    <?= $_SESSION['success_msg']; ?>
+    <br>
+    <button onclick="closeMessage('successBox')">OK</button>
+</div>
+<?php unset($_SESSION['success_msg']); endif; ?>
+
+<?php if (isset($_SESSION['error_msg'])): ?>
+<div class="message-box error" id="errorBox">
+    <?= $_SESSION['error_msg']; ?>
+    <br>
+    <button onclick="closeMessage('errorBox')">OK</button>
+</div>
+<?php unset($_SESSION['error_msg']); endif; ?>
+
+<script>
+// Show the message box if it exists
+window.onload = function() {
+    const success = document.getElementById('successBox');
+    const error = document.getElementById('errorBox');
+    if(success) success.style.display = 'block';
+    if(error) error.style.display = 'block';
+}
+
+function closeMessage(id) {
+    const box = document.getElementById(id);
+    if(box) box.style.display = 'none';
+}
+
+</script>
+    
+
 </div>
 
 <script>
