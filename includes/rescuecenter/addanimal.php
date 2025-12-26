@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $image_name = NULL;
 
     if (!empty($_FILES['animal_image']['name'])) {
-        $target_dir = "../uploads/";
+        $target_dir = "../uploads/addanimal/";
 
         if (!is_dir($target_dir)) {
             mkdir($target_dir, 0777, true);

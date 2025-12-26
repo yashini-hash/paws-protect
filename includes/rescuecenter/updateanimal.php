@@ -53,7 +53,7 @@ $types = ['Dog','Cat','Bird','Rabbit','Hamsters'];
 <?php if($result->num_rows>0): ?>
     <?php while($a=$result->fetch_assoc()): ?>
         <div class="animal-card" data-id="<?= $a['animal_id'] ?>" style="background:#ddbc8b;padding:10px;border-radius:15px;width:280px;text-align:center;">
-            <img src="../uploads/<?= $a['animal_image']?:'no-image.png' ?>" style="width:220px;height:220px;object-fit:cover;border-radius:10px;margin-bottom:10px;">
+            <img src="../uploads/addanimal/<?= $a['animal_image']?:'no-image.png' ?>" style="width:220px;height:220px;object-fit:cover;border-radius:10px;margin-bottom:10px;">
             <h3><?= htmlspecialchars($a['name']) ?></h3>
             <p><b>Type:</b> <?= $a['type'] ?></p>
             <p><b>Age:</b> <?= $a['age'] ?></p>
