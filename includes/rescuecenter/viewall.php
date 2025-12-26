@@ -172,7 +172,7 @@ body {
 <?php if ($result->num_rows > 0) { ?>
     <?php while ($row = $result->fetch_assoc()) { ?>
         <div class="animal-card">
-            <img src="../uploads/<?php echo !empty($row['animal_image']) ? $row['animal_image'] : 'no-image.png'; ?>">
+            <img src="../uploads/addanimal/<?php echo !empty($row['animal_image']) ? $row['animal_image'] : 'no-image.png'; ?>">
             <h3><?php echo htmlspecialchars($row['name']); ?></h3>
             <p><b>Type:</b> <?php echo $row['type']; ?></p>
             <p><b>Gender:</b> <?php echo $row['gender']; ?></p>
