@@ -3,6 +3,27 @@
 $current_page = basename($_SERVER['PHP_SELF']);
 $open_animal_menu = in_array($current_page, ['viewall.php','addanimal.php','updateanimal.php']) ? 'block' : 'none';
 ?>
+
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+include("../page/dbconnect.php"); // adjust path if needed
+
+$user_id = $_SESSION['user_id'];
+
+$sql = "SELECT name, profile_image FROM users WHERE user_id='$user_id'";
+$result = mysqli_query($conn, $sql);
+$user = mysqli_fetch_assoc($result);
+
+// Default image if not uploaded
+$profile_img = !empty($user['profile_image'])
+    ? "../uploads/profiles/" . $user['profile_image']
+    : "../uploads/profiles/default.png";
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,9 +37,10 @@ $open_animal_menu = in_array($current_page, ['viewall.php','addanimal.php','upda
 <body>
 <div class="sidebar" id="sidebar">
     <div class="logo">
-        <img src="user profile" alt="profile">
-        <h3>user name</h3>
-    </div>
+    <img src="<?php echo $profile_img; ?>" alt="profile" class="sidebar-profile-img">
+    <h3><?php echo htmlspecialchars($user['name']); ?></h3>
+</div>
+
 
    <ul class="menu">
     <li><a href="dashboard.php"><i class="fa fa-home"></i> Dashboard</a></li>
@@ -33,7 +55,7 @@ $open_animal_menu = in_array($current_page, ['viewall.php','addanimal.php','upda
             </ul>
     <li><a href="feedback.php"><i class="fa fa-comment"></i> Feedback</a></li>
     <li><a href="donations.php"><i class="fa fa-hand-holding-usd"></i> Donations</a></li>
-    <li><a href="profile.php"><i class="fa fa-user"></i> Edit Profile</a></li>
+    <li><a href="edit_profile.php"><i class="fa fa-user"></i> Edit Profile</a></li>
     <li><a href="/paws&protect/home.php"><i class="fa fa-out"></i> Logout</a></li>
 </ul>
 </div>
