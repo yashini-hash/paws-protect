@@ -29,6 +29,8 @@ if (isset($_POST['update_profile'])) {
     $address = trim($_POST['address']);
     $district = trim($_POST['district']);
     $contact = trim($_POST['contact_number']);
+    $latitude = !empty($_POST['latitude']) ? trim($_POST['latitude']) : NULL;
+    $longitude = !empty($_POST['longitude']) ? trim($_POST['longitude']) : NULL;
 
     // Keep existing logo
     $logo_name = $data['logo'];
@@ -61,16 +63,18 @@ if (isset($_POST['update_profile'])) {
     if (!$msg) {
         $update = $conn->prepare("
             UPDATE rescue_center
-            SET center_name=?, address=?, district=?, contact_number=?, logo=?
+            SET center_name=?, address=?, district=?, contact_number=?, logo=?, latitude=?, longitude=?
             WHERE rescue_center_id=?
         ");
         $update->bind_param(
-            "sssssi",
+            "sssssddi",
             $center_name,
             $address,
             $district,
             $contact,
             $logo_name,
+            $latitude,
+            $longitude,
             $rescue_id
         );
 
@@ -108,7 +112,7 @@ body{
     font-family:'Segoe UI', Tahoma, sans-serif;
 }
 .profile-box{
-    max-width:620px;
+    max-width:650px;
     margin:50px auto;
     background:#fff;
     padding:30px;
@@ -218,6 +222,12 @@ body{
 
         <label>Contact Number</label>
         <input type="text" name="contact_number" value="<?= htmlspecialchars($data['contact_number']) ?>" required>
+
+        <label>Latitude</label>
+        <input type="text" name="latitude" value="<?= htmlspecialchars($data['latitude']) ?>" placeholder="e.g., 6.9271">
+
+        <label>Longitude</label>
+        <input type="text" name="longitude" value="<?= htmlspecialchars($data['longitude']) ?>" placeholder="e.g., 79.8612">
 
         <label>Email (readonly)</label>
         <input type="email" value="<?= htmlspecialchars($data['email']) ?>" readonly>
