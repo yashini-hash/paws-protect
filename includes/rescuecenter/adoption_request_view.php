@@ -326,7 +326,7 @@ function showMessage(msg, action) {
             box.style.display = "none";
             clearInterval(fadeOut);
         }
-    }, 3000);
+    }, 3000s);
 }
 </script>
 

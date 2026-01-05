@@ -138,7 +138,7 @@ $result = $stmt->get_result();
 <?php $status = strtolower($row['status']); ?>
 
     <div class="animal-card">
-        <img src="../uploads/<?php echo htmlspecialchars($row['animal_image']); ?>">
+        <img src="../uploads/addanimal/<?php echo htmlspecialchars($row['animal_image']); ?>">
         <div class="animal-info">
             <h3><?php echo htmlspecialchars($row['animal_name']); ?></h3>
             <p>Type: <?php echo htmlspecialchars($row['animal_type']); ?></p>

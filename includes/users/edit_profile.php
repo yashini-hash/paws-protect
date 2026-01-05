@@ -71,7 +71,11 @@ $user = mysqli_fetch_assoc($result);
     .save-btn {
         width: 100%;
         margin-top: 20px;
+<<<<<<< HEAD
         background-color:#5C3A21;
+=======
+        background-color: #00648bff;
+>>>>>>> 904b504fb461b2172c8a1bb5a5fc4c82272666f6
         color: #fff;
         border: none;
         padding: 12px;
@@ -81,7 +85,11 @@ $user = mysqli_fetch_assoc($result);
     }
 
     .save-btn:hover {
+<<<<<<< HEAD
         background-color:#9d6e4c;
+=======
+        background-color: #5C3A21;
+>>>>>>> 904b504fb461b2172c8a1bb5a5fc4c82272666f6
     }
 
     .success-msg {
