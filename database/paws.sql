@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 19, 2025 at 05:02 AM
+-- Generation Time: Dec 21, 2025 at 05:30 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -129,8 +129,9 @@ CREATE TABLE `rescue_center` (
 --
 
 INSERT INTO `rescue_center` (`rescue_center_id`, `center_name`, `address`, `district`, `contact_number`, `email`, `password`, `status`, `logo`, `latitude`, `longitude`) VALUES
-(1, 'animalcare', 'No 11', 'colombo', '0123456789', 'animal@gmail.com', '$2y$10$OOm8b.ViwqoSYfzbNCaXHOCErt106hDfkfcInT4jGexenghmTPt3q', 'active', NULL, NULL, NULL),
-(2, 'Animal care and love', 'no 56 vidiyatathe mawathe kandy', 'kandy', '0701968862', 'animalcarelove01@gmail.com', '$2y$10$W3JrJXLnVh.oyZtwYRFjFuGGGDIL03B8t3MaYAGgB3tbvDlWMfXIS', 'active', NULL, NULL, NULL);
+(1, 'animalcare', 'No 11', 'colombo', '0123456789', 'animal@gmail.com', '$2y$10$OOm8b.ViwqoSYfzbNCaXHOCErt106hDfkfcInT4jGexenghmTPt3q', 'active', NULL, 6.9271, 79.8612),
+(2, 'Animal care and love', 'no 56 vidiyatathe mawathe kandy', 'kandy', '0701968862', 'animalcarelove01@gmail.com', '$2y$10$W3JrJXLnVh.oyZtwYRFjFuGGGDIL03B8t3MaYAGgB3tbvDlWMfXIS', 'active', NULL, 7.2906, 80.6337),
+(3, 'Royalcare', 'No 10 clinic road badulla', 'badulla', '0124567890', 'royalcare@gmail.com', '$2y$10$D.Jb9eZdSkOuTZRUiMnZA.byZEzpGzfzAtvwj.yWS977YcaOpWmgq', 'active', NULL, 6.9934, 81.055);
 
 -- --------------------------------------------------------
 
@@ -151,6 +152,13 @@ CREATE TABLE `rescue_requests` (
   `assigned_to` varchar(100) DEFAULT NULL,
   `completed_date` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `rescue_requests`
+--
+
+INSERT INTO `rescue_requests` (`request_id`, `animal_type`, `rescue_location`, `description`, `contact_number`, `request_date`, `status`, `rescue_center_id`, `notes`, `assigned_to`, `completed_date`) VALUES
+(1, 'Dog', 'Lat: 6.9836058716599, Lng: 81.057093200665', 'bsdgsdg', '0767211891', '2025-12-20 19:35:10', 'Pending', 3, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -175,7 +183,8 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`user_id`, `name`, `email`, `phone`, `password`, `role`, `created_at`) VALUES
 (1, 'N.Yaseni', 'yashininawarathnam@gmail.com', '0767211890', '$2y$10$WVY97C7b/np.4T3ni6X13./RIgWrn7FH04BAuNi8gb4y8bQTfugHW', 'user', '2025-12-05 07:33:34'),
 (2, 'animalcare', 'animal@gmail.com', '0123456789', '$2y$10$OOm8b.ViwqoSYfzbNCaXHOCErt106hDfkfcInT4jGexenghmTPt3q', 'rescuecenter', '2025-12-05 13:20:02'),
-(3, 'Animal care and love', 'animalcarelove01@gmail.com', '0767211891', '$2y$10$W3JrJXLnVh.oyZtwYRFjFuGGGDIL03B8t3MaYAGgB3tbvDlWMfXIS', 'rescuecenter', '2025-12-10 13:13:40');
+(3, 'Animal care and love', 'animalcarelove01@gmail.com', '0767211891', '$2y$10$W3JrJXLnVh.oyZtwYRFjFuGGGDIL03B8t3MaYAGgB3tbvDlWMfXIS', 'rescuecenter', '2025-12-10 13:13:40'),
+(4, 'Royalcare', 'royalcare@gmail.com', '0124567890', '$2y$10$D.Jb9eZdSkOuTZRUiMnZA.byZEzpGzfzAtvwj.yWS977YcaOpWmgq', 'rescuecenter', '2025-12-20 13:58:49');
 
 --
 -- Indexes for dumped tables
@@ -251,19 +260,19 @@ ALTER TABLE `lost_animals`
 -- AUTO_INCREMENT for table `rescue_center`
 --
 ALTER TABLE `rescue_center`
-  MODIFY `rescue_center_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `rescue_center_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `rescue_requests`
 --
 ALTER TABLE `rescue_requests`
-  MODIFY `request_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `request_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
