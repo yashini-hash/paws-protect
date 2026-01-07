@@ -4,9 +4,10 @@ include("dbconnect.php");
 /* FETCH 4 AVAILABLE ANIMALS */
 $query = "
     SELECT 
-        a.name, 
-        a.type, 
-        a.age, 
+        a.animal_id,
+        a.name,
+        a.type,
+        a.age,
         a.animal_image,
         r.district
     FROM animals_details a
@@ -14,8 +15,8 @@ $query = "
         ON a.rescue_center_id = r.rescue_center_id
     WHERE a.adoption_status = 'available'
       AND r.status = 'active'
-    
 ";
+
 
 $result = mysqli_query($conn, $query);
 $animals = mysqli_fetch_all($result, MYSQLI_ASSOC);
@@ -49,7 +50,10 @@ $animals = mysqli_fetch_all($result, MYSQLI_ASSOC);
 /* CARD */
 .animal-card {
     background: #5C3A21;
-    border-radius: 15px;
+    margin-top: 40px;
+       width: 250px;
+    padding: 15px;
+      border-radius: 15px;
     overflow: hidden;
     box-shadow: 0 12px 30px rgba(0,0,0,0.12);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -57,11 +61,12 @@ $animals = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
 /* IMAGE */
 .animal-card img {
-    width: 100%;
-    height: 200px; /* fixed height for uniformity */
-    object-fit: cover; /* covers the space, no stretching */
+    width: 220px;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 10px;
+           
 }
-
 /* CONTENT */
 .card-body {
     padding: 12px 15px;
@@ -70,7 +75,7 @@ $animals = mysqli_fetch_all($result, MYSQLI_ASSOC);
 .card-body h3 {
     margin: 0;
     font-size: 18px;
-    color: #d2a382ff;
+    color:  #d2a382ff;
 }
 
 .meta {
@@ -93,100 +98,40 @@ $animals = mysqli_fetch_all($result, MYSQLI_ASSOC);
     padding: 10px 15px 15px;
 }
 
-.card-footer button {
-    width: 100%;
-    padding: 8px;
-    border: none;
+.details-btn {
+    display: block;
+    text-align: center;
+    padding: 10px;
     border-radius: 12px;
-    background: #5C3A21;
-    color: white;
+    background: #d2a382ff;
+    color: #5C3A21;
     font-size: 14px;
-    cursor: pointer;
+    font-weight: 600;
+    text-decoration: none;
 }
 
-.card-footer button:hover {
-    background: #9d6e4c;
+.details-btn:hover {
+    background: #FFA500;
 }
 
 
 /* CARD */
-.animal-card {
-    background: white;
-      margin-top: 40px;
-       width: 250px;
-    padding: 15px;
-      border-radius: 15px;
-      
-    overflow: hidden;
-    box-shadow: 0 12px 30px rgba(0,0,0,0.12);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+
 
 .animal-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 18px 40px rgba(0,0,0,0.18);
 }
 
-/* IMAGE */
-.animal-card img {
-    width: 220px;
-            height: 220px;
-            object-fit: cover;
-            border-radius: 10px;
-            margin-bottom: 6px;
-}
-
-/* CONTENT */
-.card-body {
-    padding: 18px;
-}
-
-.card-body h3 {
-    margin: 0;
-    color: #5C3A21;
-}
-
-.meta {
-    margin: 8px 0;
-    font-size: 14px;
-    color: #555;
-}
 
 .meta i {
     color: #9d6e4c;
     margin-right: 6px;
 }
 
-/* TAG */
-.tag {
-    display: inline-block;
-    background: #f1e7df;
-    color: #5C3A21;
-    padding: 5px 12px;
-    border-radius: 20px;
-    font-size: 13px;
-    margin-top: 8px;
-}
 
-/* BUTTON */
-.card-footer {
-    padding: 15px 18px 20px;
-}
 
-.card-footer button {
-    width: 100%;
-    padding: 10px;
-    border: none;
-    border-radius: 14px;
-    background: #5C3A21;
-    color: white;
-    font-size: 15px;
-    cursor: pointer;
-}
 
-.card-footer button:hover {
-    background: #9d6e4c;
-}
 </style>
 </head>
 
@@ -237,8 +182,13 @@ $animals = mysqli_fetch_all($result, MYSQLI_ASSOC);
             </div>
 
             <div class="card-footer">
-                <button>View Details</button>
-            </div>
+    <a href="viewdetails.php?id=<?= $row['animal_id'] ?>" class="details-btn">
+        View Details
+    </a>
+</div>
+
+
+
         </div>
     <?php } ?>
 <?php } else { ?>
@@ -247,9 +197,15 @@ $animals = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
 </section>
 
-<footer>
-    <img src="/paws&protect/includes/image/paw.png">
-    <p>&copy; 2025 Paws & Protect | Together for Animals 🐾</p>
+ <footer>
+  <img src="/paws&protect/includes/image/paw.png" alt="paw Logo">
+  <div class="right">
+    <a href="#"><i class="fab fa-facebook"></i></a>
+    <a href="#"><i class="fab fa-linkedin"></i></a>
+    <a href="#"><i class="fab fa-youtube"></i></a>
+    <a href="#"><i class="fab fa-instagram"></i></a>
+  </div>
+  <p>&copy; 2025 Paws & Protect | Together for Animals 🐾</p>
 </footer>
 
 </body>
