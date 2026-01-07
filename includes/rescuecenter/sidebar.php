@@ -75,51 +75,6 @@ if (isset($_SESSION['rescue_center_id'])) {
                 <li><a href="updateanimal.php">Update & Delete</a></li>
             </ul>
         </li>
-<<<<<<< HEAD
-
-        <li class="<?= $current_page=='adoption.php'?'active':'' ?>">
-            <a href="adoption.php">
-                <i class="fa-solid fa-users"></i> Adoption Request
-            </a>
-        </li>
-
-        <li class="<?= $current_page=='rescue.php'?'active':'' ?>">
-            <a href="rescue.php">
-                <i class="fa-solid fa-truck-medical"></i> Rescue Operations
-            </a>
-        </li>
-
-        <li class="<?= $current_page=='lost.php'?'active':'' ?>">
-            <a href="lost.php">
-                <i class="fa-solid fa-dog"></i> Lost Animal Details
-            </a>
-        </li>
-
-        <li class="<?= $current_page=='feedback.php'?'active':'' ?>">
-            <a href="feedback.php">
-                <i class="fa-solid fa-comment-dots"></i> Feedback
-            </a>
-        </li>
-
-        <li class="<?= $current_page=='profile.php'?'active':'' ?>">
-            <a href="profile.php">
-                <i class="fa-solid fa-user"></i> Edit Profile
-            </a>
-        </li>
-
-        <li class="<?= $current_page=='staff.php'?'active':'' ?>">
-            <a href="staff.php">
-                <i class="fa-solid fa-user-tie"></i> Staff
-            </a>
-        </li>
-
-        <li>
-            <a href="/paws&protect/home.php">
-                <i class="fa-solid fa-right-from-bracket"></i> Logout
-            </a>
-        </li>
-
-=======
         <li><a href="adoption.php"><i class="fa-solid fa-users"></i> Adoption Request</a></li>
         <li><a href="rescue.php"><i class="fa-solid fa-truck-medical"></i> Rescue Operations</a></li>
         <li><a href="lost.php"><i class="fa-solid fa-dog"></i> Lost Animal Details</a></li>
@@ -127,7 +82,6 @@ if (isset($_SESSION['rescue_center_id'])) {
         <li><a href="staff.php"><i class="fa-solid fa-user-tie"></i> Staff</a></li>
           <li><a href="feedback.php"><i class="fa-solid fa-comment-dots"></i> Feedback</a></li>
          <li><a href="/paws&protect/home.php"><i class="fa fa-out"></i> Logout</a></li>
->>>>>>> feature-home
     </ul>
 </div>
 
