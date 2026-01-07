@@ -1,7 +1,27 @@
 <?php
 include("dbconnect.php");
+$where = [];
 
-/* FETCH 4 AVAILABLE ANIMALS */
+if (!empty($_GET['type'])) {
+    $type = mysqli_real_escape_string($conn, $_GET['type']);
+    $where[] = "a.type = '$type'";
+}
+
+if (!empty($_GET['location'])) {
+    $location = mysqli_real_escape_string($conn, $_GET['location']);
+    $where[] = "r.district LIKE '%$location%'";
+}
+
+if (!empty($_GET['age'])) {
+    $age = mysqli_real_escape_string($conn, $_GET['age']);
+    $where[] = "a.age LIKE '%$age%'";
+}
+
+$whereSQL = "";
+if (!empty($where)) {
+    $whereSQL = " AND " . implode(" AND ", $where);
+}
+
 $query = "
     SELECT 
         a.animal_id,
@@ -15,6 +35,7 @@ $query = "
         ON a.rescue_center_id = r.rescue_center_id
     WHERE a.adoption_status = 'available'
       AND r.status = 'active'
+      $whereSQL
 ";
 
 
@@ -129,6 +150,38 @@ $animals = mysqli_fetch_all($result, MYSQLI_ASSOC);
     margin-right: 6px;
 }
 
+.filter-bar {
+    max-width: 1300px;
+    margin: 30px auto 10px;
+    padding: 15px;
+    display: flex;
+    gap: 15px;
+    background: #f7f1ec;
+    border-radius: 15px;
+}
+
+.filter-bar select,
+.filter-bar input {
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    flex: 1;
+}
+
+.filter-bar button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 12px;
+    background: #5C3A21;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.filter-bar button:hover {
+    background: #9d6e4c;
+}
 
 
 
@@ -155,6 +208,25 @@ $animals = mysqli_fetch_all($result, MYSQLI_ASSOC);
     <img src="/paws&protect/includes/image/ad1.png">
     <div class="hero-text">Adopt Animals</div>
 </div>
+
+<form method="GET" class="filter-bar">
+    <select name="type">
+        <option value="">All Types</option>
+        <option value="Dog">Dog</option>
+        <option value="Cat">Cat</option>
+        <option value="Bird">Bird</option>
+        <option value="Rabbit">Rabbit</option>
+        <option value="Hamsters">Hamsters</option>
+    </select>
+
+    <input type="text" name="location" placeholder="Location (District)"
+           value="<?= $_GET['location'] ?? '' ?>">
+
+    <input type="text" name="age" placeholder="Age"
+           value="<?= $_GET['age'] ?? '' ?>">
+
+    <button type="submit">Search</button>
+</form>
 
 <section class="animal-grid">
 
