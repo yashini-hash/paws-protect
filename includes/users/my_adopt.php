@@ -127,6 +127,45 @@ $result = $stmt->get_result();
         .cancel-btn:hover {
             background-color: #e62d2dff;
         }
+
+       /* Mobile Responsiveness */
+@media (max-width: 768px) {
+    body {
+        padding: 20px;
+        margin-left: 0;
+    }
+
+    .card-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .animal-card {
+        width: 90%;
+        padding: 10px;
+    }
+
+    .animal-card img {
+        width: 100%;
+        height: auto;
+    }
+
+    .animal-info h3 {
+        font-size: 20px;
+    }
+
+    .animal-info p {
+        font-size: 14px;
+    }
+
+    .cancel-btn {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+}
+
+
     </style>
 </head>
 

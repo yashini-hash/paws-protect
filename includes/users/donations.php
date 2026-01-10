@@ -26,6 +26,71 @@ include("../page/dbconnect.php");
             font-size:30px;
             margin: 30px 0 15px;
         }
+/* Mobile Responsiveness for Donation Page */
+@media (max-width: 768px) {
+    body {
+        padding: 20px;
+    }
+
+    .donation-box {
+        width: 95%;
+        padding: 20px;
+        margin: 20px auto;
+    }
+
+    label {
+        font-size: 14px;
+    }
+
+    input, select, button {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    h2.page-title {
+        font-size: 26px;
+        margin: 20px 0 15px;
+    }
+
+    #cardModal {
+        width: 90%;
+        padding: 20px;
+    }
+
+    #cardModal input {
+        padding: 10px;
+        font-size: 14px;
+        margin: 8px 0;
+    }
+
+    #otpSection input {
+        margin-top: 8px;
+    }
+}
+
+/* Extra small screens (phones) */
+@media (max-width: 480px) {
+    .donation-box {
+        padding: 15px;
+    }
+
+    h2.page-title {
+        font-size: 22px;
+    }
+
+    button {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    #cardModal input {
+        font-size: 13px;
+    }
+
+    #cardModal h3 {
+        font-size: 18px;
+    }
+}
 
     </style>
 </head>

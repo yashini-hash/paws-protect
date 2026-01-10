@@ -190,9 +190,53 @@ button:hover{
             margin: 30px 0 15px;
         }
 
-@media(max-width:1000px){
-    .left-card,.right-card{
-        width:100%;
+
+@media (max-width: 1000px) {
+    body {
+        margin-left: 0;
+        padding: 20px;
+    }
+
+    .container {
+        flex-direction: column;
+        gap: 20px;
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 0 10px;
+    }
+
+    .left-card,
+    .right-card {
+        width: 100% !important;
+        margin-left: 0 !important;
+        padding: 20px;
+    }
+
+    h2 {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+
+    label, select, textarea, button {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    textarea {
+        height: 90px;
+    }
+
+    .stars label {
+        font-size: 22px;
+    }
+
+    .feedback-item p {
+        font-size: 14px;
+    }
+
+    .page-title {
+        font-size: 26px;
+        margin: 20px 0 15px;
     }
 }
 </style>

@@ -102,6 +102,39 @@ input, select {
 .alert { padding:12px; border-radius:10px; margin-bottom:20px; font-weight:500; }
 .alert-success { background:#d4edda; color:#155724; }
 .alert-error { background:#f8d7da; color:#721c24; }
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+ 
+        body {
+        padding: 20px;
+        margin-left: 0;
+    }
+    
+    .main-container {
+        margin-left: 10px;
+        padding: 20px;
+    }
+
+    .details-card {
+        padding: 20px;
+        width: 95%;
+    }
+
+    input, select, .submit-btn {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .section-title {
+        font-size: 18px;
+        margin: 15px 0;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+}
+
 
 </style>
 </head>

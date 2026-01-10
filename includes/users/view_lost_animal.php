@@ -63,6 +63,42 @@ h1 { text-align:center; color:#3e2c1c; margin-bottom:20px; }
 .alert { padding:12px; border-radius:10px; margin-bottom:20px; font-weight:500; text-align:center; }
 .alert-success { background:#d4edda; color:#155724; }
 .alert-error { background:#f8d7da; color:#721c24; }
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    body {
+        padding: 20px;
+        margin-left: 0;
+    }
+    .main-container {
+        margin-left: 10px;
+        padding: 20px;
+    }
+
+    .card {
+        width: 95%;
+        display: block;
+        margin: 15px auto;
+        padding: 15px;
+    }
+
+    .card img {
+        height: auto;
+    }
+
+    .card h3 {
+        font-size: 20px;
+    }
+
+    .info {
+        font-size: 14px;
+    }
+
+    .delete-btn {
+        padding: 8px;
+        font-size: 14px;
+    }
+}
+
 </style>
 </head>
 <body>
