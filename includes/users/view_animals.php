@@ -63,11 +63,13 @@ $result = $stmt->get_result();
         body {
             background-color: #FFF8E7;
             font-family: Arial, sans-serif;
-            padding: 20px;
+           padding:50px;
+    margin-left:120px;
         }
 
         .page-title {
             text-align: center;
+            font-size:30px;
             color: #5C3A21;
             margin: 30px 0 15px;
         }

@@ -66,9 +66,11 @@ $result = $stmt->get_result();
         body {
             font-family: Arial, sans-serif;
             background-color: #FFF8E7;
-            padding: 20px;
+            padding: 50px;
+             margin-left:120px;
         }
         h2 {
+            font-size:30px;
             text-align: center;
             margin: 20px 0;
             color:#5C3A21;

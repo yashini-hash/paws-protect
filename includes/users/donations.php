@@ -9,21 +9,28 @@ include("../page/dbconnect.php");
 <head>
     <title>Donation</title>
     <style>
-        body{ font-family: Arial; margin:0; padding:0; background:#f0e4d2; }
-        .donation-box{ width:450px; padding:25px; background:#f5efe6; border-radius:12px; margin:50px auto; box-shadow:0 10px 25px rgba(0,0,0,0.15); }
+        body{ font-family: Arial; margin:0;  padding:50px;  background:#FFF8E7; }
+        .donation-box{ width:450px; padding:25px; background:#ddbc8b;  align-items: center;border-radius:12px; margin:50px auto; box-shadow:0 10px 25px rgba(0,0,0,0.15); }
         label{ font-weight:bold; }
         input, select{ width:100%; padding:10px; margin:8px 0 15px 0; border-radius:5px; border:1px solid #999; }
-        button{ width:100%; padding:12px; background:#8b5a2b; color:#fff; border:none; border-radius:6px; cursor:pointer; }
-        button:hover{ background:#6f4518; }
+        button{ width:100%; padding:12px;  background: #5C3A21; color:#fff; border:none; border-radius:6px; cursor:pointer; }
+        button:hover{  background:#9d6e4c; }
         .error{ color:red; font-size:14px; margin-bottom:10px; text-align:center;}
         #overlay{ display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; backdrop-filter:blur(5px); background: rgba(0,0,0,0.4); z-index:9998; }
         #cardModal{ display:none; position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); background:#fff; padding:30px; width:90%; max-width:420px; border-radius:12px; z-index:9999; text-align:center; }
         #otpSection{ display:none; margin-top:10px; }
         #result{ margin-top:15px; font-weight:bold; text-align:center; }
+         .page-title {
+            text-align: center;
+            color: #5C3A21;
+            font-size:30px;
+            margin: 30px 0 15px;
+        }
+
     </style>
 </head>
 <body>
-
+<h2 class="page-title">Donation for Animals</h2>
 <h2>Donate</h2>
 
 <div class="donation-box">
@@ -90,7 +97,7 @@ function sendOTP(){
             document.getElementById("otpSection").style.display="block";
             document.getElementById("result").innerHTML="OTP sent ✅";
         } else {
-            document.getElementById("result").innerHTML="Error sending OTP ❌ <br>"+data;
+            document.getElementById("result").innerHTML="Error sending OTP  <br>"+data;
         }
     });
 }

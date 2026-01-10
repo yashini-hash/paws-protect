@@ -70,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 <title>Report Lost Animal</title>
 <style>
 * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
-body { background:#f4f1ed; }
+body {  background:#FFF8E7; }
 
 /* Layout */
 .main-container { margin-left:260px; padding:40px; }
