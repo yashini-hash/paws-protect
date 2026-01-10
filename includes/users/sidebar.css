@@ -174,15 +174,15 @@ body {
         padding-top: 80px;
     }
 
-    .menu li a,
+      .menu li a,
     .submenu li a {
-        display: block;          /* full width */
-        width: 100%;             /* stretch to sidebar width */
-        padding: 14px 20px;      /* comfortable height */
-        font-size: 16px;         /* readable text */
-        border-radius: 10px;     /* smooth corners */
-        box-sizing: border-box;  
-        text-align: left;       
+        display: block;          /* ensures full width */
+        width: 100%;             /* full width of sidebar */
+        padding: 15px 20px;      /* taller buttons */
+        font-size: 16px;          /* readable */
+        border-radius: 10px;      /* smooth corners */
+        box-sizing: border-box;   /* include padding in width */
+        text-align: left;         /* keep text aligned */
     }
 
     .hamburger {
