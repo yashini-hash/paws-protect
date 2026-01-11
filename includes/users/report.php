@@ -93,7 +93,7 @@ input, select {
 
 /* Submit button */
 .submit-btn {
-    background: #5C3A21;; color:white; padding:12px 25px;
+    background: #5C3A21; color:white; padding:12px 25px;
     font-size:17px; border:none; border-radius:12px; cursor:pointer; width:100%; transition:0.3s;
 }
 .submit-btn:hover { background:#9d6e4c; transform:scale(1.03); }

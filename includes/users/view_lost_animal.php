@@ -52,7 +52,7 @@ $result = $stmt->get_result();
 <title>My Lost Animal Reports</title>
 <style>
 .main-container { margin-left:260px; padding:40px; }
-h1 { text-align:center; color:#3e2c1c; margin-bottom:20px; }
+h1 { text-align:center; color:#5C3A21; margin-bottom:20px; }
 .card { background:#ddbc8b; width:300px; padding:18px; border-radius:16px; display:inline-block; margin:10px; box-shadow:0 4px 15px rgba(0,0,0,0.1); vertical-align:top; }
 .card img { width:100%; height:220px; object-fit:cover; border-radius:12px; }
 .card h3 { text-align:center; margin-top:10px; color:#4b2e1e; }
