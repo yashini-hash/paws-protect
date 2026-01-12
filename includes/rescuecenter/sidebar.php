@@ -99,7 +99,7 @@ if (isset($_SESSION['rescue_center_id'])) {
                 <i class="fa-solid fa-comment-dots"></i> Feedback
             </a>
         </li>
-
+  <li><a href="donations.php"><i class="fa fa-hand-holding-usd"></i> Donations</a></li>
         <li class="<?= $current_page=='profile.php'?'active':'' ?>">
             <a href="profile.php">
                 <i class="fa-solid fa-user"></i> Edit Profile
@@ -117,6 +117,7 @@ if (isset($_SESSION['rescue_center_id'])) {
                 <i class="fa-solid fa-right-from-bracket"></i> Logout
             </a>
         </li>
+
 
     </ul>
 </div>

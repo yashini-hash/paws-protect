@@ -17,6 +17,8 @@ body {
     background: radial-gradient(circle at top left, #2B170A, #5C3A21 45%, #A47148 85%);
     color: white;
     display: block;
+    overflow-y: auto;     /* Enable vertical scrolling */
+    overflow-x: hidden;
     position: fixed;
     left: 0;
     top: 0;
