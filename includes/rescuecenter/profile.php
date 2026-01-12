@@ -23,6 +23,7 @@ if (!$data) {
 }
 
 // ---------------- UPDATE PROFILE ----------------
+
 if (isset($_POST['update_profile'])) {
 
     $center_name = trim($_POST['center_name']);
@@ -33,6 +34,7 @@ if (isset($_POST['update_profile'])) {
     $longitude = !empty($_POST['longitude']) ? trim($_POST['longitude']) : NULL;
 
     // Keep existing logo
+  
     $logo_name = $data['logo'];
 
     // ---------------- HANDLE LOGO UPLOAD ----------------
@@ -60,6 +62,7 @@ if (isset($_POST['update_profile'])) {
     }
 
     // ---------------- UPDATE DATABASE ----------------
+   
     if (!$msg) {
         $update = $conn->prepare("
             UPDATE rescue_center

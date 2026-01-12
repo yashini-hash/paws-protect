@@ -63,11 +63,13 @@ $result = $stmt->get_result();
         body {
             background-color: #FFF8E7;
             font-family: Arial, sans-serif;
-            padding: 20px;
+           padding:50px;
+    margin-left:120px;
         }
 
         .page-title {
             text-align: center;
+            font-size:30px;
             color: #5C3A21;
             margin: 30px 0 15px;
         }
@@ -190,6 +192,57 @@ $result = $stmt->get_result();
             font-size: 18px;
             margin-top: 40px;
         }
+
+        /* ===== MOBILE RESPONSIVE ===== */
+@media (max-width: 768px) {
+    body {
+        padding: 20px;
+        margin-left: 0;
+    }
+
+    /* Filter box: stack vertically */
+    .filter-box {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+
+    .filter-box select,
+    .filter-box button {
+        width: 100%; /* full width */
+    }
+
+    /* Card grid: stack cards or adjust width */
+    .card-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Animal cards */
+    .animal-card {
+        width: 90%; /* almost full width */
+        max-width: 400px; /* optional: prevent too wide on larger phones */
+    }
+
+    .animal-card img {
+        width: 100%; /* full card width */
+        height: auto; /* maintain aspect ratio */
+    }
+
+    .animal-card h3 {
+        font-size: 22px;
+    }
+
+    .animal-card p {
+        font-size: 14px;
+    }
+
+    .adopt-btn {
+        padding: 10px 0;
+        font-size: 16px;
+    }
+}
+
     </style>
 </head>
 <body>
@@ -213,7 +266,7 @@ $result = $stmt->get_result();
 <?php if($result->num_rows > 0){ ?>
     <?php while($row = $result->fetch_assoc()){ ?>
         <div class="animal-card">
-            <img src="../uploads/<?php echo !empty($row['animal_image']) ? $row['animal_image'] : 'no-image.png'; ?>" alt="<?php echo htmlspecialchars($row['name']); ?>">
+            <img src="../uploads/addanimal/<?php echo !empty($row['animal_image']) ? $row['animal_image'] : 'no-image.png'; ?>" alt="<?php echo htmlspecialchars($row['name']); ?>">
             <h3><?php echo htmlspecialchars($row['name']); ?></h3>
             <p><b>Type:</b> <?php echo $row['type']; ?></p>
             <p><b>Gender:</b> <?php echo $row['gender']; ?></p>

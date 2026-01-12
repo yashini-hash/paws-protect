@@ -52,7 +52,7 @@ $result = $stmt->get_result();
 <title>My Lost Animal Reports</title>
 <style>
 .main-container { margin-left:260px; padding:40px; }
-h1 { text-align:center; color:#3e2c1c; margin-bottom:20px; }
+h1 { text-align:center; color:#5C3A21; margin-bottom:20px; }
 .card { background:#ddbc8b; width:300px; padding:18px; border-radius:16px; display:inline-block; margin:10px; box-shadow:0 4px 15px rgba(0,0,0,0.1); vertical-align:top; }
 .card img { width:100%; height:220px; object-fit:cover; border-radius:12px; }
 .card h3 { text-align:center; margin-top:10px; color:#4b2e1e; }
@@ -63,6 +63,42 @@ h1 { text-align:center; color:#3e2c1c; margin-bottom:20px; }
 .alert { padding:12px; border-radius:10px; margin-bottom:20px; font-weight:500; text-align:center; }
 .alert-success { background:#d4edda; color:#155724; }
 .alert-error { background:#f8d7da; color:#721c24; }
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    body {
+        padding: 20px;
+        margin-left: 0;
+    }
+    .main-container {
+        margin-left: 10px;
+        padding: 20px;
+    }
+
+    .card {
+        width: 95%;
+        display: block;
+        margin: 15px auto;
+        padding: 15px;
+    }
+
+    .card img {
+        height: auto;
+    }
+
+    .card h3 {
+        font-size: 20px;
+    }
+
+    .info {
+        font-size: 14px;
+    }
+
+    .delete-btn {
+        padding: 8px;
+        font-size: 14px;
+    }
+}
+
 </style>
 </head>
 <body>
