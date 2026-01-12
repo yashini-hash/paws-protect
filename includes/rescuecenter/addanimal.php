@@ -12,7 +12,7 @@ $rescue_center_id = $_SESSION['rescue_center_id'];
 $successMsg = "";
 $errorMsg = "";
 
-
+// ✅ FORM SUBMISSION
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $name     = $_POST['name'];
@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $status   = $_POST['adoption_status'];
     $location = $_POST['location'];
      $details  = $_POST['details'];
-  
+    // ✅ IMAGE UPLOAD
     $image_name = NULL;
 
     if (!empty($_FILES['animal_image']['name'])) {
@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $image_name = time() . "_" . basename($_FILES["animal_image"]["name"]);
         $target_file = $target_dir . $image_name;
 
-       
+        // ✅ Validate file type
         $allowed_types = ['jpg','jpeg','png','gif'];
         $file_ext = strtolower(pathinfo($image_name, PATHINFO_EXTENSION));
 
@@ -72,6 +72,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 
+<!-- ✅ ADD ANIMAL FORM -->
 <style>
 body {
     margin: 0;
@@ -130,7 +131,7 @@ button:hover {
     background:#9d6e4c;
 }
 
-
+/* ✅ SUCCESS & ERROR MESSAGE STYLE */
 .success-msg {
     grid-column: 1 / 3;
     background: #d4edda;
@@ -167,7 +168,7 @@ textarea {
 
     <form method="POST" enctype="multipart/form-data" action="addanimal.php">
 
-        
+        <!-- ✅ MESSAGE OUTPUT -->
         <?php if (!empty($successMsg)) { ?>
             <div class="success-msg"><?php echo $successMsg; ?></div>
         <?php } ?>
