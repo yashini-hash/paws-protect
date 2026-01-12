@@ -16,7 +16,7 @@ $profile_img = !empty($user['profile_image'])
 $donation_sql = "SELECT rescue_center, amount, payment_status, donated_at
                  FROM donations
                  WHERE user_id='$user_id'
-                 ORDER BY donated_at DESC LIMIT 3"; // only latest 3
+                 ORDER BY donated_at DESC LIMIT 3";
 $donation_result = mysqli_query($conn, $donation_sql);
 
 // Fetch total donations
@@ -50,51 +50,117 @@ $total_lost = mysqli_fetch_assoc(mysqli_query($conn, $total_lost_sql));
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Dashboard</title>
+    <title>Paws & Protect Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Poppins', sans-serif;
             background: #fef6ee;
             margin-left: 280px;
-            padding: 30px;
+            padding: 25px;
             color: #4b3e2b;
         }
 
-        /* Welcome Section */
+        /* Welcome Box */
         .welcome-box {
-            background: linear-gradient(135deg, #FFD8B4, #E6B48A);
-            padding: 25px 30px;
-            border-radius: 20px;
-            color: #5C3A21;
             display: flex;
             align-items: center;
+            gap: 18px;
+            background: linear-gradient(135deg,#FFD8B4,#E6B48A);
+            padding: 22px 28px;
+            border-radius: 18px;
+            box-shadow: 0 8px 18px rgba(0,0,0,.12);
+            margin-bottom: 25px;
+        }
+        .welcome-box img {
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            border: 3px solid #fff;
+            object-fit: cover;
+        }
+        .welcome-box h2 { margin: 0; }
+        .welcome-box p { margin: 3px 0 0; }
+
+        /* Dashboard Grid */
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 20px;
-            margin-bottom: 35px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+            align-items: start;
         }
-        .welcome-box img { width: 70px; height: 70px; border-radius: 50%; object-fit: cover; border: 3px solid #fff; }
-        .welcome-box h2 { font-size: 24px; margin-bottom: 5px; }
-        .welcome-box p { font-size: 16px; opacity: 0.85; }
 
-        /* Cards Container */
-        .cards { display: flex; gap: 20px; margin-bottom: 40px; flex-wrap: wrap; }
+        /* Cards */
         .card {
-            background: #fff;
+            background: #ddbc8b;
             padding: 20px;
-            flex: 1 1 250px;
-            border-radius: 15px;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 16px;
+            box-shadow: 0 6px 14px rgba(0,0,0,.08);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 220px;
+            transition: transform 0.2s, box-shadow 0.2s;
         }
-        .card:hover { transform: translateY(-5px); box-shadow: 0 12px 25px rgba(0,0,0,0.12); }
-        .card h4 { font-size: 16px; opacity: 0.7; margin-bottom: 8px; }
-        .card p { font-size: 22px; font-weight: 600; color: #5C3A21; }
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px rgba(0,0,0,.12);
+        }
+        .card h3 {
+            margin-bottom: 15px;
+            font-size: 22px;
+            color: #3e2c1c;
+        }
 
-        /* Mini Table inside card */
-        .mini-table { margin-top: 10px; }
-        .mini-table tr td { padding: 5px 0; }
-        img.animal-img { width: 40px; height: 40px; border-radius: 8px; object-fit: cover; border: 1px solid #ddd; margin-right: 8px; vertical-align: middle; }
+        /* List Items */
+        .item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .item:last-child { border-bottom: none; }
+        .item img {
+            width: 80px;
+            height: 80px;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+        .item div strong {
+            font-size: 18px;
+        }
+        .item div small {
+            color: #5c3a21;
+        }
 
+        /* Totals */
+        .total {
+            font-size: 16px;
+            font-weight: 600;
+            margin-top: 12px;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 10px 16px;
+           background: #5C3A21;
+            color:white;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            text-align: center;
+        }
+        .btn:hover { background:#9d6e4c; }
+
+        /* Responsive */
+        @media(max-width: 768px) {
+            .dashboard { grid-template-columns: 1fr; }
+            body { margin-left: 0; padding: 15px; }
+        }
     </style>
 </head>
 <body>
@@ -102,57 +168,65 @@ $total_lost = mysqli_fetch_assoc(mysqli_query($conn, $total_lost_sql));
 <div class="welcome-box">
     <img src="<?php echo $profile_img; ?>" alt="Profile">
     <div>
-        <h2>Hi, <?php echo htmlspecialchars($user['name']); ?> 👋</h2>
-        <p>Welcome back to <strong>Paws & Protect</strong>.</p>
+        <h2>Welcome back, <?php echo htmlspecialchars($user['name']); ?> 👋</h2>
+        <p>Paws & Protect Dashboard</p>
     </div>
 </div>
 
-<div class="cards">
+<div class="dashboard">
 
-    <!-- Donations Card -->
+    <!-- My Adoptions -->
     <div class="card">
-        <h4>Total Donations</h4>
-        <p>LKR<?php echo number_format($total_donations['total'] ?? 0, 2); ?></p>
-        <p>(<?php echo $total_donations['count'] ?? 0; ?> donations)</p>
-
-        <table class="mini-table">
-            <?php while($donation = mysqli_fetch_assoc($donation_result)) { ?>
-            <tr>
-                <td><?php echo htmlspecialchars($donation['rescue_center']); ?></td>
-                <td>LKR<?php echo number_format($donation['amount'], 2); ?></td>
-            </tr>
-            <?php } ?>
-        </table>
+        <h3>🐾 My Adoptions</h3>
+        <?php while($adoption = mysqli_fetch_assoc($adoption_result)) { ?>
+            <div class="item">
+                <img src="<?php echo !empty($adoption['animal_image']) ? '../uploads/addanimal/'.$adoption['animal_image'] : '../uploads/animals/default.png'; ?>" alt="Animal">
+                <div>
+                    <strong><?php echo htmlspecialchars($adoption['animal_name']); ?></strong><br>
+                    <small>Status: <?php echo ucfirst($adoption['status']); ?></small>
+                    
+                </div>
+                 <a href="my_adopt.php" class="btn">View </a>
+            </div>
+        <?php } ?>
+        <div class="total">Total: <?php echo $total_adoptions['count']; ?> Adoption(s)</div>
     </div>
 
-    <!-- Adoptions Card -->
+    <!-- Your Lost Animals -->
     <div class="card">
-        <h4>Total Adoptions</h4>
-        <p><?php echo $total_adoptions['count'] ?? 0; ?> animals</p>
-
-        <table class="mini-table">
-            <?php while($adoption = mysqli_fetch_assoc($adoption_result)) { ?>
-            <tr>
-                <td><img class="animal-img" src="<?php echo !empty($adoption['animal_image']) ? '../uploads/addanimal/'.$adoption['animal_image'] : '../uploads/animals/default.png'; ?>" alt="Animal"></td>
-                <td><?php echo htmlspecialchars($adoption['animal_name']); ?></td>
-            </tr>
-            <?php } ?>
-        </table>
+        <h3>🐶 Your Lost Animals</h3>
+        <?php while($lost = mysqli_fetch_assoc($lost_result)) { ?>
+            <div class="item">
+                <img src="<?php echo !empty($lost['image']) ? '../uploads/lost/'.$lost['image'] : '../uploads/lost/default.png'; ?>" alt="Lost Animal">
+                <div>
+                    <strong><?php echo htmlspecialchars($lost['animal_type']); ?></strong><br>
+                    <small><?php echo ucfirst($lost['status']); ?></small>
+                </div>
+                <a href="view_lost_animal.php" class="btn">View </a>
+            </div>
+        <?php } ?>
+        <div class="total">Total: <?php echo $total_lost['count']; ?> Lost Animal(s)</div>
     </div>
 
-    <!-- Lost Animals Card -->
+    <!-- Recent Donations -->
     <div class="card">
-        <h4>Lost Animals</h4>
-        <p><?php echo $total_lost['count'] ?? 0; ?> reported</p>
+        <h3>💰 Recent Donations</h3>
+        <?php while($donation = mysqli_fetch_assoc($donation_result)) { ?>
+            <div class="item">
+                <div>
+                    <strong><?php echo htmlspecialchars($donation['rescue_center']); ?></strong><br>
+                    <small>LKR <?php echo number_format($donation['amount'],2); ?></small>
+                </div>
+            </div>
+        <?php } ?>
+        <div class="total">Total Donations: LKR <?php echo number_format($total_donations['total'] ?? 0,2); ?></div>
+    </div>
 
-        <table class="mini-table">
-            <?php while($lost = mysqli_fetch_assoc($lost_result)) { ?>
-            <tr>
-                <td><img class="animal-img" src="<?php echo !empty($lost['image']) ? '../uploads/lost/'.$lost['image'] : '../uploads/lost/default.png'; ?>" alt="Animal"></td>
-                <td><?php echo htmlspecialchars($lost['animal_type']); ?></td>
-            </tr>
-            <?php } ?>
-        </table>
+    <!-- Other Lost Animals -->
+    <div class="card">
+        <h3>🔍 Other Lost Animals</h3>
+        <p>View animals reported by others</p>
+        <a href="/paws&protect/includes/page/lost.php" class="btn">View All</a>
     </div>
 
 </div>
