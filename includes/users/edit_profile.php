@@ -1,7 +1,7 @@
 <?php
 session_start();
 include("sidebar.php"); 
-include("../page/dbconnect.php"); // DB connection 
+include("../page/dbconnect.php");  
 
 $user_id = $_SESSION['user_id'];
 
@@ -9,7 +9,6 @@ $sql = "SELECT * FROM users WHERE user_id='$user_id'";
 $result = mysqli_query($conn, $sql);
 $user = mysqli_fetch_assoc($result);
 
-// Default profile image logic
 $profileImage = (!empty($user['profile_image'])) 
     ? $user['profile_image'] 
     : 'default.png';
@@ -115,7 +114,6 @@ $profileImage = (!empty($user['profile_image']))
 <form action="update_profile.php" method="POST" enctype="multipart/form-data">
     <div class="profile-card">
 
-        <!-- Profile Image -->
         <img class="profile-img"
              src="../uploads/profiles/<?php echo $profileImage; ?>"
              onerror="this.src='../uploads/profiles/default.png';">
@@ -125,7 +123,6 @@ $profileImage = (!empty($user['profile_image']))
         <label>Change Profile Image</label>
         <input type="file" name="profile_image"><br><br>
 
-        <!-- User Info -->
         <label>Full Name</label>
         <input type="text" name="name" value="<?php echo $user['name']; ?>" required><br><br>
 
@@ -135,7 +132,6 @@ $profileImage = (!empty($user['profile_image']))
         <label>Phone</label>
         <input type="text" name="phone" value="<?php echo $user['phone']; ?>"><br><br>
 
-        <!-- Password -->
        <label>New Password (optional)</label>
 
 <div style="position:relative;">

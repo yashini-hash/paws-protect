@@ -2,6 +2,9 @@
 session_start();
 include("sidebar.php");
 include("../page/dbconnect.php");
+
+
+$user_id = $_SESSION['user_id'];
 ?>
 
 <!DOCTYPE html>
@@ -109,7 +112,7 @@ function openPayment() {
     document.getElementById("cardModal").style.display = "block";
 }
 
-// Hide modal if overlay clicked
+
 document.getElementById("overlay").addEventListener("click", function(){
     document.getElementById("overlay").style.display = "none";
     document.getElementById("cardModal").style.display = "none";

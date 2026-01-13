@@ -1,42 +1,34 @@
 <?php
 session_start();
 include("sidebar.php"); 
-include("../page/dbconnect.php"); // Database connection
+include("../page/dbconnect.php"); 
 
-// Check if user is logged in (optional)
 if(!isset($_SESSION['user_id'])){
-    // header("Location: login.php");
-    // exit;
+    
 }
 
 $user_id = $_SESSION['user_id'] ?? 0;
 
-// ===========================
-// HANDLE TYPE FILTER
-// ===========================
 $type_filter = isset($_GET['type_filter']) ? $_GET['type_filter'] : "";
 $age_filter = $_GET['age_filter'] ?? "all";
 $location_filter = $_GET['location_filter'] ?? "all";
 
-$sql = "SELECT * FROM animals_details WHERE 1=1"; // 1=1 makes appending filters easier
+$sql = "SELECT * FROM animals_details WHERE 1=1"; 
 $params = [];
 $types = "";
 
-// Type filter
 if(!empty($type_filter) && $type_filter != "all"){
     $sql .= " AND type=?";
     $params[] = $type_filter;
     $types .= "s";
 }
 
-// Age filter
 if(!empty($age_filter) && $age_filter != "all"){
     $sql .= " AND age=?";
     $params[] = $age_filter;
     $types .= "s";
 }
 
-// Location filter
 if(!empty($location_filter) && $location_filter != "all"){
     $sql .= " AND location=?";
     $params[] = $location_filter;
@@ -46,7 +38,6 @@ if(!empty($location_filter) && $location_filter != "all"){
 $sql .= " ORDER BY animal_id DESC";
 $stmt = $conn->prepare($sql);
 
-// Bind parameters dynamically
 if(count($params) > 0){
     $stmt->bind_param($types, ...$params);
 }
@@ -74,7 +65,6 @@ $result = $stmt->get_result();
             margin: 30px 0 15px;
         }
 
-        /* ===== FILTER BAR ===== */
         .filter-box {
             max-width: 500px;
             margin: 0 auto 25px;
@@ -102,7 +92,6 @@ $result = $stmt->get_result();
             background:#9d6e4c;
         }
 
-        /* ===== CARD GRID ===== */
         .card-grid {
             display: flex;
             flex-wrap: wrap;
@@ -111,7 +100,6 @@ $result = $stmt->get_result();
             align-items: flex-start;
         }
 
-        /* ===== ANIMAL CARD ===== */
         .animal-card {
             background: #ddbc8b;
             padding: 15px;
@@ -141,7 +129,6 @@ $result = $stmt->get_result();
             font-size: 16px;
         }
 
-        /* ===== STATUS BADGES ===== */
         .status { 
             display: inline-block;
             margin-top: 12px; 
@@ -167,7 +154,6 @@ $result = $stmt->get_result();
             background: #e48891ff;
         }
 
-        /* ===== ADOPT BUTTON ===== */
         .adopt-btn {
             display: block;
             text-align: center;
@@ -185,7 +171,6 @@ $result = $stmt->get_result();
             pointer-events: none;
         }
 
-        /* ===== EMPTY MESSAGE ===== */
         .no-data {
             text-align: center;
             color: red;
@@ -193,14 +178,12 @@ $result = $stmt->get_result();
             margin-top: 40px;
         }
 
-        /* ===== MOBILE RESPONSIVE ===== */
 @media (max-width: 768px) {
     body {
         padding: 20px;
         margin-left: 0;
     }
 
-    /* Filter box: stack vertically */
     .filter-box {
         flex-direction: column;
         align-items: stretch;
@@ -209,24 +192,22 @@ $result = $stmt->get_result();
 
     .filter-box select,
     .filter-box button {
-        width: 100%; /* full width */
+        width: 100%; 
     }
 
-    /* Card grid: stack cards or adjust width */
     .card-grid {
         flex-direction: column;
         align-items: center;
     }
 
-    /* Animal cards */
     .animal-card {
-        width: 90%; /* almost full width */
-        max-width: 400px; /* optional: prevent too wide on larger phones */
+        width: 90%; 
+        max-width: 400px; 
     }
 
     .animal-card img {
-        width: 100%; /* full card width */
-        height: auto; /* maintain aspect ratio */
+        width: 100%; 
+        height: auto; 
     }
 
     .animal-card h3 {
@@ -249,7 +230,6 @@ $result = $stmt->get_result();
 
 <h2 class="page-title">Animals Available for Adoption</h2>
 
-<!-- ===== FILTER FORM ===== -->
 <form class="filter-box" method="GET">
     <select name="type_filter">
         <option value="all" <?= ($type_filter == 'all') ? 'selected' : '' ?>>All Types</option>

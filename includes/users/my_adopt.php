@@ -3,7 +3,6 @@ session_start();
 include("sidebar.php"); 
 include("../page/dbconnect.php");
 
-// Check if user is logged in
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit();
@@ -11,33 +10,26 @@ if (!isset($_SESSION['user_id'])) {
 
 $user_id = $_SESSION['user_id'];
 
-/* ================== CANCEL ADOPTION ================== */
 if (isset($_POST['cancel_request_id'], $_POST['animal_id'])) {
     $request_id = $_POST['cancel_request_id'];
     $animal_id  = $_POST['animal_id'];
 
-    // Delete adoption request from table
     $sql1 = "DELETE FROM adopt_requests WHERE request_id = ? AND user_id = ?";
     $stmt1 = $conn->prepare($sql1);
     $stmt1->bind_param("ii", $request_id, $user_id);
     $stmt1->execute();
 
-    // Make animal available again
     $sql2 = "UPDATE animals_details SET adoption_status = 'available' WHERE animal_id = ?";
     $stmt2 = $conn->prepare($sql2);
     $stmt2->bind_param("i", $animal_id);
     $stmt2->execute();
 
-    // Reload page
     header("Location: ".$_SERVER['PHP_SELF']);
     exit();
 }
-/* ===================================================== */
 
-// Get filter from URL (default = all)
 $filter_status = isset($_GET['status']) ? $_GET['status'] : 'all';
 
-// Prepare SQL with optional filter
 $sql = "SELECT ar.request_id, ar.status, ar.request_date,
                a.animal_id,
                a.name AS animal_name, 
@@ -79,7 +71,6 @@ $result = $stmt->get_result();
             color:#5C3A21;
         }
 
-        /* Filter */
         .filter-container {
             text-align: center;
             margin-bottom: 30px;
@@ -144,7 +135,6 @@ $result = $stmt->get_result();
             background-color: #e62d2dff;
         }
 
-       /* Mobile Responsiveness */
 @media (max-width: 768px) {
     body { padding: 20px; margin-left: 0; }
     .card-container { flex-direction: column; align-items: center; gap: 15px; }
@@ -161,7 +151,6 @@ $result = $stmt->get_result();
 
 <h2>My Adoption Requests</h2>
 
-<!-- Filter Dropdown -->
 <div class="filter-container">
     <form method="GET">
         <label for="status">Filter by Status: </label>
@@ -190,7 +179,6 @@ $result = $stmt->get_result();
                 <?php echo ucfirst($status); ?>
             </span>
 
-            <!-- Cancel Button -->
             <?php if ($status == 'pending' || $status == 'approved'): ?>
                 <form method="POST" 
                       onsubmit="return confirm('Are you sure you want to cancel this adoption?');">

@@ -41,12 +41,10 @@ $open_animal_menu = in_array($current_page, ['report.php', 'view_lost_animal.php
 
 <body>
 
-<!-- Hamburger -->
 <div class="hamburger" id="hamburger">
     <i class="fa-solid fa-bars"></i>
 </div>
 
-<!-- Sidebar -->
 <div class="sidebar" id="sidebar">
 
     <div class="logo">
@@ -74,7 +72,6 @@ $open_animal_menu = in_array($current_page, ['report.php', 'view_lost_animal.php
             </a>
         </li>
 
-        <!-- Submenu -->
         <li class="has-submenu">
             <a href="#" id="animalBtn">
                 <i class="fa-solid fa-paw"></i> Report Lost Animal
@@ -119,19 +116,16 @@ const sidebar = document.getElementById("sidebar");
 const animalBtn = document.getElementById("animalBtn");
 const animalSubMenu = document.getElementById("animalSubMenu");
 
-// Sidebar toggle
 hamburger.addEventListener("click", () => {
     sidebar.classList.toggle("show");
 });
 
-// Submenu toggle
 animalBtn.addEventListener("click", (e) => {
     e.preventDefault();
     animalSubMenu.style.display =
         animalSubMenu.style.display === "block" ? "none" : "block";
 });
 
-// Auto close sidebar on mobile after click
 document.querySelectorAll(".menu a").forEach(link => {
     link.addEventListener("click", () => {
         if (window.innerWidth <= 768) {

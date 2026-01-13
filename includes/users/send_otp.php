@@ -7,10 +7,8 @@ if(empty($_POST['phone']) || empty($_POST['rescue_center']) || empty($_POST['amo
     exit;
 }
 
-// Save in session
 $rescue_id = $_POST['rescue_center'];
 
-// Fetch name from database
 $query = "SELECT center_name FROM rescue_center WHERE rescue_center_id = ?";
 $stmt = $conn->prepare($query);
 $stmt->bind_param("i", $rescue_id);
@@ -18,7 +16,6 @@ $stmt->execute();
 $result = $stmt->get_result();
 $rescue_name = $result->fetch_assoc()['center_name'] ?? "Unknown Center";
 
-// Save the **name** in session
 $_SESSION['rescue_center'] = $rescue_name;
 
 $_SESSION['amount'] = $_POST['amount'];
@@ -31,11 +28,9 @@ if(substr($phone,0,1)=="0"){
     $phone = "94".substr($phone,1);
 }
 
-// Generate OTP
 $otp = rand(100000,999999);
 $_SESSION['otp'] = $otp;
 
-// Send OTP via Notify.lk API
 $userId   = "30675";
 $apiKey   = "K6I5eWSGw73zpLirTDPi";
 $senderId = "NotifyDEMO";

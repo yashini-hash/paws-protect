@@ -4,7 +4,6 @@ include("../page/dbconnect.php");
 
 $user_id = $_SESSION['user_id'];
 
-// Fetch user info
 $sql = "SELECT name, profile_image FROM users WHERE user_id='$user_id'";
 $result = mysqli_query($conn, $sql);
 $user = mysqli_fetch_assoc($result);
@@ -12,18 +11,17 @@ $profile_img = !empty($user['profile_image'])
     ? "../uploads/profiles/" . $user['profile_image']
     : "../uploads/profiles/default.png";
 
-// Fetch Donation Summary
 $donation_sql = "SELECT rescue_center, amount, payment_status, donated_at
                  FROM donations
                  WHERE user_id='$user_id'
                  ORDER BY donated_at DESC LIMIT 3";
 $donation_result = mysqli_query($conn, $donation_sql);
 
-// Fetch total donations
+
 $total_donations_sql = "SELECT COUNT(*) as count, SUM(amount) as total FROM donations WHERE user_id='$user_id'";
 $total_donations = mysqli_fetch_assoc(mysqli_query($conn, $total_donations_sql));
 
-// Fetch Adoption Summary
+
 $adoption_sql = "SELECT a.animal_id, a.name AS animal_name, 
                         a.animal_image AS animal_image, r.status 
                  FROM adopt_requests r
@@ -34,18 +32,18 @@ $adoption_sql = "SELECT a.animal_id, a.name AS animal_name,
                  LIMIT 3";
 $adoption_result = mysqli_query($conn, $adoption_sql);
 
-// Fetch total adoptions
+
 $total_adoptions_sql = "SELECT COUNT(*) as count FROM adopt_requests WHERE user_id='$user_id'";
 $total_adoptions = mysqli_fetch_assoc(mysqli_query($conn, $total_adoptions_sql));
 
-// Fetch Lost Animals Summary
+
 $lost_sql = "SELECT animal_type, breed, image, status 
              FROM lost_animals 
              WHERE user_id='$user_id'
              ORDER BY created_at DESC LIMIT 3";
 $lost_result = mysqli_query($conn, $lost_sql);
 
-// Fetch total lost animals
+
 $total_lost_sql = "SELECT COUNT(*) as count FROM lost_animals WHERE user_id='$user_id'";
 $total_lost = mysqli_fetch_assoc(mysqli_query($conn, $total_lost_sql));
 ?>
@@ -64,7 +62,6 @@ $total_lost = mysqli_fetch_assoc(mysqli_query($conn, $total_lost_sql));
             color: #4b3e2b;
         }
 
-        /* Welcome Box */
         .welcome-box {
             display: flex;
             align-items: center;
@@ -85,7 +82,6 @@ $total_lost = mysqli_fetch_assoc(mysqli_query($conn, $total_lost_sql));
         .welcome-box h2 { margin: 0; }
         .welcome-box p { margin: 3px 0 0; }
 
-        /* Dashboard Grid */
         .dashboard {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -93,7 +89,6 @@ $total_lost = mysqli_fetch_assoc(mysqli_query($conn, $total_lost_sql));
             align-items: start;
         }
 
-        /* Cards */
         .card {
             background: #ddbc8b;
             padding: 20px;
@@ -115,7 +110,6 @@ $total_lost = mysqli_fetch_assoc(mysqli_query($conn, $total_lost_sql));
             color: #3e2c1c;
         }
 
-        /* List Items */
         .item {
             display: flex;
             align-items: center;
@@ -137,14 +131,12 @@ $total_lost = mysqli_fetch_assoc(mysqli_query($conn, $total_lost_sql));
             color: #5c3a21;
         }
 
-        /* Totals */
         .total {
             font-size: 16px;
             font-weight: 600;
             margin-top: 12px;
         }
 
-        /* Buttons */
         .btn {
             display: inline-block;
             margin-top: 12px;
@@ -159,7 +151,6 @@ $total_lost = mysqli_fetch_assoc(mysqli_query($conn, $total_lost_sql));
         }
         .btn:hover { background:#9d6e4c; }
 
-        /* Responsive */
         @media(max-width: 768px) {
             .dashboard { grid-template-columns: 1fr; }
             body { margin-left: 0; padding: 15px; }
@@ -178,7 +169,6 @@ $total_lost = mysqli_fetch_assoc(mysqli_query($conn, $total_lost_sql));
 
 <div class="dashboard">
 
-    <!-- My Adoptions -->
     <div class="card">
         <h3>🐾 My Adoptions</h3>
         <?php while($adoption = mysqli_fetch_assoc($adoption_result)) { ?>
@@ -195,7 +185,6 @@ $total_lost = mysqli_fetch_assoc(mysqli_query($conn, $total_lost_sql));
         <div class="total">Total Adoption Requests: <?php echo $total_adoptions['count']; ?> Adoption(s)</div>
     </div>
 
-    <!-- Your Lost Animals -->
     <div class="card">
         <h3>🐶 Your Lost Animals</h3>
         <?php while($lost = mysqli_fetch_assoc($lost_result)) { ?>
@@ -211,7 +200,6 @@ $total_lost = mysqli_fetch_assoc(mysqli_query($conn, $total_lost_sql));
         <div class="total">Total: <?php echo $total_lost['count']; ?> Lost Animal(s)</div>
     </div>
 
-    <!-- Recent Donations -->
     <div class="card">
         <h3>💰 Recent Donations</h3>
         <?php while($donation = mysqli_fetch_assoc($donation_result)) { ?>
@@ -225,7 +213,6 @@ $total_lost = mysqli_fetch_assoc(mysqli_query($conn, $total_lost_sql));
         <div class="total">Total Donations: LKR <?php echo number_format($total_donations['total'] ?? 0,2); ?></div>
     </div>
 
-    <!-- Other Lost Animals -->
     <div class="card">
         <h3>🔍 Other Lost Animals</h3>
         <p>View animals reported by others</p>

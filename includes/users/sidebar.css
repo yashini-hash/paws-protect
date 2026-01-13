@@ -1,4 +1,3 @@
-/* ================= GLOBAL ================= */
 * {
     margin: 0;
     padding: 0;
@@ -11,7 +10,6 @@ body {
     overflow-x: hidden;
 }
 
-/* ================= HAMBURGER ================= */
 .hamburger {
     display: none;
     position: fixed;
@@ -28,14 +26,13 @@ body {
 }
 
 
-/* ================= SIDEBAR ================= */
 .sidebar {
     width: 260px;
     height: 100vh;
     background: radial-gradient(circle at top left, #2B170A, #5C3A21 45%, #A47148 85%);
     color: white;
     display: block;
-    overflow-y: auto;     /* Enable vertical scrolling */
+    overflow-y: auto;    
     overflow-x: hidden;
     position: fixed;
     left: 0;
@@ -45,7 +42,6 @@ body {
     z-index: 1000;
 }
 
-/* Mobile hidden state */
 .sidebar {
     transform: translateX(0);
 }
@@ -54,7 +50,6 @@ body {
     transform: translateX(0);
 }
 
-/* ================= LOGO ================= */
 .logo {
     display: flex;
     flex-direction: column;
@@ -75,7 +70,6 @@ body {
     color: #FFD8B4;
 }
 
-/* ================= MENU ================= */
 .menu {
     list-style: none;
     padding: 0;
@@ -108,7 +102,6 @@ body {
     margin-right: 10px;
 }
 
-/* ================= SUBMENU ================= */
 .submenu {
     list-style: none;
     margin: 10px 0 0 15px;
@@ -129,7 +122,6 @@ body {
     color: #2B170A;
 }
 
-/* ================= MAIN CONTENT ================= */
 .main {
     margin-left: 260px;
     padding: 20px;
@@ -138,7 +130,6 @@ body {
     transition: margin-left 0.3s ease;
 }
 
-/* ================= TOP BAR ================= */
 .topbar {
     display: flex;
     justify-content: space-between;
@@ -150,7 +141,6 @@ body {
     box-shadow: 0 0 10px rgba(92, 58, 33, 0.25);
 }
 
-/* ================= RESPONSIVE ================= */
 @media (max-width: 1024px) {
     .sidebar {
         width: 220px;
@@ -165,7 +155,7 @@ body {
 
     .sidebar {
         transform: translateX(-100%);
-        overflow-y: auto;     /* Enable vertical scrolling */
+        overflow-y: auto;     
     overflow-x: hidden;
     }
 
@@ -181,13 +171,13 @@ body {
 
       .menu li a,
     .submenu li a {
-        display: block;          /* ensures full width */
-        width: 100%;             /* full width of sidebar */
-        padding: 15px 20px;      /* taller buttons */
-        font-size: 16px;          /* readable */
-        border-radius: 10px;      /* smooth corners */
-        box-sizing: border-box;   /* include padding in width */
-        text-align: left;         /* keep text aligned */
+        display: block;          
+        width: 100%;             
+        padding: 15px 20px;      
+        font-size: 16px;          
+        border-radius: 10px;      
+        box-sizing: border-box;   
+        text-align: left;        
     }
 
     .hamburger {

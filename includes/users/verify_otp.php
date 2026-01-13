@@ -2,16 +2,13 @@
 session_start();
 include("../page/dbconnect.php");
 
-// Load PHPMailer
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-// Adjust the path based on your PHPMailer folder location
 require '../../PHPMailer-master/src/Exception.php';
 require '../../PHPMailer-master/src/PHPMailer.php';
 require '../../PHPMailer-master/src/SMTP.php';
 
-// Check OTP
 if(empty($_POST['otp'])){
     echo "OTP missing!";
     exit;
@@ -19,10 +16,8 @@ if(empty($_POST['otp'])){
 
 $enteredOTP = $_POST['otp'];
 
-// Verify OTP
 if(isset($_SESSION['otp']) && $enteredOTP == $_SESSION['otp']){
 
-    // Get donation details from session
     $user_id     = isset($_SESSION['user_id']) ? intval($_SESSION['user_id']) : NULL;
     $rescue      = $_SESSION['rescue_center'] ?? null;
     $amount      = isset($_SESSION['amount']) ? floatval($_SESSION['amount']) : 0;
@@ -31,15 +26,13 @@ if(isset($_SESSION['otp']) && $enteredOTP == $_SESSION['otp']){
     $donor_email = $_SESSION['donor_email'] ?? null;
     $payment_method = "Card";
     $payment_status = "Success";
-    $transaction_ref = uniqid('TRX_'); // unique transaction reference
+    $transaction_ref = uniqid('TRX_'); 
 
-    // Validate required fields
     if(empty($rescue) || empty($amount) || empty($phone)){
         echo "Donation data is missing! ❌";
         exit;
     }
 
-    // Insert donation into database
     $sql = "INSERT INTO donations 
             (user_id, rescue_center, amount, phone, donor_name, donor_email, payment_method, payment_status, transaction_ref)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -49,7 +42,6 @@ if(isset($_SESSION['otp']) && $enteredOTP == $_SESSION['otp']){
         die("Prepare failed: " . $conn->error);
     }
 
-    // Bind parameters
     $stmt->bind_param(
         "isdssssss",
         $user_id,
@@ -63,31 +55,24 @@ if(isset($_SESSION['otp']) && $enteredOTP == $_SESSION['otp']){
         $transaction_ref
     );
 
-    // Execute
     if($stmt->execute()){
-        unset($_SESSION['otp']); // clear OTP
+        unset($_SESSION['otp']); 
         echo "OTP verified ✅ Payment successful!";
 
-        // -----------------------------
-        // Send receipt email if email provided
-        // -----------------------------
         if($donor_email){
             $mail = new PHPMailer(true);
             try {
-                // SMTP configuration
                 $mail->isSMTP();
                 $mail->Host       = 'smtp.gmail.com';
                 $mail->SMTPAuth   = true;
-                $mail->Username   = 'animalcarelove01@gmail.com'; // your Gmail
-                $mail->Password   = 'ncufnnhhoezkbkcp';           // app password
+                $mail->Username   = 'animalcarelove01@gmail.com'; 
+                $mail->Password   = 'ncufnnhhoezkbkcp';           
                 $mail->SMTPSecure = 'tls';
                 $mail->Port       = 587;
 
-                // Sender & recipient
                 $mail->setFrom('animalcarelove01@gmail.com', 'Paws & Protect');
                 $mail->addAddress($donor_email, $donor_name);
 
-                // Email content
                 $mail->isHTML(true);
                 $mail->Subject = "Donation Receipt - Thank You!";
                 $mail->Body = "

@@ -10,11 +10,9 @@ if (!isset($_SESSION['user_id'])) {
 
 $user_id = $_SESSION['user_id'];
 
-// Handle deletion
 if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['delete_lost_id'])) {
     $lost_id = intval($_POST['delete_lost_id']);
 
-    // Verify ownership and get image
     $stmt = $conn->prepare("SELECT image FROM lost_animals WHERE lost_id = ? AND user_id = ?");
     $stmt->bind_param("ii", $lost_id, $user_id);
     $stmt->execute();
@@ -23,12 +21,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['delete_lost_id'])) {
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
 
-        // Delete record
         $stmt = $conn->prepare("DELETE FROM lost_animals WHERE lost_id = ? AND user_id = ?");
         $stmt->bind_param("ii", $lost_id, $user_id);
         $stmt->execute();
 
-        // Delete image file if exists
         if (!empty($row['image']) && file_exists("../uploads/lost/" . $row['image'])) {
             unlink("../uploads/lost/" . $row['image']);
         }
@@ -39,7 +35,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['delete_lost_id'])) {
     }
 }
 
-// Fetch user's lost animals
 $stmt = $conn->prepare("SELECT * FROM lost_animals WHERE user_id = ? ORDER BY created_at DESC");
 $stmt->bind_param("i", $user_id);
 $stmt->execute();
@@ -63,7 +58,6 @@ h1 { text-align:center; color:#5C3A21; margin-bottom:20px; }
 .alert { padding:12px; border-radius:10px; margin-bottom:20px; font-weight:500; text-align:center; }
 .alert-success { background:#d4edda; color:#155724; }
 .alert-error { background:#f8d7da; color:#721c24; }
-/* Mobile Responsiveness */
 @media (max-width: 768px) {
     body {
         padding: 20px;
