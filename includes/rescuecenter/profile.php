@@ -1,5 +1,6 @@
 <?php
 session_start();
+include("sidebar.php");
 include("../page/dbconnect.php");
 
 $msg = "";
@@ -96,9 +97,9 @@ if (isset($_GET['updated'])) {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Edit Profile</title>
-<link rel="stylesheet" href="dashboardstyle.css">
+
+
+
 
 <style>
 :root{

@@ -34,7 +34,7 @@ $result = mysqli_query($conn, $sql);
     <style>
         body {
             font-family: Arial, sans-serif;
-           background: #FFF8E7;
+            background: #FFF8E7;
             padding: 30px;
         }
 
