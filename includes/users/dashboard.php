@@ -24,11 +24,14 @@ $total_donations_sql = "SELECT COUNT(*) as count, SUM(amount) as total FROM dona
 $total_donations = mysqli_fetch_assoc(mysqli_query($conn, $total_donations_sql));
 
 // Fetch Adoption Summary
-$adoption_sql = "SELECT a.animal_id, a.name AS animal_name, a.animal_image AS animal_image, r.status 
+$adoption_sql = "SELECT a.animal_id, a.name AS animal_name, 
+                        a.animal_image AS animal_image, r.status 
                  FROM adopt_requests r
                  JOIN animals_details a ON r.animal_id = a.animal_id
                  WHERE r.user_id='$user_id'
-                 ORDER BY r.request_date DESC LIMIT 3";
+                 AND r.status IN ('pending', 'approved')
+                 ORDER BY r.request_date DESC 
+                 LIMIT 3";
 $adoption_result = mysqli_query($conn, $adoption_sql);
 
 // Fetch total adoptions
@@ -189,7 +192,7 @@ $total_lost = mysqli_fetch_assoc(mysqli_query($conn, $total_lost_sql));
                  <a href="my_adopt.php" class="btn">View </a>
             </div>
         <?php } ?>
-        <div class="total">Total: <?php echo $total_adoptions['count']; ?> Adoption(s)</div>
+        <div class="total">Total Adoption Requests: <?php echo $total_adoptions['count']; ?> Adoption(s)</div>
     </div>
 
     <!-- Your Lost Animals -->
