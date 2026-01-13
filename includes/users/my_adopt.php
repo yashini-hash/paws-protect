@@ -12,9 +12,7 @@ if (!isset($_SESSION['user_id'])) {
 $user_id = $_SESSION['user_id'];
 
 /* ================== CANCEL ADOPTION ================== */
-/* ================== CANCEL ADOPTION ================== */
 if (isset($_POST['cancel_request_id'], $_POST['animal_id'])) {
-
     $request_id = $_POST['cancel_request_id'];
     $animal_id  = $_POST['animal_id'];
 
@@ -25,9 +23,7 @@ if (isset($_POST['cancel_request_id'], $_POST['animal_id'])) {
     $stmt1->execute();
 
     // Make animal available again
-    $sql2 = "UPDATE animals_details 
-             SET adoption_status = 'available' 
-             WHERE animal_id = ?";
+    $sql2 = "UPDATE animals_details SET adoption_status = 'available' WHERE animal_id = ?";
     $stmt2 = $conn->prepare($sql2);
     $stmt2->bind_param("i", $animal_id);
     $stmt2->execute();
@@ -36,10 +32,12 @@ if (isset($_POST['cancel_request_id'], $_POST['animal_id'])) {
     header("Location: ".$_SERVER['PHP_SELF']);
     exit();
 }
-
 /* ===================================================== */
 
-// Fetch adoption requests
+// Get filter from URL (default = all)
+$filter_status = isset($_GET['status']) ? $_GET['status'] : 'all';
+
+// Prepare SQL with optional filter
 $sql = "SELECT ar.request_id, ar.status, ar.request_date,
                a.animal_id,
                a.name AS animal_name, 
@@ -49,11 +47,16 @@ $sql = "SELECT ar.request_id, ar.status, ar.request_date,
         FROM adopt_requests ar
         INNER JOIN animals_details a ON ar.animal_id = a.animal_id
         INNER JOIN rescue_center rc ON ar.rescue_center_id = rc.rescue_center_id
-        WHERE ar.user_id = ?
-        ORDER BY ar.request_date DESC";
+        WHERE ar.user_id = ?";
+if (in_array($filter_status, ['pending', 'approved', 'rejected'])) {
+    $sql .= " AND ar.status = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("is", $user_id, $filter_status);
+} else {
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $user_id);
+}
 
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("i", $user_id);
 $stmt->execute();
 $result = $stmt->get_result();
 ?>
@@ -67,7 +70,7 @@ $result = $stmt->get_result();
             font-family: Arial, sans-serif;
             background-color: #FFF8E7;
             padding: 50px;
-             margin-left:120px;
+            margin-left:120px;
         }
         h2 {
             font-size:30px;
@@ -75,6 +78,19 @@ $result = $stmt->get_result();
             margin: 20px 0;
             color:#5C3A21;
         }
+
+        /* Filter */
+        .filter-container {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        select {
+            padding: 8px 12px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+
         .card-container {
             display: flex;
             flex-wrap: wrap;
@@ -130,48 +146,33 @@ $result = $stmt->get_result();
 
        /* Mobile Responsiveness */
 @media (max-width: 768px) {
-    body {
-        padding: 20px;
-        margin-left: 0;
-    }
-
-    .card-container {
-        flex-direction: column;
-        align-items: center;
-        gap: 15px;
-    }
-
-    .animal-card {
-        width: 90%;
-        padding: 10px;
-    }
-
-    .animal-card img {
-        width: 100%;
-        height: auto;
-    }
-
-    .animal-info h3 {
-        font-size: 20px;
-    }
-
-    .animal-info p {
-        font-size: 14px;
-    }
-
-    .cancel-btn {
-        padding: 6px 12px;
-        font-size: 12px;
-    }
+    body { padding: 20px; margin-left: 0; }
+    .card-container { flex-direction: column; align-items: center; gap: 15px; }
+    .animal-card { width: 90%; padding: 10px; }
+    .animal-card img { width: 100%; height: auto; }
+    .animal-info h3 { font-size: 20px; }
+    .animal-info p { font-size: 14px; }
+    .cancel-btn { padding: 6px 12px; font-size: 12px; }
 }
-
-
     </style>
 </head>
 
 <body>
 
 <h2>My Adoption Requests</h2>
+
+<!-- Filter Dropdown -->
+<div class="filter-container">
+    <form method="GET">
+        <label for="status">Filter by Status: </label>
+        <select name="status" id="status" onchange="this.form.submit()">
+            <option value="all" <?php if($filter_status=='all') echo 'selected'; ?>>All</option>
+            <option value="pending" <?php if($filter_status=='pending') echo 'selected'; ?>>Pending</option>
+            <option value="approved" <?php if($filter_status=='approved') echo 'selected'; ?>>Approved</option>
+            <option value="rejected" <?php if($filter_status=='rejected') echo 'selected'; ?>>Rejected</option>
+        </select>
+    </form>
+</div>
 
 <div class="card-container">
 <?php if ($result->num_rows > 0): ?>
@@ -204,7 +205,7 @@ $result = $stmt->get_result();
 
 <?php endwhile; ?>
 <?php else: ?>
-    <p style="text-align:center;">You have not made any adoption requests yet.</p>
+    <p style="text-align:center;">No adoption requests found for this filter.</p>
 <?php endif; ?>
 </div>
 
