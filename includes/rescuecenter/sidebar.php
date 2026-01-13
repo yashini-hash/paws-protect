@@ -1,4 +1,8 @@
 <?php
+if (session_status() !== PHP_SESSION_ACTIVE) {
+    session_start();
+}
+
 include("../page/dbconnect.php");
 
 // ---------------- Current page (submenu auto open & active) ----------------

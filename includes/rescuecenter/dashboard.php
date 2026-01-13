@@ -1,6 +1,6 @@
 <?php
 include("sidebar.php"); 
-session_start();
+
 if (!isset($_SESSION['rescue_center_id'])) {
     header("Location: login.php");
     exit();

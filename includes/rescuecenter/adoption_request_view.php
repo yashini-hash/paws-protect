@@ -220,7 +220,7 @@ body {
 
             <!-- LEFT COLUMN: IMAGE -->
             <div class="left-box">
-                <img src="../uploads/<?= htmlspecialchars($data['animal_image']) ?>" class="animal-img-big" alt="Animal Image">
+                <img src="../uploads/addanimal/<?= htmlspecialchars($data['animal_image']) ?>" class="animal-img-big" alt="Animal Image">
             </div>
 
             <!-- RIGHT COLUMN: DETAILS -->
@@ -251,7 +251,7 @@ body {
     <div class="prev-adoptions">
         <?php while($animal = $adoptionHistory->fetch_assoc()): ?>
             <div class="prev-card">
-                <img src="../uploads/<?= htmlspecialchars($animal['animal_image']) ?>" alt="Animal Image">
+                <img src="../uploads/addanimal/<?= htmlspecialchars($animal['animal_image']) ?>" alt="Animal Image">
                 <div>
                     <strong>Name:</strong> <?= htmlspecialchars($animal['name']) ?><br>
                     <strong>Type:</strong> <?= htmlspecialchars($animal['type']) ?><br>
