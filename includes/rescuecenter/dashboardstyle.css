@@ -47,14 +47,12 @@ body {
 }
 
 .logo img {
-    width: 90px;
-    height: 90px;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
     object-fit: cover;
-    overflow: hidden;
-    background: rgba(255, 255, 255, 0.25);
-    padding: 6px;
-    border: 1px solid #FFD8B4;
+    border: 3px solid #fff;
+    margin-bottom: 8px;
 }
 
 .logo h3 {
