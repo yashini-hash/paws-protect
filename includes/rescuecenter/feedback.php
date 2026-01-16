@@ -45,7 +45,11 @@ $result = mysqli_query($conn, $sql);
         }
 
         .feedback-container {
+<<<<<<< HEAD
             max-width: 900px;
+=======
+            max-width: 500px;
+>>>>>>> a3b12a05d26b4949aaa8bea5b82f3c9e41e46749
             margin: auto;
         }
 

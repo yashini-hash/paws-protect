@@ -144,6 +144,92 @@ table th:nth-child(2), table td:nth-child(2) { width: 25%; text-align:center;}
 table th:nth-child(3), table td:nth-child(3) { width: 25%; text-align:center;}
 table th:nth-child(4), table td:nth-child(4) { width: 15%; text-align:center; }
 table th:nth-child(5), table td:nth-child(5) { width: 15%; text-align:center; }
+
+/* ================= MOBILE RESPONSIVE (≤768px) ================= */
+@media screen and (max-width: 768px) {
+
+    body {
+        padding: 0;
+    }
+
+    /* Remove sidebar offset */
+    .main-container {
+        margin-left: 0;
+        padding: 15px;
+    }
+
+    /* Card */
+    .table-card {
+        width: 100%;
+        padding: 15px;
+        border-radius: 12px;
+    }
+
+    .card-title {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+
+    /* Filter bar */
+    .filter-bar form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: stretch;
+    }
+
+    .filter-bar select,
+    .filter-bar button {
+        width: 100%;
+        padding: 10px;
+        font-size: 15px;
+    }
+
+    /* TABLE → CARD STYLE */
+    table, thead, tbody, th, td, tr {
+        display: block;
+        width: 100%;
+    }
+
+    table tr {
+        margin-bottom: 15px;
+        border-radius: 10px;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+        overflow: hidden;
+       background: #ddbc8b;
+    }
+
+    table th {
+        display: none; /* hide headers */
+    }
+
+    table td {
+        border: none;
+        padding: 10px;
+        font-size: 14px;
+        text-align: left !important;
+    }
+
+    table td::before {
+        font-weight: bold;
+        color: #5C4033;
+        display: block;
+        margin-bottom: 3px;
+    }
+
+    /* Labels for each column */
+    table td:nth-child(1)::before { content: "User Name"; }
+    table td:nth-child(2)::before { content: "Email"; }
+    table td:nth-child(3)::before { content: "Animal"; }
+    table td:nth-child(4)::before { content: "Status"; }
+    table td:nth-child(5)::before { content: "Requested On"; }
+
+    /* Hover fix */
+    table tr:hover td {
+        background: none;
+    }
+}
+
 </style>
 </head>
 

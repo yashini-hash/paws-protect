@@ -148,6 +148,66 @@ body {
     font-size: 18px;
     margin-top: 40px;
 }
+
+/* ================= MOBILE RESPONSIVE (≤768px) ================= */
+@media screen and (max-width: 768px) {
+
+    body {
+        margin-left: 0;        /* remove sidebar space */
+        padding: 15px;
+    }
+
+    .page-title {
+        font-size: 22px;
+        margin-top: 15px;
+    }
+
+    /* FILTER BAR */
+    .filter-box {
+        flex-direction: column;
+        max-width: 100%;
+        gap: 12px;
+    }
+
+    .filter-box select,
+    .filter-box button {
+        width: 100%;
+        font-size: 16px;
+        padding: 10px;
+    }
+
+    /* CARD GRID */
+    .card-grid {
+        justify-content: center;
+        gap: 15px;
+    }
+
+    /* ANIMAL CARD */
+    .animal-card {
+        width: 100%;
+        max-width: 340px;
+        padding: 14px;
+    }
+
+    .animal-card img {
+        width: 100%;
+        height: 220px;
+    }
+
+    .animal-card h3 {
+        font-size: 20px;
+    }
+
+    .animal-card p {
+        font-size: 15px;
+    }
+
+    .status {
+        font-size: 13px;
+        padding: 6px 12px;
+    }
+}
+
 </style>
 </head>
 <body>
