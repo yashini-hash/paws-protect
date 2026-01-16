@@ -1,7 +1,11 @@
 <?php
+if (session_status() !== PHP_SESSION_ACTIVE) {
+    session_start();
+}
+
 include("../page/dbconnect.php");
 
-// ---------------- Current page (submenu auto open & active) ----------------
+// ---------------- Current page ----------------
 $current_page = basename($_SERVER['PHP_SELF']);
 $animal_pages = ['viewall.php','addanimal.php','updateanimal.php'];
 $open_animal_menu = in_array($current_page, $animal_pages) ? 'block' : 'none';
@@ -24,8 +28,6 @@ if (isset($_SESSION['rescue_center_id'])) {
 
     if ($row = $result->fetch_assoc()) {
         $center_name = $row['center_name'];
-
-        // ✅ Check file exists before using
         if (!empty($row['logo']) && file_exists("../uploads/rescue_logos/" . $row['logo'])) {
             $center_logo = "../uploads/rescue_logos/" . $row['logo'];
         }
@@ -47,34 +49,36 @@ if (isset($_SESSION['rescue_center_id'])) {
 
 <body>
 
+<!-- ---------------- HAMBURGER ---------------- -->
+<div class="hamburger" id="hamburger">
+    <i class="fa-solid fa-bars"></i>
+</div>
+
+<!-- ---------------- SIDEBAR ---------------- -->
 <div class="sidebar" id="sidebar">
 
-    <!-- ---------------- LOGO ---------------- -->
+    <!-- LOGO -->
     <div class="logo">
         <img src="<?= htmlspecialchars($center_logo) ?>" alt="Rescue Logo">
         <h3><?= htmlspecialchars($center_name) ?></h3>
     </div>
 
-    <!-- ---------------- MENU ---------------- -->
+    <!-- MENU -->
     <ul class="menu">
 
         <li class="<?= $current_page=='dashboard.php'?'active':'' ?>">
-            <a href="dashboard.php">
-                <i class="fa-solid fa-home"></i> Dashboard
-            </a>
+            <a href="dashboard.php"><i class="fa-solid fa-home"></i> Dashboard</a>
         </li>
 
         <li class="has-submenu <?= in_array($current_page,$animal_pages)?'active':'' ?>" id="animalBtn">
-            <a href="javascript:void(0);">
-                <i class="fa-solid fa-paw"></i> Animal Management
-            </a>
-
+            <a href="javascript:void(0);"><i class="fa-solid fa-paw"></i> Animal Management</a>
             <ul class="submenu" id="animalSubMenu" style="display: <?= $open_animal_menu ?>;">
                 <li><a href="viewall.php">View All</a></li>
                 <li><a href="addanimal.php">Add New Animal</a></li>
                 <li><a href="updateanimal.php">Update & Delete</a></li>
             </ul>
         </li>
+<<<<<<< HEAD
 <<<<<<< HEAD
         <li><a href="adoption.php"><i class="fa-solid fa-users"></i> Adoption Request</a></li>
         <li><a href="rescue.php"><i class="fa-solid fa-truck-medical"></i> Rescue Operations</a></li>
@@ -84,62 +88,73 @@ if (isset($_SESSION['rescue_center_id'])) {
           <li><a href="feedback.php"><i class="fa-solid fa-comment-dots"></i> Feedback</a></li>
          <li><a href="/paws&protect/home.php"><i class="fa fa-out"></i> Logout</a></li>
 =======
+=======
+>>>>>>> 1ab800698d03bef2318b883c2af780d64608c07d
 
         <li class="<?= $current_page=='adoption.php'?'active':'' ?>">
-            <a href="adoption.php">
-                <i class="fa-solid fa-users"></i> Adoption Request
-            </a>
+            <a href="adoption.php"><i class="fa-solid fa-users"></i> Adoption Request</a>
         </li>
 
         <li class="<?= $current_page=='rescue.php'?'active':'' ?>">
-            <a href="rescue.php">
-                <i class="fa-solid fa-truck-medical"></i> Rescue Operations
-            </a>
+            <a href="rescue.php"><i class="fa-solid fa-truck-medical"></i> Rescue Operations</a>
         </li>
 
         <li class="<?= $current_page=='lost.php'?'active':'' ?>">
-            <a href="lost.php">
-                <i class="fa-solid fa-dog"></i> Lost Animal Details
-            </a>
+            <a href="lost.php"><i class="fa-solid fa-dog"></i> Lost Animal Details</a>
         </li>
 
         <li class="<?= $current_page=='feedback.php'?'active':'' ?>">
-            <a href="feedback.php">
-                <i class="fa-solid fa-comment-dots"></i> Feedback
-            </a>
+            <a href="feedback.php"><i class="fa-solid fa-comment-dots"></i> Feedback</a>
         </li>
 
+        <li><a href="donations.php"><i class="fa fa-hand-holding-usd"></i> Donations</a></li>
+
         <li class="<?= $current_page=='profile.php'?'active':'' ?>">
-            <a href="profile.php">
-                <i class="fa-solid fa-user"></i> Edit Profile
-            </a>
+            <a href="profile.php"><i class="fa-solid fa-user"></i> Edit Profile</a>
         </li>
 
         <li class="<?= $current_page=='staff.php'?'active':'' ?>">
-            <a href="staff.php">
-                <i class="fa-solid fa-user-tie"></i> Staff
-            </a>
+            <a href="staff.php"><i class="fa-solid fa-user-tie"></i> Staff</a>
         </li>
 
         <li>
-            <a href="/paws&protect/home.php">
-                <i class="fa-solid fa-right-from-bracket"></i> Logout
-            </a>
+            <a href="/paws&protect/home.php"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
         </li>
 
+<<<<<<< HEAD
 >>>>>>> 904b504fb461b2172c8a1bb5a5fc4c82272666f6
+=======
+>>>>>>> 1ab800698d03bef2318b883c2af780d64608c07d
     </ul>
 </div>
 
 <!-- ---------------- SCRIPT ---------------- -->
 <script>
 const animalBtn = document.getElementById("animalBtn");
+const hamburger = document.getElementById("hamburger");
+const sidebar = document.getElementById("sidebar");
+
+// Toggle submenu
 if (animalBtn) {
     animalBtn.addEventListener("click", function () {
         const subMenu = document.getElementById("animalSubMenu");
         subMenu.style.display = (subMenu.style.display === "block") ? "none" : "block";
     });
 }
+
+// Toggle sidebar on mobile
+if (hamburger) {
+    hamburger.addEventListener("click", function () {
+        sidebar.classList.toggle("show");
+    });
+}
+
+// Optional: close sidebar when clicking outside (mobile)
+document.addEventListener("click", function(e){
+    if(window.innerWidth <= 768 && !sidebar.contains(e.target) && !hamburger.contains(e.target)){
+        sidebar.classList.remove("show");
+    }
+});
 </script>
 
 </body>

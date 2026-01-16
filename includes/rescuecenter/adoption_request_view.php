@@ -192,19 +192,56 @@ body {
     border: 2px solid #e6c9a8;
 }
 
-/* Responsive */
-@media(max-width: 900px){
+/* ===================== TABLET ===================== */
+@media (max-width: 1024px) {
+    .main-container {
+        margin-left: 0;
+        padding: 25px;
+    }
+
     .two-column {
         flex-direction: column;
         align-items: center;
     }
-    .right-box, .left-box {
+
+    .animal-img-big {
+        height: 500px;
+    }
+
+    .right-box {
         width: 100%;
     }
-    .prev-adoptions {
+}
+
+/* ===================== MOBILE ===================== */
+@media (max-width: 600px) {
+
+    .animal-img-big {
+        height: 360px;
+    }
+
+    .button-group {
+        display: flex;
         flex-direction: column;
+        gap: 12px;
+    }
+
+    .action-btn {
+        width: 100%;
+        font-size: 15px;
+    }
+
+    .prev-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .prev-card img {
+        width: 200px;
+        height: 200px;
     }
 }
+
 </style>
 </head>
 <body>
@@ -220,7 +257,7 @@ body {
 
             <!-- LEFT COLUMN: IMAGE -->
             <div class="left-box">
-                <img src="../uploads/<?= htmlspecialchars($data['animal_image']) ?>" class="animal-img-big" alt="Animal Image">
+                <img src="../uploads/addanimal/<?= htmlspecialchars($data['animal_image']) ?>" class="animal-img-big" alt="Animal Image">
             </div>
 
             <!-- RIGHT COLUMN: DETAILS -->
@@ -251,7 +288,7 @@ body {
     <div class="prev-adoptions">
         <?php while($animal = $adoptionHistory->fetch_assoc()): ?>
             <div class="prev-card">
-                <img src="../uploads/<?= htmlspecialchars($animal['animal_image']) ?>" alt="Animal Image">
+                <img src="../uploads/addanimal/<?= htmlspecialchars($animal['animal_image']) ?>" alt="Animal Image">
                 <div>
                     <strong>Name:</strong> <?= htmlspecialchars($animal['name']) ?><br>
                     <strong>Type:</strong> <?= htmlspecialchars($animal['type']) ?><br>

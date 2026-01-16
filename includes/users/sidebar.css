@@ -1,4 +1,3 @@
-/* ================= GLOBAL ================= */
 * {
     margin: 0;
     padding: 0;
@@ -8,21 +7,53 @@
 
 body {
     background-color: #F3E7DA;
+    overflow-x: hidden;
 }
 
-/* ================= SIDEBAR ================= */
+.hamburger {
+    display: none;
+    position: fixed;
+    top: 18px;
+    left: 18px;
+    font-size: 20px;
+    background: #5C3A21;
+    color: #FFD8B4;
+    padding: 10px 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    z-index: 1200;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+
 .sidebar {
     width: 260px;
     height: 100vh;
     background: radial-gradient(circle at top left, #2B170A, #5C3A21 45%, #A47148 85%);
     color: white;
     display: block;
+    overflow-y: auto;    
+    overflow-x: hidden;
     position: fixed;
     left: 0;
     top: 0;
     padding: 20px 15px;
     transition: all 0.3s ease;
     z-index: 1000;
+}
+
+.sidebar {
+    transform: translateX(0);
+}
+
+.sidebar.show {
+    transform: translateX(0);
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .sidebar-profile-img {
@@ -34,63 +65,29 @@ body {
     margin-bottom: 8px;
 }
 
-
-/* Sidebar hidden/collapsed for mobile */
-.sidebar.collapsed {
-    width: 0;
-    padding: 20px 0;
-    overflow: hidden;
-}
-
-/* Sidebar visible on mobile */
-.sidebar.show {
-    left: 0;
-}
-
-/* ================= LOGO ================= */
-.logo {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.logo img {
-    width: 90px;
-    height: 90px;
-    border-radius: 50%;
-    object-fit: cover;
-    overflow: hidden;
-    background: rgba(255, 255, 255, 0.25);
-    padding: 6px;
-    border: 1px solid #FFD8B4;
-}
-
 .logo h3 {
     margin-top: 10px;
     color: #FFD8B4;
 }
 
-/* ================= MENU ================= */
-/* ================= MENU ================= */
 .menu {
     list-style: none;
     padding: 0;
+    margin-top: 20px;
 }
 
 .menu li {
-    margin: 18px 0; /* space between items */
+    margin: 18px 0;
 }
 
 .menu li a {
-    display: flex;           /* flex for icon + text */
+    display: flex;
     align-items: center;
     padding: 12px 10px;
     background: linear-gradient(135deg, #E6B48A, #C68642);
     color: #2B170A;
     border-radius: 8px;
-    cursor: pointer;
-    box-shadow: 0 0 10px rgba(230, 180, 120, 0.6);
-    text-decoration: none;   /* remove underline */
+    text-decoration: none;
     transition: 0.3s;
     font-weight: 600;
 }
@@ -102,27 +99,22 @@ body {
 }
 
 .menu li i {
-    margin-right: 10px; /* spacing between icon and text */
+    margin-right: 10px;
 }
 
-/* ================= SUBMENU ================= */
 .submenu {
     list-style: none;
-    margin-top: 10px;
-    margin-left: 15px;
-    padding: 0;
+    margin: 10px 0 0 15px;
     display: none;
 }
 
-.submenu li a{
+.submenu li a {
     padding: 8px 10px;
     margin: 6px 0;
     background: #3B1F0F;
     color: #FFD8B4;
     border-radius: 6px;
-    cursor: pointer;
     font-size: 14px;
-    transition: 0.3s;
 }
 
 .submenu li a:hover {
@@ -130,19 +122,14 @@ body {
     color: #2B170A;
 }
 
-/* ================= MAIN AREA ================= */
 .main {
     margin-left: 260px;
     padding: 20px;
     min-height: 100vh;
     background: #FFF8E7;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    transition: all 0.3s ease;
+    transition: margin-left 0.3s ease;
 }
 
-/* ================= TOP BAR ================= */
 .topbar {
     display: flex;
     justify-content: space-between;
@@ -152,72 +139,45 @@ body {
     border-radius: 12px;
     color: #5C3A21;
     box-shadow: 0 0 10px rgba(92, 58, 33, 0.25);
-    transition: all 0.3s ease;
 }
 
-/* ================= ALERT ICON ================= */
-.alert-icon {
-    font-size: 22px;
-    cursor: pointer;
-    color: #5C3A21;
-    transition: 0.3s;
-}
-
-.alert-icon:hover {
-    color: #af8156;
-}
-
-/* ================= CONTENT ================= */
-.content-area {
-    margin-top: 30px;
-    color: #5C3A21;
-    font-weight: 600;
-}
-
-/* ================= HAMBURGER ================= */
-.hamburger {
-    display: none;
-    font-size: 28px;
-    cursor: pointer;
-    color: #5C3A21;
-}
-
-/* ================= RESPONSIVE ================= */
-@media screen and (max-width: 1024px) {
+@media (max-width: 1024px) {
     .sidebar {
-        width: 200px;
+        width: 220px;
     }
+
     .main {
-        margin-left: 200px;
-    }
-    .logo img {
-        width: 70px;
-        height: 70px;
+        margin-left: 220px;
     }
 }
 
-@media screen and (max-width: 768px) {
-    /* Sidebar hidden by default */
+@media (max-width: 768px) {
+
     .sidebar {
-        position: absolute;
-        left: -260px;
-        top: 0;
-        height: 100%;
-        z-index: 999;
+        transform: translateX(-100%);
+        overflow-y: auto;     
+    overflow-x: hidden;
     }
 
-    /* Sidebar visible */
     .sidebar.show {
-        left: 0;
+        transform: translateX(0);
     }
 
     .main {
         margin-left: 0;
-        padding: 15px;
+        padding: 20px;
+        padding-top: 80px;
     }
 
-    .topbar {
-        flex-wrap: wrap;
+      .menu li a,
+    .submenu li a {
+        display: block;          
+        width: 100%;             
+        padding: 15px 20px;      
+        font-size: 16px;          
+        border-radius: 10px;      
+        box-sizing: border-box;   
+        text-align: left;        
     }
 
     .hamburger {

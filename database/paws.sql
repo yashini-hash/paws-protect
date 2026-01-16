@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 21, 2025 at 05:30 AM
+-- Generation Time: Jan 13, 2026 at 02:28 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -42,7 +42,8 @@ CREATE TABLE `adopt_requests` (
 
 INSERT INTO `adopt_requests` (`request_id`, `user_id`, `animal_id`, `rescue_center_id`, `status`, `request_date`) VALUES
 (4, 1, 5, 1, 'approved', '2025-12-10 14:49:05'),
-(6, 1, 6, 1, 'rejected', '2025-12-13 19:01:57');
+(6, 1, 6, 1, 'rejected', '2025-12-13 19:01:57'),
+(8, 1, 9, 2, 'pending', '2026-01-13 15:46:53');
 
 -- --------------------------------------------------------
 
@@ -73,8 +74,64 @@ CREATE TABLE `animals_details` (
 
 INSERT INTO `animals_details` (`animal_id`, `name`, `type`, `breed`, `gender`, `age`, `health`, `vaccination`, `rescue_date`, `adoption_status`, `animal_image`, `location`, `rescue_center_id`, `details`) VALUES
 (5, 'cannn', 'Cat', '', 'male', '1 year', 'Healthy', '', '2025-12-01', 'not_available', '1765289729_cat.png', 'colombo', 1, 'meet our cannnn................'),
-(6, 'blue', 'Bird', '', 'male', '6 months', 'Healthy', '', '2025-12-01', 'available', '1765290187_blue.png', 'colombo', 1, 'blueeeeeeeeeeeeeee'),
-(7, 'lily', 'Cat', '', 'female', '5 months', 'Healthy', 'vaccinated', '2025-11-04', 'available', '1765374077_lily.png', 'kandy', 2, 'meet our beautiful lily.');
+(6, 'blue', 'Bird', '', 'male', '6 months', 'Healthy', 'vaccinated', '2025-12-01', 'available', '1765290187_blue.png', 'colombo', 1, 'blueeeeeeeeeeeeeee'),
+(7, 'lily', 'Cat', '', 'female', '5 months', 'Healthy', 'vaccinated', '2025-11-04', 'available', '1765374077_lily.png', 'kandy', 2, 'meet our beautiful lily.'),
+(9, 'luna', 'Cat', '', 'male', '2 months', 'Healthy', 'vaccinated', '2026-01-04', 'available', '1767591539_luna.png', 'kandy', 2, 'laaaaaaaaaaaaaaaaaaaaaaaaaaaa'),
+(10, 'tiger', 'Dog', '', 'male', '9 months', 'Recovering', 'vaccinated', '2025-12-31', 'available', '1767591621_tiger.png', 'kandy', 2, 'ddddddddddddddddddddddd'),
+(11, 'ginger', 'Rabbit', '', 'male', '3 months', 'Healthy', 'vaccinated', '2025-12-28', 'available', '1767591710_kutty.png', 'kandy', 2, 'dddddddddddddddd');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `donations`
+--
+
+CREATE TABLE `donations` (
+  `donation_id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `rescue_center` varchar(100) NOT NULL,
+  `amount` decimal(10,2) NOT NULL,
+  `phone` varchar(15) NOT NULL,
+  `payment_method` varchar(50) DEFAULT 'Card',
+  `payment_status` enum('Pending','Success','Failed') DEFAULT 'Pending',
+  `transaction_ref` varchar(100) DEFAULT NULL,
+  `donated_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `donor_name` varchar(100) DEFAULT NULL,
+  `donor_email` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `donations`
+--
+
+INSERT INTO `donations` (`donation_id`, `user_id`, `rescue_center`, `amount`, `phone`, `payment_method`, `payment_status`, `transaction_ref`, `donated_at`, `donor_name`, `donor_email`) VALUES
+(2, 1, 'Animal care and love', 5000.00, '0767211890', 'Card', 'Success', NULL, '2026-01-11 14:21:56', 'yaseni', 'yashininawartahnam@gmail.com'),
+(3, 1, 'Royalcare', 1000.00, '0767211890', 'Card', 'Success', NULL, '2026-01-11 14:27:13', 'yaseni', 'yashininawartahnam@gmail.com'),
+(4, 1, 'Animal care and love', 2000.00, '0767211890', 'Card', 'Success', 'TRX_6963b612a82de', '2026-01-11 14:39:14', 'yaseni', 'yashininawarathnam@gmail.com'),
+(5, 1, 'Animal care and love', 2000.00, '0767211890', 'Card', 'Success', 'TRX_6963b7835edbc', '2026-01-11 14:45:23', 'yaseni', 'yashininawarathnam@gmail.com');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `feedback`
+--
+
+CREATE TABLE `feedback` (
+  `feedback_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `rescue_center_id` int(11) NOT NULL,
+  `rating` int(11) NOT NULL CHECK (`rating` between 1 and 5),
+  `message` text NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `feedback`
+--
+
+INSERT INTO `feedback` (`feedback_id`, `user_id`, `rescue_center_id`, `rating`, `message`, `created_at`) VALUES
+(1, 1, 1, 4, 'good in animal care', '2026-01-09 15:05:25'),
+(3, 1, 2, 5, 'good ', '2026-01-13 10:21:08');
 
 -- --------------------------------------------------------
 
@@ -102,7 +159,7 @@ CREATE TABLE `lost_animals` (
 --
 
 INSERT INTO `lost_animals` (`lost_id`, `user_id`, `animal_type`, `breed`, `color`, `lost_location`, `lost_date`, `owner_name`, `contact_number`, `status`, `image`, `created_at`) VALUES
-(3, 1, 'Bird', NULL, 'multi', 'Colombo', '2025-12-13', 'yashini', '0123456789', 'found', '1765633782_type.png', '2025-12-13 13:49:42');
+(3, 1, 'Bird', NULL, 'multi', 'Colombo', '2025-12-13', 'yashini', '0123456789', 'notfound', '1765633782_type.png', '2025-12-13 13:49:42');
 
 -- --------------------------------------------------------
 
@@ -129,8 +186,8 @@ CREATE TABLE `rescue_center` (
 --
 
 INSERT INTO `rescue_center` (`rescue_center_id`, `center_name`, `address`, `district`, `contact_number`, `email`, `password`, `status`, `logo`, `latitude`, `longitude`) VALUES
-(1, 'animalcare', 'No 11', 'colombo', '0123456789', 'animal@gmail.com', '$2y$10$OOm8b.ViwqoSYfzbNCaXHOCErt106hDfkfcInT4jGexenghmTPt3q', 'active', NULL, 6.9271, 79.8612),
-(2, 'Animal care and love', 'no 56 vidiyatathe mawathe kandy', 'kandy', '0701968862', 'animalcarelove01@gmail.com', '$2y$10$W3JrJXLnVh.oyZtwYRFjFuGGGDIL03B8t3MaYAGgB3tbvDlWMfXIS', 'active', NULL, 7.2906, 80.6337),
+(1, 'animalcare', 'No 11 watala colombo', 'colombo', '0123456711', 'animal@gmail.com', '$2y$10$OOm8b.ViwqoSYfzbNCaXHOCErt106hDfkfcInT4jGexenghmTPt3q', 'active', 'rescue_1_1768301342.png', 6.9271, 79.8612),
+(2, 'Animal care and love', 'no 56 vidiyatathe mawathe kandy', 'kandy', '0701968862', 'animalcarelove01@gmail.com', '$2y$10$W3JrJXLnVh.oyZtwYRFjFuGGGDIL03B8t3MaYAGgB3tbvDlWMfXIS', 'active', 'rescue_2_1768300816.png', 7.3053, 80.6359),
 (3, 'Royalcare', 'No 10 clinic road badulla', 'badulla', '0124567890', 'royalcare@gmail.com', '$2y$10$D.Jb9eZdSkOuTZRUiMnZA.byZEzpGzfzAtvwj.yWS977YcaOpWmgq', 'active', NULL, 6.9934, 81.055);
 
 -- --------------------------------------------------------
@@ -158,7 +215,34 @@ CREATE TABLE `rescue_requests` (
 --
 
 INSERT INTO `rescue_requests` (`request_id`, `animal_type`, `rescue_location`, `description`, `contact_number`, `request_date`, `status`, `rescue_center_id`, `notes`, `assigned_to`, `completed_date`) VALUES
-(1, 'Dog', 'Lat: 6.9836058716599, Lng: 81.057093200665', 'bsdgsdg', '0767211891', '2025-12-20 19:35:10', 'Pending', 3, NULL, NULL, NULL);
+(1, 'Dog', 'Lat: 6.9836058716599, Lng: 81.057093200665', 'with abnormal condition', '0767211891', '2025-12-20 19:35:10', 'Completed', 3, '', '1', NULL),
+(8, 'Cat', 'Lat: 7.3061183630787, Lng: 80.635965581523', 'some injiury', '0124567890', '2026-01-13 15:38:30', 'Pending', 2, NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `staff`
+--
+
+CREATE TABLE `staff` (
+  `staff_id` int(11) NOT NULL,
+  `rescue_center_id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `phone` varchar(20) DEFAULT NULL,
+  `status` enum('active','inactive') DEFAULT 'active',
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `staff`
+--
+
+INSERT INTO `staff` (`staff_id`, `rescue_center_id`, `name`, `email`, `phone`, `status`, `created_at`) VALUES
+(1, 3, 'dan', 'dan@gmail.com', '125278', 'active', '2025-12-24 07:41:04'),
+(2, 1, 'thilak', 'thilak@gmail.com', '07745689231', 'active', '2025-12-26 13:54:54'),
+(3, 2, 'nike', 'nike@gmail.com', '123456780', 'active', '2026-01-07 13:25:55'),
+(4, 2, 'K Y john', 'johnky@gmail.com', '', 'active', '2026-01-07 13:26:40');
 
 -- --------------------------------------------------------
 
@@ -173,18 +257,22 @@ CREATE TABLE `users` (
   `phone` varchar(20) NOT NULL,
   `password` varchar(255) NOT NULL,
   `role` enum('admin','rescuecenter','user') NOT NULL DEFAULT 'user',
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `profile_image` varchar(200) DEFAULT NULL,
+  `reset_token` varchar(255) DEFAULT NULL,
+  `reset_expires` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`user_id`, `name`, `email`, `phone`, `password`, `role`, `created_at`) VALUES
-(1, 'N.Yaseni', 'yashininawarathnam@gmail.com', '0767211890', '$2y$10$WVY97C7b/np.4T3ni6X13./RIgWrn7FH04BAuNi8gb4y8bQTfugHW', 'user', '2025-12-05 07:33:34'),
-(2, 'animalcare', 'animal@gmail.com', '0123456789', '$2y$10$OOm8b.ViwqoSYfzbNCaXHOCErt106hDfkfcInT4jGexenghmTPt3q', 'rescuecenter', '2025-12-05 13:20:02'),
-(3, 'Animal care and love', 'animalcarelove01@gmail.com', '0767211891', '$2y$10$W3JrJXLnVh.oyZtwYRFjFuGGGDIL03B8t3MaYAGgB3tbvDlWMfXIS', 'rescuecenter', '2025-12-10 13:13:40'),
-(4, 'Royalcare', 'royalcare@gmail.com', '0124567890', '$2y$10$D.Jb9eZdSkOuTZRUiMnZA.byZEzpGzfzAtvwj.yWS977YcaOpWmgq', 'rescuecenter', '2025-12-20 13:58:49');
+INSERT INTO `users` (`user_id`, `name`, `email`, `phone`, `password`, `role`, `created_at`, `profile_image`, `reset_token`, `reset_expires`) VALUES
+(1, 'N.Yaseni', 'yashininawarathnam@gmail.com', '0767211890', '$2y$10$V.ku/remD1dDpO.SZL8.XeFhyxejqM7uXfRYm8kRkKbMjmyD2qRd.', 'user', '2025-12-05 07:33:34', NULL, NULL, NULL),
+(2, 'animalcare', 'animal@gmail.com', '0123456789', '$2y$10$OOm8b.ViwqoSYfzbNCaXHOCErt106hDfkfcInT4jGexenghmTPt3q', 'rescuecenter', '2025-12-05 13:20:02', NULL, NULL, NULL),
+(3, 'Animal care and love', 'animalcarelove01@gmail.com', '0767211891', '$2y$10$W3JrJXLnVh.oyZtwYRFjFuGGGDIL03B8t3MaYAGgB3tbvDlWMfXIS', 'rescuecenter', '2025-12-10 13:13:40', NULL, NULL, NULL),
+(4, 'Royalcare', 'royalcare@gmail.com', '0124567890', '$2y$10$D.Jb9eZdSkOuTZRUiMnZA.byZEzpGzfzAtvwj.yWS977YcaOpWmgq', 'rescuecenter', '2025-12-20 13:58:49', NULL, NULL, NULL),
+(5, 'Indunii', 'indu13570@gmail.com', '0702020202', '$2y$10$NKSQ6lQtsK.jHGsoAD3g2eW0VHuVpUpXrySHGZIwmEsxdONuSZwZe', 'user', '2025-12-23 04:15:00', '1766639978_pic 2.jpeg', NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -205,6 +293,20 @@ ALTER TABLE `adopt_requests`
 ALTER TABLE `animals_details`
   ADD PRIMARY KEY (`animal_id`),
   ADD KEY `fk_rescue_center` (`rescue_center_id`);
+
+--
+-- Indexes for table `donations`
+--
+ALTER TABLE `donations`
+  ADD PRIMARY KEY (`donation_id`);
+
+--
+-- Indexes for table `feedback`
+--
+ALTER TABLE `feedback`
+  ADD PRIMARY KEY (`feedback_id`),
+  ADD KEY `fk_feedback_user` (`user_id`),
+  ADD KEY `fk_feedback_rescue_center` (`rescue_center_id`);
 
 --
 -- Indexes for table `lost_animals`
@@ -228,6 +330,14 @@ ALTER TABLE `rescue_requests`
   ADD KEY `fk_rescue_requests_rescue_center` (`rescue_center_id`);
 
 --
+-- Indexes for table `staff`
+--
+ALTER TABLE `staff`
+  ADD PRIMARY KEY (`staff_id`),
+  ADD UNIQUE KEY `email` (`email`),
+  ADD KEY `rescue_center_id` (`rescue_center_id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -242,13 +352,25 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `adopt_requests`
 --
 ALTER TABLE `adopt_requests`
-  MODIFY `request_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `request_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `animals_details`
 --
 ALTER TABLE `animals_details`
-  MODIFY `animal_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `animal_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `donations`
+--
+ALTER TABLE `donations`
+  MODIFY `donation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `feedback`
+--
+ALTER TABLE `feedback`
+  MODIFY `feedback_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `lost_animals`
@@ -266,13 +388,19 @@ ALTER TABLE `rescue_center`
 -- AUTO_INCREMENT for table `rescue_requests`
 --
 ALTER TABLE `rescue_requests`
-  MODIFY `request_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `request_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `staff`
+--
+ALTER TABLE `staff`
+  MODIFY `staff_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables
@@ -293,6 +421,13 @@ ALTER TABLE `animals_details`
   ADD CONSTRAINT `fk_rescue_center` FOREIGN KEY (`rescue_center_id`) REFERENCES `rescue_center` (`rescue_center_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
+-- Constraints for table `feedback`
+--
+ALTER TABLE `feedback`
+  ADD CONSTRAINT `fk_feedback_rescue_center` FOREIGN KEY (`rescue_center_id`) REFERENCES `rescue_center` (`rescue_center_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `fk_feedback_user` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE;
+
+--
 -- Constraints for table `lost_animals`
 --
 ALTER TABLE `lost_animals`
@@ -303,6 +438,12 @@ ALTER TABLE `lost_animals`
 --
 ALTER TABLE `rescue_requests`
   ADD CONSTRAINT `fk_rescue_requests_rescue_center` FOREIGN KEY (`rescue_center_id`) REFERENCES `rescue_center` (`rescue_center_id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `staff`
+--
+ALTER TABLE `staff`
+  ADD CONSTRAINT `staff_ibfk_1` FOREIGN KEY (`rescue_center_id`) REFERENCES `rescue_center` (`rescue_center_id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
