@@ -39,7 +39,7 @@ body {
     margin-left: 120px;
 }
 
-/* MAIN CARD */
+
 .card {
     max-width: 1100px;
     margin: auto;

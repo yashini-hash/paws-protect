@@ -99,7 +99,17 @@ if (isset($_POST['update_profile'])) {
 }
 
 
+<<<<<<< HEAD
 // ---------------- SUCCESS MESSAGE ----------------
+=======
+=======
+<<<<<<< HEAD
+
+=======
+// ---------------- SUCCESS MESSAGE ----------------
+>>>>>>> 1ab800698d03bef2318b883c2af780d64608c07d
+>>>>>>> a6998935e01a1f18595c0aba06f6c71578e8da5f
+>>>>>>> c6193f8885da231ca734fe07987410a558920f50
 if (isset($_GET['updated'])) {
     $msg = "✅ Profile updated successfully";
 }
