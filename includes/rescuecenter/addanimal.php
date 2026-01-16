@@ -12,7 +12,7 @@ $rescue_center_id = $_SESSION['rescue_center_id'];
 $successMsg = "";
 $errorMsg = "";
 
-// ✅ FORM SUBMISSION
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $name     = $_POST['name'];
@@ -26,11 +26,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $status   = $_POST['adoption_status'];
     $location = $_POST['location'];
      $details  = $_POST['details'];
-    // ✅ IMAGE UPLOAD
+  
     $image_name = NULL;
 
     if (!empty($_FILES['animal_image']['name'])) {
-        $target_dir = "../uploads/";
+        $target_dir = "../uploads/addanimal/";
 
         if (!is_dir($target_dir)) {
             mkdir($target_dir, 0777, true);
@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $image_name = time() . "_" . basename($_FILES["animal_image"]["name"]);
         $target_file = $target_dir . $image_name;
 
-        // ✅ Validate file type
+       
         $allowed_types = ['jpg','jpeg','png','gif'];
         $file_ext = strtolower(pathinfo($image_name, PATHINFO_EXTENSION));
 
@@ -72,7 +72,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 
-<!-- ✅ ADD ANIMAL FORM -->
 <style>
 body {
     margin: 0;
@@ -131,7 +130,7 @@ button:hover {
     background:#9d6e4c;
 }
 
-/* ✅ SUCCESS & ERROR MESSAGE STYLE */
+
 .success-msg {
     grid-column: 1 / 3;
     background: #d4edda;
@@ -161,6 +160,57 @@ textarea {
     resize: vertical;
 }
 
+/* ================= MOBILE RESPONSIVE (≤768px) ================= */
+@media screen and (max-width: 768px) {
+
+    body {
+        margin-left: 0;          /* remove sidebar gap */
+        padding: 15px;
+    }
+
+    .container {
+        margin: 20px auto;
+        padding: 20px;
+        width: 100%;
+        max-width: 100%;
+        border-radius: 10px;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+
+    /* FORM → single column */
+    form {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .full {
+        grid-column: 1 / 2;
+    }
+
+    input,
+    select,
+    textarea {
+        font-size: 15px;
+        padding: 10px;
+    }
+
+    button {
+        grid-column: 1 / 2;
+        font-size: 16px;
+        padding: 12px;
+    }
+
+    .success-msg,
+    .error-msg {
+        grid-column: 1 / 2;
+        font-size: 14px;
+    }
+}
+
+
 </style>
 
 <div class="container">
@@ -168,7 +218,7 @@ textarea {
 
     <form method="POST" enctype="multipart/form-data" action="addanimal.php">
 
-        <!-- ✅ MESSAGE OUTPUT -->
+        
         <?php if (!empty($successMsg)) { ?>
             <div class="success-msg"><?php echo $successMsg; ?></div>
         <?php } ?>
