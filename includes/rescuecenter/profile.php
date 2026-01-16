@@ -5,7 +5,6 @@ include("../page/dbconnect.php");
 
 $msg = "";
 
-
 // ---------------- CHECK SESSION ----------------
 if (!isset($_SESSION['rescue_center_id'])) {
     header("Location: login.php");
@@ -13,7 +12,6 @@ if (!isset($_SESSION['rescue_center_id'])) {
 }
 
 $rescue_id = (int)$_SESSION['rescue_center_id'];
-
 
 // ---------------- VERIFY CENTER EXISTS ----------------
 $stmt_check = $conn->prepare("SELECT * FROM rescue_center WHERE rescue_center_id=?");
@@ -36,10 +34,6 @@ if (isset($_POST['update_profile'])) {
     $latitude = !empty($_POST['latitude']) ? trim($_POST['latitude']) : NULL;
     $longitude = !empty($_POST['longitude']) ? trim($_POST['longitude']) : NULL;
 
-  
-    $logo_name = $data['logo'];
-
-    
     // Keep existing logo
   
     $logo_name = $data['logo'];
@@ -57,7 +51,6 @@ if (isset($_POST['update_profile'])) {
             $upload_path = "../uploads/rescue_logos/" . $new_logo;
 
             if (move_uploaded_file($_FILES['logo']['tmp_name'], $upload_path)) {
-                
                 // Delete old logo if it exists
                 if (!empty($logo_name) && file_exists("../uploads/rescue_logos/" . $logo_name)) {
                     unlink("../uploads/rescue_logos/" . $logo_name);
@@ -98,18 +91,7 @@ if (isset($_POST['update_profile'])) {
     }
 }
 
-
-<<<<<<< HEAD
 // ---------------- SUCCESS MESSAGE ----------------
-=======
-=======
-<<<<<<< HEAD
-
-=======
-// ---------------- SUCCESS MESSAGE ----------------
->>>>>>> 1ab800698d03bef2318b883c2af780d64608c07d
->>>>>>> a6998935e01a1f18595c0aba06f6c71578e8da5f
->>>>>>> c6193f8885da231ca734fe07987410a558920f50
 if (isset($_GET['updated'])) {
     $msg = "✅ Profile updated successfully";
 }
