@@ -17,6 +17,8 @@ body {
     background: radial-gradient(circle at top left, #2B170A, #5C3A21 45%, #A47148 85%);
     color: white;
     display: block;
+    overflow-y: auto;     /* Enable vertical scrolling */
+    overflow-x: hidden;
     position: fixed;
     left: 0;
     top: 0;
@@ -37,6 +39,23 @@ body {
     left: 0;
 }
 
+.hamburger {
+    display: none;
+    position: fixed;
+    top: 18px;
+    left: 18px;
+    font-size: 20px;
+    background: #5C3A21;
+    color: #FFD8B4;
+    padding: 10px 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    z-index: 1200;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+
+
 /* ================= LOGO ================= */
 .logo {
     display: flex;
@@ -45,14 +64,12 @@ body {
 }
 
 .logo img {
-    width: 90px;
-    height: 90px;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
     object-fit: cover;
-    overflow: hidden;
-    background: rgba(255, 255, 255, 0.25);
-    padding: 6px;
-    border: 1px solid #FFD8B4;
+    border: 3px solid #fff;
+    margin-bottom: 8px;
 }
 
 .logo h3 {
@@ -103,6 +120,8 @@ body {
     padding: 0;
     display: none;
 }
+
+
 
 .submenu li a{
     padding: 8px 10px;
@@ -165,49 +184,44 @@ body {
 }
 
 /* ================= HAMBURGER ================= */
-.hamburger {
-    display: none;
-    font-size: 28px;
-    cursor: pointer;
-    color: #5C3A21;
-}
 
-/* ================= RESPONSIVE ================= */
-@media screen and (max-width: 1024px) {
+@media (max-width: 1024px) {
     .sidebar {
-        width: 200px;
+        width: 220px;
     }
+
     .main {
-        margin-left: 200px;
-    }
-    .logo img {
-        width: 70px;
-        height: 70px;
+        margin-left: 220px;
     }
 }
 
-@media screen and (max-width: 768px) {
-    /* Sidebar hidden by default */
+@media (max-width: 768px) {
+
     .sidebar {
-        position: absolute;
-        left: -260px;
-        top: 0;
-        height: 100%;
-        z-index: 999;
+        transform: translateX(-100%);
+        overflow-y: auto;     
+    overflow-x: hidden;
     }
 
-    /* Sidebar visible */
     .sidebar.show {
-        left: 0;
+        transform: translateX(0);
     }
 
     .main {
         margin-left: 0;
-        padding: 15px;
+        padding: 20px;
+        padding-top: 80px;
     }
 
-    .topbar {
-        flex-wrap: wrap;
+      .menu li a,
+    .submenu li a {
+        display: block;          
+        width: 100%;             
+        padding: 15px 20px;      
+        font-size: 16px;          
+        border-radius: 10px;      
+        box-sizing: border-box;   
+        text-align: left;        
     }
 
     .hamburger {
