@@ -91,7 +91,7 @@ if (isset($_POST['update_profile'])) {
     }
 }
 
-// ---------------- SUCCESS MESSAGE ----------------
+
 if (isset($_GET['updated'])) {
     $msg = "✅ Profile updated successfully";
 }

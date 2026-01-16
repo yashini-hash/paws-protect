@@ -49,7 +49,6 @@ if (isset($_SESSION['rescue_center_id'])) {
 
 <body>
 
-<!-- ---------------- HAMBURGER ---------------- -->
 <div class="hamburger" id="hamburger">
     <i class="fa-solid fa-bars"></i>
 </div>
