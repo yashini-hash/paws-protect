@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 16, 2026 at 08:21 AM
+-- Generation Time: Jan 16, 2026 at 09:18 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -73,12 +73,12 @@ CREATE TABLE `animals_details` (
 --
 
 INSERT INTO `animals_details` (`animal_id`, `name`, `type`, `breed`, `gender`, `age`, `health`, `vaccination`, `rescue_date`, `adoption_status`, `animal_image`, `location`, `rescue_center_id`, `details`) VALUES
-(5, 'cannn', 'Cat', '', 'male', '1 year', 'Healthy', '', '2025-12-01', 'not_available', '1765289729_cat.png', 'colombo', 1, 'meet our cannnn................'),
-(6, 'blue', 'Bird', '', 'male', '6 months', 'Healthy', 'vaccinated', '2025-12-01', 'available', '1765290187_blue.png', 'colombo', 1, 'blueeeeeeeeeeeeeee'),
-(7, 'lily', 'Cat', '', 'female', '5 months', 'Healthy', 'vaccinated', '2025-11-04', 'available', '1765374077_lily.png', 'kandy', 2, 'meet our beautiful lily.'),
-(9, 'luna', 'Cat', '', 'male', '2 months', 'Healthy', 'vaccinated', '2026-01-04', 'available', '1767591539_luna.png', 'kandy', 2, 'laaaaaaaaaaaaaaaaaaaaaaaaaaaa'),
-(10, 'tiger', 'Dog', '', 'male', '9 months', 'Recovering', 'vaccinated', '2025-12-31', 'available', '1767591621_tiger.png', 'kandy', 2, 'ddddddddddddddddddddddd'),
-(11, 'ginger', 'Rabbit', '', 'male', '3 months', 'Healthy', 'vaccinated', '2025-12-28', 'available', '1767591710_kutty.png', 'kandy', 2, 'dddddddddddddddd');
+(5, 'cannn', 'Cat', '', 'male', '1 year', 'Healthy', '', '2025-12-01', 'not_available', '1765289729_cat.png', 'colombo', 1, 'Meet Cannn 🐾\r\nCannn is a 1-year-old male cat full of curiosity and charm! He’s healthy, active, and ready to find a loving forever home. Cannn loves to explore, play, and enjoy quality time with his humans. Whether it’s chasing toys or relaxing in a sunny spot, he’s sure to bring joy and purrs into your life.\r\n\r\nGive Cannn the chance he deserves, and he’ll reward you with endless love and companionship!'),
+(6, 'blue', 'Bird', '', 'male', '6 months', 'Healthy', 'vaccinated', '2025-12-01', 'available', '1765290187_blue.png', 'colombo', 1, 'Meet Blue!\r\nBlue is a vibrant 6-month-old male bird with a cheerful personality! He’s healthy, full of energy, and loves interacting with people. With his bright colors and playful nature, Blue is sure to brighten up any home and bring joy to his new family.\r\n\r\nHe’s already vaccinated and enjoys perching, singing, and exploring his surroundings. Blue is looking for a caring owner who can give him love, attention, and a safe, happy environment. Adopt Blue today and add a feathered friend who’s as fun as he is affectionate!'),
+(7, 'lily', 'Cat', '', 'female', '5 months', 'Healthy', 'vaccinated', '2025-11-04', 'available', '1765374077_lily.png', 'kandy', 2, 'Meet Lily 🐾\r\nLily is an adorable 5-month-old female cat full of energy and curiosity! She’s healthy, vaccinated, and loves exploring her surroundings. With her playful spirit and gentle personality, Lily is the perfect companion for families or anyone looking for a loving feline friend.\r\n\r\nLily enjoys cuddles, chasing toys, and discovering cozy spots to nap in. She’s ready to find her forever home where she can grow, play, and bring endless joy to her new family. Adopt Lily today and welcome a bundle of love and purrs into your life!'),
+(9, 'luna', 'Cat', '', 'male', '2 months', 'Healthy', 'vaccinated', '2026-01-04', 'available', '1767591539_luna.png', 'kandy', 2, 'Meet Luna 🐾\r\nLuna is a sweet and gentle cat looking for her forever home. She loves curling up in cozy spots and enjoys quiet cuddle sessions, making her the perfect companion for someone who loves calm and affectionate pets.\r\n\r\nLuna is healthy, vaccinated, and spayed, and she’s great with both adults and older children. She enjoys playtime with toys and watching the world from a sunny windowsill. Luna is curious, loving, and will quickly become a beloved member of your family.\r\n\r\nIf you’re ready to welcome warmth and purrs into your home, Luna is waiting for you!'),
+(10, 'tiger', 'Dog', '', 'male', '9 months', 'Recovering', 'vaccinated', '2025-12-31', 'available', '1767591621_tiger.png', 'kandy', 2, 'Meet Tiger...\r\nTiger is a brave 9-month-old male dog with a heart full of love! He’s currently recovering but steadily getting stronger, and he’s already vaccinated. Tiger is playful, curious, and loves spending time with people who treat him with care and kindness.\r\n\r\nWith a little patience and lots of affection, Tiger will blossom into a loyal and joyful companion. He’s ready to find a forever home where he can feel safe, loved, and part of a family. Give Tiger a chance, and he’ll fill your days with tail wags, love, and happiness!'),
+(11, 'ginger', 'Rabbit', '', 'male', '3 months', 'Healthy', 'vaccinated', '2025-12-28', 'available', '1767591710_kutty.png', 'kandy', 2, 'Meet Ginger!\r\nGinger is an adorable 3-month-old male rabbit who’s full of energy and curiosity! He’s healthy, vaccinated, and loves hopping around, exploring, and nibbling on his favorite treats. With his soft fur and playful personality, Ginger is sure to bring joy to any home.\r\n\r\nHe enjoys gentle cuddles, playtime, and discovering cozy little spots to relax. Ginger is looking for a caring forever home where he can grow happy, healthy, and loved. Adopt Ginger today and welcome a fluffy bundle of fun into your family!');
 
 -- --------------------------------------------------------
 

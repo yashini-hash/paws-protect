@@ -46,7 +46,7 @@ body {
 /* MAIN CONTAINER */
 .details-container {
     max-width: 1100px;
-    margin: 40px auto;
+    margin: 20px auto;
     background:  #ddbc8b;
     border-radius: 20px;
     padding: 30px;
@@ -68,6 +68,7 @@ body {
     margin-top: 0;
     color: #5C3A21;
     font-size:60px;
+    margin-bottom:10px;
 }
 
 .details-content p {
@@ -115,12 +116,93 @@ body {
     background: #9d6e4c;
 }
 
+@media (max-width: 992px) {
+    .details-container {
+        grid-template-columns: 1fr;
+        padding: 20px;
+    }
+
+    .details-content h1 {
+        font-size: 45px;
+    }
+
+    .details-image img {
+        height: 350px;
+    }
+
+    header .nav-links {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+     
+    .details-content h1 {
+        font-size: 32px;
+    }
+
+    .details-image img {
+        height: 400px;
+        width: 450px;
+        ali
+    }
+
+    .info-box {
+        flex: 1 1 45%;
+    }
+
+    .adopt-btn {
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+
+    header {
+        padding: 10px;
+    }
+}
+
 /* FOOTER */
 
 </style>
 </head>
 
 <body>
+    <header>
+    <div class="logo">
+        <img src="/paws&protect/includes/image/paw.png" alt="Logo">
+    </div>
+    <nav class="nav-links">
+        <li><a href="/paws&protect/home.php">HOME</a></li>
+        <li><a href="/paws&protect/includes/page/about.php">ABOUT</a></li>
+        <li><a href="adopt.php">ADOPT</a></li>
+        <li><a href="rescue.php" class="active">RESCUE</a></li>
+        <li><a href="donate.php">DONATE</a></li>
+        <li><a href="lost.php">LOST</a></li>
+    </nav>
+    <div class="menu-toggle" id="menu-toggle">
+        <i class="fa fa-bars"></i>
+    </div>
+</header>
+
+<div class="mobile-nav" id="mobile-nav">
+    <a href="/paws&protect/home.php">HOME</a>
+    <a href="/paws&protect/includes/page/about.php">ABOUT</a>
+    <a href="adopt.php">ADOPT</a>
+    <a href="rescue.php">RESCUE</a>
+    <a href="donate.php">DONATE</a>
+    <a href="lost.php">LOST</a>
+</div>
+
+<script>
+document.getElementById("menu-toggle").onclick = function() {
+    document.getElementById("mobile-nav").classList.toggle("active");
+};
+</script>
 
 <div class="details-container">
 
@@ -140,7 +222,7 @@ body {
 <p>
     <?= nl2br(htmlspecialchars($animal['details'])) ?>
 </p>
-<a href="adopt_request.php?id=<?= $animal['animal_id'] ?>" class="adopt-btn">
+<a href="login.php" class="adopt-btn">
             Adopt Me
         </a>
 
