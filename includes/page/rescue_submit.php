@@ -3,12 +3,19 @@ session_start();
 include("dbconnect.php");
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* -------------------------------
    VALIDATE INPUT
 -------------------------------- */
 =======
 /* ------------------------------- VALIDATE INPUT -------------------------------- */
 >>>>>>> 53a65ba420baf97479352e003cd2f80843753f1d
+=======
+/* -------------------------------
+   VALIDATE INPUT
+-------------------------------- */
+/* ------------------------------- VALIDATE INPUT -------------------------------- */
+>>>>>>> bebb3cfba684409c640319b440f5cb898c504b62
 if (
     empty($_POST['animal_type']) ||
     empty($_POST['description']) ||
@@ -27,6 +34,9 @@ $contact_number = trim($_POST['contact_number']);
 $userLat        = floatval($_POST['lat']);
 $userLng        = floatval($_POST['lng']);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> bebb3cfba684409c640319b440f5cb898c504b62
 
 $rescue_location = "Lat: $userLat, Lng: $userLng";
 
@@ -56,7 +66,10 @@ $query = "
     AND latitude IS NOT NULL 
     AND longitude IS NOT NULL
 ";
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> bebb3cfba684409c640319b440f5cb898c504b62
 $rescue_location = "Lat: $userLat, Lng: $userLng";
 
 /* ------------------------------- FUNCTION: Calculate Distance -------------------------------- */
@@ -81,7 +94,10 @@ $query = "SELECT rescue_center_id, latitude, longitude
           WHERE status = 'active' 
             AND latitude IS NOT NULL 
             AND longitude IS NOT NULL";
+<<<<<<< HEAD
 >>>>>>> 53a65ba420baf97479352e003cd2f80843753f1d
+=======
+>>>>>>> bebb3cfba684409c640319b440f5cb898c504b62
 
 $result = $conn->query($query);
 
@@ -100,17 +116,26 @@ while ($row = $result->fetch_assoc()) {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> bebb3cfba684409c640319b440f5cb898c504b62
 /* -------------------------------
    INSERT INTO rescue_request
 -------------------------------- */
 $stmt = $conn->prepare("
     INSERT INTO rescue_requests
     (animal_type, rescue_location, description, contact_number, rescue_center_id)
+<<<<<<< HEAD
 =======
 /* ------------------------------- INSERT INTO rescue_requests -------------------------------- */
 $stmt = $conn->prepare("
     INSERT INTO rescue_requests (animal_type, rescue_location, description, contact_number, rescue_center_id) 
 >>>>>>> 53a65ba420baf97479352e003cd2f80843753f1d
+=======
+/* ------------------------------- INSERT INTO rescue_requests -------------------------------- */
+$stmt = $conn->prepare("
+    INSERT INTO rescue_requests (animal_type, rescue_location, description, contact_number, rescue_center_id) 
+>>>>>>> bebb3cfba684409c640319b440f5cb898c504b62
     VALUES (?, ?, ?, ?, ?)
 ");
 
@@ -131,6 +156,9 @@ $stmt->bind_param(
 
 if ($stmt->execute()) {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> bebb3cfba684409c640319b440f5cb898c504b62
     $_SESSION['success_msg'] =
         "🐾 Rescue request submitted successfully. Our team will contact you soon.";
     header("Location: rescue.php");
@@ -139,18 +167,30 @@ if ($stmt->execute()) {
     $_SESSION['error_msg'] = "❌ Failed to submit rescue request.";
     header("Location: rescue.php");
     exit();
+<<<<<<< HEAD
 =======
     $_SESSION['success_msg'] = "🐾 Rescue request submitted successfully. Our team will contact you soon.";
 } else {
     $_SESSION['error_msg'] = "❌ Failed to submit rescue request.";
 >>>>>>> 53a65ba420baf97479352e003cd2f80843753f1d
+=======
+    $_SESSION['success_msg'] = "🐾 Rescue request submitted successfully. Our team will contact you soon.";
+} else {
+    $_SESSION['error_msg'] = "❌ Failed to submit rescue request.";
+>>>>>>> bebb3cfba684409c640319b440f5cb898c504b62
 }
 
 $stmt->close();
 $conn->close();
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 
 header("Location: rescue.php");
 exit();
 >>>>>>> 53a65ba420baf97479352e003cd2f80843753f1d
+=======
+
+header("Location: rescue.php");
+exit();
+>>>>>>> bebb3cfba684409c640319b440f5cb898c504b62

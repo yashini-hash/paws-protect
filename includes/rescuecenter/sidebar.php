@@ -49,7 +49,6 @@ if (isset($_SESSION['rescue_center_id'])) {
 
 <body>
 
-<!-- ---------------- HAMBURGER ---------------- -->
 <div class="hamburger" id="hamburger">
     <i class="fa-solid fa-bars"></i>
 </div>
@@ -78,6 +77,8 @@ if (isset($_SESSION['rescue_center_id'])) {
                 <li><a href="updateanimal.php">Update & Delete</a></li>
             </ul>
         </li>
+
+
 
         <li class="<?= $current_page=='adoption.php'?'active':'' ?>">
             <a href="adoption.php"><i class="fa-solid fa-users"></i> Adoption Request</a>
@@ -108,6 +109,7 @@ if (isset($_SESSION['rescue_center_id'])) {
         <li>
             <a href="/paws&protect/home.php"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
         </li>
+
 
     </ul>
 </div>
