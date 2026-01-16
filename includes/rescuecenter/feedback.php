@@ -11,7 +11,7 @@ if (!isset($_SESSION['rescue_center_id'])) {
 
 $rescue_center_id = $_SESSION['rescue_center_id'];
 
-
+// Fetch feedback for this rescue center
 $sql = "
     SELECT 
         f.rating,
@@ -45,11 +45,7 @@ $result = mysqli_query($conn, $sql);
         }
 
         .feedback-container {
-<<<<<<< HEAD
-            max-width: 900px;
-=======
             max-width: 500px;
->>>>>>> a3b12a05d26b4949aaa8bea5b82f3c9e41e46749
             margin: auto;
         }
 

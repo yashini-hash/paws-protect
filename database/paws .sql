@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 13, 2026 at 02:28 PM
+-- Generation Time: Jan 16, 2026 at 08:21 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -216,7 +216,7 @@ CREATE TABLE `rescue_requests` (
 
 INSERT INTO `rescue_requests` (`request_id`, `animal_type`, `rescue_location`, `description`, `contact_number`, `request_date`, `status`, `rescue_center_id`, `notes`, `assigned_to`, `completed_date`) VALUES
 (1, 'Dog', 'Lat: 6.9836058716599, Lng: 81.057093200665', 'with abnormal condition', '0767211891', '2025-12-20 19:35:10', 'Completed', 3, '', '1', NULL),
-(8, 'Cat', 'Lat: 7.3061183630787, Lng: 80.635965581523', 'some injiury', '0124567890', '2026-01-13 15:38:30', 'Pending', 2, NULL, NULL, NULL);
+(8, 'Cat', 'Lat: 7.3061183630787, Lng: 80.635965581523', 'some injiury', '0124567890', '2026-01-13 15:38:30', 'In Progress', 2, '', '3', NULL);
 
 -- --------------------------------------------------------
 
@@ -242,7 +242,7 @@ INSERT INTO `staff` (`staff_id`, `rescue_center_id`, `name`, `email`, `phone`, `
 (1, 3, 'dan', 'dan@gmail.com', '125278', 'active', '2025-12-24 07:41:04'),
 (2, 1, 'thilak', 'thilak@gmail.com', '07745689231', 'active', '2025-12-26 13:54:54'),
 (3, 2, 'nike', 'nike@gmail.com', '123456780', 'active', '2026-01-07 13:25:55'),
-(4, 2, 'K Y john', 'johnky@gmail.com', '', 'active', '2026-01-07 13:26:40');
+(4, 2, 'K Y john', 'johnky@gmail.com', '4578932', 'active', '2026-01-07 13:26:40');
 
 -- --------------------------------------------------------
 
@@ -272,7 +272,8 @@ INSERT INTO `users` (`user_id`, `name`, `email`, `phone`, `password`, `role`, `c
 (2, 'animalcare', 'animal@gmail.com', '0123456789', '$2y$10$OOm8b.ViwqoSYfzbNCaXHOCErt106hDfkfcInT4jGexenghmTPt3q', 'rescuecenter', '2025-12-05 13:20:02', NULL, NULL, NULL),
 (3, 'Animal care and love', 'animalcarelove01@gmail.com', '0767211891', '$2y$10$W3JrJXLnVh.oyZtwYRFjFuGGGDIL03B8t3MaYAGgB3tbvDlWMfXIS', 'rescuecenter', '2025-12-10 13:13:40', NULL, NULL, NULL),
 (4, 'Royalcare', 'royalcare@gmail.com', '0124567890', '$2y$10$D.Jb9eZdSkOuTZRUiMnZA.byZEzpGzfzAtvwj.yWS977YcaOpWmgq', 'rescuecenter', '2025-12-20 13:58:49', NULL, NULL, NULL),
-(5, 'Indunii', 'indu13570@gmail.com', '0702020202', '$2y$10$NKSQ6lQtsK.jHGsoAD3g2eW0VHuVpUpXrySHGZIwmEsxdONuSZwZe', 'user', '2025-12-23 04:15:00', '1766639978_pic 2.jpeg', NULL, NULL);
+(5, 'Indunii', 'indu13570@gmail.com', '0702020202', '$2y$10$NKSQ6lQtsK.jHGsoAD3g2eW0VHuVpUpXrySHGZIwmEsxdONuSZwZe', 'user', '2025-12-23 04:15:00', '1766639978_pic 2.jpeg', NULL, NULL),
+(6, 'paws&protect', 'Pawsandprotectadmim05@gmail.com', '0767211878', '$2y$10$thwM3pOw8v7gnD4qiUdqV.ge7Z/D5xZMTeBbCRVeudlHuSYddsaQi', 'admin', '2026-01-16 03:41:45', NULL, NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -400,7 +401,7 @@ ALTER TABLE `staff`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables

@@ -78,7 +78,6 @@ if (isset($_SESSION['rescue_center_id'])) {
             </ul>
         </li>
 
-        
 
 
         <li class="<?= $current_page=='adoption.php'?'active':'' ?>">
