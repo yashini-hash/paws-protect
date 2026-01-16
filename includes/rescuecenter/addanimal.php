@@ -160,6 +160,57 @@ textarea {
     resize: vertical;
 }
 
+/* ================= MOBILE RESPONSIVE (≤768px) ================= */
+@media screen and (max-width: 768px) {
+
+    body {
+        margin-left: 0;          /* remove sidebar gap */
+        padding: 15px;
+    }
+
+    .container {
+        margin: 20px auto;
+        padding: 20px;
+        width: 100%;
+        max-width: 100%;
+        border-radius: 10px;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+
+    /* FORM → single column */
+    form {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .full {
+        grid-column: 1 / 2;
+    }
+
+    input,
+    select,
+    textarea {
+        font-size: 15px;
+        padding: 10px;
+    }
+
+    button {
+        grid-column: 1 / 2;
+        font-size: 16px;
+        padding: 12px;
+    }
+
+    .success-msg,
+    .error-msg {
+        grid-column: 1 / 2;
+        font-size: 14px;
+    }
+}
+
+
 </style>
 
 <div class="container">

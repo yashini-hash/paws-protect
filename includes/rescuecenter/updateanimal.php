@@ -185,5 +185,65 @@ body { background:#FFF8E7;
     background:#cc0000;
 }
 
+/* ================= MOBILE RESPONSIVE (≤768px) ================= */
+@media screen and (max-width: 768px) {
+
+    body {
+        margin-left: 0;      /* remove sidebar offset */
+        padding: 15px;
+    }
+
+    h2 {
+        font-size: 22px;
+        padding: 15px 0;
+    }
+
+    /* FILTER FORM */
+    #filterForm {
+        flex-direction: column;
+        max-width: 100%;
+        gap: 12px;
+    }
+
+    #filterForm select,
+    #filterForm button {
+        width: 100%;
+        font-size: 16px;
+        padding: 10px;
+    }
+
+    /* ANIMALS GRID */
+    #animalsContainer {
+        gap: 15px;
+    }
+
+    /* ANIMAL CARD */
+    .animal-card {
+        width: 100% !important;
+        max-width: 340px;
+        padding: 14px;
+    }
+
+    .animal-card img {
+        width: 100%;
+        height: 220px;
+    }
+
+    .animal-card h3 {
+        font-size: 20px;
+    }
+
+    .animal-card p {
+        font-size: 14px;
+    }
+
+    /* BUTTONS */
+    .action-btn {
+        width: 100%;
+        margin-top: 8px;
+        font-size: 15px;
+        padding: 10px;
+    }
+}
 
 </style>

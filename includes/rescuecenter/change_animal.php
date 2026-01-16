@@ -108,6 +108,63 @@ textarea {
 .btn-back{
     background: #6c4f3d;
 }
+
+/* ================= MOBILE RESPONSIVE (≤768px) ================= */
+@media screen and (max-width: 768px) {
+
+    body {
+        margin-left: 0;      /* remove sidebar offset */
+        padding: 15px;
+    }
+
+    h2 {
+        font-size: 22px;
+        margin-bottom: 15px;
+    }
+
+    /* BACK BUTTON */
+    .action-btn {
+        width: 100%;
+        margin: 10px 0 20px 0;
+        font-size: 15px;
+        padding: 12px;
+        position: static;
+    }
+
+    /* FORM */
+    form {
+        padding: 20px;
+        width: 100%;
+        max-width: 100%;
+        gap: 12px;
+    }
+
+    form input,
+    form select,
+    textarea {
+        font-size: 15px;
+        padding: 10px;
+    }
+
+    /* IMAGE */
+    form img {
+        width: 100%;
+        max-width: 220px;
+        height: auto;
+    }
+
+    /* BUTTON */
+    form button {
+        font-size: 16px;
+        padding: 12px;
+    }
+
+    /* MESSAGE */
+    #msg {
+        font-size: 14px;
+    }
+}
+
 </style>
 </head>
 <body>
@@ -122,7 +179,7 @@ textarea {
     <label>Animal Image</label>
     <input type="file" name="animal_image">
     <?php if($animal['animal_image']): ?>
-        <img src="../uploads/<?= $animal['animal_image'] ?>" alt="Current Image">
+        <img src="../uploads/addanimal/<?= $animal['animal_image'] ?>" alt="Current Image">
     <?php endif; ?>
 
     <label>Name</label>

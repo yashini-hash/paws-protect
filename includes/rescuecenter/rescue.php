@@ -155,7 +155,90 @@ tr:hover {
     color: #777;
     padding: 40px 0;
 }
+
+@media (max-width: 768px) {
+
+    .card {
+        padding: 18px;
+    }
+
+    .card-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    /* Convert table into cards */
+    table, thead, tbody, th, td, tr {
+        display: block;
+        width: 100%;
+    }
+
+    table th { display: none; } /* hide headers */
+
+    table tr {
+        margin-bottom: 15px;
+        padding: 15px;
+        border-radius: 12px;
+        background: #fff6e3;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    }
+
+    table td {
+        padding: 6px 0;
+        font-size: 13px;
+        text-align: left;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    table td::before {
+        content: attr(data-label);
+        font-weight: 600;
+        color: #5C3A33;
+    }
+
+    .action-btns a {
+        font-size: 11px;
+        padding: 5px 10px;
+    }
+
+    .alert {
+        font-size: 13px;
+        padding: 8px 14px;
+    }
+}
+
+/* ==================== SMALL PHONES (≤480px) ==================== */
+@media (max-width: 480px) {
+    .card-header h2 {
+        font-size: 18px;
+    }
+
+    table td {
+        font-size: 12px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    table td::before {
+        margin-bottom: 3px;
+        font-size: 12px;
+    }
+
+    .action-btns a {
+        font-size: 10px;
+        padding: 5px 8px;
+    }
+
+    .alert {
+        font-size: 12px;
+        padding: 6px 10px;
+    }
+}
 </style>
+
+
 </head>
 
 <body>

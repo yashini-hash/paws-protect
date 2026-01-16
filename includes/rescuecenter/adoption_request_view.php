@@ -192,19 +192,56 @@ body {
     border: 2px solid #e6c9a8;
 }
 
-/* Responsive */
-@media(max-width: 900px){
+/* ===================== TABLET ===================== */
+@media (max-width: 1024px) {
+    .main-container {
+        margin-left: 0;
+        padding: 25px;
+    }
+
     .two-column {
         flex-direction: column;
         align-items: center;
     }
-    .right-box, .left-box {
+
+    .animal-img-big {
+        height: 500px;
+    }
+
+    .right-box {
         width: 100%;
     }
-    .prev-adoptions {
+}
+
+/* ===================== MOBILE ===================== */
+@media (max-width: 600px) {
+
+    .animal-img-big {
+        height: 360px;
+    }
+
+    .button-group {
+        display: flex;
         flex-direction: column;
+        gap: 12px;
+    }
+
+    .action-btn {
+        width: 100%;
+        font-size: 15px;
+    }
+
+    .prev-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .prev-card img {
+        width: 200px;
+        height: 200px;
     }
 }
+
 </style>
 </head>
 <body>
