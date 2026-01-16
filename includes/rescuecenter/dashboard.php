@@ -1,6 +1,10 @@
 <?php
+<<<<<<< HEAD
+include("sidebar.php"); 
+=======
 include("sidebar.php");
 include("../page/dbconnect.php");
+>>>>>>> a3b12a05d26b4949aaa8bea5b82f3c9e41e46749
 
 if (!isset($_SESSION['rescue_center_id'])) {
     header("Location: login.php");
