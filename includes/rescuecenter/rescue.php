@@ -155,6 +155,8 @@ tr:hover {
     color: #777;
     padding: 40px 0;
 }
+<<<<<<< HEAD
+=======
 
 @media (max-width: 768px) {
 
@@ -236,6 +238,7 @@ tr:hover {
         padding: 6px 10px;
     }
 }
+>>>>>>> a3b12a05d26b4949aaa8bea5b82f3c9e41e46749
 </style>
 
 
