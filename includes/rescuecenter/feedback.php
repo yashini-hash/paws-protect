@@ -11,7 +11,7 @@ if (!isset($_SESSION['rescue_center_id'])) {
 
 $rescue_center_id = $_SESSION['rescue_center_id'];
 
-// Fetch feedback for this rescue center
+
 $sql = "
     SELECT 
         f.rating,
