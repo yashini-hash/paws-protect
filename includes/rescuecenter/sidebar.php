@@ -109,6 +109,7 @@ if (isset($_SESSION['rescue_center_id'])) {
             <a href="/paws&protect/home.php"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
         </li>
 
+
     </ul>
 </div>
 
