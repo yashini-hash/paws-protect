@@ -79,7 +79,6 @@ if (isset($_SESSION['rescue_center_id'])) {
         </li>
 
 
-
         <li class="<?= $current_page=='adoption.php'?'active':'' ?>">
             <a href="adoption.php"><i class="fa-solid fa-users"></i> Adoption Request</a>
         </li>
