@@ -72,6 +72,44 @@ $profileImage = (!empty($user['profile_image']))
             margin-top: 8px;
         }
 
+<<<<<<< HEAD
+    .save-btn {
+        width: 100%;
+        margin-top: 20px;
+<<<<<<< HEAD
+        background-color:#5C3A21;
+=======
+        background-color: #00648bff;
+>>>>>>> 904b504fb461b2172c8a1bb5a5fc4c82272666f6
+        color: #fff;
+        border: none;
+        padding: 12px;
+        border-radius: 25px;
+        cursor: pointer;
+        font-size: 15px;
+    }
+
+    .save-btn:hover {
+<<<<<<< HEAD
+        background-color:#9d6e4c;
+=======
+        background-color: #5C3A21;
+>>>>>>> 904b504fb461b2172c8a1bb5a5fc4c82272666f6
+    }
+
+    .success-msg {
+    max-width: 500px;
+    margin: 15px auto;
+    padding: 12px;
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    border-radius: 12px;
+    font-weight: bold;
+}
+
+</style>
+=======
         .save-btn {
             width: 100%;
             margin-top: 20px;
@@ -87,6 +125,7 @@ $profileImage = (!empty($user['profile_image']))
         .save-btn:hover {
            background:#9d6e4c; transform:scale(1.03); 
         }
+>>>>>>> 1ab800698d03bef2318b883c2af780d64608c07d
 
         .success-msg {
             max-width: 500px;
