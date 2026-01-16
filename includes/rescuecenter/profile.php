@@ -5,11 +5,6 @@ include("../page/dbconnect.php");
 
 $msg = "";
 
-<<<<<<< HEAD
-
-=======
-// ---------------- CHECK SESSION ----------------
->>>>>>> 1ab800698d03bef2318b883c2af780d64608c07d
 if (!isset($_SESSION['rescue_center_id'])) {
     header("Location: login.php");
     exit();
@@ -17,11 +12,6 @@ if (!isset($_SESSION['rescue_center_id'])) {
 
 $rescue_id = (int)$_SESSION['rescue_center_id'];
 
-<<<<<<< HEAD
-
-=======
-// ---------------- VERIFY CENTER EXISTS ----------------
->>>>>>> 1ab800698d03bef2318b883c2af780d64608c07d
 $stmt_check = $conn->prepare("SELECT * FROM rescue_center WHERE rescue_center_id=?");
 $stmt_check->bind_param("i", $rescue_id);
 $stmt_check->execute();
@@ -31,10 +21,6 @@ if (!$data) {
     die("❌ Invalid session: Rescue center not found.");
 }
 
-<<<<<<< HEAD
-=======
-// ---------------- UPDATE PROFILE ----------------
->>>>>>> 1ab800698d03bef2318b883c2af780d64608c07d
 
 if (isset($_POST['update_profile'])) {
 
@@ -45,18 +31,10 @@ if (isset($_POST['update_profile'])) {
     $latitude = !empty($_POST['latitude']) ? trim($_POST['latitude']) : NULL;
     $longitude = !empty($_POST['longitude']) ? trim($_POST['longitude']) : NULL;
 
-<<<<<<< HEAD
   
     $logo_name = $data['logo'];
 
     
-=======
-    // Keep existing logo
-  
-    $logo_name = $data['logo'];
-
-    // ---------------- HANDLE LOGO UPLOAD ----------------
->>>>>>> 1ab800698d03bef2318b883c2af780d64608c07d
     if (!empty($_FILES['logo']['name'])) {
 
         $ext = strtolower(pathinfo($_FILES['logo']['name'], PATHINFO_EXTENSION));
@@ -69,11 +47,7 @@ if (isset($_POST['update_profile'])) {
             $upload_path = "../uploads/rescue_logos/" . $new_logo;
 
             if (move_uploaded_file($_FILES['logo']['tmp_name'], $upload_path)) {
-<<<<<<< HEAD
                 
-=======
-                // Delete old logo if it exists
->>>>>>> 1ab800698d03bef2318b883c2af780d64608c07d
                 if (!empty($logo_name) && file_exists("../uploads/rescue_logos/" . $logo_name)) {
                     unlink("../uploads/rescue_logos/" . $logo_name);
                 }
@@ -84,10 +58,6 @@ if (isset($_POST['update_profile'])) {
         }
     }
 
-<<<<<<< HEAD
-=======
-    // ---------------- UPDATE DATABASE ----------------
->>>>>>> 1ab800698d03bef2318b883c2af780d64608c07d
    
     if (!$msg) {
         $update = $conn->prepare("

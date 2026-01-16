@@ -77,18 +77,8 @@ if (isset($_SESSION['rescue_center_id'])) {
                 <li><a href="updateanimal.php">Update & Delete</a></li>
             </ul>
         </li>
-<<<<<<< HEAD
-<<<<<<< HEAD
-        <li><a href="adoption.php"><i class="fa-solid fa-users"></i> Adoption Request</a></li>
-        <li><a href="rescue.php"><i class="fa-solid fa-truck-medical"></i> Rescue Operations</a></li>
-        <li><a href="lost.php"><i class="fa-solid fa-dog"></i> Lost Animal Details</a></li>
-        <li><a href="profile.php"><i class="fa-solid fa-user"></i> Edit Profile</a></li>
-        <li><a href="staff.php"><i class="fa-solid fa-user-tie"></i> Staff</a></li>
-          <li><a href="feedback.php"><i class="fa-solid fa-comment-dots"></i> Feedback</a></li>
-         <li><a href="/paws&protect/home.php"><i class="fa fa-out"></i> Logout</a></li>
-=======
-=======
->>>>>>> 1ab800698d03bef2318b883c2af780d64608c07d
+
+
 
         <li class="<?= $current_page=='adoption.php'?'active':'' ?>">
             <a href="adoption.php"><i class="fa-solid fa-users"></i> Adoption Request</a>
@@ -120,10 +110,7 @@ if (isset($_SESSION['rescue_center_id'])) {
             <a href="/paws&protect/home.php"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
         </li>
 
-<<<<<<< HEAD
->>>>>>> 904b504fb461b2172c8a1bb5a5fc4c82272666f6
-=======
->>>>>>> 1ab800698d03bef2318b883c2af780d64608c07d
+
     </ul>
 </div>
 
