@@ -30,7 +30,7 @@ $adoptanimal_pages = [
 $open_adopt_menu = in_array($current_page, $adoptanimal_pages) ? 'block' : 'none';
 
 // ---------------- Admin Info ----------------
-$admin_name = "System Admin";
+$admin_name = "Admin";
 $admin_logo = "/paws&protect/includes/uploads/profiles/default.png";
 
 if (isset($_SESSION['admin_id'])) {
@@ -135,8 +135,8 @@ if (isset($_SESSION['admin_id'])) {
             <a href="staff.php"><i class="fa-solid fa-user-tie"></i> Staff</a>
         </li>
 
-        <li class="<?= $current_page=='settings.php'?'active':'' ?>">
-            <a href="settings.php"><i class="fa-solid fa-gear"></i> Settings</a>
+        <li class="<?= $current_page=='generatereport.php'?'active':'' ?>">
+            <a href="generatereport.php"><i class="fa-solid fa-book"></i> Generate Report</a>
         </li>
 
         <li>
