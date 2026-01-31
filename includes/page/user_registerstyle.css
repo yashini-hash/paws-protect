@@ -15,7 +15,7 @@ body {
   justify-content: center;
 }
 
-/* ================= CONTAINER ================= */
+
 
 .container {
   width: 400px;
@@ -28,7 +28,7 @@ body {
   color: #fff;
 }
 
-/* ================= LOGO ================= */
+
 
 .logo-container img {
   width: 100px;
@@ -36,7 +36,7 @@ body {
   object-fit: contain;
 }
 
-/* ================= HEADINGS ================= */
+
 
 .form-box h2,
 .form-box h3 {
@@ -46,7 +46,7 @@ body {
   letter-spacing: 0.5px;
 }
 
-/* ================= INPUT BOX ================= */
+
 
 .input-box {
   position: relative;
@@ -85,7 +85,6 @@ body {
   color: #FFD8B4;
 }
 
-/* ================= AUTOFILL FIX ================= */
 
 .input-box input:-webkit-autofill {
   -webkit-box-shadow: 0 0 0 50px transparent inset !important;
@@ -94,7 +93,6 @@ body {
   transition: background-color 5000s ease-in-out 0s;
 }
 
-/* ================= BUTTON ================= */
 
 .btn {
   width: 100%;
@@ -116,7 +114,6 @@ body {
   transform: translateY(-2px);
 }
 
-/* ================= SIGNUP TEXT ================= */
 
 .signup-text {
   margin-top: 20px;
@@ -132,7 +129,6 @@ body {
   text-decoration: underline;
 }
 
-/* ================= MOBILE RESPONSIVE ================= */
 
 @media (max-width: 480px) {
   .container {

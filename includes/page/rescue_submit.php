@@ -2,9 +2,6 @@
 session_start();
 include("dbconnect.php");
 
-/* -------------------------------
-   VALIDATION
--------------------------------- */
 if (
     empty($_POST['animal_type']) ||
     empty($_POST['description']) ||
@@ -25,9 +22,6 @@ $userLng        = (float) $_POST['lng'];
 
 $rescue_location = "Lat: $userLat, Lng: $userLng";
 
-/* -------------------------------
-   FUNCTION: CALCULATE DISTANCE
--------------------------------- */
 function distance($lat1, $lon1, $lat2, $lon2)
 {
     $R = 6371; // Earth radius in KM
@@ -41,9 +35,6 @@ function distance($lat1, $lon1, $lat2, $lon2)
     return $R * (2 * atan2(sqrt($a), sqrt(1 - $a)));
 }
 
-/* -------------------------------
-   FIND NEAREST RESCUE CENTER
--------------------------------- */
 $nearestCenterId = null;
 $minDistance = PHP_FLOAT_MAX;
 
@@ -71,9 +62,6 @@ while ($row = $result->fetch_assoc()) {
     }
 }
 
-/* -------------------------------
-   INSERT RESCUE REQUEST
--------------------------------- */
 $stmt = $conn->prepare("
     INSERT INTO rescue_requests
     (animal_type, rescue_location, description, contact_number, rescue_center_id)
