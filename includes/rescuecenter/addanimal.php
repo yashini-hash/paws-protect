@@ -160,11 +160,13 @@ textarea {
     resize: vertical;
 }
 
-/* ================= MOBILE RESPONSIVE (≤768px) ================= */
+@media (max-width: 1024px) {
+    body { padding: 20px; margin-left: 220px; }
+}
 @media screen and (max-width: 768px) {
 
     body {
-        margin-left: 0;          /* remove sidebar gap */
+        margin-left: 0;          
         padding: 15px;
     }
 

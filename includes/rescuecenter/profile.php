@@ -108,7 +108,7 @@ if (isset($_GET['updated'])) {
     --accent:#c19a6b;
 }
 body{
-    background:var(--brown-light);
+    background: #FFF8E7;
     font-family:'Segoe UI', Tahoma, sans-serif;
 }
 .profile-box{
@@ -193,7 +193,7 @@ body{
 </head>
 <body>
 
-<?php include("sidebar.php"); ?>
+
 
 <div class="profile-box">
 

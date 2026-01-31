@@ -90,6 +90,13 @@ $result = mysqli_query($conn, $sql);
             color: #777;
             box-shadow: 0 4px 10px rgba(0,0,0,0.08);
         }
+
+        @media (max-width: 1024px) {
+    body { padding: 20px; margin-left: 200px; }
+}
+@media (max-width: 480px) {
+     body { padding: 20px; margin-left: 0; }
+}
     </style>
 </head>
 <body>
