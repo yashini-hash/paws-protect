@@ -119,7 +119,6 @@ header {
 
 
 
-
 .animal-grid {
     margin-top: 40px;
     max-width: 1300px; 
@@ -242,6 +241,17 @@ header {
     background: #9d6e4c;
 }
 
+.center-message {
+    grid-column: 1 / -1;   /* span all columns */
+    text-align: center;
+    font-size: 25px;
+    color: #5C3A21;
+    font-weight: bold;
+    margin: 20px 0;
+    
+}
+
+
 
 footer {
     background: #9d6e4c;
@@ -273,3 +283,59 @@ footer {
             background-color: #5C3A21;
             transform: scale(1.1);
         }
+
+
+
+@media (max-width: 1024px) {
+
+    .animal-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+    }
+
+    .animal-card {
+        width: 100%;
+    }
+
+    .animal-card img {
+        width: 100%;
+        height: 200px;
+    }
+
+    
+}
+
+@media (max-width: 768px) {
+
+    .animal-grid {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 0 15px 40px;
+    }
+
+    .filter-bar {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .filter-bar select,
+    .filter-bar input,
+    .filter-bar button {
+        width: 100%;
+    }
+
+
+    
+}
+
+@media (max-width: 480px) {
+
+    .animal-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .animal-card img {
+        height: 220px;
+    }
+
+    
+}
