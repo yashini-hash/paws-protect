@@ -1,8 +1,8 @@
 <?php
 session_start();
-include("dbconnect.php"); // Database connection
+include("dbconnect.php"); 
 
-// Fetch all rescue centers for map markers
+
 $centers = [];
 $q = "SELECT rescue_center_id, center_name, latitude, longitude FROM rescue_center";
 $result = $conn->query($q);
@@ -22,80 +22,10 @@ if ($result) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Paws & Protect | Rescue</title>
     <link rel="icon" type="image/x-icon" href="/paws&protect/includes/image/paw.png" />
-    <link rel="stylesheet" href="com.css">
+    <link rel="stylesheet" href="rescue.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    <style>
-        /* ===== Rescue Form & Map ===== */
-        .rescue-form {
-            max-width: 700px;
-            margin: 30px auto;
-            padding: 20px;
-            background: #f8f8f8;
-            border-radius: 10px;
-        }
-        .rescue-form h2 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .rescue-form label {
-            font-weight: bold;
-            display: block;
-            margin: 10px 0 5px;
-        }
-        .rescue-form input, .rescue-form select, .rescue-form textarea, .rescue-form button {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-        }
-        #map { height: 350px; margin-top: 10px; border-radius: 10px; }
-        .rescue-form button {
-        margin-top:10px;
-            background: #5C3A21;
-            color: white;
-            font-size: 16px;
-            border: none;
-            cursor: pointer;
-        }
-        .rescue-form button:hover {  background:#9d6e4c; }
 
-
-        .message-box {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: #d4edda; /* green background for success */
-    color: #155724;
-    padding: 25px 30px;
-    border-radius: 12px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-    text-align: center;
-    z-index: 9999;
-    max-width: 400px;
-    display: none;
-}
-
-.message-box.error {
-    background: #f8d7da;
-    color: #721c24;
-}
-
-.message-box button {
-    margin-top: 15px;
-    padding: 8px 20px;
-    border: none;
-    background: #5C3A21;
-    color: white;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 15px;
-}
-
-.message-box button:hover {
-    background: #9d6e4c;
-}
-    </style>
 </head>
 <body>
 
@@ -136,7 +66,7 @@ document.getElementById("menu-toggle").onclick = function() {
     <div class="hero-text">Rescue Animals</div>
 </div>
 
-<!-- ===== Rescue Form ===== -->
+
 <div class="rescue-form">
     <h2>🐾 Submit a Rescue Request</h2>
 
@@ -156,7 +86,7 @@ document.getElementById("menu-toggle").onclick = function() {
         <label>Contact Number</label>
         <input type="tel" name="contact_number" placeholder="Enter your Contact Number" required>
 
-        <!-- Hidden fields to store user location -->
+       
         <input type="hidden" name="lat" id="lat">
         <input type="hidden" name="lng" id="lng">
 
@@ -181,7 +111,7 @@ document.getElementById("menu-toggle").onclick = function() {
 <?php unset($_SESSION['error_msg']); endif; ?>
 
 <script>
-// Show the message box if it exists
+
 window.onload = function() {
     const success = document.getElementById('successBox');
     const error = document.getElementById('errorBox');
@@ -203,7 +133,7 @@ function closeMessage(id) {
 const rescueCenters = <?= json_encode($centers); ?>;
 
 function getDistance(lat1, lon1, lat2, lon2) {
-    const R = 6371; // Earth radius in km
+    const R = 6371; 
     const dLat = (lat2 - lat1) * Math.PI / 180;
     const dLon = (lon2 - lon1) * Math.PI / 180;
     const a = Math.sin(dLat/2)**2 +
@@ -226,7 +156,7 @@ function initMap() {
                 center: { lat: userLat, lng: userLng }
             });
 
-            // User location marker
+            
             new google.maps.Marker({
                 position: { lat: userLat, lng: userLng },
                 map,
@@ -249,7 +179,7 @@ function initMap() {
                 });
             });
 
-            // Highlight nearest center
+           
             if (nearestCenter) {
                 new google.maps.Marker({
                     position: { lat: parseFloat(nearestCenter.latitude), lng: parseFloat(nearestCenter.longitude) },
@@ -265,7 +195,7 @@ function initMap() {
 }
 </script>
 
-<!-- Replace YOUR_API_KEY with your Google Maps API key -->
+
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBvmv0SLEBxBzt4EFJ9VzWvby0Is2cHNjQ&callback=initMap" async defer></script>
 
 

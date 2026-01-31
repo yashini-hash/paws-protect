@@ -4,7 +4,6 @@ include("dbconnect.php");
 $success = "";
 $error = "";
 
-// Only run this when form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $name     = $_POST['name'];
@@ -15,7 +14,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $role = "user";
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-    // Check if email already exists
     $check = "SELECT email FROM users WHERE email='$email'";
     $result = mysqli_query($conn, $check);
 
@@ -23,7 +21,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $error = "Email already registered!";
     } else {
 
-        // Insert data
         $sql = "INSERT INTO users (name, email, phone, password, role)
                 VALUES ('$name', '$email', '$phone', '$hashed_password', '$role')";
 
@@ -54,12 +51,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
       <h2>User Registration</h2>
 
-      <!-- SUCCESS MESSAGE -->
       <?php if($success != "") { ?>
         <p style="color: green; text-align:center;"><?php echo $success; ?></p>
       <?php } ?>
 
-      <!-- ERROR MESSAGE -->
       <?php if($error != "") { ?>
         <p style="color: red; text-align:center;"><?php echo $error; ?></p>
       <?php } ?>

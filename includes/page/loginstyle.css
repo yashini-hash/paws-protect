@@ -15,7 +15,7 @@ body {
   justify-content: center;
 }
 
-/* ================= CONTAINER ================= */
+
 
 .container {
   display: flex;
@@ -28,7 +28,6 @@ body {
   box-shadow: 0 0 40px rgba(180, 120, 60, 0.45);
 }
 
-/* ================= LEFT SIDE ================= */
 
 .left-side {
   flex: 1;
@@ -44,7 +43,6 @@ body {
   filter: brightness(0.88);
 }
 
-/* ================= RIGHT SIDE ================= */
 
 .right-side {
   flex: 1;
@@ -60,7 +58,6 @@ body {
   text-align: center;
 }
 
-/* ================= TITLE ================= */
 
 .form-box h2 {
   margin-bottom: 30px;
@@ -69,7 +66,6 @@ body {
   letter-spacing: 1px;
 }
 
-/* ================= INPUT FIELDS ================= */
 
 .input-box {
   position: relative;
@@ -109,7 +105,6 @@ body {
   color: #FFD8B4;
 }
 
-/* ================= REMEMBER & FORGOT ================= */
 
 .forget {
   display: flex;
@@ -143,7 +138,6 @@ body {
   margin-left: 8px;
 }
 
-/* ================= AUTOFILL FIX ================= */
 
 .right-side input:-webkit-autofill,
 .right-side input:-webkit-autofill:hover,
@@ -155,7 +149,6 @@ body {
   transition: background-color 5000s ease-in-out 0s;
 }
 
-/* ================= BUTTON ================= */
 
 .btn {
   width: 100%;
@@ -177,7 +170,6 @@ body {
   transform: translateY(-2px);
 }
 
-/* ================= SIGNUP TEXT ================= */
 
 .signup-text {
   margin-top: 20px;
@@ -194,7 +186,6 @@ body {
   text-decoration: underline;
 }
 
-/* ================= ANIMATION ================= */
 
 @keyframes slideInLeft {
   from {
@@ -207,7 +198,6 @@ body {
   }
 }
 
-/* ================= MOBILE RESPONSIVE ================= */
 
 @media (max-width: 768px) {
   .container {
@@ -242,7 +232,6 @@ body {
   }
 }
 
-/* ================= TABLET ================= */
 
 @media (min-width: 769px) and (max-width: 1024px) {
   .container {

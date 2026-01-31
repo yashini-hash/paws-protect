@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Paws & Protect </title>
      <link rel="icon" type="image/x-icon" href="/paws&protect/includes/image/paw.png" />
-    <link rel="stylesheet" href="com.css">
+    <link rel="stylesheet" href="about.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
@@ -15,68 +15,7 @@
 
 </head>
 <body>
-<style>
-.about {
-  padding: 60px 20px;
-  text-align: center;
-}
 
-.about-container {
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-.about h2 {
-  font-family: 'Brush Script MT', cursive;
-  font-size: 3rem;
-  color: #5C3A21;
-  margin-bottom: 20px;
-}
-
-.about .intro {
-  font-size: 1.1rem;
-  color: #444;
-  margin-bottom: 40px;
-  line-height: 1.8;
-}
-
-.about-content {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
-}
-
-.about-box {
-  flex: 1 1 350px;
-  background: #5C3A21;
-  border-radius: 12px;
-  padding: 25px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease;
-}
-
-.about-box:hover {
-  transform: translateY(-5px);
-}
-
-.about-box h3 {
-  color: #d2a382ff;
-  font-size: 1.4rem;
-  margin-bottom: 15px;
-}
-
-.about-box i {
-  color: #d2a382ff;
-  margin-right: 8px;
-}
-
-.about-box p {
-  color: white;
-  line-height: 1.7;
-}
-
-</style>
    
     <header>
         <div class="logo">
