@@ -119,17 +119,29 @@ header {
 
 
         .rescue-form {
+              margin: 20px 20px; 
             max-width: 700px;
             margin: 30px auto;
             padding: 20px;
-            background: #f8f8f8;
+            background: #5C3A21;
             border-radius: 10px;
         }
+
+        @media (max-width: 768px) {
+    .rescue-form {
+         margin: 15px 10px;  
+    }
+}
+
+
+
         .rescue-form h2 {
+             color:  #d2a382ff;
             text-align: center;
             margin-bottom: 20px;
         }
         .rescue-form label {
+            color:  rgb(223, 218, 214);
             font-weight: bold;
             display: block;
             margin: 10px 0 5px;
@@ -139,16 +151,20 @@ header {
             padding: 10px;
             margin-bottom: 10px;
         }
-        #map { height: 350px; margin-top: 10px; border-radius: 10px; }
+        #map { height: 350px; 
+            margin-top: 10px; 
+            border-radius: 10px; 
+            color: #d4edda;}
+
         .rescue-form button {
         margin-top:10px;
-            background: #5C3A21;
-            color: white;
-            font-size: 16px;
+           background: #d2a382ff;
+           color: #5C3A21;
+            font-size: 18px;
             border: none;
             cursor: pointer;
         }
-        .rescue-form button:hover {  background:#9d6e4c; }
+        .rescue-form button:hover {  background:#FFA500; }
 
 
         .message-box {
@@ -186,4 +202,36 @@ header {
 .message-box button:hover {
     background: #9d6e4c;
 }
+
+
+footer {
+    background: #9d6e4c;
+    text-align: center;
+    padding: 20px 10px;
+}
+
+    footer img {
+        height: 80px;
+        max-width: 100%;
+        margin-bottom: 10px;
+    }
+
+    footer .right a {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        margin: 0 6px;
+        text-align: center;
+        background-color: #333;
+        color: #fff;
+        border-radius: 50%;
+        font-size: 18px;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+        footer .right a:hover {
+            background-color: #5C3A21;
+            transform: scale(1.1);
+        }
    
