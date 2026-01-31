@@ -3,7 +3,6 @@ session_start();
 include("sidebar.php");
 include("../page/dbconnect.php");
 
-// Check login
 if (!isset($_SESSION['rescue_center_id'])) {
     echo "<p style='color:red;text-align:center;'>Unauthorized Access</p>";
     exit;
@@ -17,7 +16,6 @@ if ($request_id == 0) {
     exit;
 }
 
-// Fetch full adoption request details
 $sql = "
     SELECT 
         ar.request_id, ar.status, ar.request_date,
@@ -42,7 +40,6 @@ if (!$data) {
     exit;
 }
 
-// Fetch previously adopted animals by this user (excluding current request)
 $historySql = "
     SELECT a.name, a.type, a.breed, a.age, a.animal_image, ar.status, ar.request_date
     FROM adopt_requests ar
@@ -61,7 +58,6 @@ $adoptionHistory = $historyStmt->get_result();
 <head>
 <title>Adoption Request Details</title>
 <style>
-/* Reset */
 * {
     margin: 0;
     padding: 0;
@@ -72,13 +68,11 @@ body {
     background: #f4f1ed;
 }
 
-/* Main container */
 .main-container {
-    margin-left: 260px; /* sidebar width */
+    margin-left: 260px; 
     padding: 40px;
 }
 
-/* Card */
 .details-card {
     background: #ffffff;
     border-radius: 20px;
@@ -92,7 +86,6 @@ body {
     transform: translateY(-5px);
 }
 
-/* Section titles */
 .section-title {
     font-size: 22px;
     font-weight: 600;
@@ -102,7 +95,6 @@ body {
     padding-bottom: 5px;
 }
 
-/* Info box */
 .info-box {
     background: #fef8f2;
     padding: 15px 20px;
@@ -112,14 +104,12 @@ body {
     color: #333;
 }
 
-/* Two-column layout */
 .two-column {
     display: flex;
     flex-wrap: wrap;
     gap: 30px;
 }
 
-/* Left image box */
 .left-box {
     flex: 1 1 350px;
     display: flex;
@@ -127,7 +117,6 @@ body {
     align-items: flex-start;
 }
 
-/* Big animal image */
 .animal-img-big {
     margin-top:50px;
     width: 100%;
@@ -139,12 +128,10 @@ body {
     box-shadow: 0 6px 15px rgba(0,0,0,0.1);
 }
 
-/* Right details */
 .right-box {
     flex: 2 1 300px;
 }
 
-/* Buttons */
 .button-group {
     text-align: center;
     margin-top: 30px;
@@ -168,7 +155,6 @@ body {
 .btn-back { background: #6c4f3d; }
 .btn-back:hover { background: #5c4033; transform: scale(1.05); }
 
-/* Previous adoption cards */
 .prev-adoptions {
     display: flex;
     flex-wrap: wrap;
@@ -192,7 +178,6 @@ body {
     border: 2px solid #e6c9a8;
 }
 
-/* ===================== TABLET ===================== */
 @media (max-width: 1024px) {
     .main-container {
         margin-left: 0;
@@ -213,7 +198,6 @@ body {
     }
 }
 
-/* ===================== MOBILE ===================== */
 @media (max-width: 600px) {
 
     .animal-img-big {
@@ -255,15 +239,12 @@ body {
 
         <div class="two-column">
 
-            <!-- LEFT COLUMN: IMAGE -->
             <div class="left-box">
                 <img src="../uploads/addanimal/<?= htmlspecialchars($data['animal_image']) ?>" class="animal-img-big" alt="Animal Image">
             </div>
 
-            <!-- RIGHT COLUMN: DETAILS -->
             <div class="right-box">
 
-                <!-- ANIMAL DETAILS -->
                 <div class="section-title">Animal Details</div>
 
                 <div class="info-box"><strong>Name:</strong> <?= htmlspecialchars($data['animal_name']) ?></div>
@@ -274,14 +255,12 @@ body {
                 <div class="info-box"><strong>Vaccination:</strong> <?= htmlspecialchars($data['vaccination']) ?></div>
                 <div class="info-box"><strong>Location:</strong> <?= htmlspecialchars($data['location']) ?></div>
 
-                <!-- USER DETAILS -->
                 <div class="section-title">User Details</div>
 
                 <div class="info-box"><strong>Name:</strong> <?= htmlspecialchars($data['user_name']) ?></div>
                 <div class="info-box"><strong>Email:</strong> <?= htmlspecialchars($data['user_email']) ?></div>
                 <div class="info-box"><strong>Phone:</strong> <?= htmlspecialchars($data['phone']) ?></div>
 
-                <!-- PREVIOUSLY ADOPTED ANIMALS -->
                 <div class="section-title">User Adoption History</div>
 
 <?php if($adoptionHistory->num_rows > 0): ?>
@@ -307,7 +286,6 @@ body {
 
         </div>
 
-        <!-- BUTTONS -->
         <div class="button-group">
             <button class="action-btn btn-approve" onclick="handleRequest(<?= $data['request_id'] ?>,'approve')">Approve</button>
             <button class="action-btn btn-reject" onclick="handleRequest(<?= $data['request_id'] ?>,'reject')">Reject</button>
@@ -317,7 +295,6 @@ body {
     </div>
 </div>
 
-<!-- Message box -->
 <div id="msg-box" style="
     position: fixed;
     top: 50%;
@@ -348,7 +325,6 @@ function handleRequest(requestId, action) {
     xhr.send("request_id="+requestId+"&action="+action);
 }
 
-// Show small notification
 function showMessage(msg, action) {
     let box = document.getElementById("msg-box");
     box.innerText = msg;

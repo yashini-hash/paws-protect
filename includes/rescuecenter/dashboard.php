@@ -1,6 +1,5 @@
 <?php
 include("sidebar.php"); 
-include("sidebar.php");
 include("../page/dbconnect.php");
 
 if (!isset($_SESSION['rescue_center_id'])) {
@@ -123,7 +122,7 @@ if ($pending_adoptions > 0) $adoption_card_class .= " alert-red";
 <title>Rescue Center Dashboard</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
-body { font-family: Arial, sans-serif; background: #f4f4f4; margin: 0; padding: 0; }
+body { font-family: Arial, sans-serif; background: #FFF8E7; margin: 0; padding: 0; }
 .main { padding: 20px; }
 
 /* Welcome Box */
@@ -194,7 +193,8 @@ body { font-family: Arial, sans-serif; background: #f4f4f4; margin: 0; padding: 
     }
 
     .card small {
-        font-size: 0.85rem;
+      
+    font-size: 0.85rem;
     }
 }
 
