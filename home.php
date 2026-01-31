@@ -86,7 +86,6 @@
   </div>
 </section>
 
-<!-- Welcome Section -->
 <section class="welcome">
   <h2>Welcome to Paws & Protect 🐾</h2>
   <p>
@@ -142,7 +141,6 @@
  <footer class="footer">
   <div class="footer-container">
 
-    <!-- Left Section -->
     <div class="left-footer-section">
       <img src="includes/image/paw.png" alt="Logo" class="footer-logo">
 
@@ -151,7 +149,6 @@
 <br><a href="mailto:paws&srilanka@gmail.com"><i class="fa fa-envelope"></i> paws&protect@gmail.com</a>
     </div>
 
-    <!-- Right Section -->
     <div class="right-footer-section">
       <h2>Paws & Protect Sri Lanka:</h2>
 

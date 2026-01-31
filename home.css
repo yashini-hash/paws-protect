@@ -177,7 +177,6 @@ header {
         transform: translateY(-3px);
     }
 
-/* Welcome Section */
 .welcome {
     
     padding: 60px 10%;
@@ -297,9 +296,25 @@ header {
     pointer-events: none; 
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1024px) and (min-width: 769px) {
     .help {
-        flex-direction: column;
+        flex-direction: row; 
+        height: 450px;       
+    }
+
+    .help-image img,
+    .help-text {
+        height: 100%; 
+    }
+
+    .help-text {
+        padding: 50px; 
+    }
+}
+
+@media (max-width: 768px) {
+    .help {
+        flex-direction: column; 
         height: auto;
     }
 
@@ -312,6 +327,7 @@ header {
         height: auto;
     }
 }
+
 
 .rescue-centres {
     text-align: center;
@@ -374,16 +390,13 @@ color:#333;
 font-size: 20px;
 }
 
-.footer-section a :hover{
-    
-}
+
 
 .footer-logo {
   width: 180px;
   margin-bottom: 20px;
 }
 
-/* Titles with handwriting style */
 .left-footer-section h2,
 .right-footer-section h2 {
   font-family: 'Brush Script MT', cursive;
@@ -391,7 +404,6 @@ font-size: 20px;
 }
 
 
-/* ICON BUTTONS */
 .social-icons a {
  display: inline-block;
         width: 40px;
@@ -417,7 +429,6 @@ font-size: 20px;
 
 
 
-/* Responsive */
 @media (max-width: 768px) {
   .footer-section {
     width: 100%;
