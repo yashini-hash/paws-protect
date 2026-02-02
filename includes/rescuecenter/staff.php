@@ -93,29 +93,8 @@ $staffData = $staffResult->get_result();
 <head>
 <meta charset="UTF-8">
 <title>Manage Staff | Rescue Center</title>
-<style>
-body { font-family: Arial,sans-serif; background:#FFF8E7; margin-left:120px; padding:40px; }
-.container { max-width: 900px; margin:auto; background:white; padding:30px; border-radius:12px; box-shadow:0 4px 15px rgba(0,0,0,0.2); }
-h2 { text-align:center; margin-bottom:20px; }
+<link rel="stylesheet" href="staff.css">
 
-/* Messages */
-.success { background:#d4edda; color:#155724; padding:10px; border-radius:6px; text-align:center; margin-bottom:10px; }
-.error { background:#f8d7da; color:#721c24; padding:10px; border-radius:6px; text-align:center; margin-bottom:10px; }
-
-/* Form */
-input { width:100%; padding:10px; margin:10px 0; border-radius:6px; border:1px solid #ccc; }
-button { padding:10px 15px; border:none; border-radius:6px; background:#5C3A21; color:white; cursor:pointer; margin-top:5px; }
-button:hover { background:#9d6e4c; }
-
-/* Table */
-table { width:100%; border-collapse:collapse; margin-top:20px; }
-th,td { border:1px solid #ddd; padding:10px; text-align:left; }
-th { background:#5C3A21; color:white; }
-.status { padding:5px 12px; border-radius:12px; font-weight:bold; }
-.status.active { background:#d4edda; color:#155724; }
-.status.inactive { background:#f8d7da; color:#721c24; }
-a { text-decoration:none; margin-right:5px; }
-</style>
 </head>
 <body>
 

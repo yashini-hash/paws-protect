@@ -9,12 +9,10 @@ require '../../PHPMailer-master/src/Exception.php';
 require '../../PHPMailer-master/src/PHPMailer.php';
 require '../../PHPMailer-master/src/SMTP.php';
 
-// Security check
 if (!isset($_SESSION['rescue_center_id'])) {
     exit("Unauthorized");
 }
 
-// Validate input
 if (!isset($_POST['lost_id'], $_POST['status'])) {
     exit("Invalid request");
 }
@@ -22,17 +20,14 @@ if (!isset($_POST['lost_id'], $_POST['status'])) {
 $lost_id = intval($_POST['lost_id']);
 $status  = $_POST['status'];
 
-// Allow only valid values
 if (!in_array($status, ['found', 'notfound'])) {
     exit("Invalid status");
 }
 
-// Update lost_animals table
 $stmt = $conn->prepare("UPDATE lost_animals SET status = ? WHERE lost_id = ?");
 $stmt->bind_param("si", $status, $lost_id);
 $stmt->execute();
 
-// Get owner info by joining lost_animals and users table
 $stmt2 = $conn->prepare("
     SELECT u.name AS owner_name, u.email AS owner_email
     FROM lost_animals l
@@ -46,7 +41,6 @@ $owner = $stmt2->get_result()->fetch_assoc();
 $owner_name  = $owner['owner_name'] ?? '';
 $owner_email = $owner['owner_email'] ?? '';
 
-// Send email if email exists
 if(!empty($owner_email)){
     $mail = new PHPMailer(true);
     try {
@@ -78,7 +72,6 @@ if(!empty($owner_email)){
     $msg = "Status updated, but owner email not found.";
 }
 
-// Redirect back to details page with message
 header("Location: lost_animal_view.php?lost_id=$lost_id&msg=" . urlencode($msg));
 exit;
 ?>

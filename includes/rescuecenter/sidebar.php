@@ -43,7 +43,7 @@ if (isset($_SESSION['rescue_center_id'])) {
 <title>Rescue Center Dashboard</title>
 
 <link rel="icon" type="image/x-icon" href="/paws&protect/includes/image/paw.png" />
-<link rel="stylesheet" href="dashboardstyle.css">
+<link rel="stylesheet" href="sidebar.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
