@@ -1,0 +1,60 @@
+.main-container {
+    margin-left: 260px;
+    padding: 40px;
+   
+}
+
+.main-container h1{
+     text-align: center;
+    margin: 6px 0;
+    color: #3e2c1c;
+   
+}
+.card {
+     background: #ddbc8b;
+    border-radius: 16px;
+    padding: 20px;
+    width: 300px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    margin: 15px;
+    display: inline-block;
+    vertical-align: top;
+}
+.card:hover{
+     background: #9e6c40ff;
+    
+}
+
+.card img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.card h3 {
+    text-align: center;
+    margin: 6px 0;
+    color: #3e2c1c;
+    font-size: 30px;
+}
+
+.info {
+    font-size: 15px;
+    color: #333;
+    margin-top: 8px;
+}
+
+
+
+
+.empty {
+    text-align:center;
+    color:#777;
+    font-size:20px;
+    margin-top:30px;
+}
+.card-link {
+    text-decoration: none;
+    color: inherit;
+}
