@@ -141,6 +141,7 @@ $adoptionHistory = $historyStmt->get_result();
     font-weight: 500;
     font-size: 16px;
     text-align: center;
+    cursor: pointer;
 "></div>
 
 <script>
@@ -160,19 +161,16 @@ function showMessage(msg, action) {
     let box = document.getElementById("msg-box");
     box.innerText = msg;
     box.style.background = (action == 'approve') ? "#28a745" : "#dc3545";
-    box.style.opacity = 1;
     box.style.display = "block";
+    box.style.opacity = 1;
 
-    let fadeOut = setInterval(() => {
-        if (box.style.opacity > 0) {
-            box.style.opacity -= 0.05;
-        } else {
-            box.style.display = "none";
-            clearInterval(fadeOut);
-        }
-    }, 3000s);
+    
+    box.onclick = () => {
+        box.style.display = "none";
+    };
 }
 </script>
+
 
 </body>
 </html>
