@@ -9,13 +9,11 @@ if (!isset($_SESSION['rescue_center_id'])) {
 
 $rescue_center_id = (int) $_SESSION['rescue_center_id'];
 
-// Get request ID
 if (!isset($_GET['id'])) {
     die("Request ID missing.");
 }
 $request_id = (int) $_GET['id'];
 
-// Fetch the request
 $stmt = $conn->prepare("SELECT * FROM rescue_requests WHERE request_id = ? AND rescue_center_id = ?");
 $stmt->bind_param("ii", $request_id, $rescue_center_id);
 $stmt->execute();
@@ -25,13 +23,11 @@ if (!$request) {
     die("Request not found or not assigned to your center.");
 }
 
-// Fetch staff for this center
 $staffStmt = $conn->prepare("SELECT staff_id, name FROM staff WHERE rescue_center_id = ?");
 $staffStmt->bind_param("i", $rescue_center_id);
 $staffStmt->execute();
 $staffResult = $staffStmt->get_result();
 
-// Handle form submission
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $status = $_POST['status'];
     $assigned_to = $_POST['assigned_to'] ?: NULL;
@@ -56,79 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
 <meta charset="UTF-8">
 <title>Update Rescue Request</title>
-<style>
-body {
-    font-family: Arial, sans-serif;
-    background: #FFF8E7;
-    margin: 0;
-    padding: 50px 20px 20px 140px; /* considering sidebar width */
-}
-
-.container {
-    max-width: 600px;
-    margin: auto;
-    background: white;
-    padding: 30px;
-    border-radius: 14px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-}
-
-h2 {
-    text-align: center;
-    color: #5C3A21;
-    margin-bottom: 20px;
-}
-
-label {
-    font-weight: bold;
-    display: block;
-    margin-top: 15px;
-}
-
-input[type="text"], select, textarea {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    font-size: 14px;
-}
-
-textarea {
-    resize: vertical;
-    min-height: 80px;
-}
-
-button, .back-btn {
-    padding: 10px 16px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 14px;
-    margin-top: 15px;
-    display: inline-block;
-    text-decoration: none;
-}
-
-button {
-    background-color: #5C3A21;
-    color: white;
-    margin-right: 10px;
-}
-
-button:hover {
-    background-color: #9d6e4c;
-}
-
-.back-btn {
-    background-color: #ccc;
-    color: #333;
-}
-
-.back-btn:hover {
-    background-color: #bbb;
-}
-</style>
+<link rel="stylesheet" href="update_status.css">
 </head>
 <body>
 

@@ -3,7 +3,6 @@ session_start();
 include("sidebar.php");
 include("../page/dbconnect.php");
 
-// Check login
 if (!isset($_SESSION['rescue_center_id'])) {
     header("Location: login.php");
     exit();
@@ -11,7 +10,6 @@ if (!isset($_SESSION['rescue_center_id'])) {
 
 $rescue_center_id = $_SESSION['rescue_center_id'];
 
-// Fetch feedback for this rescue center
 $sql = "
     SELECT 
         f.rating,
@@ -31,73 +29,7 @@ $result = mysqli_query($conn, $sql);
 <html>
 <head>
     <title>Rescue Center Feedback</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #FFF8E7;
-            padding: 30px;
-        }
-
-        h2 {
-            text-align: center;
-            margin-bottom: 25px;
-            color: #5a3e1b;
-        }
-
-        .feedback-container {
-            max-width: 500px;
-            margin: auto;
-        }
-
-        .feedback-card {
-            background: #ffffff;
-            border-radius: 10px;
-            padding: 18px 22px;
-            margin-bottom: 18px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-        }
-
-        .feedback-header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 8px;
-            font-weight: bold;
-            color: #333;
-        }
-
-        .rating {
-            color: #ff9800;
-            font-size: 18px;
-        }
-
-        .message {
-            margin: 10px 0;
-            color: #555;
-            line-height: 1.6;
-        }
-
-        .date {
-            font-size: 13px;
-            color: #888;
-            text-align: right;
-        }
-
-        .no-feedback {
-            text-align: center;
-            background: #fff;
-            padding: 30px;
-            border-radius: 10px;
-            color: #777;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-        }
-
-        @media (max-width: 1024px) {
-    body { padding: 20px; margin-left: 200px; }
-}
-@media (max-width: 480px) {
-     body { padding: 20px; margin-left: 0; }
-}
-    </style>
+  <link rel="stylesheet" href="feedback.css">
 </head>
 <body>
 

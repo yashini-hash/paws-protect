@@ -9,7 +9,6 @@ if (!isset($_SESSION['rescue_center_id'])) {
 
 $rescue_center_id = $_SESSION['rescue_center_id'];
 
-/* ===== DELETE ANIMAL ===== */
 if(isset($_GET['delete_id'])){
     $id = intval($_GET['delete_id']);
     $imgQ = $conn->prepare("SELECT animal_image FROM animals_details WHERE animal_id=? AND rescue_center_id=?");
@@ -23,7 +22,6 @@ if(isset($_GET['delete_id'])){
     exit($stmt->execute() ? "deleted" : "error");
 }
 
-/* ===== FETCH ANIMALS ===== */
 $type_filter = $_GET['type_filter'] ?? '';
 if($type_filter && $type_filter != "all"){
     $stmt = $conn->prepare("SELECT * FROM animals_details WHERE rescue_center_id=? AND type=? ORDER BY animal_id DESC");
@@ -36,7 +34,7 @@ $stmt->execute();
 $result = $stmt->get_result();
 $types = ['Dog','Cat','Bird','Rabbit','Hamsters'];
 ?>
-
+<link rel="stylesheet" href="updateanimal.css">
 <h2 style="text-align:center;color:#5C3A21;padding:20px;">My Animals</h2>
 
 <form id="filterForm" style="display:flex;justify-content:center;gap:10px;margin-bottom:20px;">
@@ -72,10 +70,9 @@ $types = ['Dog','Cat','Bird','Rabbit','Hamsters'];
 </div>
 
 <script>
-// Delete Animal using Event Delegation
 document.getElementById('animalsContainer').addEventListener('click', function(e){
-    const btn = e.target.closest('.deleteBtn'); // robust
-    if(!btn) return; // only trigger on delete button
+    const btn = e.target.closest('.deleteBtn'); 
+    if(!btn) return; 
 
     const card = btn.closest('.animal-card');
     if(!card) return;
@@ -87,7 +84,7 @@ document.getElementById('animalsContainer').addEventListener('click', function(e
     .then(data => {
         data = data.trim();
         if(data === "deleted"){
-            card.remove(); // remove card from DOM
+            card.remove(); 
             alert("Deleted successfully!");
         } else {
             alert("Delete failed: " + data);
@@ -96,7 +93,6 @@ document.getElementById('animalsContainer').addEventListener('click', function(e
     .catch(err => alert("Error connecting to server"));
 });
 
-// Filter animals
 document.getElementById('filterForm').addEventListener('submit', e => {
     e.preventDefault();
     const type = document.getElementById('type_filter').value;
@@ -104,146 +100,3 @@ document.getElementById('filterForm').addEventListener('submit', e => {
 });
 </script>
 
-
-<style>
-body { background:#FFF8E7;
-     font-family: Arial, sans-serif;
-      margin-left: 260px; 
-      padding: 50px; }
-
-    #filterForm {
-         max-width:600px; 
-         margin:auto; 
-         margin-bottom:20px; 
-         display:flex; gap:10px; } 
-
-         #filterForm select { 
-            flex:1; 
-            padding:8px; 
-            border-radius:5px; 
-            border:1px solid #ccc; }
-            
-            #filterForm button { 
-                padding:8px 15px;
-                 border:none; 
-                 border-radius:5px; 
-                 background:#5C3A21;
-                  color:white; 
-                  cursor:pointer; } 
-
-                  #filterForm button:hover
-                   { background:#9d6e4c; }
-
-                    #animalsContainer { 
-                        display:flex; 
-                        flex-wrap:wrap; 
-                        gap:20px; 
-                        justify-content:center; }
-
-.animal-card h3 { 
-    text-align: center;
-     margin: 6px 0; 
-     color: #3e2c1c;
-      font-size: 25px; }
-
-       .animal-card p {
-         margin: 4px 0;
-          color: #5c3a21; 
-          font-size: 20x; }
-
-          .action-btn {
-    display: inline-block;
-    min-width: 90px;              /* SAME width */
-    text-align: center;
-    gap:15px;
-    padding: 8px 12px;            /* SAME padding */
-    border: none;
-    border-radius: 6px;
-    font-size: 15px;              /* SAME font size */
-    font-family: Arial, sans-serif;
-    cursor: pointer;
-    text-decoration: none;
-}
-
-/* Update button */
-.updateBtn {
-    background:#5C3A21;
-    color:white;
-}
-
-.updateBtn:hover {
-    background:#9d6e4c;
-}
-
-/* Delete button */
-.deleteBtn {
-    background:red;
-    color:white;
-}
-
-.deleteBtn:hover {
-    background:#cc0000;
-}
-
-/* ================= MOBILE RESPONSIVE (≤768px) ================= */
-@media screen and (max-width: 768px) {
-
-    body {
-        margin-left: 0;      /* remove sidebar offset */
-        padding: 15px;
-    }
-
-    h2 {
-        font-size: 22px;
-        padding: 15px 0;
-    }
-
-    /* FILTER FORM */
-    #filterForm {
-        flex-direction: column;
-        max-width: 100%;
-        gap: 12px;
-    }
-
-    #filterForm select,
-    #filterForm button {
-        width: 100%;
-        font-size: 16px;
-        padding: 10px;
-    }
-
-    /* ANIMALS GRID */
-    #animalsContainer {
-        gap: 15px;
-    }
-
-    /* ANIMAL CARD */
-    .animal-card {
-        width: 100% !important;
-        max-width: 340px;
-        padding: 14px;
-    }
-
-    .animal-card img {
-        width: 100%;
-        height: 220px;
-    }
-
-    .animal-card h3 {
-        font-size: 20px;
-    }
-
-    .animal-card p {
-        font-size: 14px;
-    }
-
-    /* BUTTONS */
-    .action-btn {
-        width: 100%;
-        margin-top: 8px;
-        font-size: 15px;
-        padding: 10px;
-    }
-}
-
-</style>
