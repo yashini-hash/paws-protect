@@ -1,0 +1,132 @@
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #FFF8E7;
+            padding: 50px;
+            margin-left: 120px;
+        }
+
+        h2 {
+            font-size: 30px;
+            text-align: center;
+            margin: 20px 0;
+            color: #5C3A21;
+        }
+
+        .filter-container {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        select {
+            padding: 8px 12px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .animal-card {
+            background: #ddbc8b;
+            padding: 15px;
+            border-radius: 15px;
+            width: 250px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .animal-card img {
+            width: 220px;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .animal-info {
+            padding: 10px;
+        }
+
+        .animal-info h3 {
+            margin: 10px 0 5px;
+            color: #5C3A21;
+        }
+
+        .status {
+            margin-top: 8px;
+            padding: 5px 12px;
+            border-radius: 20px;
+            display: inline-block;
+            color: #fff;
+            font-size: 13px;
+        }
+
+        .status-approved {
+            background-color: green;
+        }
+
+        .status-rejected {
+            background-color: red;
+        }
+
+        .status-pending {
+            background-color: #5C3A21;
+        }
+
+        .status-cancelled {
+            background-color: gray;
+        }
+
+        .cancel-btn {
+            margin-top: 10px;
+            background-color: #00648bff;
+            color: #fff;
+            border: none;
+            padding: 7px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 13px;
+        }
+
+        .cancel-btn:hover {
+            background-color: #e62d2dff;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 20px;
+                margin-left: 0;
+            }
+
+            .card-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+
+            .animal-card {
+                width: 90%;
+                padding: 10px;
+            }
+
+            .animal-card img {
+                width: 100%;
+                height: auto;
+            }
+
+            .animal-info h3 {
+                font-size: 20px;
+            }
+
+            .animal-info p {
+                font-size: 14px;
+            }
+
+            .cancel-btn {
+                padding: 6px 12px;
+                font-size: 12px;
+            }
+        }
