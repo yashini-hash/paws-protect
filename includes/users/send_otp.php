@@ -1,7 +1,12 @@
 <?php
 session_start();
 include("../page/dbconnect.php");
+<<<<<<< HEAD
 date_default_timezone_set('Asia/Colombo');
+=======
+date_default_timezone_set('Asia/Colombo'); 
+
+>>>>>>> d962b5d91a7aa0f0158bb2cabdd292da779b5fbd
 
 if(empty($_POST['phone']) || empty($_POST['rescue_center']) || empty($_POST['amount'])){
     echo "fail";
