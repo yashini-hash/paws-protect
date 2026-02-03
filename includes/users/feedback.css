@@ -1,0 +1,195 @@
+body{
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background:#FFF8E7;
+    margin:0;
+    margin-left:120px;
+    padding:50px;
+}
+
+
+.container{
+    display:flex;
+    gap:40px;
+    max-width:1200px;
+    margin:60px auto;
+    flex-wrap:wrap;
+}
+
+
+.card{
+     
+   background:#ddbc8b;
+    border-radius:14px;
+    padding:30px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.08);
+}
+
+.left-card{ 
+    margin-left:320px;
+    width:580px; }
+.right-card{ width:250px; }
+
+
+h2{
+    text-align:center;
+     color: #3e2c1c;
+    margin-bottom:20px;
+}
+
+
+label{
+    font-weight:600;
+    display:block;
+    margin-top:15px;
+}
+
+select, textarea, button{
+    width:100%;
+    padding:12px;
+    margin-top:8px;
+    border-radius:8px;
+    border:1px solid #ddd;
+    font-size:15px;
+}
+
+textarea{
+    height:110px;
+    resize:none;
+}
+
+button{
+    margin-top:20px;
+     background: #5C3A21;
+    color:white;
+    border:none;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    background:#9d6e4c;
+}
+
+
+.stars{
+    display:flex;
+    flex-direction:row-reverse;
+    justify-content:flex-start;
+    gap:5px;
+    margin-top:8px;
+}
+
+.stars input{ display:none; }
+
+.stars label{
+    font-size:28px;
+    color:#ccc;
+    cursor:pointer;
+}
+
+.stars input:checked ~ label,
+.stars label:hover,
+.stars label:hover ~ label{
+    color:yellow;
+}
+
+
+.success{
+    background:#e6f7ec;
+    color:#218838;
+    padding:10px;
+    border-radius:6px;
+    text-align:center;
+    margin-bottom:15px;
+}
+
+.error{
+    background:#fdecea;
+    color:#c82333;
+    padding:10px;
+    border-radius:6px;
+    text-align:center;
+    margin-bottom:15px;
+}
+
+
+.feedback-item{
+    padding:15px 0;
+    border-bottom:1px solid #eee;
+}
+
+.feedback-item:last-child{
+    border-bottom:none;
+}
+
+.center{
+    font-weight:600;
+    color:#444;
+}
+
+.star-view{
+    color:gold;
+}
+
+.date{
+    font-size:12px;
+    color:#888;
+    margin-top:4px;
+}
+ .page-title {
+            text-align: center;
+            color: #5C3A21;
+            font-size:30px;
+            margin: 30px 0 15px;
+        }
+
+
+@media (max-width: 1000px) {
+    body {
+        margin-left: 0;
+        padding: 20px;
+    }
+
+    .container {
+        flex-direction: column;
+        gap: 20px;
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 0 10px;
+    }
+
+    .left-card,
+    .right-card {
+        width: 100% !important;
+        margin-left: 0 !important;
+        padding: 20px;
+    }
+
+    h2 {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+
+    label, select, textarea, button {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    textarea {
+        height: 90px;
+    }
+
+    .stars label {
+        font-size: 22px;
+    }
+
+    .feedback-item p {
+        font-size: 14px;
+    }
+
+    .page-title {
+        font-size: 26px;
+        margin: 20px 0 15px;
+    }
+}

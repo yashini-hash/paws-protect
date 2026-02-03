@@ -65,70 +65,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 <html>
 <head>
 <title>Report Lost Animal</title>
-<style>
-* { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
-body {  background:#FFF8E7; }
+        <link rel="stylesheet" href="report.css">
 
-.main-container { margin-left:260px; padding:40px; }
-
-.details-card {
-    background:#fff; border-radius:20px; box-shadow:0 8px 25px rgba(0,0,0,0.15);
-    padding:35px; max-width:900px; margin:auto;
-}
-
-.section-title {
-    font-size:22px; font-weight:600; color:#4b2e1e;
-    margin:20px 0; border-bottom:2px solid #f2d6b3; padding-bottom:5px;
-}
-
-input, select {
-    width:100%; padding:12px; margin:10px 0 20px; border-radius:12px;
-    border:1px solid #d6c2ae; font-size:15px;
-}
-
-.submit-btn {
-    background: #5C3A21; color:white; padding:12px 25px;
-    font-size:17px; border:none; border-radius:12px; cursor:pointer; width:100%; transition:0.3s;
-}
-.submit-btn:hover { background:#9d6e4c; transform:scale(1.03); }
-
-.alert { padding:12px; border-radius:10px; margin-bottom:20px; font-weight:500; }
-.alert-success { background:#d4edda; color:#155724; }
-.alert-error { background:#f8d7da; color:#721c24; }
-@media (max-width: 768px) {
- 
-        body {
-        padding: 20px;
-        margin-left: 0;
-    }
-    
-    .main-container {
-        margin-left: 10px;
-        padding: 20px;
-    }
-
-    .details-card {
-        padding: 20px;
-        width: 95%;
-    }
-
-    input, select, .submit-btn {
-        font-size: 14px;
-        padding: 10px;
-    }
-
-    .section-title {
-        font-size: 18px;
-        margin: 15px 0;
-    }
-
-    h1 {
-        font-size: 24px;
-    }
-}
-
-
-</style>
 </head>
 <body>
 
