@@ -136,7 +136,10 @@
   </div>
 </section>
 
-
+<div class="video-background">
+  
+    <video src="includes/video/adoptme.mp4" autoplay muted loop playsinline disablepictureinpicture></video>
+</div>
 
  <footer class="footer">
   <div class="footer-container">
