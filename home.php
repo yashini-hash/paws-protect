@@ -127,6 +127,11 @@
   </div>
 </section>
 
+<h2 class="video-title">Adopt us</h2>
+<div class="video-background">
+    <video src="includes/video/adoptme.mp4" autoplay muted loop playsinline disablepictureinpicture></video>
+</div>
+
 <section class="rescue-centres">
   <h2>Our Rescue Centres Across Sri Lanka 🇱🇰</h2>
   <p>We work across the island to rescue, protect, and care for animals in need.</p>
@@ -136,10 +141,7 @@
   </div>
 </section>
 
-<div class="video-background">
-  
-    <video src="includes/video/adoptme.mp4" autoplay muted loop playsinline disablepictureinpicture></video>
-</div>
+
 
  <footer class="footer">
   <div class="footer-container">
