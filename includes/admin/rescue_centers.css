@@ -1,0 +1,156 @@
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #FFF8E7;
+    padding: 15px 20px;
+    color: #5C3A21;
+}
+
+.main {
+    margin-left: 260px;  
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.page-card {
+    background: #ddbc8b;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+
+    width: 100%;
+    max-width: 1100px;  
+    margin: 0 auto;  }  
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.page-header h2 {
+    color: #5C3A21;
+    font-size: 26px;
+    font-weight: 700;
+}
+
+.search-box input {
+    padding: 12px 16px;
+    border-radius: 14px;
+    border: 1px solid #5C3A21;
+    font-size: 14px;
+    max-width: 300px;
+}
+
+.collapsible {
+    background: #5C3A21;
+    color: #FFF8E7;
+    cursor: pointer;
+    padding: 14px 20px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    font-size: 17px;
+    border-radius: 14px;
+    margin: 18px 0 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.collapsible:after {
+    content: '+';
+    font-size: 22px;
+}
+
+.collapsible.active:after {
+    content: '−';
+}
+
+.content {
+    display: none;
+    border-radius: 14px;
+}
+
+.rescue-table {
+    width: 100%;
+    margin: 0 auto;  
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+
+.rescue-table thead th {
+    background: #5C3A21;
+    color: #FFF8E7;
+    padding: 16px;
+    font-size: 13px;
+    text-transform: uppercase;
+    border-right: 1px solid rgba(255,255,255,0.3);
+}
+
+.rescue-table thead th:last-child {
+    border-right: none;
+}
+
+.rescue-table tbody td {
+    padding: 16px;
+    font-size: 14px;
+    border-bottom: 1px solid #eee;
+}
+
+.rescue-table tbody tr:nth-child(even) {
+    background: #FFF3E2;
+}
+
+.rescue-table tbody tr:hover {
+    background: #F1E0C8;
+}
+
+.status-btn {
+    padding: 8px 14px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 13px;
+}
+
+.btn-active {
+    background: #2ea44a;
+    color: #fff;
+}
+
+.btn-inactive {
+    background: #c94c4c;
+    color: #fff;
+}
+
+.btn-approve {
+    background: #278899;
+    color: #fff;
+}
+
+.no-data {
+    text-align: center;
+    padding: 20px;
+    color: #5C3A21;
+    font-weight: 600;
+}
+
+@media (max-width: 900px) {
+    .main {
+        margin-left: 0;
+        padding: 15px;
+    }
+
+    .page-card {
+        max-width: 100%;
+    }
+}

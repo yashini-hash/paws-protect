@@ -5,22 +5,17 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 
 include("../page/dbconnect.php");
 
-// ---------------- Current page ----------------
 $current_page = basename($_SERVER['PHP_SELF']);
 
-// Rescue Centers submenu
 $rescue_pages = ['rescue_centers.php','rescue_new.php'];
 $open_rescue_menu = in_array($current_page, $rescue_pages) ? 'block' : 'none';
 
-// Rescue Requests submenu
 $request_pages = ['all_request.php','pending_rescue.php','inprogress_rescue.php','complete_rescue.php'];
 $open_request_menu = in_array($current_page, $request_pages) ? 'block' : 'none';
 
-// Lost Animals submenu
 $lost_pages = ['lost_animals.php','found_animals.php'];
 $open_lost_menu = in_array($current_page, $lost_pages) ? 'block' : 'none';
 
-// Adoptions submenu ✅ FIXED
 $adoptanimal_pages = [
     'view_all_adopt.php',
     'pending_adopt.php',
@@ -29,7 +24,6 @@ $adoptanimal_pages = [
 ];
 $open_adopt_menu = in_array($current_page, $adoptanimal_pages) ? 'block' : 'none';
 
-// ---------------- Admin Info ----------------
 $admin_name = "Admin";
 $admin_logo = "/paws&protect/includes/uploads/profiles/default.png";
 
@@ -79,7 +73,6 @@ if (isset($_SESSION['admin_id'])) {
             <a href="users.php"><i class="fa-solid fa-users"></i> Users</a>
         </li>
 
-        <!-- Rescue Centers -->
         <li class="has-submenu <?= in_array($current_page,$rescue_pages)?'active':'' ?>" id="rescueCenterBtn">
             <a href="#"><i class="fa-solid fa-hospital"></i> Rescue Centers</a>
             <ul class="submenu" id="rescueCenterMenu" style="display: <?= $open_rescue_menu ?>;">
@@ -88,7 +81,6 @@ if (isset($_SESSION['admin_id'])) {
             </ul>
         </li>
 
-        <!-- Rescue Requests -->
         <li class="has-submenu <?= in_array($current_page,$request_pages)?'active':'' ?>" id="rescueRequestBtn">
             <a href="#"><i class="fa-solid fa-truck-medical"></i> Rescue Requests</a>
             <ul class="submenu" id="rescueRequestMenu" style="display: <?= $open_request_menu ?>;">
@@ -103,7 +95,6 @@ if (isset($_SESSION['admin_id'])) {
             <a href="animals.php"><i class="fa-solid fa-paw"></i> Animals</a>
         </li>
 
-        <!-- Lost Animals -->
         <li class="has-submenu <?= in_array($current_page,$lost_pages)?'active':'' ?>" id="lostBtn">
             <a href="#"><i class="fa-solid fa-dog"></i> Lost Animals</a>
             <ul class="submenu" id="lostMenu" style="display: <?= $open_lost_menu ?>;">
@@ -112,7 +103,6 @@ if (isset($_SESSION['admin_id'])) {
             </ul>
         </li>
 
-        <!-- Adoptions ✅ FIXED -->
         <li class="has-submenu <?= in_array($current_page,$adoptanimal_pages)?'active':'' ?>" id="adoptBtn">
             <a href="#"><i class="fa-solid fa-heart"></i> Adoptions</a>
             <ul class="submenu" id="adoptanimalMenu" style="display: <?= $open_adopt_menu ?>;">
