@@ -1,8 +1,18 @@
 <?php
-if (session_status() !== PHP_SESSION_ACTIVE) {
+if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
+if (
+    empty($_SESSION['user_id']) ||
+    empty($_SESSION['role']) ||
+    $_SESSION['role'] !== 'rescuecenter'
+) {
+    session_unset();
+    session_destroy();
+    header("Location: /paws&protect/includes/page/login.php");
+    exit();
+}
 include("../page/dbconnect.php");
 
 // ---------------- Current page ----------------

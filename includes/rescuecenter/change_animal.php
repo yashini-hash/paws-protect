@@ -2,7 +2,20 @@
 session_start();
 include("sidebar.php");
 include("../page/dbconnect.php");
-if(!isset($_SESSION['rescue_center_id'])) exit("Unauthorized");
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+if (
+    empty($_SESSION['user_id']) ||
+    empty($_SESSION['role']) ||
+    $_SESSION['role'] !== 'rescuecenter'
+) {
+    session_unset();
+    session_destroy();
+    header("Location: /paws&protect/includes/page/login.php");
+    exit();
+}
 
 $rescue_center_id = $_SESSION['rescue_center_id'];
 $id = intval($_GET['id'] ?? 0);

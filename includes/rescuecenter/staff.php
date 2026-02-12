@@ -3,9 +3,19 @@ session_start();
 include("sidebar.php");
 include("../page/dbconnect.php");
 
-// Check if rescue center is logged in
-if (!isset($_SESSION['rescue_center_id'])) {
-    die("❌ Rescue center not logged in.");
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+if (
+    empty($_SESSION['user_id']) ||
+    empty($_SESSION['role']) ||
+    $_SESSION['role'] !== 'rescuecenter'
+) {
+    session_unset();
+    session_destroy();
+    header("Location: /paws&protect/includes/page/login.php");
+    exit();
 }
 
 $rescue_center_id = (int) $_SESSION['rescue_center_id'];
@@ -13,7 +23,6 @@ $rescue_center_id = (int) $_SESSION['rescue_center_id'];
 $error = '';
 $success = '';
 
-/* -------------------- HANDLE ADD STAFF -------------------- */
 if (isset($_POST['add_staff'])) {
     $name  = trim($_POST['name']);
     $email = trim($_POST['email']);
@@ -33,7 +42,6 @@ if (isset($_POST['add_staff'])) {
     }
 }
 
-/* -------------------- HANDLE DELETE STAFF -------------------- */
 if (isset($_GET['delete'])) {
     $staff_id = (int) $_GET['delete'];
     $stmt = $conn->prepare("DELETE FROM staff WHERE staff_id = ? AND rescue_center_id = ?");
@@ -46,7 +54,6 @@ if (isset($_GET['delete'])) {
     $stmt->close();
 }
 
-/* -------------------- HANDLE TOGGLE STATUS -------------------- */
 if (isset($_GET['toggle'])) {
     $staff_id = (int) $_GET['toggle'];
     $current = $_GET['status'] === 'active' ? 'inactive' : 'active';
@@ -60,7 +67,6 @@ if (isset($_GET['toggle'])) {
     $stmt->close();
 }
 
-/* -------------------- HANDLE EDIT STAFF -------------------- */
 if (isset($_POST['edit_staff'])) {
     $staff_id = (int) $_POST['staff_id'];
     $name     = trim($_POST['name']);
@@ -81,7 +87,6 @@ if (isset($_POST['edit_staff'])) {
     }
 }
 
-/* -------------------- FETCH ALL STAFF -------------------- */
 $staffResult = $conn->prepare("SELECT * FROM staff WHERE rescue_center_id = ? ORDER BY staff_id DESC");
 $staffResult->bind_param("i", $rescue_center_id);
 $staffResult->execute();

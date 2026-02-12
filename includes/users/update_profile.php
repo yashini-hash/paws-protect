@@ -2,6 +2,21 @@
 session_start();
 include("sidebar.php"); 
 include("../page/dbconnect.php");
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+if (
+    empty($_SESSION['user_id']) ||
+    empty($_SESSION['role']) ||
+    $_SESSION['role'] !== 'user'
+) {
+    session_unset();
+    session_destroy();
+    header("Location: /paws&protect/includes/page/login.php");
+    exit();
+}
+
 
 $user_id = $_SESSION['user_id'];
 

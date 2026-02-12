@@ -3,14 +3,20 @@ session_start();
 include("sidebar.php"); 
 include("../page/dbconnect.php");
 
-if (!isset($_SESSION['rescue_center_id'])) {
-    echo "<p style='color:red;text-align:center;'>Unauthorized Access</p>";
-    exit;
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
 }
 
-$rescue_center_id = $_SESSION['rescue_center_id'];
-$successMsg = "";
-$errorMsg = "";
+if (
+    empty($_SESSION['user_id']) ||
+    empty($_SESSION['role']) ||
+    $_SESSION['role'] !== 'rescuecenter'
+) {
+    session_unset();
+    session_destroy();
+    header("Location: /paws&protect/includes/page/login.php");
+    exit();
+}
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

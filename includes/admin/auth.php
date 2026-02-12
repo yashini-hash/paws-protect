@@ -10,6 +10,6 @@ if (
 ) {
     session_unset();
     session_destroy();
-    header("Location: /paws&protect/login.php");
+    header("Location: /paws&protect/includes/page/login.php");
     exit();
 }

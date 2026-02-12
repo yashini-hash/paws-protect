@@ -9,8 +9,19 @@ require '../../PHPMailer-master/src/Exception.php';
 require '../../PHPMailer-master/src/PHPMailer.php';
 require '../../PHPMailer-master/src/SMTP.php';
 
-if (!isset($_SESSION['rescue_center_id'])) {
-    exit("Unauthorized");
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+if (
+    empty($_SESSION['user_id']) ||
+    empty($_SESSION['role']) ||
+    $_SESSION['role'] !== 'rescuecenter'
+) {
+    session_unset();
+    session_destroy();
+    header("Location: /paws&protect/includes/page/login.php");
+    exit();
 }
 
 if (!isset($_POST['lost_id'], $_POST['status'])) {

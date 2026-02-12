@@ -3,8 +3,19 @@ session_start();
 include("sidebar.php");
 include("../page/dbconnect.php");
 
-if (!isset($_SESSION['rescue_center_id'])) {
-    die("❌ Rescue center not logged in.");
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+if (
+    empty($_SESSION['user_id']) ||
+    empty($_SESSION['role']) ||
+    $_SESSION['role'] !== 'rescuecenter'
+) {
+    session_unset();
+    session_destroy();
+    header("Location: /paws&protect/includes/page/login.php");
+    exit();
 }
 
 $rescue_center_id = (int) $_SESSION['rescue_center_id'];

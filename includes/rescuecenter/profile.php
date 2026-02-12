@@ -5,8 +5,18 @@ include("../page/dbconnect.php");
 
 $msg = "";
 
-if (!isset($_SESSION['rescue_center_id'])) {
-    header("Location: login.php");
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+if (
+    empty($_SESSION['user_id']) ||
+    empty($_SESSION['role']) ||
+    $_SESSION['role'] !== 'rescuecenter'
+) {
+    session_unset();
+    session_destroy();
+    header("Location: /paws&protect/includes/page/login.php");
     exit();
 }
 
