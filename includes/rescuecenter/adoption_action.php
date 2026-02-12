@@ -21,7 +21,6 @@ if ($request_id === 0 || !in_array($action, ['approve', 'reject'])) {
     exit("Invalid request");
 }
 
-// Fetch animal_id related to this request
 $stmtAnimal = $conn->prepare(
     "SELECT animal_id 
      FROM adopt_requests 
@@ -40,7 +39,6 @@ $animal_id = $animalRow['animal_id'];
 
 $status = ($action === 'approve') ? 'Approved' : 'Rejected';
 
-// Update request status
 $stmt = $conn->prepare(
     "UPDATE adopt_requests SET status=? WHERE request_id=? AND rescue_center_id=?"
 );
@@ -48,7 +46,6 @@ $stmt->bind_param("sii", $status, $request_id, $rescue_center_id);
 
 if ($stmt->execute()) {
 
-    // Update animal adoption_status
     $animalStatus = ($action === 'approve') ? 'not_available' : 'available';
     $stmtUpdateAnimal = $conn->prepare(
         "UPDATE animals_details SET adoption_status=? WHERE animal_id=?"
@@ -56,7 +53,6 @@ if ($stmt->execute()) {
     $stmtUpdateAnimal->bind_param("si", $animalStatus, $animal_id);
     $stmtUpdateAnimal->execute();
 
-    // Get user info for email
     $stmtUser = $conn->prepare("
         SELECT u.email, u.name, a.name AS animal_name, a.type AS animal_type
         FROM adopt_requests ar
@@ -78,7 +74,6 @@ if ($stmt->execute()) {
         if (!empty($toEmail)) {
             $mail = new PHPMailer(true);
             try {
-                // Check if SMTP can be used, otherwise fallback to mail()
                 $mail->isSMTP();
                 $mail->Host       = 'smtp.gmail.com';
                 $mail->SMTPAuth   = true;
@@ -112,11 +107,9 @@ You can explore other animals available for adoption.
 — The Paws & Protect Team";
                 }
 
-                // Try sending email
                 $mail->send();
                 echo "Request has been $status, animal status updated, and email sent.";
             } catch (Exception $e) {
-                // Fallback: PHP mail() in case SMTP fails
                 try {
                     $mailFallback = new PHPMailer(true);
                     $mailFallback->isMail();

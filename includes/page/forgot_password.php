@@ -9,7 +9,7 @@ require '../../PHPMailer-master/src/Exception.php';
 require '../../PHPMailer-master/src/PHPMailer.php';
 require '../../PHPMailer-master/src/SMTP.php';
 
-date_default_timezone_set("Asia/Colombo"); // or your timezone
+date_default_timezone_set("Asia/Colombo"); 
 
 $success = "";
 $error = "";
@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $email = $_POST['email'];
 
-    // Check if email exists
+  
     $sql = "SELECT * FROM users WHERE email = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $email);
@@ -29,37 +29,36 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         $user = $result->fetch_assoc();
 
-        // Generate a unique token
+       
         $token = bin2hex(random_bytes(50));
-        $expires = date("Y-m-d H:i:s", strtotime("+1 hour")); // token valid for 1 hour
-
-        // Store token in database
+        $expires = date("Y-m-d H:i:s", strtotime("+1 hour")); 
+       
         $sql2 = "UPDATE users SET reset_token = ?, reset_expires = ? WHERE email = ?";
         $stmt2 = $conn->prepare($sql2);
         $stmt2->bind_param("sss", $token, $expires, $email);
         $stmt2->execute();
 
-        // Create the reset link
+       
         $reset_link = "http://localhost/paws&protect/includes/page/forgot_password_reset.php?token=$token";
 
-        // Send reset link via PHPMailer
+       
         $mail = new PHPMailer(true);
 
         try {
-            //Server settings
+           
             $mail->isSMTP();
             $mail->Host       = 'smtp.gmail.com';
             $mail->SMTPAuth   = true;
-            $mail->Username   = 'animalcarelove01@gmail.com'; // your Gmail
-            $mail->Password   = 'ncufnnhhoezkbkcp';           // Gmail App Password
+            $mail->Username   = 'animalcarelove01@gmail.com'; 
+            $mail->Password   = 'ncufnnhhoezkbkcp';           
             $mail->SMTPSecure = 'tls';
             $mail->Port       = 587;
 
-            //Recipients
+           
             $mail->setFrom('animalcarelove01@gmail.com', 'Paws & Protect');
-            $mail->addAddress($email, $user['name']); // user email + optional name
+            $mail->addAddress($email, $user['name']); 
 
-            //Content
+           
             $mail->isHTML(false);
             $mail->Subject = 'Password Reset Request';
             $mail->Body    = "Hi, click the link below to reset your password:\n\n$reset_link\n\nThis link expires in 1 hour.";

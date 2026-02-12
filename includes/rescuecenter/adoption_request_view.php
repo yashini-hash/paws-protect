@@ -3,7 +3,6 @@ session_start();
 include("sidebar.php");
 include("../page/dbconnect.php");
 
-// Check login
 if (!isset($_SESSION['rescue_center_id'])) {
     echo "<p style='color:red;text-align:center;'>Unauthorized Access</p>";
     exit;
@@ -17,7 +16,6 @@ if ($request_id == 0) {
     exit;
 }
 
-// Fetch full adoption request details
 $sql = "
     SELECT 
         ar.request_id, ar.status, ar.request_date,
@@ -42,7 +40,6 @@ if (!$data) {
     exit;
 }
 
-// Fetch previously adopted animals by this user (excluding current request)
 $historySql = "
     SELECT a.name, a.type, a.breed, a.age, a.animal_image, ar.status, ar.request_date
     FROM adopt_requests ar
@@ -60,189 +57,7 @@ $adoptionHistory = $historyStmt->get_result();
 <html>
 <head>
 <title>Adoption Request Details</title>
-<style>
-/* Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
-body {
-    background: #f4f1ed;
-}
-
-/* Main container */
-.main-container {
-    margin-left: 260px; /* sidebar width */
-    padding: 40px;
-}
-
-/* Card */
-.details-card {
-    background: #ffffff;
-    border-radius: 20px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-    padding: 35px;
-    max-width: 1500px;
-    margin: auto;
-    transition: transform 0.3s ease;
-}
-.details-card:hover {
-    transform: translateY(-5px);
-}
-
-/* Section titles */
-.section-title {
-    font-size: 22px;
-    font-weight: 600;
-    color: #4b2e1e;
-    margin: 25px 0 15px 0;
-    border-bottom: 2px solid #f2d6b3;
-    padding-bottom: 5px;
-}
-
-/* Info box */
-.info-box {
-    background: #fef8f2;
-    padding: 15px 20px;
-    border-radius: 12px;
-    margin-bottom: 12px;
-    font-size: 16px;
-    color: #333;
-}
-
-/* Two-column layout */
-.two-column {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-}
-
-/* Left image box */
-.left-box {
-    flex: 1 1 350px;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-}
-
-/* Big animal image */
-.animal-img-big {
-    margin-top:50px;
-    width: 100%;
-    max-width: 460px;
-    height: 600px;
-    object-fit: cover;
-    border-radius: 20px;
-    border: 5px solid #e6c9a8;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-}
-
-/* Right details */
-.right-box {
-    flex: 2 1 300px;
-}
-
-/* Buttons */
-.button-group {
-    text-align: center;
-    margin-top: 30px;
-}
-
-.action-btn {
-    padding: 12px 25px;
-    border-radius: 12px;
-    border: none;
-    font-size: 16px;
-    cursor: pointer;
-    margin: 0 10px;
-    color: white;
-    font-weight: 500;
-    transition: all 0.3s ease;
-}
-.btn-approve { background: #28a745; }
-.btn-approve:hover { background: #218838; transform: scale(1.05); }
-.btn-reject { background: #dc3545; }
-.btn-reject:hover { background: #c82333; transform: scale(1.05); }
-.btn-back { background: #6c4f3d; }
-.btn-back:hover { background: #5c4033; transform: scale(1.05); }
-
-/* Previous adoption cards */
-.prev-adoptions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    margin-top: 15px;
-}
-.prev-card {
-    background: #fef8f2;
-    border-radius: 12px;
-    padding: 10px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex: 1 1 250px;
-}
-.prev-card img {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-    border-radius: 10px;
-    border: 2px solid #e6c9a8;
-}
-
-/* ===================== TABLET ===================== */
-@media (max-width: 1024px) {
-    .main-container {
-        margin-left: 0;
-        padding: 25px;
-    }
-
-    .two-column {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .animal-img-big {
-        height: 500px;
-    }
-
-    .right-box {
-        width: 100%;
-    }
-}
-
-/* ===================== MOBILE ===================== */
-@media (max-width: 600px) {
-
-    .animal-img-big {
-        height: 360px;
-    }
-
-    .button-group {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-    }
-
-    .action-btn {
-        width: 100%;
-        font-size: 15px;
-    }
-
-    .prev-card {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .prev-card img {
-        width: 200px;
-        height: 200px;
-    }
-}
-
-</style>
+<link rel="stylesheet" href="adoption_request_view.css">
 </head>
 <body>
 
@@ -255,15 +70,12 @@ body {
 
         <div class="two-column">
 
-            <!-- LEFT COLUMN: IMAGE -->
             <div class="left-box">
                 <img src="../uploads/addanimal/<?= htmlspecialchars($data['animal_image']) ?>" class="animal-img-big" alt="Animal Image">
             </div>
 
-            <!-- RIGHT COLUMN: DETAILS -->
             <div class="right-box">
 
-                <!-- ANIMAL DETAILS -->
                 <div class="section-title">Animal Details</div>
 
                 <div class="info-box"><strong>Name:</strong> <?= htmlspecialchars($data['animal_name']) ?></div>
@@ -274,14 +86,12 @@ body {
                 <div class="info-box"><strong>Vaccination:</strong> <?= htmlspecialchars($data['vaccination']) ?></div>
                 <div class="info-box"><strong>Location:</strong> <?= htmlspecialchars($data['location']) ?></div>
 
-                <!-- USER DETAILS -->
                 <div class="section-title">User Details</div>
 
                 <div class="info-box"><strong>Name:</strong> <?= htmlspecialchars($data['user_name']) ?></div>
                 <div class="info-box"><strong>Email:</strong> <?= htmlspecialchars($data['user_email']) ?></div>
                 <div class="info-box"><strong>Phone:</strong> <?= htmlspecialchars($data['phone']) ?></div>
 
-                <!-- PREVIOUSLY ADOPTED ANIMALS -->
                 <div class="section-title">User Adoption History</div>
 
 <?php if($adoptionHistory->num_rows > 0): ?>
@@ -307,7 +117,6 @@ body {
 
         </div>
 
-        <!-- BUTTONS -->
         <div class="button-group">
             <button class="action-btn btn-approve" onclick="handleRequest(<?= $data['request_id'] ?>,'approve')">Approve</button>
             <button class="action-btn btn-reject" onclick="handleRequest(<?= $data['request_id'] ?>,'reject')">Reject</button>
@@ -317,7 +126,6 @@ body {
     </div>
 </div>
 
-<!-- Message box -->
 <div id="msg-box" style="
     position: fixed;
     top: 50%;
@@ -333,6 +141,7 @@ body {
     font-weight: 500;
     font-size: 16px;
     text-align: center;
+    cursor: pointer;
 "></div>
 
 <script>
@@ -348,24 +157,20 @@ function handleRequest(requestId, action) {
     xhr.send("request_id="+requestId+"&action="+action);
 }
 
-// Show small notification
 function showMessage(msg, action) {
     let box = document.getElementById("msg-box");
     box.innerText = msg;
     box.style.background = (action == 'approve') ? "#28a745" : "#dc3545";
-    box.style.opacity = 1;
     box.style.display = "block";
+    box.style.opacity = 1;
 
-    let fadeOut = setInterval(() => {
-        if (box.style.opacity > 0) {
-            box.style.opacity -= 0.05;
-        } else {
-            box.style.display = "none";
-            clearInterval(fadeOut);
-        }
-    }, 3000s);
+    
+    box.onclick = () => {
+        box.style.display = "none";
+    };
 }
 </script>
+
 
 </body>
 </html>

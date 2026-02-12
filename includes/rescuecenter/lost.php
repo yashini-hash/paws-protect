@@ -3,7 +3,6 @@ session_start();
 include("sidebar.php");
 include("../page/dbconnect.php");
 
-// Security check
 if (!isset($_SESSION['rescue_center_id'])) {
     echo "<p style='color:red;text-align:center;'>Unauthorized Access</p>";
     exit;
@@ -11,7 +10,6 @@ if (!isset($_SESSION['rescue_center_id'])) {
 
 $rescue_center_id = $_SESSION['rescue_center_id'];
 
-// Fetch rescue center district
 $query = "SELECT district FROM rescue_center WHERE rescue_center_id = ?";
 $stmt = $conn->prepare($query);
 $stmt->bind_param("i", $rescue_center_id);
@@ -19,7 +17,6 @@ $stmt->execute();
 $res = $stmt->get_result()->fetch_assoc();
 $center_district = $res['district'];
 
-// Fetch matching lost animals
 $sql = "SELECT * FROM lost_animals 
         WHERE lost_location LIKE CONCAT('%', ?, '%')
         ORDER BY lost_date DESC";
@@ -35,68 +32,7 @@ $lost_animals = $stmt->get_result();
 <head>
 <title>Lost Animals Nearby</title>
 
-<style>
-.main-container {
-    margin-left: 260px;
-    padding: 40px;
-   
-}
-
-.main-container h1{
-     text-align: center;
-    margin: 6px 0;
-    color: #3e2c1c;
-   
-}
-.card {
-     background: #ddbc8b;
-    border-radius: 16px;
-    padding: 20px;
-    width: 300px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    margin: 15px;
-    display: inline-block;
-    vertical-align: top;
-}
-.card:hover{
-     background: #9e6c40ff;
-    
-}
-
-.card img {
-    width: 100%;
-    height: 230px;
-    object-fit: cover;
-    border-radius: 12px;
-}
-
-.card h3 {
-    text-align: center;
-    margin: 6px 0;
-    color: #3e2c1c;
-    font-size: 30px;
-}
-
-.info {
-    font-size: 15px;
-    color: #333;
-    margin-top: 8px;
-}
-
-
-
-
-.empty {
-    text-align:center;
-    color:#777;
-    font-size:20px;
-    margin-top:30px;
-}
-.card-link {
-    text-decoration: none;
-    color: inherit;
-}
-</style>
+<link rel="stylesheet" href="lost.css">
 
 </head>
 <body>

@@ -43,7 +43,7 @@ if (isset($_SESSION['rescue_center_id'])) {
 <title>Rescue Center Dashboard</title>
 
 <link rel="icon" type="image/x-icon" href="/paws&protect/includes/image/paw.png" />
-<link rel="stylesheet" href="dashboardstyle.css">
+<link rel="stylesheet" href="sidebar.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
@@ -69,14 +69,18 @@ if (isset($_SESSION['rescue_center_id'])) {
             <a href="dashboard.php"><i class="fa-solid fa-home"></i> Dashboard</a>
         </li>
 
-        <li class="has-submenu <?= in_array($current_page,$animal_pages)?'active':'' ?>" id="animalBtn">
-            <a href="javascript:void(0);"><i class="fa-solid fa-paw"></i> Animal Management</a>
-            <ul class="submenu" id="animalSubMenu" style="display: <?= $open_animal_menu ?>;">
-                <li><a href="viewall.php">View All</a></li>
-                <li><a href="addanimal.php">Add New Animal</a></li>
-                <li><a href="updateanimal.php">Update & Delete</a></li>
-            </ul>
-        </li>
+        <li class="has-submenu <?= in_array($current_page,$animal_pages)?'active':'' ?>">
+    <a href="#" id="animalBtn">
+        <i class="fa-solid fa-paw"></i> Animal Management
+    </a>
+
+    <ul class="submenu" id="animalSubMenu" style="display: <?= $open_animal_menu ?>;">
+        <li><a href="viewall.php">View All</a></li>
+        <li><a href="addanimal.php">Add New Animal</a></li>
+        <li><a href="updateanimal.php">Update & Delete</a></li>
+    </ul>
+</li>
+
 
 
         <li class="<?= $current_page=='adoption.php'?'active':'' ?>">
@@ -115,30 +119,36 @@ if (isset($_SESSION['rescue_center_id'])) {
 <!-- ---------------- SCRIPT ---------------- -->
 <script>
 const animalBtn = document.getElementById("animalBtn");
+const animalSubMenu = document.getElementById("animalSubMenu");
 const hamburger = document.getElementById("hamburger");
 const sidebar = document.getElementById("sidebar");
 
 // Toggle submenu
-if (animalBtn) {
-    animalBtn.addEventListener("click", function () {
-        const subMenu = document.getElementById("animalSubMenu");
-        subMenu.style.display = (subMenu.style.display === "block") ? "none" : "block";
-    });
-}
+animalBtn.addEventListener("click", function (e) {
+    e.preventDefault();
+    e.stopPropagation(); // 🔥 KEY FIX
 
-// Toggle sidebar on mobile
-if (hamburger) {
-    hamburger.addEventListener("click", function () {
-        sidebar.classList.toggle("show");
-    });
-}
+    animalSubMenu.style.display =
+        animalSubMenu.style.display === "block" ? "none" : "block";
+});
 
-// Optional: close sidebar when clicking outside (mobile)
+// Toggle sidebar
+hamburger.addEventListener("click", function (e) {
+    e.stopPropagation();
+    sidebar.classList.toggle("show");
+});
+
+// Close sidebar only when clicking truly outside
 document.addEventListener("click", function(e){
-    if(window.innerWidth <= 768 && !sidebar.contains(e.target) && !hamburger.contains(e.target)){
+    if (
+        window.innerWidth <= 768 &&
+        !sidebar.contains(e.target) &&
+        !hamburger.contains(e.target)
+    ) {
         sidebar.classList.remove("show");
     }
 });
+
 </script>
 
 </body>
