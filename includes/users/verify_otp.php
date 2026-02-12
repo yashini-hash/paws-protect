@@ -2,6 +2,25 @@
 session_start();
 include("../page/dbconnect.php");
 
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+if (
+    empty($_SESSION['user_id']) ||
+    empty($_SESSION['role']) ||
+    $_SESSION['role'] !== 'user'
+) {
+    session_unset();
+    session_destroy();
+    header("Location: /paws&protect/includes/page/login.php");
+    exit();
+}
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
@@ -29,7 +48,7 @@ if(isset($_SESSION['otp']) && $enteredOTP == $_SESSION['otp']){
     $transaction_ref = uniqid('TRX_'); 
 
     if(empty($rescue) || empty($amount) || empty($phone)){
-        echo "Donation data is missing! ❌";
+        echo "Donation data is missing! ";
         exit;
     }
 
@@ -57,7 +76,7 @@ if(isset($_SESSION['otp']) && $enteredOTP == $_SESSION['otp']){
 
     if($stmt->execute()){
         unset($_SESSION['otp']); 
-        echo "OTP verified ✅ Payment successful!";
+        echo "OTP verified  Payment successful!";
 
         if($donor_email){
             $mail = new PHPMailer(true);
@@ -106,6 +125,6 @@ if(isset($_SESSION['otp']) && $enteredOTP == $_SESSION['otp']){
     }
 
 } else {
-    echo "Invalid OTP ❌";
+    echo "Invalid OTP ";
 }
 ?>

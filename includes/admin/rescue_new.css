@@ -1,0 +1,149 @@
+
+body{
+    font-family: Arial, sans-serif;
+    background:#FFF8E7;
+    color:#5C3A21;
+    margin:0;
+}
+
+.main {
+    margin-left: 260px;   
+    padding: 30px;
+    display: flex;
+    justify-content: center;  
+}
+
+
+
+.content-area{
+    background:#ddbc8b;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 8px 18px rgba(0,0,0,0.15);
+    width: 100%;
+    max-width: 1100px;   
+    margin: 0 auto;    
+}
+
+
+.content-area h2{
+    text-align:center;
+    margin-bottom:25px;
+    font-size:26px;
+    color:#5C3A21;
+}
+
+.rescue-table{
+    width:100%;
+    border-collapse:separate;
+    border-spacing:0;
+    border-radius:14px;
+    overflow:hidden;
+}
+
+.rescue-table thead th{
+    background:#5C3A21;
+    color:#FFF8E7;
+    padding:16px;
+    font-size:14px;
+    text-transform:uppercase;
+    border-right:1px solid rgba(255,255,255,0.35);
+}
+
+.rescue-table thead th:last-child{
+    border-right:none;
+}
+
+.rescue-table tbody td{
+    padding:16px;
+    font-size:15px;
+    border-bottom:1px solid #eee;
+}
+
+.rescue-table tbody tr:nth-child(even){
+    background:#FFF3E2;
+}
+
+.rescue-table tbody tr:hover{
+    background:#F1E0C8;
+}
+
+.approve-btn,
+.reject-btn{
+    padding:8px 14px;
+    border-radius:20px;
+    font-size:13px;
+    font-weight:600;
+    text-decoration:none;
+    display:inline-block;
+    margin:3px;
+    transition:0.3s;
+}
+
+.approve-btn{
+    background:#2ea44a;
+    color:#fff;
+}
+
+.approve-btn:hover{
+    background:#24923f;
+    transform:scale(1.05);
+}
+
+.reject-btn{
+    background:#c94c4c;
+    color:#fff;
+}
+
+.reject-btn:hover{
+    background:#b43c3c;
+    transform:scale(1.05);
+}
+
+.no-requests{
+    text-align:center;
+    padding:30px;
+    font-size:16px;
+    font-weight:600;
+    color:#5C3A21;
+}
+
+@media (min-width: 769px) and (max-width: 1024px){
+
+    .main{
+        margin-left: 220px;  
+        padding:20px;
+    }
+
+    .content-area{
+        padding:20px;
+    }
+
+    .rescue-table{
+        display:block;
+        overflow-x:auto;
+        white-space:nowrap;
+    }
+
+    .rescue-table thead th,
+    .rescue-table tbody td{
+        padding:12px;
+        font-size:14px;
+    }
+
+    .approve-btn,
+    .reject-btn{
+        font-size:12px;
+        padding:6px 10px;
+    }
+}
+   
+
+    .approve-btn,
+    .reject-btn{
+        font-size:12px;
+        padding:7px 12px;
+    }
+
+
+

@@ -3,10 +3,21 @@ session_start();
 include("../page/dbconnect.php");
 
 
-if (!isset($_SESSION['user_id'])) {
-    echo "<script>alert('Please login to adopt'); window.location='login.php';</script>";
-    exit;
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
 }
+
+if (
+    empty($_SESSION['user_id']) ||
+    empty($_SESSION['role']) ||
+    $_SESSION['role'] !== 'user'
+) {
+    session_unset();
+    session_destroy();
+    header("Location: /paws&protect/includes/page/login.php");
+    exit();
+}
+
 
 $user_id = $_SESSION['user_id'];
 $animal_id = $_GET['animal_id'] ?? 0;

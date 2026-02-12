@@ -177,7 +177,6 @@ header {
         transform: translateY(-3px);
     }
 
-/* Welcome Section */
 .welcome {
     
     padding: 60px 10%;
@@ -203,12 +202,7 @@ header {
         color: #5C3A21;
     }
 
-    .welcome em {
-        color: #FFA500; 
-        font-style: normal;
-        font-weight: 600;
-    }
-
+    
 
 .help {
     display: flex;
@@ -297,9 +291,25 @@ header {
     pointer-events: none; 
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1024px) and (min-width: 769px) {
     .help {
-        flex-direction: column;
+        flex-direction: row; 
+        height: 450px;       
+    }
+
+    .help-image img,
+    .help-text {
+        height: 100%; 
+    }
+
+    .help-text {
+        padding: 50px; 
+    }
+}
+
+@media (max-width: 768px) {
+    .help {
+        flex-direction: column; 
         height: auto;
     }
 
@@ -312,6 +322,7 @@ header {
         height: auto;
     }
 }
+
 
 .rescue-centres {
     text-align: center;
@@ -344,7 +355,41 @@ header {
     box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
+.video-title {
+    color: #5C3A21;
+    font-family: 'Brush Script MT', cursive;
+    font-size: 3rem;
+        font-weight: 700;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    text-align: center; 
+}
+.video-background {
+   margin: 0 auto;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 50%;
+    overflow: hidden;
+    z-index: -1;
+  margin-bottom: 20px;
+  margin-top: 20px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
+.video-background video {
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+    width: 100%;
+    height: auto;
+    max-height: 400px; 
+    display: block;
+}
+   
 
 .footer {
   background: #9d6e4c;     
@@ -374,16 +419,13 @@ color:#333;
 font-size: 20px;
 }
 
-.footer-section a :hover{
-    
-}
+
 
 .footer-logo {
   width: 180px;
   margin-bottom: 20px;
 }
 
-/* Titles with handwriting style */
 .left-footer-section h2,
 .right-footer-section h2 {
   font-family: 'Brush Script MT', cursive;
@@ -391,7 +433,6 @@ font-size: 20px;
 }
 
 
-/* ICON BUTTONS */
 .social-icons a {
  display: inline-block;
         width: 40px;
@@ -417,7 +458,6 @@ font-size: 20px;
 
 
 
-/* Responsive */
 @media (max-width: 768px) {
   .footer-section {
     width: 100%;

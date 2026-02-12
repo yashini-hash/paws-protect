@@ -1,6 +1,25 @@
 <?php
 session_start();
 include("../page/dbconnect.php");
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+if (
+    empty($_SESSION['user_id']) ||
+    empty($_SESSION['role']) ||
+    $_SESSION['role'] !== 'user'
+) {
+    session_unset();
+    session_destroy();
+    header("Location: /paws&protect/includes/page/login.php");
+    exit();
+}
+date_default_timezone_set('Asia/Colombo');
 
 if(empty($_POST['phone']) || empty($_POST['rescue_center']) || empty($_POST['amount'])){
     echo "fail";
@@ -31,8 +50,8 @@ if(substr($phone,0,1)=="0"){
 $otp = rand(100000,999999);
 $_SESSION['otp'] = $otp;
 
-$userId   = "30675";
-$apiKey   = "K6I5eWSGw73zpLirTDPi";
+$userId   = "30933";
+$apiKey   = "NQAoZfPFrRX1CVdxYxYL";
 $senderId = "NotifyDEMO";
 $message  = "Your OTP code is: $otp";
 

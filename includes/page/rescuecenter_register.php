@@ -13,14 +13,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($center_name && $address && $district && $contact_number && $email && $password) {
 
-        // Hash password
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-        // ✅ Start transaction for safety
         $conn->begin_transaction();
 
         try {
-            // ✅ Insert into rescue_center table (status inactive until admin approves)
             $sql1 = "INSERT INTO rescue_center 
                     (center_name, address, district, contact_number, email, password, status)
                     VALUES (?, ?, ?, ?, ?, ?, 'inactive')";
@@ -36,7 +33,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             );
             $stmt1->execute();
 
-            // ✅ Insert into users table with role = rescuecenter
             $sql2 = "INSERT INTO users (name, email, phone, password, role) 
                      VALUES (?, ?, ?, ?, 'rescuecenter')";
 
@@ -49,13 +45,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             );
             $stmt2->execute();
 
-            // ✅ Commit both inserts
             $conn->commit();
 
             $message = "✅ Registration submitted! Admin will approve your account via email.";
 
         } catch (Exception $e) {
-            // ❌ If any error → rollback
             $conn->rollback();
             $message = "❌ Registration failed: " . $e->getMessage();
         }

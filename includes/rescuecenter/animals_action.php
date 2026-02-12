@@ -2,14 +2,23 @@
 session_start();
 include("../page/dbconnect.php");
 
-if(!isset($_SESSION['rescue_center_id'])){
-    http_response_code(401);
-    exit("Unauthorized");
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+if (
+    empty($_SESSION['user_id']) ||
+    empty($_SESSION['role']) ||
+    $_SESSION['role'] !== 'rescuecenter'
+) {
+    session_unset();
+    session_destroy();
+    header("Location: /paws&protect/includes/page/login.php");
+    exit();
 }
 
 $rescue_center_id = $_SESSION['rescue_center_id'];
 
-/* ===== UPDATE ANIMAL ===== */
 if(isset($_POST['update_id'])){
 
     $id = intval($_POST['update_id']);
@@ -23,16 +32,14 @@ if(isset($_POST['update_id'])){
     $date = trim($_POST['rescue_date']);
     $status = trim($_POST['adoption_status']);
     $location = trim($_POST['location']);
-    $details = trim($_POST['details']); // ✅ NEW DETAILS FIELD
+    $details = trim($_POST['details']); 
 
-    // Get old image
     $oldQ = $conn->prepare("SELECT animal_image FROM animals_details WHERE animal_id=? AND rescue_center_id=?");
     $oldQ->bind_param("ii", $id, $rescue_center_id);
     $oldQ->execute();
     $oldImg = $oldQ->get_result()->fetch_assoc()['animal_image'];
     $newImage = $oldImg;
 
-    // Handle new image upload
     if(!empty($_FILES['animal_image']['name'])){
         $image_name = time() . "_" . basename($_FILES['animal_image']['name']);
         $targetPath = "../uploads/" . $image_name;
@@ -45,7 +52,6 @@ if(isset($_POST['update_id'])){
         }
 
         if(move_uploaded_file($_FILES['animal_image']['tmp_name'], $targetPath)){
-            // Delete old image
             if(!empty($oldImg) && file_exists("../uploads/".$oldImg)){
                 unlink("../uploads/".$oldImg);
             }
@@ -55,7 +61,6 @@ if(isset($_POST['update_id'])){
         }
     }
 
-    // Update query with details
     $stmt = $conn->prepare("
         UPDATE animals_details SET 
             name=?, type=?, breed=?, gender=?, age=?, health=?, vaccination=?, 

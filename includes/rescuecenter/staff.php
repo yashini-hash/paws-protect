@@ -3,9 +3,19 @@ session_start();
 include("sidebar.php");
 include("../page/dbconnect.php");
 
-// Check if rescue center is logged in
-if (!isset($_SESSION['rescue_center_id'])) {
-    die("❌ Rescue center not logged in.");
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+if (
+    empty($_SESSION['user_id']) ||
+    empty($_SESSION['role']) ||
+    $_SESSION['role'] !== 'rescuecenter'
+) {
+    session_unset();
+    session_destroy();
+    header("Location: /paws&protect/includes/page/login.php");
+    exit();
 }
 
 $rescue_center_id = (int) $_SESSION['rescue_center_id'];
@@ -13,7 +23,6 @@ $rescue_center_id = (int) $_SESSION['rescue_center_id'];
 $error = '';
 $success = '';
 
-/* -------------------- HANDLE ADD STAFF -------------------- */
 if (isset($_POST['add_staff'])) {
     $name  = trim($_POST['name']);
     $email = trim($_POST['email']);
@@ -33,7 +42,6 @@ if (isset($_POST['add_staff'])) {
     }
 }
 
-/* -------------------- HANDLE DELETE STAFF -------------------- */
 if (isset($_GET['delete'])) {
     $staff_id = (int) $_GET['delete'];
     $stmt = $conn->prepare("DELETE FROM staff WHERE staff_id = ? AND rescue_center_id = ?");
@@ -46,7 +54,6 @@ if (isset($_GET['delete'])) {
     $stmt->close();
 }
 
-/* -------------------- HANDLE TOGGLE STATUS -------------------- */
 if (isset($_GET['toggle'])) {
     $staff_id = (int) $_GET['toggle'];
     $current = $_GET['status'] === 'active' ? 'inactive' : 'active';
@@ -60,7 +67,6 @@ if (isset($_GET['toggle'])) {
     $stmt->close();
 }
 
-/* -------------------- HANDLE EDIT STAFF -------------------- */
 if (isset($_POST['edit_staff'])) {
     $staff_id = (int) $_POST['staff_id'];
     $name     = trim($_POST['name']);
@@ -81,7 +87,6 @@ if (isset($_POST['edit_staff'])) {
     }
 }
 
-/* -------------------- FETCH ALL STAFF -------------------- */
 $staffResult = $conn->prepare("SELECT * FROM staff WHERE rescue_center_id = ? ORDER BY staff_id DESC");
 $staffResult->bind_param("i", $rescue_center_id);
 $staffResult->execute();
@@ -93,29 +98,8 @@ $staffData = $staffResult->get_result();
 <head>
 <meta charset="UTF-8">
 <title>Manage Staff | Rescue Center</title>
-<style>
-body { font-family: Arial,sans-serif; background:#FFF8E7; margin-left:120px; padding:40px; }
-.container { max-width: 900px; margin:auto; background:white; padding:30px; border-radius:12px; box-shadow:0 4px 15px rgba(0,0,0,0.2); }
-h2 { text-align:center; margin-bottom:20px; }
+<link rel="stylesheet" href="staff.css">
 
-/* Messages */
-.success { background:#d4edda; color:#155724; padding:10px; border-radius:6px; text-align:center; margin-bottom:10px; }
-.error { background:#f8d7da; color:#721c24; padding:10px; border-radius:6px; text-align:center; margin-bottom:10px; }
-
-/* Form */
-input { width:100%; padding:10px; margin:10px 0; border-radius:6px; border:1px solid #ccc; }
-button { padding:10px 15px; border:none; border-radius:6px; background:#5C3A21; color:white; cursor:pointer; margin-top:5px; }
-button:hover { background:#9d6e4c; }
-
-/* Table */
-table { width:100%; border-collapse:collapse; margin-top:20px; }
-th,td { border:1px solid #ddd; padding:10px; text-align:left; }
-th { background:#5C3A21; color:white; }
-.status { padding:5px 12px; border-radius:12px; font-weight:bold; }
-.status.active { background:#d4edda; color:#155724; }
-.status.inactive { background:#f8d7da; color:#721c24; }
-a { text-decoration:none; margin-right:5px; }
-</style>
 </head>
 <body>
 

@@ -3,33 +3,37 @@ session_start();
 include("sidebar.php");
 include("../page/dbconnect.php");
 
-// Security check
-if (!isset($_SESSION['rescue_center_id'])) {
-    echo "<p style='color:red;text-align:center;'>Unauthorized Access</p>";
-    exit;
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
 }
 
-// Initialize message
+if (
+    empty($_SESSION['user_id']) ||
+    empty($_SESSION['role']) ||
+    $_SESSION['role'] !== 'rescuecenter'
+) {
+    session_unset();
+    session_destroy();
+    header("Location: /paws&protect/includes/page/login.php");
+    exit();
+}
+
 $message = "";
 
-/* ---------- HANDLE STATUS UPDATE ---------- */
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['lost_id'], $_POST['status'])) {
 
     $lost_id_post = intval($_POST['lost_id']);
     $status_post  = $_POST['status'];
 
-    // Only allow valid statuses
     if (in_array($status_post, ['found', 'notfound'])) {
         $stmt = $conn->prepare("UPDATE lost_animals SET status = ? WHERE lost_id = ?");
         $stmt->bind_param("si", $status_post, $lost_id_post);
         $stmt->execute();
 
-        // Set success message
         $message = "Status has been updated to <strong>" . ucfirst($status_post) . "</strong>!";
     }
 }
 
-/* ---------- FETCH DETAILS ---------- */
 if (!isset($_GET['lost_id'])) {
     echo "<p style='color:red;text-align:center;'>Invalid Request</p>";
     exit;
@@ -54,110 +58,14 @@ if (!$animal) {
 <html>
 <head>
 <title>Lost Animal Details</title>
+<link rel="stylesheet" href="lost_animal.css">
 
-<style>
-body {
-    background:#FFF8E7;
-    font-family: Arial, sans-serif;
-}
-
-.container {
-     margin-top:50px;
-    margin-left: 260px;
-    padding: 40px;
-}
-
-.wrapper {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    background: #f0d9b5;
-    padding: 25px;
-    border-radius: 20px;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-    max-width: 900px;
-    margin: auto;
-}
-
-.left img {
-    width: 400px;
-    height: 450px;
-    object-fit: cover;
-    border-radius: 16px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
-
-.right {
-    width: 450px;
-    padding: 10px;
-}
-
-.title {
-    font-size: 30px;
-    font-weight: bold;
-    color: #3e2c1c;
-    margin-bottom: 15px;
-    text-align: center;
-}
-
-.info-box {
-    background: #fff3e0;
-    padding: 18px;
-    border-radius: 14px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-}
-
-.info-box p {
-    font-size: 17px;
-    margin: 12px 0;
-    color: #3e2c1c;
-}
-
-strong {
-    color: #2b1b10;
-}
-
-.btn-area {
-    margin-top: 20px;
-    text-align: center;
-}
-
-.btn {
-    padding: 12px 25px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: 16px;
-    margin: 5px;
-    transition: 0.2s;
-}
-
-.found {
-    background: #4CAF50;
-    color: white;
-}
-
-.notfound {
-    background: #d32f2f;
-    color: white;
-}
-
-.back {
-    background: #3e2c1c;
-    color: white;
-}
-
-.btn:hover {
-    opacity: 0.85;
-}
-</style>
 
 </head>
 <body>
 
 <div class="container">
 
-    <!-- SUCCESS MESSAGE -->
     <?php if (isset($_GET['msg'])): ?>
         <div style="text-align:center; background:#4CAF50; color:white; padding:12px; margin-bottom:20px; border-radius:8px;">
             <?= htmlspecialchars($_GET['msg']) ?>
@@ -165,12 +73,10 @@ strong {
     <?php endif; ?>
 
     <div class="wrapper">
-        <!-- LEFT SIDE IMAGE -->
         <div class="left">
             <img src="../uploads/lost/<?= $animal['image'] ?>" alt="Lost Animal">
         </div>
 
-        <!-- RIGHT SIDE DETAILS -->
         <div class="right">
             <div class="title"><?= htmlspecialchars($animal['animal_type']) ?></div>
             <div class="info-box">

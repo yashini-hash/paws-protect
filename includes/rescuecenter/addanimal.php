@@ -3,14 +3,20 @@ session_start();
 include("sidebar.php"); 
 include("../page/dbconnect.php");
 
-if (!isset($_SESSION['rescue_center_id'])) {
-    echo "<p style='color:red;text-align:center;'>Unauthorized Access</p>";
-    exit;
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
 }
 
-$rescue_center_id = $_SESSION['rescue_center_id'];
-$successMsg = "";
-$errorMsg = "";
+if (
+    empty($_SESSION['user_id']) ||
+    empty($_SESSION['role']) ||
+    $_SESSION['role'] !== 'rescuecenter'
+) {
+    session_unset();
+    session_destroy();
+    header("Location: /paws&protect/includes/page/login.php");
+    exit();
+}
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -72,147 +78,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 
-<style>
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #FFF8E7;
-    padding:50px;
-    margin-left:120px;
-}
 
-.container {
-    width: 100%;
-    max-width: 650px;
-    background: white;
-    margin: 50px auto;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-}
-
-h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #5C3A21;
-}
-
-form {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-}
-
-input, select {
-    padding: 10px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    font-size: 15px;
-    width: 100%;
-}
-
-.full {
-    grid-column: 1 / 3;
-}
-
-button {
-    grid-column: 1 / 3;
-    padding: 12px;
-    background: #5C3A21;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-button:hover {
-    background:#9d6e4c;
-}
-
-
-.success-msg {
-    grid-column: 1 / 3;
-    background: #d4edda;
-    color: #155724;
-    padding: 12px;
-    border-radius: 6px;
-    text-align: center;
-    font-weight: bold;
-}
-
-.error-msg {
-    grid-column: 1 / 3;
-    background: #f8d7da;
-    color: #721c24;
-    padding: 12px;
-    border-radius: 6px;
-    text-align: center;
-    font-weight: bold;
-}
-
-textarea {
-    padding: 10px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    font-size: 15px;
-    width: 100%;
-    resize: vertical;
-}
-
-/* ================= MOBILE RESPONSIVE (≤768px) ================= */
-@media screen and (max-width: 768px) {
-
-    body {
-        margin-left: 0;          /* remove sidebar gap */
-        padding: 15px;
-    }
-
-    .container {
-        margin: 20px auto;
-        padding: 20px;
-        width: 100%;
-        max-width: 100%;
-        border-radius: 10px;
-    }
-
-    h2 {
-        font-size: 22px;
-    }
-
-    /* FORM → single column */
-    form {
-        grid-template-columns: 1fr;
-        gap: 12px;
-    }
-
-    .full {
-        grid-column: 1 / 2;
-    }
-
-    input,
-    select,
-    textarea {
-        font-size: 15px;
-        padding: 10px;
-    }
-
-    button {
-        grid-column: 1 / 2;
-        font-size: 16px;
-        padding: 12px;
-    }
-
-    .success-msg,
-    .error-msg {
-        grid-column: 1 / 2;
-        font-size: 14px;
-    }
-}
-
-
-</style>
-
+ <link rel="stylesheet" href="addanimal.css">
 <div class="container">
     <h2>Add New Animal</h2>
 

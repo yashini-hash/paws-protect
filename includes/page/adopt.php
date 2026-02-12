@@ -51,158 +51,55 @@ $animals = mysqli_fetch_all($result, MYSQLI_ASSOC);
 <title>Paws & Protect</title>
 
 <link rel="icon" type="image/x-icon" href="/paws&protect/includes/image/paw.png" />
-<link rel="stylesheet" href="com.css">
+<link rel="stylesheet" href="adopt.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-<style>
-/* CARD GRID */
-/* CARD GRID */
-.animal-grid {
-    margin-top: 40px;
-    max-width: 1300px; /* wide enough for 5 cards */
-    margin-left: auto;
-    margin-right: auto;
-    padding: 0 20px 50px;
-    display: grid;
-    grid-template-columns: repeat(5, 1fr); /* 5 cards per row */
-    gap: 20px;
-}
-
-/* CARD */
-.animal-card {
-    background: #5C3A21;
-    margin-top: 40px;
-       width: 250px;
-    padding: 15px;
-      border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 12px 30px rgba(0,0,0,0.12);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* IMAGE */
-.animal-card img {
-    width: 220px;
-            height: 220px;
-            object-fit: cover;
-            border-radius: 10px;
-           
-}
-/* CONTENT */
-.card-body {
-    padding: 12px 15px;
-}
-
-.card-body h3 {
-    margin: 0;
-    font-size: 18px;
-    color:  #d2a382ff;
-}
-
-.meta {
-    margin: 6px 0;
-    font-size: 13px;
-   color: white;
-}
-
-.tag {
-    display: inline-block;
-    background: #f1e7df;
-    color: #5C3A21;
-    padding: 4px 10px;
-    border-radius: 20px;
-    font-size: 12px;
-    margin-top: 5px;
-}
-
-.card-footer {
-    padding: 10px 15px 15px;
-}
-
-.details-btn {
-    display: block;
-    text-align: center;
-    padding: 10px;
-    border-radius: 12px;
-    background: #d2a382ff;
-    color: #5C3A21;
-    font-size: 14px;
-    font-weight: 600;
-    text-decoration: none;
-}
-
-.details-btn:hover {
-    background: #FFA500;
-}
-
-
-/* CARD */
-
-
-.animal-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 18px 40px rgba(0,0,0,0.18);
-}
-
-
-.meta i {
-    color: #9d6e4c;
-    margin-right: 6px;
-}
-
-.filter-bar {
-    max-width: 1300px;
-    margin: 30px auto 10px;
-    padding: 15px;
-    display: flex;
-    gap: 15px;
-    background: #f7f1ec;
-    border-radius: 15px;
-}
-
-.filter-bar select,
-.filter-bar input {
-    padding: 10px;
-    border-radius: 10px;
-    border: 1px solid #ccc;
-    font-size: 14px;
-    flex: 1;
-}
-
-.filter-bar button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 12px;
-    background: #5C3A21;
-    color: white;
-    font-size: 14px;
-    cursor: pointer;
-}
-
-.filter-bar button:hover {
-    background: #9d6e4c;
-}
 
 
 
-</style>
+
 </head>
 
 <body>
 
-<header>
-    <div class="logo">
-        <img src="/paws&protect/includes/image/paw.png">
+ <header>
+        <div class="logo">
+            <img src="/paws&protect/includes/image/paw.png" alt=" Logo">
+        </div>
+
+      
+        <nav class="nav-links">
+           <li><a href="/paws&protect/home.php" > HOME</a></li>
+           <li><a href="/paws&protect/includes/page/about.php">ABOUT</a></li>
+           <li><a href="adopt.php">ADOPT</a></li>
+           <li> <a href="rescue.php">RESCUE</a></li>
+           <li> <a href="donate.php">DONATE</a></li>
+            <li><a href="lost.php">LOST</a></li>
+            
+        </nav>
+
+        
+        <div class="menu-toggle" id="menu-toggle">
+            <i class="fa fa-bars"></i>
+        </div>
+    </header>
+
+   
+    <div class="mobile-nav" id="mobile-nav">
+        <a href="/paws&protect/home.php">HOME</a>
+            <a href="/paws&protect/includes/page/about.php">ABOUT</a>
+            <a href="adopt.php">ADOPT</a>
+            <a href="rescue.php">RESCUE</a>
+            <a href="donate.php">DONATE</a>
+            <a href="lost.php">LOST</a>
     </div>
-    <nav class="nav-links">
-        <li><a href="/paws&protect/home.php">HOME</a></li>
-        <li><a href="/paws&protect/includes/page/about.php">ABOUT</a></li>
-        <li><a href="adopt.php">ADOPT</a></li>
-        <li><a href="rescue.php">RESCUE</a></li>
-        <li><a href="donate.php">DONATE</a></li>
-        <li><a href="lost.php">LOST</a></li>
-    </nav>
-</header>
+
+    <script>
+ 
+    document.getElementById("menu-toggle").onclick = function() {
+      document.getElementById("mobile-nav").classList.toggle("active");
+    };
+    </script>
 
 <div class="hero">
     <img src="/paws&protect/includes/image/ad1.png">
@@ -264,7 +161,7 @@ $animals = mysqli_fetch_all($result, MYSQLI_ASSOC);
         </div>
     <?php } ?>
 <?php } else { ?>
-    <p style="text-align:center;">No animals available for adoption.</p>
+   <p class="center-message">No animals available for adoption.</p>
 <?php } ?>
 
 </section>

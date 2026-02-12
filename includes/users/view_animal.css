@@ -1,0 +1,172 @@
+        body {
+            background-color: #FFF8E7;
+            font-family: Arial, sans-serif;
+            padding: 50px;
+            margin-left: 120px;
+        }
+
+        .page-title {
+            text-align: center;
+            font-size: 30px;
+            color: #5C3A21;
+            margin: 30px 0 15px;
+        }
+
+        .filter-box {
+            max-width: 500px;
+            margin: 0 auto 25px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .filter-box select {
+            flex: 1;
+            padding: 8px;
+            border-radius: 6px;
+        }
+
+        .filter-box button {
+            padding: 8px 16px;
+            background: #5C3A21;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .filter-box button:hover {
+            background: #9d6e4c;
+        }
+
+        .card-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .animal-card {
+            background: #ddbc8b;
+            padding: 15px;
+            border-radius: 15px;
+            width: 250px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .animal-card img {
+            width: 220px;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 6px;
+        }
+
+        .animal-card h3 {
+            text-align: center;
+            margin: 6px 0;
+            color: #3e2c1c;
+            font-size: 25px;
+        }
+
+        .animal-card p {
+            margin: 4px 0;
+            color: #5c3a21;
+            font-size: 16px;
+        }
+
+        .status {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 6px 14px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .available {
+            background-color: #2ea44aff;
+            color: #fafafaff;
+        }
+
+        .adopted {
+            color: #d1ecf1;
+            background: #278899ff;
+        }
+
+        .not_available {
+            color: #f8d7da;
+            background: #e48891ff;
+        }
+
+        .adopt-btn {
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+            padding: 8px 0;
+            background: #28a745;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .adopt-btn.disabled {
+            background: #ccc;
+            pointer-events: none;
+        }
+
+        .no-data {
+            text-align: center;
+            color: red;
+            font-size: 18px;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 20px;
+                margin-left: 0;
+            }
+
+            .filter-box {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 10px;
+            }
+
+            .filter-box select,
+            .filter-box button {
+                width: 100%;
+            }
+
+            .card-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .animal-card {
+                width: 90%;
+                max-width: 400px;
+            }
+
+            .animal-card img {
+                width: 100%;
+                height: auto;
+            }
+
+            .animal-card h3 {
+                font-size: 22px;
+            }
+
+            .animal-card p {
+                font-size: 14px;
+            }
+
+            .adopt-btn {
+                padding: 10px 0;
+                font-size: 16px;
+            }
+        }
