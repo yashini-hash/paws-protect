@@ -1,0 +1,172 @@
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background-color:#FFF8E7;
+    color:#5C3A21;
+}
+
+.main{
+    margin-left:260px;
+    padding:50px 25px;
+    min-height:100vh;
+    transition:.3s;
+}
+
+.page-title{
+    text-align:center;
+    font-size:30px;
+    font-weight:700;
+    margin-bottom:30px;
+    color:#5C3A21;
+}
+
+.filter-box{
+    max-width:600px;
+    margin:0 auto 25px;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:12px;
+}
+
+.filter-box select,
+.filter-box input{
+    flex:1;
+    padding:8px 12px;
+    border-radius:6px;
+    border:1px solid #C68642;
+    background:#FFF8E7;
+    font-size:14px;
+}
+
+.filter-box button{
+    padding:8px 16px;
+    background:#5C3A21;
+    color:#fff;
+    border:none;
+    border-radius:6px;
+    font-weight:600;
+    cursor:pointer;
+}
+
+.filter-box button:hover{
+    background:#9d6e4c;
+}
+
+.card-grid{
+    display:flex;
+    flex-wrap:wrap;
+    gap:20px;
+    justify-content:center;
+    align-items:flex-start;
+}
+
+.lost-card {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;    
+    background:#ddbc8b;
+    padding:15px;
+    border-radius:15px;
+    width:250px;
+    box-shadow:0 4px 8px rgba(0,0,0,0.1);
+    transition:.3s;
+}
+.lost-card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 6px 12px rgba(0,0,0,0.2);
+}
+
+.lost-card img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+    border-radius:10px;
+    margin-bottom:6px;
+    border:3px solid #5C3A21;
+}
+
+.lost-card h3{
+    text-align:center;
+    margin:8px 0;
+    font-size:24px;
+    color:#3e2c1c;
+}
+
+.lost-details{
+    font-size:14px;
+    line-height:1.6;
+}
+
+.lost-details span{
+    font-weight:600;
+}
+
+
+.status {  
+    padding:6px 16px;
+    border-radius:14px;
+    font-size:13px;
+    font-weight:700;
+    color:#fff;
+    text-align:center;
+    width: fit-content;   
+    align-self: center;    
+}
+
+
+.found{
+    background:#2ea44a;      
+}
+
+
+
+.no-data{
+    text-align:center;
+    color:#c94c4c;
+    font-size:18px;
+    margin-top:40px;
+}
+
+@media(max-width:768px){
+    .main{
+        margin-left:0;
+        padding:20px;
+    }
+
+    .filter-box{
+        flex-direction:column;
+        align-items:stretch;
+    }
+
+    .filter-box select,
+    .filter-box input,
+    .filter-box button{
+        width:100%;
+    }
+
+    .card-grid{
+        flex-direction:column;
+        align-items:center;
+    }
+
+    .lost-card{
+        width:90%;
+        max-width:400px;
+    }
+
+    .lost-card img{
+        height:auto;
+    }
+
+    .lost-card h3{
+        font-size:22px;
+    }
+}
+
