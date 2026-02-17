@@ -167,8 +167,8 @@ body {
 @media screen and (min-width: 769px) and (max-width: 1024px) {
 
     body {
-        margin-left: 180px;
-
+        margin-left: 250px;
+         padding: 25px;
     }
 
     .page-title {

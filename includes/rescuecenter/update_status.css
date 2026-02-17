@@ -69,3 +69,67 @@ button:hover {
 .back-btn:hover {
     background-color: #bbb;
 }
+
+@media screen and (max-width: 768px) {
+
+    body {
+        padding: 20px;        
+    }
+
+    .container {
+        width: 100%;
+        max-width: 100%;
+        padding: 20px;
+        border-radius: 12px;
+    }
+
+    h2 {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+
+    label {
+        font-size: 14px;
+    }
+
+    input[type="text"],
+    select,
+    textarea {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    button,
+    .back-btn {
+        width: 100%;            
+        font-size: 15px;
+        margin-right: 0;
+    }
+
+    button {
+        margin-bottom: 10px;
+    }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+
+    body {
+        margin-left: 250px;
+        padding: 50px;  
+    }
+
+    .container {
+        max-width: 550px;
+        padding: 25px;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+
+    button,
+    .back-btn {
+        font-size: 14px;
+        padding: 10px 18px;
+    }
+}

@@ -158,10 +158,10 @@ tr:hover {
 
 
 @media screen and (min-width: 769px) and (max-width: 1024px) {
-
     body {
        
-        margin-left: 180px;
+        margin-left: 250px;
+        padding: 50px;
         background: #F3E7DA;
     }
 
@@ -191,7 +191,7 @@ tr:hover {
         margin-bottom: 18px;
         padding: 15px;
         border-radius: 12px;
-        background: #fff6e3;
+        background: #ddbc8b;
         box-shadow: 0 4px 10px rgba(0,0,0,0.08);
     }
 
@@ -212,8 +212,8 @@ tr:hover {
     }
 
     .action-btns a {
-        font-size: 11px;
-        padding: 5px 10px;
+        font-size: 15px;
+        padding: 5px 5px;
         margin-bottom: 5px;
     }
 
@@ -261,7 +261,7 @@ tr:hover {
         margin-bottom: 16px;
         padding: 12px;
         border-radius: 10px;
-        background: #fff6e3;
+        background: #ddbc8b;
         box-shadow: 0 3px 8px rgba(0,0,0,0.06);
     }
 
@@ -282,11 +282,13 @@ tr:hover {
     }
 
     .action-btns a {
-        font-size: 10px;
+        font-size: 15px;
         padding: 5px 8px;
         width: 48%;
         margin-bottom: 5px;
     }
+
+    
 
     .alert {
         font-size: 12px;

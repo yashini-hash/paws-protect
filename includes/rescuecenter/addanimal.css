@@ -86,7 +86,11 @@ textarea {
 }
 
 @media (max-width: 1024px) {
-    body { padding: 20px; margin-left: 220px; }
+   body {
+        margin-left: 250px;
+         padding: 25px;
+    }
+    
 }
 @media screen and (max-width: 768px) {
 

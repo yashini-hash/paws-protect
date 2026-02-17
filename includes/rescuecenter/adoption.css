@@ -185,7 +185,7 @@ table th:nth-child(5), table td:nth-child(5) { width: 15%; text-align:center; }
         background: #f5f0eb;
     }
 
-    /* Optional: slightly rounded for tablet, but keep horizontal layout */
+ 
     table tr {
         border-radius: 12px;
     }

@@ -80,3 +80,65 @@ th {
 a { 
     text-decoration:none;
      margin-right:5px; }
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    body {
+        margin-left: 250px;  
+        padding: 20px;
+    }
+
+    .container {
+        max-width: 90%;   
+        padding: 25px;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    input, button {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    table th, table td {
+        padding: 8px;
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        margin-left: 0;
+        padding: 15px;
+    }
+
+    .container {
+        max-width: 100%;
+        padding: 20px;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    input, button {
+        font-size: 13px;
+        padding: 8px;
+    }
+
+    table {
+        display: block;         
+        overflow-x: auto;
+    }
+
+    table th, table td {
+        padding: 6px;
+        font-size: 12px;
+    }
+
+    button {
+        width: 100%;            
+        margin-top: 10px;
+    }
+}

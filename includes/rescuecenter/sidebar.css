@@ -174,11 +174,11 @@ body {
 
 @media (max-width: 1024px) {
     .sidebar {
-        width: 250px;
+        width: 220px;
     }
 
     .main {
-        margin-left: 220px;
+        margin-left: 230px;
     }
 }
 
