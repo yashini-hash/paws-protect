@@ -18,6 +18,8 @@ if (
     exit();
 }
 
+$rescue_center_id = $_SESSION['rescue_center_id'];
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 

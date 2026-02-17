@@ -1,3 +1,17 @@
+<?php
+include("dbconnect.php");
+
+$query = "SELECT lost_id, image, animal_type, breed, color, lost_location, owner_name, contact_number 
+          FROM lost_animals 
+          ORDER BY created_at DESC";
+
+$result = mysqli_query($conn, $query);
+?>
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -69,26 +83,39 @@
 
 
 
-    <div class="about-content">
-      <div class="about-box vision">
-        <h3><i class="fa-solid fa-eye"></i> Our Vision</h3>
-        <p>
-          To build a compassionate society where every animal is treated with kindness,
-          respect, and dignity — ensuring a safe environment for all living beings.
-        </p>
-      </div>
+<section class="animal-grid">
 
-      <div class="about-box mission">
-        <h3><i class="fa-solid fa-hand-holding-heart"></i> Our Mission</h3>
-        <p>
-          To rescue, rehabilitate, and rehome abandoned or injured animals while
-          raising awareness about animal welfare. Through adoption drives, rescue operations,
-          and community engagement, we aim to protect lives and inspire humane living.
-        </p>
-      </div>
+<?php while ($row = mysqli_fetch_assoc($result)) { ?>
+
+    <div class="animal-card">
+
+        <img src="/paws&protect/includes/uploads/lost/<?php echo $row['image']; ?>" alt="Lost Animal">
+
+        <div class="card-body">
+            <h3><?php echo $row['animal_type']; ?></h3>
+
+            <div class="meta"><strong>Breed:</strong> <?php echo $row['breed']; ?></div>
+            <div class="meta"><strong>Color:</strong> <?php echo $row['color']; ?></div>
+            <div class="meta"><strong>Lost at:</strong> <?php echo $row['lost_location']; ?></div>
+            <div class="meta"><strong>Owner:</strong> <?php echo $row['owner_name']; ?></div>
+            <div class="meta"><strong>Contact:</strong> <?php echo $row['contact_number']; ?></div>
+        </div>
+
+        <div class="card-footer">
+            <form method="post" action="rescue.php">
+                <input type="hidden" name="lost_id" value="<?php echo $row['lost_id']; ?>">
+                <button type="submit" class="details-btn">
+                     FOUND
+                </button>
+            </form>
+        </div>
+
     </div>
-  </div>
+
+<?php } ?>
+
 </section>
+
 
 
 

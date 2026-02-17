@@ -18,7 +18,7 @@ if (
     exit();
 }
 
-$message = "";
+
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['lost_id'], $_POST['status'])) {
 
