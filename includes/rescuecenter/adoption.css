@@ -158,5 +158,36 @@ table th:nth-child(5), table td:nth-child(5) { width: 15%; text-align:center; }
         background: none;
     }
 }
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .main-container {
+        margin-left: 20px;
+        padding: 20px;
+    }
 
+    .table-card {
+        width: 95%;
+        padding: 20px;
+        border-radius: 15px;
+    }
+
+    table th, table td {
+        font-size: 13px;
+        text-align: center;
+    }
+
+    table th:nth-child(1), table td:nth-child(1) { width: 20%; }
+    table th:nth-child(2), table td:nth-child(2) { width: 20%; }
+    table th:nth-child(3), table td:nth-child(3) { width: 25%; }
+    table th:nth-child(4), table td:nth-child(4) { width: 20%; }
+    table th:nth-child(5), table td:nth-child(5) { width: 15%; }
+
+    table tr:hover td {
+        background: #f5f0eb;
+    }
+
+    /* Optional: slightly rounded for tablet, but keep horizontal layout */
+    table tr {
+        border-radius: 12px;
+    }
+}
 

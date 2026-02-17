@@ -1,84 +1,99 @@
-body { background:#FFF8E7;
-     font-family: Arial, sans-serif;
-      margin-left: 260px; 
-      padding: 50px; }
-
-    #filterForm {
-         max-width:600px; 
-         margin:auto; 
-         margin-bottom:20px; 
-         display:flex; gap:10px; } 
-
-         #filterForm select { 
-            flex:1; 
-            padding:8px; 
-            border-radius:5px; 
-            border:1px solid #ccc; }
-            
-            #filterForm button { 
-                padding:8px 15px;
-                 border:none; 
-                 border-radius:5px; 
-                 background:#5C3A21;
-                  color:white; 
-                  cursor:pointer; } 
-
-                  #filterForm button:hover
-                   { background:#9d6e4c; }
-
-                    #animalsContainer { 
-                        display:flex; 
-                        flex-wrap:wrap; 
-                        gap:20px; 
-                        justify-content:center; }
-
-.animal-card h3 { 
+body {
+    background: #FFF8E7;
+    font-family: Arial, sans-serif;
+    margin-left: 260px;
+    padding: 50px;
+}
+h2 {
     text-align: center;
-     margin: 6px 0; 
-     color: #3e2c1c;
-      font-size: 25px; }
+    color: #5C3A21;
+    margin: 30px 0 15px;
+}
 
-       .animal-card p {
-         margin: 4px 0;
-          color: #5c3a21; 
-          font-size: 20x; }
+#filterForm {
+    max-width: 600px;
+    margin: auto;
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+}
 
-          .action-btn {
+#filterForm select {
+    flex: 1;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+#filterForm button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    background: #5C3A21;
+    color: white;
+    cursor: pointer;
+}
+
+#filterForm button:hover {
+    background: #9d6e4c;
+}
+
+#animalsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.animal-card h3 {
+    text-align: center;
+    margin: 6px 0;
+    color: #3e2c1c;
+    font-size: 25px;
+}
+
+.animal-card p {
+    margin: 4px 0;
+    color: #5c3a21;
+    font-size: 20x;
+}
+
+.action-btn {
     display: inline-block;
-    min-width: 90px;              
+    min-width: 90px;
     text-align: center;
-    gap:15px;
-    padding: 8px 12px;            
+    gap: 15px;
+    padding: 8px 12px;
     border: none;
     border-radius: 6px;
-    font-size: 15px;              
+    font-size: 15px;
     font-family: Arial, sans-serif;
     cursor: pointer;
     text-decoration: none;
 }
 
 .updateBtn {
-    background:#5C3A21;
-    color:white;
+    background: #5C3A21;
+    color: white;
 }
 
 .updateBtn:hover {
-    background:#9d6e4c;
+    background: #9d6e4c;
 }
 
 .deleteBtn {
-    background:red;
-    color:white;
+    background: red;
+    color: white;
 }
 
 .deleteBtn:hover {
-    background:#cc0000;
+    background: #cc0000;
 }
 
 @media screen and (max-width: 768px) {
 
     body {
-        margin-left: 0;      
+        margin-left: 0;
         padding: 15px;
     }
 
@@ -131,3 +146,62 @@ body { background:#FFF8E7;
     }
 }
 
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+
+    body {
+        margin-left: 180px; 
+        
+    }
+
+
+    h2 {
+        font-size: 26px;
+        margin-top: 20px;
+    }
+
+  
+     #filter-box {
+        max-width: 600px;
+        gap: 12px;
+    }
+
+    #filter-box select,
+    #filter-box button {
+        font-size: 16px;
+        padding: 10px;
+    }
+
+
+    #animalsContainer {
+        gap: 16px;
+        justify-content: center;
+    }
+
+    .animal-card {
+        width: 240px;  
+        padding: 15px;
+    }
+
+    .animal-card img {
+        width: 100%;
+        height: 210px;   
+        object-fit: cover;
+        border-radius: 10px;
+    }
+
+    .animal-card h3 {
+        font-size: 21px;
+    }
+
+    .animal-card p {
+        font-size: 15px;
+    }
+
+  
+    .action-btn {
+        font-size: 14px;
+        padding: 8px 12px;
+        min-width: 80px;
+    }
+}

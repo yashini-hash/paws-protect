@@ -46,9 +46,9 @@ $result = $stmt->get_result();
 $types = ['Dog','Cat','Bird','Rabbit','Hamsters'];
 ?>
 <link rel="stylesheet" href="updateanimal.css">
-<h2 style="text-align:center;color:#5C3A21;padding:20px;">My Animals</h2>
+<h2> My Animals</h2>
 
-<form id="filterForm" style="display:flex;justify-content:center;gap:10px;margin-bottom:20px;">
+<form id="filterForm" >
     <select id="type_filter">
         <option value="all">All Types</option>
         <?php foreach($types as $t): ?>

@@ -1,4 +1,3 @@
-/* ================= GLOBAL ================= */
 * {
     margin: 0;
     padding: 0;
@@ -10,14 +9,13 @@ body {
     background-color: #F3E7DA;
 }
 
-/* ================= SIDEBAR ================= */
 .sidebar {
     width: 260px;
     height: 100vh;
     background: radial-gradient(circle at top left, #2B170A, #5C3A21 45%, #A47148 85%);
     color: white;
     display: block;
-    overflow-y: auto;     /* Enable vertical scrolling */
+    overflow-y: auto;     
     overflow-x: hidden;
     position: fixed;
     left: 0;
@@ -27,14 +25,12 @@ body {
     z-index: 1000;
 }
 
-/* Sidebar hidden/collapsed for mobile */
 .sidebar.collapsed {
     width: 0;
     padding: 20px 0;
     overflow: hidden;
 }
 
-/* Sidebar visible on mobile */
 .sidebar.show {
     left: 0;
 }
@@ -56,7 +52,6 @@ body {
 
 
 
-/* ================= LOGO ================= */
 .logo {
     display: flex;
     flex-direction: column;
@@ -77,19 +72,17 @@ body {
     color: #FFD8B4;
 }
 
-/* ================= MENU ================= */
-/* ================= MENU ================= */
 .menu {
     list-style: none;
     padding: 0;
 }
 
 .menu li {
-    margin: 18px 0; /* space between items */
+    margin: 18px 0; 
 }
 
 .menu li a {
-    display: flex;           /* flex for icon + text */
+    display: flex;           
     align-items: center;
     padding: 12px 10px;
     background: linear-gradient(135deg, #E6B48A, #C68642);
@@ -97,7 +90,7 @@ body {
     border-radius: 8px;
     cursor: pointer;
     box-shadow: 0 0 10px rgba(230, 180, 120, 0.6);
-    text-decoration: none;   /* remove underline */
+    text-decoration: none; 
     transition: 0.3s;
     font-weight: 600;
 }
@@ -109,10 +102,9 @@ body {
 }
 
 .menu li i {
-    margin-right: 10px; /* spacing between icon and text */
+    margin-right: 10px; 
 }
 
-/* ================= SUBMENU ================= */
 .submenu {
     list-style: none;
     margin-top: 10px;
@@ -139,7 +131,6 @@ body {
     color: #2B170A;
 }
 
-/* ================= MAIN AREA ================= */
 .main {
     margin-left: 260px;
     padding: 20px;
@@ -151,7 +142,6 @@ body {
     transition: all 0.3s ease;
 }
 
-/* ================= TOP BAR ================= */
 .topbar {
     display: flex;
     justify-content: space-between;
@@ -164,7 +154,6 @@ body {
     transition: all 0.3s ease;
 }
 
-/* ================= ALERT ICON ================= */
 .alert-icon {
     font-size: 22px;
     cursor: pointer;
@@ -176,18 +165,16 @@ body {
     color: #af8156;
 }
 
-/* ================= CONTENT ================= */
 .content-area {
     margin-top: 30px;
     color: #5C3A21;
     font-weight: 600;
 }
 
-/* ================= HAMBURGER ================= */
 
 @media (max-width: 1024px) {
     .sidebar {
-        width: 220px;
+        width: 250px;
     }
 
     .main {
@@ -228,3 +215,4 @@ body {
         display: block;
     }
 }
+
