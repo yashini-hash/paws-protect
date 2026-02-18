@@ -3,10 +3,12 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 body {
     font-family: Arial, sans-serif;
     background: #FFF8E7;
 }
+
 header {
     display: flex;
     justify-content: space-between;
@@ -19,9 +21,9 @@ header {
     z-index: 1000;
 }
 
-    header .logo img {
-        height: 100px;
-    }
+header .logo img {
+    height: 100px;
+}
 
 
 .nav-links {
@@ -30,15 +32,15 @@ header {
     gap: 20px;
 }
 
-    .nav-links a {
-        color: #5C3A21;
-        text-decoration: none;
-        font-weight: bold;
-    }
+.nav-links a {
+    color: #5C3A21;
+    text-decoration: none;
+    font-weight: bold;
+}
 
-        .nav-links a:hover {
-            color: #FFF8E7;
-        }
+.nav-links a:hover {
+    color: #FFF8E7;
+}
 
 
 .menu-toggle {
@@ -55,19 +57,19 @@ header {
     padding: 15px;
 }
 
-    .mobile-nav a {
-        color: white;
-        padding: 10px 0;
-        text-decoration: none;
-    }
+.mobile-nav a {
+    color: white;
+    padding: 10px 0;
+    text-decoration: none;
+}
 
-        .mobile-nav a:hover {
-            color: #FFA500;
-        }
+.mobile-nav a:hover {
+    color: #FFA500;
+}
 
-    .mobile-nav.active {
-        display: flex;
-    }
+.mobile-nav.active {
+    display: flex;
+}
 
 
 @media (max-width: 768px) {
@@ -114,19 +116,19 @@ header {
     color: #f5e8c8;
     font-size: clamp(18px, 6vw, 48px);
     font-weight: bold;
-    text-shadow: 2px 2px 5px rgba(0,0,0,0.6);
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
 }
 
 
 
 .animal-grid {
     margin-top: 40px;
-    max-width: 1300px; 
+    max-width: 1300px;
     margin-left: auto;
     margin-right: auto;
     padding: 0 20px 50px;
     display: grid;
-    grid-template-columns: repeat(5, 1fr); 
+    grid-template-columns: repeat(5, 1fr);
     gap: 20px;
 }
 
@@ -134,20 +136,21 @@ header {
 .animal-card {
     background: #5C3A21;
     margin-top: 40px;
-       width: 250px;
+    width: 250px;
     padding: 15px;
-      border-radius: 15px;
+    border-radius: 15px;
     overflow: hidden;
-    box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .animal-card img {
     width: 220px;
-            height: 220px;
-            object-fit: cover;
-            border-radius: 10px;
-           
+    height: 220px;
+    object-fit: cover;
+    border-radius: 10px;
+    display: block;
+    margin: 0 auto;
 }
 
 .card-body {
@@ -157,13 +160,13 @@ header {
 .card-body h3 {
     margin: 0;
     font-size: 18px;
-    color:  #d2a382ff;
+    color: #d2a382ff;
 }
 
 .meta {
     margin: 6px 0;
     font-size: 16px;
-   color: white;
+    color: white;
 }
 
 .tag {
@@ -199,7 +202,7 @@ header {
 
 .animal-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 18px 40px rgba(0,0,0,0.18);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
 }
 
 
@@ -242,13 +245,13 @@ header {
 }
 
 .center-message {
-    grid-column: 1 / -1;   
+    grid-column: 1 / -1;
     text-align: center;
     font-size: 25px;
     color: #5C3A21;
     font-weight: bold;
     margin: 20px 0;
-    
+
 }
 
 
@@ -259,30 +262,30 @@ footer {
     padding: 20px 10px;
 }
 
-    footer img {
-        height: 80px;
-        max-width: 100%;
-        margin-bottom: 10px;
-    }
+footer img {
+    height: 80px;
+    max-width: 100%;
+    margin-bottom: 10px;
+}
 
-    footer .right a {
-        display: inline-block;
-        width: 40px;
-        height: 40px;
-        line-height: 40px;
-        margin: 0 6px;
-        text-align: center;
-        background-color: #333;
-        color: #fff;
-        border-radius: 50%;
-        font-size: 18px;
-        transition: background-color 0.3s ease, transform 0.2s ease;
-    }
+footer .right a {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    margin: 0 6px;
+    text-align: center;
+    background-color: #333;
+    color: #fff;
+    border-radius: 50%;
+    font-size: 18px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
 
-        footer .right a:hover {
-            background-color: #5C3A21;
-            transform: scale(1.1);
-        }
+footer .right a:hover {
+    background-color: #5C3A21;
+    transform: scale(1.1);
+}
 
 
 
@@ -298,12 +301,12 @@ footer {
     }
 
     .animal-card img {
-         width: 220px;
-            height: 220px;
-       
+        width: 220px;
+        height: 220px;
+
     }
 
-    
+
 }
 
 @media (max-width: 768px) {
@@ -325,7 +328,7 @@ footer {
     }
 
 
-    
+
 }
 
 @media (max-width: 480px) {
@@ -338,5 +341,5 @@ footer {
         height: 220px;
     }
 
-    
+
 }
