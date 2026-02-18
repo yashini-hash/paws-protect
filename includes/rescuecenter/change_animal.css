@@ -78,8 +78,14 @@ textarea {
 .action-btn {
     position: static;
     text-decoration: none;
-     background: #6c4f3d;
+   background: #5C3A21;
+    color:white;
 }
+
+.action-btn:hover{
+ background:#9d6e4c; 
+}
+
 
 @media screen and (max-width: 768px) {
 
@@ -101,8 +107,12 @@ textarea {
     .action-btn {
         width: 100%;
         text-align: center;
+        text-decoration: none;
         font-size: 15px;
         padding: 12px;
+      background: #5C3A21;
+    color:white;
+        margin-bottom: 20px;
     }
 
     form {
@@ -177,7 +187,10 @@ textarea {
 
     .action-btn {
         width: auto;
+        text-decoration: none;
         font-size: 15px;
+        background: #5C3A21;
+    color:white;
         padding: 10px 20px;
     }
 

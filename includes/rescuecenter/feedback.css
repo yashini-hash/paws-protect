@@ -16,7 +16,7 @@
         }
 
         .feedback-card {
-            background: #ffffff;
+          background: #ddbc8b;
             border-radius: 10px;
             padding: 18px 22px;
             margin-bottom: 18px;
@@ -109,7 +109,7 @@
 @media screen and (min-width: 769px) and (max-width: 1024px) {
 
      body {
-        margin-left: 180px; 
+        margin-left: 150px; 
         
     }
 

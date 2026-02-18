@@ -123,25 +123,10 @@
             }
         }
 
-        @media (max-width: 480px) {
-            .donation-box {
-                padding: 15px;
-            }
+             @media screen and (min-width: 769px) and (max-width: 1024px) {
 
-            h2.page-title {
-                font-size: 22px;
-            }
-
-            button {
-                padding: 10px;
-                font-size: 14px;
-            }
-
-            #cardModal input {
-                font-size: 13px;
-            }
-
-            #cardModal h3 {
-                font-size: 18px;
-            }
+    body {
+        margin-left: 250px;
+         padding: 25px;
+    }
         }

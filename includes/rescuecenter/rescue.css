@@ -2,13 +2,12 @@ body {
     font-family: 'Segoe UI', Arial, sans-serif;
     background: #F3E7DA;
     padding: 30px;
-    margin-left: 120px;
+    margin-left: 250px;
 }
 
 .card {
-    max-width: 1100px;
-    margin: auto;
-    background: #ffffff;
+    max-width: 100%;
+    background: #ddbc8b;
     border-radius: 16px;
     padding: 28px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.08);
@@ -62,7 +61,7 @@ td {
 }
 
 tr:hover {
-    background: #FAFAFA;
+    background:  #ae672d;
 }
 
 
@@ -191,7 +190,7 @@ tr:hover {
         margin-bottom: 18px;
         padding: 15px;
         border-radius: 12px;
-        background: #ddbc8b;
+        background: #f0cf9c;
         box-shadow: 0 4px 10px rgba(0,0,0,0.08);
     }
 
@@ -230,23 +229,24 @@ tr:hover {
         height: 70%;
     }
 }
-
 @media screen and (max-width: 768px) {
-
-   body {
+    body {
         margin-left: 0;
+        padding: 20px;
+        background: #F3E7DA;
+    }
+
+    .card {
         padding: 15px;
     }
 
-
-    .card {
-        padding: 18px;
-    }
-
     .card-header h2 {
-        font-size: 18px;
+        font-size: 20px;
     }
 
+    .table-wrapper {
+        overflow-x: hidden;
+    }
 
     table, thead, tbody, th, td, tr {
         display: block;
@@ -258,50 +258,46 @@ tr:hover {
     }
 
     table tr {
-        margin-bottom: 16px;
+        margin-bottom: 12px;
         padding: 12px;
         border-radius: 10px;
-        background: #ddbc8b;
-        box-shadow: 0 3px 8px rgba(0,0,0,0.06);
+        background: #f0cf9c;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.08);
     }
 
     table td {
-        font-size: 12px;
-        flex-direction: column;
-        align-items: flex-start;
         padding: 6px 0;
+        font-size: 12px;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
     }
 
     table td::before {
         content: attr(data-label);
         font-weight: 600;
         color: #5C3A33;
-        width: 100%;
-        margin-bottom: 3px;
+        width: 45%;
+        margin-right: 10px;
         font-size: 12px;
     }
 
     .action-btns a {
-        font-size: 15px;
-        padding: 5px 8px;
-        width: 48%;
-        margin-bottom: 5px;
-    }
-
-    
-
-    .alert {
-        font-size: 12px;
-        padding: 6px 10px;
+        font-size: 13px;
+        padding: 4px 6px;
+        margin-bottom: 4px;
     }
 
     .map {
         width: 100%;
+        max-width: 180px;
         height: 100px;
+        margin-bottom: 8px;
     }
 
     #mapBox {
         width: 95%;
-        height: 70%;
+        height: 65%;
     }
 }
+
