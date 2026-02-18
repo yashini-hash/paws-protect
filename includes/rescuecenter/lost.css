@@ -61,6 +61,7 @@
 
 @media screen and (max-width: 768px) {
 
+
     .main-container {
         margin-left: 0;
         padding: 15px;
@@ -79,6 +80,7 @@
 
     .card img {
         height: 100%;
+        width:100%;
     }
 
     .card h3 {
