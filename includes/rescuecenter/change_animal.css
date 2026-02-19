@@ -77,6 +77,7 @@ textarea {
 
 .action-btn {
     position: static;
+    padding: 10px;
     text-decoration: none;
    background: #5C3A21;
     color:white;

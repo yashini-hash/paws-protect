@@ -216,31 +216,7 @@ header {
 }
 
 
-@media (max-width: 600px) {
-     
-    .details-content h1 {
-        font-size: 32px;
-    }
 
-    .details-image img {
-        height: 400px;
-        width: 450px;
-        
-    }
-
-    .info-box {
-        flex: 1 1 45%;
-    }
-
-    .adopt-btn {
-        padding: 10px 20px;
-        font-size: 16px;
-    }
-
-    header {
-        padding: 10px;
-    }
-}
 
 
 footer {
@@ -316,7 +292,7 @@ footer {
 
     .details-image img {
         width: 100%;
-        height: auto; 
+        height: 100%; 
     }
 
     .info-row {

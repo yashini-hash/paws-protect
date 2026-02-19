@@ -25,6 +25,8 @@ $profileImage = (!empty($user['profile_image']))
 
 <body>
 
+<div class="main-content">
+
 <h2>Edit Profile</h2>
 
 <?php if (isset($_GET['success']) && $_GET['success'] == 1): ?>
@@ -71,7 +73,7 @@ $profileImage = (!empty($user['profile_image']))
 
     </div>
 </form>
-
+</div>
 <script>
 function togglePassword() {
     const pwd = document.getElementById("password");
