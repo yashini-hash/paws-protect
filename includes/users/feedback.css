@@ -1,154 +1,164 @@
-body{
+body {
     font-family: 'Segoe UI', Arial, sans-serif;
-    background:#FFF8E7;
-    margin:0;
-    margin-left:260px;
-    padding:50px;
+    background: #FFF8E7;
+    align-items: center;
+    padding: 40px;
 }
 
 
-.container{
-    display:flex;
-    gap:40px;
-    max-width:1200px;
-    margin:60px auto;
-    flex-wrap:wrap;
+.container {
+    
+    display: flex;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 60px auto;
+    flex-wrap: wrap;
 }
 
 
-.card{
-     
-   background:#ddbc8b;
-    border-radius:14px;
-    padding:30px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.08);
+.card {
+ margin: auto;
+    background: #ddbc8b;
+    border-radius: 14px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 }
 
-.left-card{ 
-  
-    width:580px; }
-.right-card{ width:250px; }
+.left-card {
+ margin-left: 260px;
+    width: 580px;
+}
 
-
-h2{
-    text-align:center;
-     color: #3e2c1c;
-    margin-bottom:20px;
+.right-card {
+    width: 300px;
 }
 
 
-label{
-    font-weight:600;
-    display:block;
-    margin-top:15px;
-}
-
-select, textarea, button{
-    width:100%;
-    padding:12px;
-    margin-top:8px;
-    border-radius:8px;
-    border:1px solid #ddd;
-    font-size:15px;
-}
-
-textarea{
-    height:110px;
-    resize:none;
-}
-
-button{
-    margin-top:20px;
-     background: #5C3A21;
-    color:white;
-    border:none;
-    font-weight:600;
-    cursor:pointer;
-    transition:0.3s;
-}
-
-button:hover{
-    background:#9d6e4c;
+h2 {
+    text-align: center;
+    color: #3e2c1c;
+    margin-bottom: 20px;
 }
 
 
-.stars{
-    display:flex;
-    flex-direction:row-reverse;
-    justify-content:flex-start;
-    gap:5px;
-    margin-top:8px;
+label {
+    font-weight: 600;
+    display: block;
+    margin-top: 15px;
 }
 
-.stars input{ display:none; }
-
-.stars label{
-    font-size:28px;
-    color:#ccc;
-    cursor:pointer;
+select,
+textarea,
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 8px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 15px;
 }
 
-.stars input:checked ~ label,
+textarea {
+    height: 110px;
+    resize: none;
+}
+
+button {
+    margin-top: 20px;
+    background: #5C3A21;
+    color: white;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #9d6e4c;
+}
+
+
+.stars {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+    gap: 5px;
+    margin-top: 8px;
+}
+
+.stars input {
+    display: none;
+}
+
+.stars label {
+    font-size: 28px;
+    color: #ccc;
+    cursor: pointer;
+}
+
+.stars input:checked~label,
 .stars label:hover,
-.stars label:hover ~ label{
-    color:yellow;
+.stars label:hover~label {
+    color: rgb(255, 153, 0);
 }
 
 
-.success{
-    background:#e6f7ec;
-    color:#218838;
-    padding:10px;
-    border-radius:6px;
-    text-align:center;
-    margin-bottom:15px;
+.success {
+    background: #e6f7ec;
+    color: #218838;
+    padding: 10px;
+    border-radius: 6px;
+    text-align: center;
+    margin-bottom: 15px;
 }
 
-.error{
-    background:#fdecea;
-    color:#c82333;
-    padding:10px;
-    border-radius:6px;
-    text-align:center;
-    margin-bottom:15px;
+.error {
+    background: #fdecea;
+    color: #c82333;
+    padding: 10px;
+    border-radius: 6px;
+    text-align: center;
+    margin-bottom: 15px;
 }
 
 
-.feedback-item{
-    padding:15px 0;
-    border-bottom:1px solid #eee;
+.feedback-item {
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
 }
 
-.feedback-item:last-child{
-    border-bottom:none;
+.feedback-item:last-child {
+    border-bottom: none;
 }
 
-.center{
-    font-weight:600;
-    color:#444;
+.center {
+    font-weight: 600;
+    color: #444;
 }
 
-.star-view{
-    color:gold;
+.star-view {
+    font-size: 30px;
+    color: rgb(255, 153, 0);
 }
 
-.date{
-    font-size:12px;
-    color:#888;
-    margin-top:4px;
+.date {
+    font-size: 12px;
+    color: #888;
+    margin-top: 4px;
 }
- .page-title {
-            text-align: center;
-            color: #5C3A21;
-            font-size:30px;
-            margin: 30px 0 15px;
-        }
+
+.page-title {
+    text-align: center;
+    color: #5C3A21;
+    font-size: 30px;
+    margin: 30px 0 15px;
+}
 
 
 @media screen and (min-width: 769px) and (max-width: 1024px) {
 
     body {
-        margin-left: 20px; 
+        margin-left: 260px;
         padding: 25px;
     }
 
@@ -161,12 +171,12 @@ button:hover{
     }
 
     .left-card {
-        margin-left: 0; 
-        width: 60%; 
+        margin-left: 0;
+        width: 60%;
     }
 
     .right-card {
-        width: 35%; 
+        width: 35%;
     }
 
     .card {
@@ -177,7 +187,10 @@ button:hover{
         font-size: 24px;
     }
 
-    label, select, textarea, button {
+    label,
+    select,
+    textarea,
+    button {
         font-size: 14px;
     }
 
@@ -218,7 +231,10 @@ button:hover{
         font-size: 20px;
     }
 
-    label, select, textarea, button {
+    label,
+    select,
+    textarea,
+    button {
         font-size: 13px;
     }
 

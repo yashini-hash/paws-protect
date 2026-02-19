@@ -315,7 +315,9 @@ footer .right a:hover {
         grid-template-columns: repeat(2, 1fr);
         padding: 0 15px 40px;
     }
-
+.animal-card img {
+        height: 220px;
+    }
     .filter-bar {
         flex-direction: column;
         gap: 12px;
