@@ -3,20 +3,92 @@ include('auth.php');
 include('../page/dbconnect.php');
 include('sidebar.php');
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require '../../PHPMailer-master/src/Exception.php';
+require '../../PHPMailer-master/src/PHPMailer.php';
+require '../../PHPMailer-master/src/SMTP.php';
+
+$status_for_popup = ''; // For JS popup
+
 if (isset($_POST['update_status'])) {
     $center_id = intval($_POST['center_id']);
     $new_status = $_POST['new_status'];
 
+    // Fetch center info
+    $stmt = $conn->prepare("SELECT center_name, email FROM rescue_center WHERE rescue_center_id=?");
+    $stmt->bind_param("i", $center_id);
+    $stmt->execute();
+    $center = $stmt->get_result()->fetch_assoc();
+    $stmt->close();
+
+    // Update status
     $stmt = $conn->prepare("UPDATE rescue_center SET status=? WHERE rescue_center_id=?");
     $stmt->bind_param("si", $new_status, $center_id);
     if ($stmt->execute()) {
         $message = "Status updated successfully!";
+        $status_for_popup = $new_status;
     } else {
         $error = "Failed to update status!";
     }
     $stmt->close();
+
+    // Send email
+    if ($center) {
+        $mail = new PHPMailer(true);
+        try {
+            $mail->isSMTP();
+            $mail->Host       = 'smtp.gmail.com';
+            $mail->SMTPAuth   = true;
+            $mail->Username   = 'animalcarelove01@gmail.com';
+            $mail->Password   = 'ncufnnhhoezkbkcp';
+            $mail->SMTPSecure = 'tls';
+            $mail->Port       = 587;
+
+            $mail->setFrom('animalcarelove01@gmail.com', 'Paws & Protect');
+            $mail->addAddress($center['email'], $center['center_name']);
+            $mail->isHTML(true);
+            $mail->Subject = 'Registration Update for Paws & Protect';
+
+            if ($new_status === 'active') {
+                $mail->Body = "
+                    <h3>Registration Update</h3>
+                  <p>Dear <b>{$center['center_name']}</b>,</p>
+                 <p>We are pleased to inform you that your rescue center registration has been <strong>approved and activated</strong>. Your account is now fully active, and you can log in to the system to manage your center and begin assisting animals.</p>
+                  <p>If you have any questions or need assistance, please do not hesitate to contact our support team.</p>
+                    <br>
+                   <p>Best regards,<br>The Paws & Protect Team</p>
+                ";
+            } elseif ($new_status === 'inactive') {
+                $mail->Body = "
+                    <h3>Registration Update</h3>
+                   <p>Dear <b>{$center['center_name']}</b>,</p>
+                    <p>We would like to inform you that your rescue center account has been <strong> deactivated</strong>. During this period, access to the system will be restricted.</p>
+                      <p>If you have any questions or require further assistance, please do not hesitate to contact our support team.</p>
+                    <br>
+                      <p>Best regards,<br>The Paws & Protect Team</p>
+                ";
+            } elseif ($new_status === 'rejected') {
+                $mail->Body = "
+                    <h3>Registration Update</h3>
+                    <p>Dear <b>{$center['center_name']}</b>,</p>
+         <p>We regret to inform you that your rescue center registration has not been approved at this time. Your application has been <strong>rejected</strong>.</p>
+            <p>If you would like more information or guidance on how to proceed, please feel free to contact our support team. We are happy to assist you with any questions.</p>
+               <br>
+           <p>Best regards,<br>The Paws & Protect Team</p>
+                ";
+            }
+
+            $mail->send();
+
+        } catch (Exception $e) {
+            error_log("Mail Error: " . $mail->ErrorInfo);
+        }
+    }
 }
 
+// Fetch centers by status
 $statuses = ['active', 'inactive', 'rejected'];
 $rescue_centers = [];
 
@@ -39,7 +111,9 @@ foreach ($statuses as $status) {
 <meta charset="UTF-8">
 <title>Rescue Centers</title>
 <link rel="stylesheet" href="rescue_centers.css">
-
+<style>
+/* Optional small styling for popup modal instead of alert */
+</style>
 </head>
 <body>
 
@@ -106,6 +180,7 @@ foreach ($statuses as $status) {
 </div>
 
 <script>
+// Search filter
 document.getElementById("searchInput").addEventListener("keyup", function () {
     let value = this.value.toLowerCase();
     <?php foreach ($statuses as $status): ?>
@@ -118,18 +193,33 @@ document.getElementById("searchInput").addEventListener("keyup", function () {
     <?php endforeach; ?>
 });
 
+// Collapsible sections
 var coll = document.getElementsByClassName("collapsible");
 for (let i = 0; i < coll.length; i++) {
     coll[i].addEventListener("click", function() {
         this.classList.toggle("active");
         var content = this.nextElementSibling;
-        if (content.style.display === "block") {
-            content.style.display = "none";
-        } else {
-            content.style.display = "block";
-        }
+        content.style.display = (content.style.display === "block") ? "none" : "block";
     });
 }
+
+// Popup for status update
+<?php if($status_for_popup): ?>
+let statusMessage = '<?= $status_for_popup ?>';
+let text = '';
+switch(statusMessage) {
+    case 'active':
+        text = 'Registration Update – Paws & Protect\n\nThe rescue center has been ACTIVATED!';
+        break;
+    case 'inactive':
+        text = 'Registration Update – Paws & Protect\n\nThe rescue center has been DEACTIVATED.';
+        break;
+    case 'rejected':
+        text = 'Registration Update – Paws & Protect\n\nThe rescue center has been REJECTED.';
+        break;
+}
+if(text) alert(text);
+<?php endif; ?>
 </script>
 
 </body>
