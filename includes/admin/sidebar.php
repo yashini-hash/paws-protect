@@ -25,7 +25,7 @@ $adoptanimal_pages = [
 $open_adopt_menu = in_array($current_page, $adoptanimal_pages) ? 'block' : 'none';
 
 $admin_name = "Admin";
-$admin_logo = "/paws&protect/includes/uploads/profiles/default.png";
+$admin_logo = "/paws&protect/includes/uploads/profiles/admin.png";
 
 if (isset($_SESSION['admin_id'])) {
     $admin_id = $_SESSION['admin_id'];
