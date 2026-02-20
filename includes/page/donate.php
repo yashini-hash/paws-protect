@@ -153,7 +153,7 @@ function openPayment() {
 
     const phonePattern = /^[0-9]{10}$/;
     if (!phonePattern.test(phone)) {
-        error.innerHTML = "PPlease enter a valid Phone number ";
+        error.innerHTML = "Please enter a valid Phone number ";
         return;
     }
 
