@@ -16,6 +16,7 @@ if (isset($_POST['update_status'])) {
     $center_id = intval($_POST['center_id']);
     $new_status = $_POST['new_status'];
 
+  
     $stmt = $conn->prepare("SELECT center_name, email FROM rescue_center WHERE rescue_center_id=?");
     $stmt->bind_param("i", $center_id);
     $stmt->execute();
@@ -33,7 +34,7 @@ if (isset($_POST['update_status'])) {
     }
     $stmt->close();
 
-
+ 
     if ($center) {
         $mail = new PHPMailer(true);
         try {
@@ -87,7 +88,6 @@ if (isset($_POST['update_status'])) {
     }
 }
 
-
 $statuses = ['active', 'inactive', 'rejected'];
 $rescue_centers = [];
 
@@ -111,7 +111,6 @@ foreach ($statuses as $status) {
 <title>Rescue Centers</title>
 <link rel="stylesheet" href="rescue_centers.css">
 <style>
-
 </style>
 </head>
 <body>
@@ -179,7 +178,6 @@ foreach ($statuses as $status) {
 </div>
 
 <script>
-
 document.getElementById("searchInput").addEventListener("keyup", function () {
     let value = this.value.toLowerCase();
     <?php foreach ($statuses as $status): ?>
@@ -192,7 +190,6 @@ document.getElementById("searchInput").addEventListener("keyup", function () {
     <?php endforeach; ?>
 });
 
-
 var coll = document.getElementsByClassName("collapsible");
 for (let i = 0; i < coll.length; i++) {
     coll[i].addEventListener("click", function() {
@@ -201,7 +198,6 @@ for (let i = 0; i < coll.length; i++) {
         content.style.display = (content.style.display === "block") ? "none" : "block";
     });
 }
-
 
 <?php if($status_for_popup): ?>
 let statusMessage = '<?= $status_for_popup ?>';
