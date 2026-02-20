@@ -180,21 +180,7 @@ header {
     padding: 10px 15px 15px;
 }
 
-.details-btn {
-    display: block;
-    text-align: center;
-    padding: 10px;
-    border-radius: 12px;
-    background: #d2a382ff;
-    color: #5C3A21;
-    font-size: 14px;
-    font-weight: 600;
-    text-decoration: none;
-}
 
-.details-btn:hover {
-    background: #FFA500;
-}
 
 
 .animal-card:hover {

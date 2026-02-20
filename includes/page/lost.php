@@ -104,9 +104,7 @@ $result = mysqli_query($conn, $query);
         <div class="card-footer">
             <form method="post" action="rescue.php">
                 <input type="hidden" name="lost_id" value="<?php echo $row['lost_id']; ?>">
-                <button type="submit" class="details-btn">
-                     FOUND
-                </button>
+                
             </form>
         </div>
 
