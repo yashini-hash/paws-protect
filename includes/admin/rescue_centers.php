@@ -10,20 +10,20 @@ require '../../PHPMailer-master/src/Exception.php';
 require '../../PHPMailer-master/src/PHPMailer.php';
 require '../../PHPMailer-master/src/SMTP.php';
 
-$status_for_popup = ''; // For JS popup
+$status_for_popup = ''; 
 
 if (isset($_POST['update_status'])) {
     $center_id = intval($_POST['center_id']);
     $new_status = $_POST['new_status'];
 
-    // Fetch center info
+  
     $stmt = $conn->prepare("SELECT center_name, email FROM rescue_center WHERE rescue_center_id=?");
     $stmt->bind_param("i", $center_id);
     $stmt->execute();
     $center = $stmt->get_result()->fetch_assoc();
     $stmt->close();
 
-    // Update status
+   
     $stmt = $conn->prepare("UPDATE rescue_center SET status=? WHERE rescue_center_id=?");
     $stmt->bind_param("si", $new_status, $center_id);
     if ($stmt->execute()) {
@@ -34,7 +34,7 @@ if (isset($_POST['update_status'])) {
     }
     $stmt->close();
 
-    // Send email
+ 
     if ($center) {
         $mail = new PHPMailer(true);
         try {
@@ -88,7 +88,6 @@ if (isset($_POST['update_status'])) {
     }
 }
 
-// Fetch centers by status
 $statuses = ['active', 'inactive', 'rejected'];
 $rescue_centers = [];
 
@@ -112,7 +111,6 @@ foreach ($statuses as $status) {
 <title>Rescue Centers</title>
 <link rel="stylesheet" href="rescue_centers.css">
 <style>
-/* Optional small styling for popup modal instead of alert */
 </style>
 </head>
 <body>
@@ -180,7 +178,6 @@ foreach ($statuses as $status) {
 </div>
 
 <script>
-// Search filter
 document.getElementById("searchInput").addEventListener("keyup", function () {
     let value = this.value.toLowerCase();
     <?php foreach ($statuses as $status): ?>
@@ -193,7 +190,6 @@ document.getElementById("searchInput").addEventListener("keyup", function () {
     <?php endforeach; ?>
 });
 
-// Collapsible sections
 var coll = document.getElementsByClassName("collapsible");
 for (let i = 0; i < coll.length; i++) {
     coll[i].addEventListener("click", function() {
@@ -203,7 +199,6 @@ for (let i = 0; i < coll.length; i++) {
     });
 }
 
-// Popup for status update
 <?php if($status_for_popup): ?>
 let statusMessage = '<?= $status_for_popup ?>';
 let text = '';
