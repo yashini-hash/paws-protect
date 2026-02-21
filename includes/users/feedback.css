@@ -157,26 +157,24 @@ button:hover {
 
 @media screen and (min-width: 769px) and (max-width: 1024px) {
 
+   
     body {
-        margin-left: 260px;
-        padding: 25px;
+        margin-left: 260px;   
+        padding: 20px;
     }
 
+    
     .container {
-        flex-direction: row;
-        flex-wrap: wrap;
+        flex-direction: column;
         gap: 20px;
         max-width: 100%;
         margin: 20px auto;
     }
 
-    .left-card {
-        margin-left: 0;
-        width: 60%;
-    }
-
+    .left-card,
     .right-card {
-        width: 35%;
+        width: 100%;
+        margin-left: 0;
     }
 
     .card {
@@ -184,7 +182,7 @@ button:hover {
     }
 
     h2 {
-        font-size: 24px;
+        font-size: 22px;
     }
 
     label,
@@ -201,8 +199,16 @@ button:hover {
     button {
         padding: 10px;
     }
-}
 
+    .stars label {
+        font-size: 26px;
+    }
+
+    .page-title {
+        font-size: 26px;
+        margin: 25px 0 15px;
+    }
+}
 
 @media screen and (max-width: 768px) {
 
