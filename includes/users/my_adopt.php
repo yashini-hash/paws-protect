@@ -87,7 +87,7 @@ $result = $stmt->get_result();
         <div class="animal-info">
             <h3><?php echo htmlspecialchars($row['animal_name']); ?></h3>
             <p>Type: <?php echo htmlspecialchars($row['animal_type']); ?></p>
-            <p>Rescue Center: <?php echo htmlspecialchars($row['rescue_center_name']); ?></p>
+            <p>Rescue Center: <?php echo htmlspecialchars($row['rescue_center_name']); ?></p><br>
 
             <span class="status status-<?php echo $status; ?>">
                 <?php echo ucfirst($status); ?>
