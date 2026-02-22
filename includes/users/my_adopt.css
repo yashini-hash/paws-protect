@@ -130,3 +130,52 @@
                 font-size: 12px;
             }
         }
+
+    @media (min-width: 769px) and (max-width: 1024px) {
+
+    body {
+        padding: 30px;
+        margin-left: 200px; 
+    }
+
+    h2 {
+        font-size: 26px;
+    }
+
+    .filter-container {
+        margin-bottom: 25px;
+    }
+
+    .card-container {
+        justify-content: center;
+        gap: 18px;
+    }
+
+    .animal-card {
+        width: 45%;   
+        padding: 14px;
+    }
+
+    .animal-card img {
+        width: 100%;
+        height: 200px;
+    }
+
+    .animal-info h3 {
+        font-size: 18px;
+    }
+
+    .animal-info p {
+        font-size: 15px;
+    }
+
+    .status {
+        font-size: 12px;
+        padding: 5px 10px;
+    }
+
+    .cancel-btn {
+        font-size: 13px;
+        padding: 7px 14px;
+    }
+}

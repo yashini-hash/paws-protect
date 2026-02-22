@@ -89,16 +89,17 @@ $donations = $stmt->get_result();
 
     <?php while ($row = $donations->fetch_assoc()): ?>
     <tr>
-        <td><?= htmlspecialchars($row['donor_name'] ?? 'Anonymous') ?></td>
-        <td><?= htmlspecialchars($row['donor_email'] ?? '-') ?></td>
-        <td><?= htmlspecialchars($row['phone']) ?></td>
-        <td><?= number_format($row['amount'], 2) ?></td>
-        <td><?= htmlspecialchars($row['payment_method']) ?></td>
-        <td class="<?= strtolower($row['payment_status']) ?>">
-            <?= htmlspecialchars($row['payment_status']) ?>
-        </td>
-        <td><?= htmlspecialchars($row['transaction_ref'] ?? '-') ?></td>
-        <td><?= date("d M Y, h:i A", strtotime($row['donated_at'])) ?></td>
+       <td data-label="Donor"><?= htmlspecialchars($row['donor_name'] ?? 'Anonymous') ?></td>
+<td data-label="Email"><?= htmlspecialchars($row['donor_email'] ?? '-') ?></td>
+<td data-label="Phone"><?= htmlspecialchars($row['phone']) ?></td>
+<td data-label="Amount"><?= number_format($row['amount'], 2) ?></td>
+<td data-label="Payment"><?= htmlspecialchars($row['payment_method']) ?></td>
+<td data-label="Status" class="<?= strtolower($row['payment_status']) ?>">
+    <?= htmlspecialchars($row['payment_status']) ?>
+</td>
+<td data-label="Transaction"><?= htmlspecialchars($row['transaction_ref'] ?? '-') ?></td>
+<td data-label="Date"><?= date("d M Y, h:i A", strtotime($row['donated_at'])) ?></td>
+
     </tr>
     <?php endwhile; ?>
 </table>

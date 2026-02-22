@@ -110,3 +110,36 @@ h1 {
         font-size: 14px;
     }
 }
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+
+
+
+    .main-container {
+        margin-left: 260px; 
+        padding: 25px;
+    }
+
+    .card {
+        width: 45%; 
+        margin: 15px 2.5%; 
+        padding: 18px;
+    }
+
+    .card img {
+        height: 200px; 
+    }
+
+    .card h3 {
+        font-size: 22px;
+    }
+
+    .info {
+        font-size: 15px;
+    }
+
+    .delete-btn {
+        padding: 10px;
+        font-size: 15px;
+    }
+}

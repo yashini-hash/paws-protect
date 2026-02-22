@@ -40,7 +40,9 @@ $types = ['Dog','Cat','Bird','Rabbit','Hamsters'];
 
 <h2>Update Animal</h2>
 
-<a href="updateanimal.php"><button class="action-btn btn-back">Back</button></a>
+<div class="back-container">
+    <a href="updateanimal.php" class="action-btn btn-back">← Back</a>
+</div>
 
 <form id="updateForm" enctype="multipart/form-data">
     <input type="hidden" name="update_id" value="<?= $animal['animal_id'] ?>">
@@ -100,6 +102,7 @@ $types = ['Dog','Cat','Bird','Rabbit','Hamsters'];
 <textarea name="details" rows="4" required><?= htmlspecialchars($animal['details']) ?></textarea>
     <button type="submit">Save Changes</button>
     <div id="msg"></div>
+   
 </form>
 
 <script>

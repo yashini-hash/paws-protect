@@ -1,12 +1,13 @@
 body {
      font-family: Arial,sans-serif; 
      background:#FFF8E7; 
-     margin-left:120px; 
+     margin-left:260px; 
+     align-items: center;
      padding:40px; }
 
 .container { 
-    max-width: 900px; 
-    margin:auto; 
+    width: 100%;
+    margin-left: 0; 
     background:white; 
     padding:30px;
      border-radius:12px; 
@@ -80,3 +81,79 @@ th {
 a { 
     text-decoration:none;
      margin-right:5px; }
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+
+    body {
+        margin-left: 260px;  
+        padding: 20px;
+    }
+
+    .container {
+        max-width: 100%; 
+        padding: 25px;
+        margin: 0;                  
+    }
+
+    h2 {
+        font-size: 1.8rem;
+        text-align: left;            
+    }
+
+    input, button {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    table {
+        width: 100%;         
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    table th, table td {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    button {
+        width: auto;
+    }
+}
+
+@media screen and (max-width: 768px) {
+
+    body {
+        margin-left: 0;
+        padding: 15px;
+    }
+
+    .container {
+        max-width: 100%;
+        padding: 20px;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    input, button {
+        font-size: 13px;
+        padding: 8px;
+    }
+
+    table {
+        display: block;         
+        overflow-x: auto;
+    }
+
+    table th, table td {
+        padding: 6px;
+        font-size: 12px;
+    }
+
+    button {
+        width: 100%;            
+        margin-top: 10px;
+    }
+}

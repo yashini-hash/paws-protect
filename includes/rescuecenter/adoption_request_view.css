@@ -5,7 +5,7 @@
     font-family: 'Poppins', sans-serif;
 }
 body {
-    background: #f4f1ed;
+     background: #FFF8E7;
 }
 
 .main-container {
@@ -18,8 +18,7 @@ body {
     border-radius: 20px;
     box-shadow: 0 8px 25px rgba(0,0,0,0.15);
     padding: 35px;
-    max-width: 1500px;
-    margin: auto;
+    width:100%;
     transition: transform 0.3s ease;
 }
 .details-card:hover {
@@ -118,51 +117,115 @@ body {
     border: 2px solid #e6c9a8;
 }
 
-@media (max-width: 1024px) {
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+
     .main-container {
-        margin-left: 0;
+      margin-left: 260px;
         padding: 25px;
+    }
+
+    .details-card {
+        padding: 25px;
+    }
+
+    .two-column {
+        flex-direction: column; 
+        align-items: center;
+        gap: 20px;
+    }
+
+    .left-box, .right-box {
+        width: 100%;
+        flex: unset; 
+    }
+
+    .animal-img-big {
+        width: 100%;
+        max-width: 400px;
+        height: 450px;
+        margin-top: 20px;
+    }
+
+    .button-group {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .prev-adoptions {
+        justify-content: center;
+    }
+
+    .prev-card {
+        flex: 1 1 200px;
+    }
+
+    .prev-card img {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+
+    body, .main-container {
+        margin-left: 0; 
+        padding: 15px;
+    }
+
+    .details-card {
+        padding: 20px;
+    }
+
+    .section-title {
+        font-size: 20px;
     }
 
     .two-column {
         flex-direction: column;
         align-items: center;
+        gap: 15px;
     }
 
-    .animal-img-big {
-        height: 500px;
-    }
-
-    .right-box {
+    .left-box, .right-box {
         width: 100%;
+        flex: unset;
     }
-}
-
-@media (max-width: 600px) {
 
     .animal-img-big {
-        height: 360px;
+        width: 100%;
+        max-width: 100%;
+        height: 100%;
+        margin-top: 15px;
     }
 
     .button-group {
         display: flex;
         flex-direction: column;
-        gap: 12px;
+        gap: 10px;
     }
 
     .action-btn {
         width: 100%;
-        font-size: 15px;
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .prev-adoptions {
+        flex-direction: column;
+        gap: 15px;
     }
 
     .prev-card {
         flex-direction: column;
+        align-items: center;
         text-align: center;
     }
 
     .prev-card img {
-        width: 200px;
-        height: 200px;
+        width: 150px;
+        height: 150px;
     }
 }
-

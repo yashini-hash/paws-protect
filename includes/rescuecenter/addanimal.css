@@ -2,7 +2,7 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
     background: #FFF8E7;
-    padding:50px;
+    padding:40px;
     margin-left:120px;
 }
 
@@ -86,7 +86,11 @@ textarea {
 }
 
 @media (max-width: 1024px) {
-    body { padding: 20px; margin-left: 220px; }
+   body {
+        margin-left: 250px;
+         padding: 25px;
+    }
+    
 }
 @media screen and (max-width: 768px) {
 

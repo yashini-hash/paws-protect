@@ -2,7 +2,7 @@
             background-color: #FFF8E7;
             font-family: Arial, sans-serif;
             padding: 50px;
-            margin-left: 120px;
+            margin-left: 260px;
         }
 
         .page-title {
@@ -169,4 +169,12 @@
                 padding: 10px 0;
                 font-size: 16px;
             }
+        }
+
+        @media screen and (min-width: 769px) and (max-width: 1024px) {
+
+    body {
+        margin-left: 250px;
+         padding: 25px;
+    }
         }

@@ -18,6 +18,8 @@ if (
     exit();
 }
 
+$rescue_center_id = $_SESSION['rescue_center_id'];
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -124,7 +126,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <input type="text" name="vaccination" placeholder="Vaccination Details">
 
-        <input type="date" name="rescue_date" required>
+        <input type="date" name="rescue_date" placeholder="Rescue Date" required>
 
         <select name="adoption_status" class="full">
             <option value="available">Available</option>

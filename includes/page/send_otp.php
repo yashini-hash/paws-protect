@@ -33,7 +33,7 @@ $otp = rand(100000,999999);
 $_SESSION['otp'] = $otp;
 
 $userId   = "30933";
-$apiKey   = "NQAoZfPFrRX1CVdxYxYL";
+$apiKey   = "nvkaZ0pupcGptUkXvxlh";
 $senderId = "NotifyDEMO";
 $message  = "Your OTP code is: $otp";
 

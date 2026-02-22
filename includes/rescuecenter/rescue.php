@@ -88,22 +88,27 @@ $alert = $alertStmt->get_result()->fetch_assoc();
     $lng = $m[2] ?? null;
 ?>
 <tr>
-    <td><?= htmlspecialchars($row['animal_type']) ?></td>
-    <td><?= htmlspecialchars($row['description']) ?></td>
-    <td><?= htmlspecialchars($row['contact_number']) ?></td>
-    <td>
+    <td data-label="Animal"><?= htmlspecialchars($row['animal_type']) ?></td>
+
+    <td data-label="Description"><?= htmlspecialchars($row['description']) ?></td>
+
+    <td data-label="Contact"><?= htmlspecialchars($row['contact_number']) ?></td>
+
+    <td data-label="Location">
         <div class="map"
              data-lat="<?= $lat ?>"
              data-lng="<?= $lng ?>"
              onclick="openFullMap(this)">
         </div>
     </td>
-    <td>
+
+    <td data-label="Status">
         <span class="status <?= strtolower(str_replace(' ','-',$row['status'])) ?>">
             <?= $row['status'] ?>
         </span>
     </td>
-    <td class="action-btns">
+
+    <td data-label="Action" class="action-btns">
         <?php if ($row['status'] !== 'Completed'): ?>
             <a class="btn-progress" href="update_status.php?id=<?= $row['request_id'] ?>&status=In Progress">Start</a><br>
             <a class="btn-complete" href="update_status.php?id=<?= $row['request_id'] ?>&status=Completed">Complete</a>
@@ -112,6 +117,7 @@ $alert = $alertStmt->get_result()->fetch_assoc();
         <?php endif; ?>
     </td>
 </tr>
+
 <?php endwhile; ?>
 </table>
 </div>

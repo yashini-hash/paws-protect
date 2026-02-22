@@ -16,7 +16,7 @@
         }
 
         .feedback-card {
-            background: #ffffff;
+          background: #ddbc8b;
             border-radius: 10px;
             padding: 18px 22px;
             margin-bottom: 18px;
@@ -57,10 +57,97 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.08);
         }
 
-        @media (max-width: 1024px) {
-    body { padding: 20px; margin-left: 200px; }
+
+
+@media screen and (max-width: 768px) {
+
+    body {
+        margin-left: 0;
+        padding: 15px;
+    }
+
+    h2 {
+        font-size: 22px;
+        margin-bottom: 20px;
+    }
+
+    .feedback-container {
+        max-width: 100%;
+        padding: 0 10px;
+    }
+
+    .feedback-card {
+        align-items: center;
+        padding: 14px 16px;
+        margin-bottom: 14px;
+    }
+
+    .feedback-header {
+        font-size: 14px;
+    }
+
+    .rating {
+        font-size: 16px;
+    }
+
+    .message {
+        font-size: 14px;
+        line-height: 1.4;
+    }
+
+    .date {
+        font-size: 12px;
+    }
+
+    .no-feedback {
+        padding: 20px;
+        font-size: 14px;
+    }
 }
-@media (max-width: 480px) {
-     body { padding: 20px; margin-left: 0; }
+
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+
+     body {
+        margin-left: 150px; 
+        
+    }
+
+    h2 {
+        align-items: center;
+        font-size: 24px;
+        margin-bottom: 22px;
+    }
+
+    .feedback-container {
+        max-width: 80%;
+        margin: auto;
+    }
+
+    .feedback-card {
+        padding: 16px 20px;
+        margin-bottom: 16px;
+    }
+
+    .feedback-header {
+        font-size: 15px;
+    }
+
+    .rating {
+        font-size: 17px;
+    }
+
+    .message {
+        font-size: 15px;
+        line-height: 1.5;
+    }
+
+    .date {
+        font-size: 13px;
+    }
+
+    .no-feedback {
+        padding: 25px;
+        font-size: 15px;
+    }
 }
-    

@@ -3,7 +3,6 @@ session_start();
 include("sidebar.php");
 include("../page/dbconnect.php");
 
-$msg = "";
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
@@ -20,7 +19,8 @@ if (
     exit();
 }
 
-$rescue_id = (int)$_SESSION['rescue_center_id'];
+$rescue_center_id = $_SESSION['rescue_center_id'];
+$msg = "";
 
 $stmt_check = $conn->prepare("SELECT * FROM rescue_center WHERE rescue_center_id=?");
 $stmt_check->bind_param("i", $rescue_id);

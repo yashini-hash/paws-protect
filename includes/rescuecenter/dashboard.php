@@ -133,7 +133,7 @@ if ($pending_adoptions > 0) $adoption_card_class .= " alert-red";
     </div>
 
     <div class="dashboard-cards">
-        <!-- Animals -->
+      
         <a href="viewall.php" class="card-link">
             <div class="card">
                 <i class="fa-solid fa-paw fa-2x"></i>

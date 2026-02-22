@@ -2,12 +2,6 @@
 session_start();
 include("dbconnect.php");
 
-<<<<<<< HEAD
-/* -------------------------------
-   VALIDATE INPUT
--------------------------------- */
-=======
->>>>>>> 1f2c22c799a2aa0936f3dd3ea0b5b997c764bae1
 if (
     empty($_POST['animal_type']) ||
     empty($_POST['description']) ||
@@ -23,17 +17,6 @@ if (
 $animal_type    = trim($_POST['animal_type']);
 $description    = trim($_POST['description']);
 $contact_number = trim($_POST['contact_number']);
-<<<<<<< HEAD
-$userLat        = floatval($_POST['lat']);
-$userLng        = floatval($_POST['lng']);
-
-$rescue_location = "Lat: $userLat, Lng: $userLng";
-
-/* -------------------------------
-   FUNCTION: Calculate Distance
--------------------------------- */
-function distance($lat1, $lon1, $lat2, $lon2) {
-=======
 $userLat        = (float) $_POST['lat'];
 $userLng        = (float) $_POST['lng'];
 
@@ -41,8 +24,7 @@ $rescue_location = "Lat: $userLat, Lng: $userLng";
 
 function distance($lat1, $lon1, $lat2, $lon2)
 {
->>>>>>> 1f2c22c799a2aa0936f3dd3ea0b5b997c764bae1
-    $R = 6371; // Earth radius in KM
+    $R = 6371; 
     $dLat = deg2rad($lat2 - $lat1);
     $dLon = deg2rad($lon2 - $lon1);
 
@@ -80,12 +62,6 @@ while ($row = $result->fetch_assoc()) {
     }
 }
 
-<<<<<<< HEAD
-/* -------------------------------
-   INSERT RESCUE REQUEST
--------------------------------- */
-=======
->>>>>>> 1f2c22c799a2aa0936f3dd3ea0b5b997c764bae1
 $stmt = $conn->prepare("
     INSERT INTO rescue_requests
     (animal_type, rescue_location, description, contact_number, rescue_center_id)

@@ -15,17 +15,15 @@ if (
 }
 include("../page/dbconnect.php");
 
-// ---------------- Current page ----------------
+
 $current_page = basename($_SERVER['PHP_SELF']);
 $animal_pages = ['viewall.php','addanimal.php','updateanimal.php'];
 $open_animal_menu = in_array($current_page, $animal_pages) ? 'block' : 'none';
 
-// ---------------- Default values ----------------
 $center_name = "Rescue Center";
 $default_logo = "../uploads/rescue_logos/rescue-logo.png";
 $center_logo = $default_logo;
 
-// ---------------- Fetch rescue center details ----------------
 if (isset($_SESSION['rescue_center_id'])) {
     $rescue_id = $_SESSION['rescue_center_id'];
 
@@ -63,16 +61,13 @@ if (isset($_SESSION['rescue_center_id'])) {
     <i class="fa-solid fa-bars"></i>
 </div>
 
-<!-- ---------------- SIDEBAR ---------------- -->
 <div class="sidebar" id="sidebar">
 
-    <!-- LOGO -->
     <div class="logo">
         <img src="<?= htmlspecialchars($center_logo) ?>" alt="Rescue Logo">
         <h3><?= htmlspecialchars($center_name) ?></h3>
     </div>
 
-    <!-- MENU -->
     <ul class="menu">
 
         <li class="<?= $current_page=='dashboard.php'?'active':'' ?>">
@@ -126,14 +121,12 @@ if (isset($_SESSION['rescue_center_id'])) {
     </ul>
 </div>
 
-<!-- ---------------- SCRIPT ---------------- -->
 <script>
 const animalBtn = document.getElementById("animalBtn");
 const animalSubMenu = document.getElementById("animalSubMenu");
 const hamburger = document.getElementById("hamburger");
 const sidebar = document.getElementById("sidebar");
 
-// Toggle submenu
 animalBtn.addEventListener("click", function (e) {
     e.preventDefault();
     e.stopPropagation(); // 🔥 KEY FIX
@@ -142,13 +135,11 @@ animalBtn.addEventListener("click", function (e) {
         animalSubMenu.style.display === "block" ? "none" : "block";
 });
 
-// Toggle sidebar
 hamburger.addEventListener("click", function (e) {
     e.stopPropagation();
     sidebar.classList.toggle("show");
 });
 
-// Close sidebar only when clicking truly outside
 document.addEventListener("click", function(e){
     if (
         window.innerWidth <= 768 &&

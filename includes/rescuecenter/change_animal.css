@@ -68,21 +68,25 @@ textarea {
     resize: vertical;
 }
 
-.action-btn{
- padding: 12px 25px;
-    border-radius: 12px;
-    border: none;
-    font-size: 16px;
-    cursor: pointer;
-    margin: 0 10px;
-    color: white;
-    font-weight: 500;
-    transition: all 0.3s ease;
-    position:sticky;
+.back-container {
+    max-width: 500px;
+    margin: 0 auto 20px auto;
+    display: flex;
+    justify-content: flex-start;
 }
-.btn-back{
-    background: #6c4f3d;
+
+.action-btn {
+    position: static;
+    padding: 10px;
+    text-decoration: none;
+   background: #5C3A21;
+    color:white;
 }
+
+.action-btn:hover{
+ background:#9d6e4c; 
+}
+
 
 @media screen and (max-width: 768px) {
 
@@ -96,12 +100,20 @@ textarea {
         margin-bottom: 15px;
     }
 
+    .back-container {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
     .action-btn {
         width: 100%;
-        margin: 10px 0 20px 0;
+        text-align: center;
+        text-decoration: none;
         font-size: 15px;
         padding: 12px;
-        position: static;
+      background: #5C3A21;
+    color:white;
+        margin-bottom: 20px;
     }
 
     form {
@@ -134,3 +146,56 @@ textarea {
     }
 }
 
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+
+    body {
+        margin-left: 180px;   
+        padding: 30px;
+    }
+
+    h2 {
+        font-size: 24px;
+        margin-bottom: 18px;
+    }
+
+    form {
+        max-width: 600px;  
+        padding: 25px;
+        gap: 14px;
+    }
+
+    form input,
+    form select,
+    textarea {
+        font-size: 15px;
+        padding: 10px;
+    }
+
+    form img {
+        width: 180px;
+        height: 180px;
+    }
+
+    form button {
+        font-size: 16px;
+        padding: 12px;
+    }
+
+    .back-container {
+        max-width: 600px;
+        margin-bottom: 20px;
+    }
+
+    .action-btn {
+        width: auto;
+        text-decoration: none;
+        font-size: 15px;
+        background: #5C3A21;
+    color:white;
+        padding: 10px 20px;
+    }
+
+    #msg {
+        font-size: 14px;
+    }
+}

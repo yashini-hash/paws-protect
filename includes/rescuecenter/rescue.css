@@ -2,13 +2,12 @@ body {
     font-family: 'Segoe UI', Arial, sans-serif;
     background: #F3E7DA;
     padding: 30px;
-    margin-left: 120px;
+    margin-left: 250px;
 }
 
 .card {
-    max-width: 1100px;
-    margin: auto;
-    background: #ffffff;
+    max-width: 100%;
+    background: #ddbc8b;
     border-radius: 16px;
     padding: 28px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.08);
@@ -62,7 +61,7 @@ td {
 }
 
 tr:hover {
-    background: #FAFAFA;
+    background:  #ae672d;
 }
 
 
@@ -156,22 +155,42 @@ tr:hover {
     cursor:pointer;
 }
 
-@media (max-width: 1024px) {
-    body { padding: 20px; margin-left: 200px; }
-    .card { padding: 20px; }
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    body {
+       
+        margin-left: 250px;
+        padding: 50px;
+        background: #F3E7DA;
+    }
+
+    .card {
+        padding: 20px;
+    }
+
+    .card-header h2 {
+        font-size: 22px;
+    }
+
+ 
+    .table-wrapper {
+        overflow-x: hidden;
+    }
 
     table, thead, tbody, th, td, tr {
         display: block;
         width: 100%;
     }
 
-    table th { display: none; }
+    table th {
+        display: none;
+    }
 
     table tr {
-        margin-bottom: 20px;
+        margin-bottom: 18px;
         padding: 15px;
         border-radius: 12px;
-        background: #fff6e3;
+        background: #f0cf9c;
         box-shadow: 0 4px 10px rgba(0,0,0,0.08);
     }
 
@@ -192,36 +211,93 @@ tr:hover {
     }
 
     .action-btns a {
-        font-size: 11px;
-        padding: 5px 10px;
+        font-size: 15px;
+        padding: 5px 5px;
         margin-bottom: 5px;
     }
 
-    .map { width: 100%; max-width: 200px; height: 120px; margin-bottom: 10px; }
-}
+    .map {
+        width: 100%;
+        max-width: 200px;
+        height: 120px;
+        margin-bottom: 10px;
+        border-radius: 8px;
+    }
 
-@media (max-width: 480px) {
-    .card-header h2 { font-size: 18px; }
+    #mapBox {
+        width: 90%;
+        height: 70%;
+    }
+}
+@media screen and (max-width: 768px) {
+    body {
+        margin-left: 0;
+        padding: 20px;
+        background: #F3E7DA;
+    }
+
+    .card {
+        padding: 15px;
+    }
+
+    .card-header h2 {
+        font-size: 20px;
+    }
+
+    .table-wrapper {
+        overflow-x: hidden;
+    }
+
+    table, thead, tbody, th, td, tr {
+        display: block;
+        width: 100%;
+    }
+
+    table th {
+        display: none;
+    }
+
+    table tr {
+        margin-bottom: 12px;
+        padding: 12px;
+        border-radius: 10px;
+        background: #f0cf9c;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+    }
 
     table td {
+        padding: 6px 0;
         font-size: 12px;
-        flex-direction: column;
-        align-items: flex-start;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
     }
 
     table td::before {
-        width: 100%;
-        margin-bottom: 3px;
+        content: attr(data-label);
+        font-weight: 600;
+        color: #5C3A33;
+        width: 45%;
+        margin-right: 10px;
         font-size: 12px;
     }
 
     .action-btns a {
-        font-size: 10px;
-        padding: 5px 8px;
-        width: 48%;
+        font-size: 13px;
+        padding: 4px 6px;
+        margin-bottom: 4px;
     }
 
-    .alert { font-size: 12px; padding: 6px 10px; }
+    .map {
+        width: 100%;
+        max-width: 180px;
+        height: 100px;
+        margin-bottom: 8px;
+    }
 
-    #mapBox { height: 70%; width: 95%; }
+    #mapBox {
+        width: 95%;
+        height: 65%;
+    }
 }
+
