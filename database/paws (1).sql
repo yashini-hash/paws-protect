@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 23, 2026 at 05:10 AM
+-- Generation Time: Feb 27, 2026 at 02:05 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -194,8 +194,8 @@ INSERT INTO `rescue_center` (`rescue_center_id`, `center_name`, `address`, `dist
 (1, 'AnimalCare', 'No 11 watala colombo', 'colombo', '0123456717', 'animal@gmail.com', '$2y$10$OOm8b.ViwqoSYfzbNCaXHOCErt106hDfkfcInT4jGexenghmTPt3q', 'active', 'rescue_1_1768301342.png', 6.9271, 79.8612),
 (2, 'Animal care and love', 'no 56 vidiyatathe mawathe kandy', 'kandy', '070196886', 'animalcarelove01@gmail.com', '$2y$10$W3JrJXLnVh.oyZtwYRFjFuGGGDIL03B8t3MaYAGgB3tbvDlWMfXIS', 'active', 'rescue_2_1768300816.png', 7.3053, 80.6359),
 (3, 'Royalcare', 'No 10 clinic road badulla', 'badulla', '0124567890', 'royalcare@gmail.com', '$2y$10$D.Jb9eZdSkOuTZRUiMnZA.byZEzpGzfzAtvwj.yWS977YcaOpWmgq', 'active', NULL, 6.9934, 81.055),
-(5, 'Safe Haven Animal Rescue', 'No. 120, Kandy Road, Kurunegala, North Western Province, Sri Lanka', 'Kurunegala', '0754812344', 'safehaven.animals@gmail.com', '$2y$10$mqP5t/mMDDf3mQy7u/IEKuWNX3rpKKRGBk8UkDI638bJDEaQYjKmS', 'inactive', NULL, NULL, NULL),
-(6, 'Loving Paws Rescue Foundation', 'No. 78, Galle Road, Kalutara, Western Province, Sri Lanka', 'Kalutara', '0754896312', 'lovingpaws.foundation@gmail.com', '$2y$10$691zb17Z5qrXzsnVPdd4Juy8CSBI3L7m2F2DaO0OZY.EWGwARFJCu', 'inactive', NULL, NULL, NULL);
+(13, 'Safe Haven Animal Rescue', 'No. 120, Kandy Road', 'Kurunegala', '0754812344', 'safehaven.animals@gmail.com', '$2y$10$3kfdKOPVygIto.TdzjjjqOsuR5uDm.54iWKpvATEsq1YjslPywb4i', 'inactive', NULL, 7.4071193, 80.4920439),
+(14, 'Loving Paws Rescue Foundation', 'No. 78, Galle Road', 'Kalutara', '0754896312', 'lovingpaws.foundation@gmail.com', '$2y$10$B6aXsMMZ61HDkeHdtdZJE.bpr1uItVXQTaDsftuCNcmV8GaPEOELe', 'inactive', NULL, 6.6637558, 79.9306314);
 
 -- --------------------------------------------------------
 
@@ -284,8 +284,8 @@ INSERT INTO `users` (`user_id`, `name`, `email`, `phone`, `password`, `role`, `c
 (5, 'Indunii', 'indu13570@gmail.com', '0702020202', '$2y$10$NKSQ6lQtsK.jHGsoAD3g2eW0VHuVpUpXrySHGZIwmEsxdONuSZwZe', 'user', '2025-12-23 04:15:00', '1766639978_pic 2.jpeg', NULL, NULL),
 (6, 'paws&protect', 'Pawsandprotectadmim05@gmail.com', '0767211878', '$2y$10$thwM3pOw8v7gnD4qiUdqV.ge7Z/D5xZMTeBbCRVeudlHuSYddsaQi', 'admin', '2026-01-16 03:41:45', NULL, NULL, NULL),
 (8, 'ava', 'ava@gmail.com', '1234567890', '$2y$10$Ht9MIgDjv.8GNEyrshQdb.NyEZL8HXpc2GrcafIm.c.97Ad0DXnRq', 'user', '2026-02-19 09:10:40', NULL, NULL, NULL),
-(9, 'Safe Haven Animal Rescue', 'safehaven.animals@gmail.com', '0754812344', '$2y$10$mqP5t/mMDDf3mQy7u/IEKuWNX3rpKKRGBk8UkDI638bJDEaQYjKmS', 'rescuecenter', '2026-02-23 04:06:33', NULL, NULL, NULL),
-(10, 'Loving Paws Rescue Foundation', 'lovingpaws.foundation@gmail.com', '0754896312', '$2y$10$691zb17Z5qrXzsnVPdd4Juy8CSBI3L7m2F2DaO0OZY.EWGwARFJCu', 'rescuecenter', '2026-02-23 04:07:47', NULL, NULL, NULL);
+(16, 'Safe Haven Animal Rescue', 'safehaven.animals@gmail.com', '0754812344', '$2y$10$3kfdKOPVygIto.TdzjjjqOsuR5uDm.54iWKpvATEsq1YjslPywb4i', 'rescuecenter', '2026-02-27 13:00:49', NULL, NULL, NULL),
+(17, 'Loving Paws Rescue Foundation', 'lovingpaws.foundation@gmail.com', '0754896312', '$2y$10$B6aXsMMZ61HDkeHdtdZJE.bpr1uItVXQTaDsftuCNcmV8GaPEOELe', 'rescuecenter', '2026-02-27 13:02:31', NULL, NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -395,7 +395,7 @@ ALTER TABLE `lost_animals`
 -- AUTO_INCREMENT for table `rescue_center`
 --
 ALTER TABLE `rescue_center`
-  MODIFY `rescue_center_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `rescue_center_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `rescue_requests`
@@ -413,7 +413,7 @@ ALTER TABLE `staff`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- Constraints for dumped tables
