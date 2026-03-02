@@ -1,46 +1,50 @@
 body {
     font-family: Arial;
-    background:#FFF8E7;
-    padding:20px;
+    background: #FFF8E7;
+    padding: 20px;
+    margin: 0;
 }
+
 .main-content {
-    margin-left:260px;
+    margin-left: 260px;
 }
+
 h2 {
-    text-align:center;
-    color:#5C3A21;
-    margin:20px 0;
+    text-align: center;
+    color: #5C3A21;
+    margin: 20px 0;
 }
 
 .filter-box {
-    text-align:center;
-    margin-bottom:20px;
+    text-align: center;
+    margin-bottom: 20px;
 }
+
 select {
-    padding:10px 16px;
-    border-radius:20px;
-    border:none;
-    background:#ddbc8b;
-    font-weight:bold;
+    padding: 10px 16px;
+    border-radius: 20px;
+    border: none;
+    background: #ddbc8b;
+    font-weight: bold;
     color: #5C3A21;
 }
 
 table {
-    width:100%;
-    border-collapse:collapse;
+    width: 100%;
+    border-collapse: collapse;
     background: #ddbc8b;
-    border-radius:20px;
-    overflow:hidden;
+    border-radius: 20px;
+    overflow: hidden;
 }
 
 th, td {
-    padding:14px;
-    text-align:center;
+    padding: 14px;
+    text-align: center;
 }
 
 th {
     background: #5C3A21;
-    color:white;
+    color: white;
 }
 
 tr:nth-child(even) {
@@ -48,10 +52,90 @@ tr:nth-child(even) {
 }
 
 .status-active {
-    color:green;
-    font-weight:bold;
+    color: green;
+    font-weight: bold;
 }
+
 .status-inactive {
-    color:red;
-    font-weight:bold;
+    color: red;
+    font-weight: bold;
+}
+
+@media (max-width: 1024px){
+    .main-content {
+        margin-left: 200px;
+        padding: 10px;
+    }
+
+    select {
+        width: 80%;
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+
+    th, td {
+        padding: 10px;
+        font-size: 13px;
+    }
+
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+}
+
+@media (max-width: 768px){
+    .main-content {
+        margin-left: 0;
+        padding: 10px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    .filter-box select {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    
+    table {
+        display: block;
+        width: 100%;
+        border: 0;
+    }
+
+    thead {
+        display: none; 
+    }
+
+    tbody, tr, td {
+        display: block;
+        width: 100%;
+    }
+
+    tr {
+        background: #FFF3E2;
+        margin-bottom: 15px;
+        padding: 15px;
+        border-radius: 14px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    }
+
+    td {
+        border: none;
+        padding: 8px 0;
+        position: relative;
+        font-size: 14px;
+        text-align: left;
+    }
+
+    td:nth-child(1)::before { content: "#"; font-weight:700; display:block; margin-bottom:4px; color:#5C3A21; }
+    td:nth-child(2)::before { content: "Name"; font-weight:700; display:block; margin-bottom:4px; color:#5C3A21; }
+    td:nth-child(3)::before { content: "Email"; font-weight:700; display:block; margin-bottom:4px; color:#5C3A21; }
+    td:nth-child(4)::before { content: "Phone"; font-weight:700; display:block; margin-bottom:4px; color:#5C3A21; }
+    td:nth-child(5)::before { content: "Rescue Center"; font-weight:700; display:block; margin-bottom:4px; color:#5C3A21; }
+    td:nth-child(6)::before { content: "Status"; font-weight:700; display:block; margin-bottom:4px; color:#5C3A21; }
 }
