@@ -1,86 +1,180 @@
+/* =========================
+   Base Styles
+========================= */
 body {
     font-family: Arial;
-    background:#FFF8E7;
-    padding:20px;
+    background: #FFF8E7;
+    padding: 20px;
+    margin: 0;
 }
 
 .main-content {
-    margin-left:260px;
+    margin-left: 260px;
 }
 
 h2 {
-    text-align:center;
-    color:#5C3A21;
-    margin-bottom:30px;
+    text-align: center;
+    color: #5C3A21;
+    margin-bottom: 30px;
 }
 
 .report-box {
     background: #ddbc8b;
-    padding:20px;
-    border-radius:20px;
-    margin-bottom:20px;
-    box-shadow:0 4px 8px rgba(0,0,0,0.1);
+    padding: 20px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 .report-box h3 {
     color: #5C3A21;
-    margin-bottom:15px;
-    text-align:center;
+    margin-bottom: 15px;
+    text-align: center;
 }
 
-.report-table{
-    width:100%;
-    border-collapse:collapse;
-    background: #e8cfa0; 
-    border-radius:2px;
-    overflow:hidden;
+.report-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #e8cfa0;
+    border-radius: 2px;
+    overflow: hidden;
 }
 
-.report-table th{
+.report-table th {
     background: #5C3A21;
-    color:white;
-    padding:12px;
-    text-align:center;
-    font-weight:bold;
+    color: white;
+    padding: 12px;
+    text-align: center;
+    font-weight: bold;
 }
 
-.report-table td{
-    border:1px solid #5C3A21;
-    padding:10px;
-    text-align:center;
-    color:#5C3A21;
+.report-table td {
+    border: 1px solid #5C3A21;
+    padding: 10px;
+    text-align: center;
+    color: #5C3A21;
 }
 
-.report-table td:first-child{
+.report-table td:first-child {
     background: #e8cfa0;
-    font-weight:bold;
+    font-weight: bold;
 }
 
-.report-table tr:nth-child(even){
-    background: #e8cfa0;
-}
-
-.report-table tr:hover{
+.report-table tr:nth-child(even) {
     background: #e8cfa0;
 }
 
-.center-btn{
-    display:flex;
-    justify-content:center;
-    margin-bottom:20px;
+.report-table tr:hover {
+    background: #e8cfa0;
 }
 
-.btn-download{
+.center-btn {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.btn-download {
     background: #5C3A21;
-    color:white;
-    padding:10px 18px;
-    border-radius:20px;
-    text-decoration:none;
-    font-weight:bold;
-    transition:0.3s ease;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s ease;
 }
 
-.btn-download:hover{
-    background:#3e2715;
-    transform:scale(1.05);
+.btn-download:hover {
+    background: #3e2715;
+    transform: scale(1.05);
+}
+
+/* =========================
+   Tablet Responsive (≤1024px)
+========================= */
+@media (max-width: 1024px) {
+    .main-content {
+        margin-left: 200px;
+        padding: 10px;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+
+    .report-box {
+        padding: 15px;
+    }
+
+    .report-table th,
+    .report-table td {
+        padding: 8px;
+        font-size: 13px;
+    }
+
+    .btn-download {
+        padding: 8px 14px;
+        font-size: 13px;
+    }
+}
+
+/* =========================
+   Mobile Responsive (≤768px)
+========================= */
+@media (max-width: 768px) {
+    .main-content {
+        margin-left: 0;
+        padding: 10px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    .report-box {
+        padding: 15px;
+    }
+
+    .btn-download {
+        width: 100%;
+        text-align: center;
+        padding: 10px;
+    }
+
+    /* Mobile-friendly table: stacked cards */
+    .report-table {
+        display: block;
+        width: 100%;
+        border: 0;
+    }
+
+    thead {
+        display: none; /* hide headers */
+    }
+
+    tbody, tr, td {
+        display: block;
+        width: 100%;
+    }
+
+    tr {
+        background: #FFF3E2;
+        margin-bottom: 15px;
+        padding: 15px;
+        border-radius: 14px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+    }
+
+    td {
+        border: none;
+        padding: 8px 0;
+        text-align: left;
+        position: relative;
+        font-size: 14px;
+    }
+
+    /* Show label before each cell */
+    td:nth-child(1)::before { content: "Category"; font-weight:700; display:block; margin-bottom:4px; color:#5C3A21; }
+    td:nth-child(2)::before { content: "Metric"; font-weight:700; display:block; margin-bottom:4px; color:#5C3A21; }
+    td:nth-child(3)::before { content: "Value"; font-weight:700; display:block; margin-bottom:4px; color:#5C3A21; }
 }

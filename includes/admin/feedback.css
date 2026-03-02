@@ -16,22 +16,22 @@ h2 {
     text-align:center;
     color:#5C3A21; 
     margin:20px 0; 
-            }
+}
 
 .filter-box {
-     text-align:center; 
-     margin-bottom:25px; 
-    }
+    text-align:center; 
+    margin-bottom:25px; 
+}
 
 .filter-box select {
-     padding:10px 16px; 
-     border-radius:20px; 
-     border:none; 
-     background:#ddbc8b; 
-     color:#5C3A21; 
-     font-weight:bold; 
-    }
-        
+    padding:10px 16px; 
+    border-radius:20px; 
+    border:none; 
+    background:#ddbc8b; 
+    color:#5C3A21; 
+    font-weight:bold; 
+}
+
 .feedback-card { 
     background:#ddbc8b;
     border-radius:20px; 
@@ -41,20 +41,19 @@ h2 {
     width: 60%;           
     max-width: 700px;
     margin: 15px 0;
-
 }
-        
+
 .feedback-header { 
     display:flex; 
     justify-content:space-between; 
     align-items:center; 
 }
-        
+
 .feedback-header h4 { 
     color:#5C3A21; 
     margin:0; 
 }
-        
+
 .tag { 
     background:#5C3A21; 
     color:#fff; 
@@ -62,12 +61,12 @@ h2 {
     border-radius:15px; 
     font-size:12px; 
 }
-        
+
 .feedback-msg { 
     margin:12px 0; 
     color:#3e2a1a; 
 }
-        
+
 textarea { 
     width:100%; 
     padding:10px; 
@@ -77,10 +76,55 @@ textarea {
     resize:none; 
     margin-top:8px; 
 }
-        
+
 .action-buttons { 
     margin-top:10px; 
     display:flex; 
     gap:10px; 
 }
-        
+
+/* ======= Responsive Styles ======= */
+
+/* Tablets: 768px - 1024px */
+@media screen and (max-width: 1024px) {
+    .main-content {
+        margin-left: 0;
+        padding: 0 20px;
+    }
+    .feedback-card {
+        width: 80%;
+    }
+}
+
+/* Mobile: <=767px */
+@media screen and (max-width: 767px) {
+    h2 {
+        font-size: 20px;
+        margin: 15px 0;
+    }
+    .filter-box select {
+        width: 100%;
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+    .feedback-card {
+        width: 95%;
+        padding: 15px;
+    }
+    .feedback-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+    .tag {
+        font-size: 10px;
+        padding: 3px 10px;
+    }
+    .action-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+    textarea {
+        font-size: 14px;
+    }
+}

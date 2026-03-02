@@ -1,4 +1,3 @@
-
 body{
     font-family: Arial, sans-serif;
     background:#FFF8E7;
@@ -13,8 +12,6 @@ body{
     justify-content: center;  
 }
 
-
-
 .content-area{
     background:#ddbc8b;
     padding:30px;
@@ -24,7 +21,6 @@ body{
     max-width: 1100px;   
     margin: 0 auto;    
 }
-
 
 .content-area h2{
     text-align:center;
@@ -137,13 +133,60 @@ body{
         padding:6px 10px;
     }
 }
-   
 
-    .approve-btn,
-    .reject-btn{
-        font-size:12px;
-        padding:7px 12px;
+@media (max-width: 768px){
+
+    .main{
+        margin-left: 0;
+        padding:15px;
+    }
+
+    .content-area{
+        padding:15px;
     }
 
 
+    .rescue-table thead{
+        display: none;
+    }
 
+    .rescue-table,
+    .rescue-table tbody,
+    .rescue-table tr,
+    .rescue-table td{
+        display: block;
+        width: 100%;
+    }
+
+    .rescue-table tr{
+        background:#FFF3E2;
+        margin-bottom:15px;
+        padding:15px;
+        border-radius:14px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    }
+
+    .rescue-table td{
+        border:none;
+        padding:8px 0;
+        position:relative;
+        font-size:14px;
+    }
+
+    .rescue-table td::before{
+        content: attr(data-label);
+        font-weight:700;
+        display:block;
+        margin-bottom:4px;
+        color:#5C3A21;
+    }
+
+ 
+    .approve-btn,
+    .reject-btn{
+        width:100%;
+        font-size:13px;
+        padding:8px 0;
+        margin-top:5px;
+    }
+}
