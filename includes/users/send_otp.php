@@ -50,8 +50,8 @@ if(substr($phone,0,1)=="0"){
 $otp = rand(100000,999999);
 $_SESSION['otp'] = $otp;
 
-$userId   = "30933";
-$apiKey   = "NQAoZfPFrRX1CVdxYxYL";
+$userId   = "31064";
+$apiKey   = "LKJ8YbfkG7IcLu8qAlW0";
 $senderId = "NotifyDEMO";
 $message  = "Your OTP code is: $otp";
 
