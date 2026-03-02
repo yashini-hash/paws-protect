@@ -26,9 +26,7 @@ $stmt->bind_param("i", $rescue_center_id);
 $stmt->execute();
 $user = $stmt->get_result()->fetch_assoc();
 
-$profile_img = !empty($user['logo'])
-    ? "../uploads/rescue_logos/" . $user['logo']
-    : "../uploads/rescue_logos/default.png";
+
 
 $rescue_location = $user['district']; 
 
@@ -125,12 +123,12 @@ if ($pending_adoptions > 0) $adoption_card_class .= " alert-red";
 <div class="main">
 
     <div class="welcome-box">
-        <img src="<?= htmlspecialchars($profile_img) ?>" alt="Profile">
-        <div>
-            <h2>Welcome back, <?= htmlspecialchars($user['center_name']) ?> 👋</h2>
-            <p>Paws & Protect Dashboard</p>
-        </div>
+    <img src="<?= htmlspecialchars($center_logo) ?>" alt="Rescue Center Logo">
+    <div>
+        <h2>Welcome back, <?= htmlspecialchars($center_name) ?> 👋</h2>
+        <p>Paws & Protect Dashboard</p>
     </div>
+</div>
 
     <div class="dashboard-cards">
       
