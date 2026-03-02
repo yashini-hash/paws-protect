@@ -2,15 +2,7 @@
 session_start();
 include("../page/dbconnect.php");
 
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
-
-if (
-    empty($_SESSION['user_id']) ||
-    empty($_SESSION['role']) ||
-    $_SESSION['role'] !== 'rescuecenter'
-) {
+if (empty($_SESSION['user_id']) || empty($_SESSION['role']) || $_SESSION['role'] !== 'rescuecenter') {
     session_unset();
     session_destroy();
     header("Location: /paws&protect/includes/page/login.php");
@@ -20,7 +12,6 @@ if (
 $rescue_center_id = $_SESSION['rescue_center_id'];
 
 if(isset($_POST['update_id'])){
-
     $id = intval($_POST['update_id']);
     $name = trim($_POST['name']);
     $type = trim($_POST['type']);
@@ -41,8 +32,8 @@ if(isset($_POST['update_id'])){
     $newImage = $oldImg;
 
     if(!empty($_FILES['animal_image']['name'])){
-        $image_name = time() . "_" . basename($_FILES['animal_image']['name']);
-        $targetPath = "../uploads/" . $image_name;
+        $image_name = time() . "_" . preg_replace("/[^a-zA-Z0-9.-]/", "_", basename($_FILES['animal_image']['name']));
+        $targetPath = "../uploads/addanimal/" . $image_name;
 
         $allowed_types = ['jpg','jpeg','png','gif'];
         $file_ext = strtolower(pathinfo($image_name, PATHINFO_EXTENSION));
@@ -52,8 +43,8 @@ if(isset($_POST['update_id'])){
         }
 
         if(move_uploaded_file($_FILES['animal_image']['tmp_name'], $targetPath)){
-            if(!empty($oldImg) && file_exists("../uploads/".$oldImg)){
-                unlink("../uploads/".$oldImg);
+            if(!empty($oldImg) && file_exists("../uploads/addanimal/".$oldImg)){
+                unlink("../uploads/addanimal/".$oldImg);
             }
             $newImage = $image_name;
         } else {

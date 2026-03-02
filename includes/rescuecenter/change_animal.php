@@ -2,15 +2,8 @@
 session_start();
 include("sidebar.php");
 include("../page/dbconnect.php");
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
 
-if (
-    empty($_SESSION['user_id']) ||
-    empty($_SESSION['role']) ||
-    $_SESSION['role'] !== 'rescuecenter'
-) {
+if (empty($_SESSION['user_id']) || empty($_SESSION['role']) || $_SESSION['role'] !== 'rescuecenter') {
     session_unset();
     session_destroy();
     header("Location: /paws&protect/includes/page/login.php");
@@ -21,7 +14,7 @@ $rescue_center_id = $_SESSION['rescue_center_id'];
 $id = intval($_GET['id'] ?? 0);
 
 $stmt = $conn->prepare("SELECT * FROM animals_details WHERE animal_id=? AND rescue_center_id=?");
-$stmt->bind_param("ii",$id,$rescue_center_id);
+$stmt->bind_param("ii", $id, $rescue_center_id);
 $stmt->execute();
 $animal = $stmt->get_result()->fetch_assoc();
 if(!$animal) exit("Animal not found");
